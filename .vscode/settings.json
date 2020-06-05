@@ -1,6 +1,8 @@
 {
-  "editor.formatOnSave": true,
-  "eslint.format.enable": false,
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // 기본 포매터를 prettier로 설정
+  "editor.formatOnSave": true, // 저장할 때 포맷 실행
+  "prettier.requireConfig": true, // prettier가 .prettierrc를 참조
+  "eslint.format.enable": false, // eslint가 포맷을 하지 않게 함
   "eslint.codeActionsOnSave.mode": "all",
   "eslint.alwaysShowStatus": true
 }
