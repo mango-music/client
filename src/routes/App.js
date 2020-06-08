@@ -4,9 +4,10 @@ import {
   Switch,
   Route,
   Redirect,
-  Link,
 } from 'react-router-dom';
 import '../styles/App.scss';
+import Signin from '../components/auth/Signin';
+import Signup from '../components/auth/Signup';
 import Main from './Main';
 import NoMatch from '../components/auth/NoMatch';
 
@@ -49,17 +50,15 @@ const App = () => {
               ) : (
                 <Redirect to="/signin" />
               );
-            } else {
-              return <h3>Loading...</h3>;
             }
+            return <h3>Loading...</h3>;
           }}
         />
         <Route path="/signin">
-          <h3>로그인</h3>
-          <Link to="/signup">회원가입</Link>
+          <Signin />
         </Route>
         <Route path="/signup">
-          <h3>회원가입</h3>
+          <Signup />
         </Route>
         <Route path={`/@${profile.id}`}>
           <Router>
