@@ -1,9 +1,8 @@
 import React from 'react';
-// import logo from './logo.svg';
-import './styles/App.css';
+import './styles/App.scss';
 
-function App() {
-  return <></>;
+const App = () => {
+  return <><div>Hello World!</div></>;
 }
 
 export default App;
