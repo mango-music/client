@@ -453,4 +453,6 @@ const fakeData = { // getRecommendedPlaylist(10);
     "totalResults": 87,
     "resultsPerPage": 10
   }
-}
+};
+
+export default fakeData;
