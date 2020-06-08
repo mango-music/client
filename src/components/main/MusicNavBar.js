@@ -1,38 +1,71 @@
 import React from 'react';
 
 const MusicNavBar = (props) => {
+  let { itemIndex, setItemIndex, isPlayButtonOn, setIsPlayButtonOn } = props;
+  console.log('itemIndex : ', itemIndex);
+  let centerButton;
+  if (isPlayButtonOn) {
+    centerButton = (
+      <div>
+        <button
+          onClick={() => {
+            props.player.playVideo();
+            setIsPlayButtonOn(false);
+          }}
+        >
+          ▶️
+        </button>
+      </div>
+    );
+  } else {
+    centerButton = (
+      <div>
+        <button
+          onClick={() => {
+            props.player.pauseVideo();
+            setIsPlayButtonOn(true);
+          }}
+        >
+          ⏸
+        </button>
+      </div>
+    );
+  }
   return (
     <div className="music-nav-bar">
       <div>
         <button>↜</button>
       </div>
       <div>
-        <button>←</button>
-      </div>
-      <div id="play-button" className="hidden">
         <button
           onClick={() => {
-            props.player.playVideo();
-            document.getElementById('play-button').classList.toggle('hidden');
-            document.getElementById('pause-button').classList.toggle('hidden');
+            if (props.currentItems[itemIndex - 1]) {
+              props.player.loadVideoById(
+                props.currentItems[itemIndex - 1].snippet.resourceId.videoId,
+              );
+              setItemIndex(itemIndex - 1);
+              setIsPlayButtonOn(false);
+            }
           }}
         >
-          ▶️
+          ←
         </button>
       </div>
-      <div id="pause-button">
-        <button
-          onClick={() => {
-            props.player.pauseVideo();
-            document.getElementById('pause-button').classList.toggle('hidden');
-            document.getElementById('play-button').classList.toggle('hidden');
-          }}
-        >
-          ⏸
-        </button>
-      </div>
+      {centerButton}
       <div>
-        <button>→</button>
+        <button
+          onClick={() => {
+            if (props.currentItems[itemIndex + 1]) {
+              props.player.loadVideoById(
+                props.currentItems[itemIndex + 1].snippet.resourceId.videoId,
+              );
+              setItemIndex(itemIndex + 1);
+              setIsPlayButtonOn(false);
+            }
+          }}
+        >
+          →
+        </button>
       </div>
       <div>
         <button>⤺</button>
