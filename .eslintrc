@@ -1,5 +1,5 @@
 {
-  "extends": ["airbnb", "prettier"],
+  "extends": ["airbnb", "airbnb/hooks", "plugin:prettier/recommended"],
   "env": {
     "browser": true,
     "node": true
@@ -7,7 +7,12 @@
   "rules": {
     "indent": ["error", 2],
     "semi": "error",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [
+      1,
+      {
+        "extensions": [".js", ".jsx"]
+      }
+    ],
     "react/jsx-one-expression-per-line": 0,
     "react/prefer-stateless-function": 0
   }
