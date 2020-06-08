@@ -22,6 +22,9 @@ const Nav = ({ profile }) => {
         <NavLink to={`/@${profile.id}/profile`} activeStyle={activeStyle}>
           <li>Profile</li>
         </NavLink>
+        <NavLink to="/player" activeStyle={activeStyle}>
+          <li>Player</li>
+        </NavLink>
       </ul>
     </nav>
   );
