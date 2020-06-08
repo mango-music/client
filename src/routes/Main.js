@@ -6,6 +6,7 @@ import Home from '../components/main/Home';
 import Search from '../components/main/Search';
 import Playlists from '../components/main/Playlists';
 import Profile from '../components/main/Profile';
+import fakeData from '../lib/fixtures/fakeData';
 
 const Main = ({ profile }) => {
   console.log(profile);
@@ -27,7 +28,7 @@ const Main = ({ profile }) => {
           <Profile profile={profile} />
         </Route>
         <Route path="/player">
-          <Player />
+          <Player recommended={fakeData} />
         </Route>
       </Switch>
     </>
