@@ -1,12 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
-import Player from './components/main/MusicPlayer';
+import Root from './routes/Root';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Player />
+    <Root />
   </React.StrictMode>,
   document.getElementById('root'),
 );
