@@ -1,45 +1,45 @@
 const fakeDataCurrentItem = {
   "kind": "youtube#playlistItem",
-  "etag": "cc-QOaoGtOf8_PLw_Qd4myM5mRk",
-  "id": "UExGZ3F1TG5MNTlhbEdKY2RjMEJFWkpiMnA3SWdrTDBPZS4xQzk3NTVFMUExQjY4RURB",
+  "etag": "xsA8wwTJ18lUcEsFeVFNC911MrE",
+  "id": "UExGZ3F1TG5MNTlhbEdKY2RjMEJFWkpiMnA3SWdrTDBPZS40MUFDQTIzMTVDRDk4NjQy",
   "snippet": {
     "publishedAt": "2020-06-08T06:53:37Z",
     "channelId": "UC-9-kyTW8ZkZNDHQJ6FgpwQ",
-    "title": "Lady Gaga, Ariana Grande - Rain On Me (Official Music Video)",
-    "description": "“CHROMATICA”\nTHE SIXTH ALBUM BY LADY GAGA\nOUT NOW\nhttp://smarturl.it/Chromatica\n\n\"RAIN ON ME”\nTHE NEW SINGLE FROM LADY GAGA WITH ARIANA GRANDE\nOUT NOW\nhttp://smarturl.it/RainOnMeChromatica\n\nDIRECTED BY ROBERT RODRIGUEZ\n\nSHOP THE OFFICIAL CHROMATICA COLLECTION: http://smarturl.it/GagaStore\n\nFOLLOW LADY GAGA:\nFacebook: http://gaga.lk/facebook\nInstagram: http://gaga.lk/Instagram\nSnapchat: http://gaga.lk/Snapchat\nTwitter: http://gaga.lk/Twitter\nWebsite: http://www.ladygaga.com/\nOfficial Store: http://gaga.lk/GagaStore\nEmail List: http://gaga.lk/News\n\nFOLLOW ARIANA GRANDE:\nFacebook: http://ArianaGrande.lnk.to/FacebookYT\nInstagram: http://ArianaGrande.lnk.to/InstagramYT\nTwitter: http://ArianaGrande.lnk.to/TwitterYT\nWebsite: http://ArianaGrande.lnk.to/WebsiteYT\nOfficial Store: http://ArianaGrande.lnk.to/ShopYT\nEmail List: http://ArianaGrande.lnk.to/SignUpYT\n\nMusic video by Lady Gaga, Ariana Grande performing Rain On Me. © 2020 Interscope Records",
+    "title": "[MV] IU(아이유) _ eight(에잇) (Prod.&Feat. SUGA of BTS)",
+    "description": "[MV] IU(아이유) _ eight(에잇) (Prod.&Feat. SUGA of BTS)\n\n\nK-POP Wonderland, 1theK\n\nK-POP의 모든 즐거움을 1theK(원더케이)에서 만나보세요! :)\nWelcome to the official YouTube channel of K-POP Wonderland, 1theK\n\n\"1theK Originals\" Subscribe 👉 https://www.youtube.com/1theKOriginals?sub_confirmation=1\n\n*****\nHello, this is 1theK. We are working on subtitles now!\nPlease come back and watch it again within a few hours.\nThank you for your waiting and continuing interest :)\n*****\n\n[Notice] 1theK YouTube is also an official channel for the MV, and music shows will count the views from this channel too.\n[공지] 1theK YouTube는 MV를 유통하는 공식 채널로, 1theK에 업로드된 MV 조회수 또한 음악방송 순위에 반영됩니다.\n\n#NEWRELEASE#MV#1theK#원더케이\n\n▶1theK YT : https://www.youtube.com/1theK\n▶1theK FB  : http://www.facebook.com/1theK\n▶1theK TW : https://twitter.com/1theK\n▶1theK Kakao : https://goo.gl/otRpZc\n▶1theK TikTok : https://vt.tiktok.com/2mSMBS",
     "thumbnails": {
       "default": {
-        "url": "https://i.ytimg.com/vi/AoAm4om0wTs/default.jpg",
+        "url": "https://i.ytimg.com/vi/TgOu00Mf3kI/default.jpg",
         "width": 120,
         "height": 90
       },
       "medium": {
-        "url": "https://i.ytimg.com/vi/AoAm4om0wTs/mqdefault.jpg",
+        "url": "https://i.ytimg.com/vi/TgOu00Mf3kI/mqdefault.jpg",
         "width": 320,
         "height": 180
       },
       "high": {
-        "url": "https://i.ytimg.com/vi/AoAm4om0wTs/hqdefault.jpg",
+        "url": "https://i.ytimg.com/vi/TgOu00Mf3kI/hqdefault.jpg",
         "width": 480,
         "height": 360
       },
       "standard": {
-        "url": "https://i.ytimg.com/vi/AoAm4om0wTs/sddefault.jpg",
+        "url": "https://i.ytimg.com/vi/TgOu00Mf3kI/sddefault.jpg",
         "width": 640,
         "height": 480
       },
       "maxres": {
-        "url": "https://i.ytimg.com/vi/AoAm4om0wTs/maxresdefault.jpg",
+        "url": "https://i.ytimg.com/vi/TgOu00Mf3kI/maxresdefault.jpg",
         "width": 1280,
         "height": 720
       }
     },
     "channelTitle": "Music",
     "playlistId": "PLFgquLnL59alGJcdc0BEZJb2p7IgkL0Oe",
-    "position": 9,
+    "position": 0,
     "resourceId": {
       "kind": "youtube#video",
-      "videoId": "AoAm4om0wTs"
+      "videoId": "TgOu00Mf3kI"
     }
   }
 };
