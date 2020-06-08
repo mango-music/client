@@ -32,7 +32,6 @@
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     div {
-      display: grid;
       button {
         font-size: 2rem;
       }
@@ -42,4 +41,8 @@
 
 .small-window {
   position: absolute;
+}
+
+.hidden {
+  display: none;
 }

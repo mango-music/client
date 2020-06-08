@@ -4,13 +4,13 @@ import RatingForm from './RatingForm';
 import MusicTitle from './MusicTitle';
 import MusicProgressBar from './MusicProgressBar';
 import MusicNavBar from './MusicNavBar';
-import '../../styles/Player.scss';
+import '../../styles/MusicPlayer.scss';
 
-const Player = (props) => {
+const MusicPlayer = (props) => {
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
   const opts = {
     playerVars: {
-      autoplay: 1,
+      autoplay: 0,
     },
   };
   const onReady = (event) => {
@@ -33,4 +33,4 @@ const Player = (props) => {
   );
 }
 
-export default Player;
+export default MusicPlayer;
