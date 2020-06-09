@@ -25,14 +25,19 @@ const MusicPlayer = (props) => {
     console.log('onReady 호출');
     setPlayer(event.target); // video가 로딩 됐을 때 player 변수로 video를 참조할 수 있게 해준다.
   };
+
+  const handleSetCurrentTime = () => {
+    const currentSecond = Math.floor(player.getCurrentTime());
+    if (currentSecond) {
+      setCurrentTime(currentSecond);
+    }
+  };
+
   const handleStateChange = (event) => {
     // 재생중
     if (event.data == 1) {
       timer = setInterval(() => {
-        const currentSecond = Math.floor(player.getCurrentTime());
-        if (currentSecond) {
-          setCurrentTime(currentSecond);
-        }
+        handleSetCurrentTime();
       }, 1000);
       // 일시중지됨, 종료됨
     } else if (event.data === 2 || event.data === 0) {
@@ -42,6 +47,7 @@ const MusicPlayer = (props) => {
     if (event.data === -1 || event.data === 1 || event.data === 2) {
       setDurationTime(Math.floor(player.getDuration()));
     }
+    handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
   };
   // 렌더링 조건
   if (currentItems && currentItem) {
