@@ -58,8 +58,30 @@
       text-align: center;
     }
     .music-progress-bar {
-      font-size: 1.5rem;
-      text-align: center;
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+      .progress-bar {
+        background-color: rgb(233, 233, 233);
+        height: 5px;
+        .progress-node {
+          position: relative;
+          width: 15px;
+          height: 15px;
+          border-radius: 7.5px;
+          background-color: black;
+          top: -4px;
+        }
+      }
+      .play-time {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 1.2rem;
+      }
     }
     .music-queue {
       padding-left: 10px;
