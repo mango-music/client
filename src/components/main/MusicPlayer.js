@@ -29,7 +29,7 @@ const MusicPlayer = (props) => {
           videoId={currentItem.snippet.resourceId.videoId}
           opts={opts}
           onReady={onReady}
-          className="player-video"
+          className="iframe-video"
         />
         <RatingForm />
         <MusicTitle title={currentItem.snippet.title} />
