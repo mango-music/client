@@ -34,21 +34,32 @@ const MusicPlayer = (props) => {
   };
 
   const handleStateChange = (event) => {
-    // 재생중
+    // 재생중 => timer 시작
     if (event.data == 1) {
       timer = setInterval(() => {
         handleSetCurrentTime();
       }, 1000);
-      // 일시중지됨, 종료됨
+      // 일시중지됨, 종료됨 => timer 제거
     } else if (event.data === 2 || event.data === 0) {
       clearInterval(timer);
     }
-    // 시작되지 않음, 재생중, 일시정지됨
+    // 시작되지 않음, 재생중, 일시정지됨 => 총 재생 시간 state
     if (event.data === -1 || event.data === 1 || event.data === 2) {
       setDurationTime(Math.floor(player.getDuration()));
     }
+    // 종료됨 => 다음곡 재생
+    if (event.data === 0) {
+      if (currentItems[itemIndex + 1]) {
+        player.loadVideoById(
+          currentItems[itemIndex + 1].snippet.resourceId.videoId,
+        );
+        setItemIndex(itemIndex + 1);
+        setIsPlayButtonOn(false);
+      }
+    }
     handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
   };
+
   // 렌더링 조건
   if (currentItems && currentItem) {
     return (
