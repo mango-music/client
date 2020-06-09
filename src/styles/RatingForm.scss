@@ -1,0 +1,8 @@
+.rating-form {
+  display: grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  div {
+    cursor: pointer;
+  }
+}
