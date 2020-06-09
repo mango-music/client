@@ -22,59 +22,65 @@ const MusicPlayer = (props) => {
     },
   };
   const onReady = (event) => {
+    console.log('onReady 호출');
     setPlayer(event.target); // video가 로딩 됐을 때 player 변수로 video를 참조할 수 있게 해준다.
   };
   const handleStateChange = (event) => {
+    // 재생중
     if (event.data == 1) {
-      // 재생중
       timer = setInterval(() => {
         const currentSecond = Math.floor(player.getCurrentTime());
         if (currentSecond) {
           setCurrentTime(currentSecond);
         }
       }, 1000);
-    } else if (event.data === 2 || event.data === 0) {
       // 일시중지됨, 종료됨
+    } else if (event.data === 2 || event.data === 0) {
       clearInterval(timer);
     }
+    // 시작되지 않음, 재생중, 일시정지됨
     if (event.data === -1 || event.data === 1 || event.data === 2) {
-      // 시작되지 않음, 재생중, 일시정지됨
       setDurationTime(Math.floor(player.getDuration()));
     }
   };
-  return (
-    <div id="player-selector" className="big-player">
-      <div className="player-window">
-        <YouTube
-          videoId={currentItem.snippet.resourceId.videoId}
-          opts={opts}
-          onReady={onReady}
-          onStateChange={handleStateChange}
-          className="iframe-video"
-        />
-        <RatingForm />
-        <MusicTitle title={currentItem.snippet.title} />
-        <MusicProgressBar
-          currentTime={currentTime}
-          durationTime={durationTime}
-        />
-        <MusicQueue
+  // 렌더링 조건
+  if (currentItems && currentItem) {
+    return (
+      <div id="player-selector" className="big-player">
+        <div className="player-window">
+          <YouTube
+            videoId={currentItem.snippet.resourceId.videoId}
+            opts={opts}
+            onReady={onReady}
+            onStateChange={handleStateChange}
+            className="iframe-video"
+          />
+          <RatingForm />
+          <MusicTitle title={currentItem.snippet.title} />
+          <MusicProgressBar
+            currentTime={currentTime}
+            durationTime={durationTime}
+          />
+          <MusicQueue
+            currentItems={currentItems}
+            setItemIndex={setItemIndex}
+            setIsPlayButtonOn={setIsPlayButtonOn}
+            player={player}
+          />
+        </div>
+        <MusicNavBar
           currentItems={currentItems}
+          itemIndex={itemIndex}
           setItemIndex={setItemIndex}
+          isPlayButtonOn={isPlayButtonOn}
           setIsPlayButtonOn={setIsPlayButtonOn}
           player={player}
         />
       </div>
-      <MusicNavBar
-        currentItems={currentItems}
-        itemIndex={itemIndex}
-        setItemIndex={setItemIndex}
-        isPlayButtonOn={isPlayButtonOn}
-        setIsPlayButtonOn={setIsPlayButtonOn}
-        player={player}
-      />
-    </div>
-  );
+    );
+  } else {
+    return null;
+  }
 };
 
 export default MusicPlayer;
