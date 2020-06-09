@@ -1,4 +1,13 @@
 import React from 'react';
+import {
+  faFastForward,
+  faStepBackward,
+  faPause,
+  faPlay,
+  faRandom,
+  faExchangeAlt,
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MusicNavBar = (props) => {
   let { itemIndex, setItemIndex, isPlayButtonOn, setIsPlayButtonOn } = props;
@@ -13,7 +22,7 @@ const MusicNavBar = (props) => {
             setIsPlayButtonOn(false);
           }}
         >
-          ▶️
+          <FontAwesomeIcon icon={faPlay} />
         </button>
       </div>
     );
@@ -26,7 +35,7 @@ const MusicNavBar = (props) => {
             setIsPlayButtonOn(true);
           }}
         >
-          ⏸
+          <FontAwesomeIcon icon={faPause} />
         </button>
       </div>
     );
@@ -34,7 +43,9 @@ const MusicNavBar = (props) => {
   return (
     <div className="music-nav-bar">
       <div>
-        <button>↜</button>
+        <button>
+          <FontAwesomeIcon icon={faExchangeAlt} />
+        </button>
       </div>
       <div>
         <button
@@ -48,7 +59,7 @@ const MusicNavBar = (props) => {
             }
           }}
         >
-          ←
+          <FontAwesomeIcon icon={faStepBackward} />
         </button>
       </div>
       {centerButton}
@@ -64,11 +75,13 @@ const MusicNavBar = (props) => {
             }
           }}
         >
-          →
+          <FontAwesomeIcon icon={faFastForward} />
         </button>
       </div>
       <div>
-        <button>⤺</button>
+        <button>
+          <FontAwesomeIcon icon={faRandom} />
+        </button>
       </div>
     </div>
   );
