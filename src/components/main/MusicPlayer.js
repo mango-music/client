@@ -35,7 +35,7 @@ const MusicPlayer = (props) => {
 
   const handleStateChange = (event) => {
     // 재생중 => timer 시작
-    if (event.data == 1) {
+    if (event.data === 1) {
       timer = setInterval(() => {
         handleSetCurrentTime();
       }, 1000);
@@ -73,7 +73,7 @@ const MusicPlayer = (props) => {
             className="iframe-video"
           />
           <RatingForm />
-          <MusicTitle title={currentItem.snippet.title} />
+          <MusicTitle currentItems={currentItems} itemIndex={itemIndex} />
           <MusicProgressBar
             currentTime={currentTime}
             durationTime={durationTime}
