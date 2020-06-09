@@ -13,14 +13,17 @@ const Nav = ({ profile }) => {
         <NavLink exact to={`/@${profile.id}`} activeStyle={activeStyle}>
           <li>Home</li>
         </NavLink>
-        <NavLink to="/search" activeStyle={activeStyle}>
-          <li>Search</li>
+        <NavLink to={`/@${profile.id}/explore`} activeStyle={activeStyle}>
+          <li>Explore</li>
         </NavLink>
-        <NavLink to={`/@${profile.id}/playlists`} activeStyle={activeStyle}>
-          <li>Playlists</li>
+        <NavLink to={`/@${profile.id}/library`} activeStyle={activeStyle}>
+          <li>Library</li>
         </NavLink>
         <NavLink to={`/@${profile.id}/profile`} activeStyle={activeStyle}>
           <li>Profile</li>
+        </NavLink>
+        <NavLink to={`/@${profile.id}/player`} activeStyle={activeStyle}>
+          <li>Player</li>
         </NavLink>
       </ul>
     </nav>

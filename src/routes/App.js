@@ -1,41 +1,65 @@
-import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect,
-} from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import '../styles/App.scss';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
-import Main from './Main';
+import PasswordReset from '../components/auth/PasswordReset';
+import Rating from '../components/rating/Rating';
+import Main from './Main'; // -> Nested routes
+import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
 
 const App = () => {
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
-  const [isLoading, setLoading] = useState(true);
+  // const [isMounted, setMounted] = useState(false);
+  const [hasJustCreated, setJustCreated] = useState(false);
 
-  const handleAutoLoginSuccess = () => {
+  const mounted = useRef(false); // mounted { current: false }
+
+  const handleSignupSuccess = () => {
+    setJustCreated(true);
+  };
+  const handleLoginSuccess = useCallback(() => {
     setLogin(true);
     setProfile({
       id: 'socratone',
       email: 'gim2origin@gmail.com',
       lv: 1,
     });
-    setLoading(false);
-  };
-  const handleAutoLoginFailure = () => {
-    setLoading(false);
+    // setMounted(true);
+  }, [isLogin]); // memorize this function until dependency(isLogin) updated
+  // const handleLoginFailure = () => {
+  //   setMounted(true);
+  // };
+  const handleLogout = () => {
+    setLogin(false);
+    setProfile({});
+    // setMounted(false);
+    setJustCreated(false);
   };
 
+  /*
+    Effect will not run after the initial render.
+    Thereafter, it depends on the array of values that should be observed.
+    If it's empty, it will run after every render.
+    Otherwise, it will run when one of it's values has changed.
+  */
+  // useEffect(() => {
+  //   if (!localStorage.getItem('x-access-token')) {
+  //     return handleLoginFailure();
+  //   }
+  //   return handleLoginSuccess();
+  // }, [isMounted]);
   useEffect(() => {
-    if (!localStorage.getItem('x-access-token')) {
-      localStorage.setItem('x-access-token', 'secret string'); // 나중에 삭제 예정
-      return handleAutoLoginFailure();
+    if (!mounted.current) {
+      mounted.current = true; // 1. DidMount
     }
-    return handleAutoLoginSuccess();
-  }, []);
+    if (localStorage.getItem('x-access-token')) {
+      return handleLoginSuccess(); // 3. DidUpdate
+    }
+  }, [mounted.current]); // 2. Check dependency change
 
   return (
     <>
@@ -44,7 +68,10 @@ const App = () => {
           exact
           path="/"
           render={() => {
-            if (!isLoading) {
+            if (hasJustCreated) {
+              return <Redirect to={`/@${profile.id}/rating`} />;
+            }
+            if (mounted.current) {
               return isLogin ? (
                 <Redirect to={`/@${profile.id}`} />
               ) : (
@@ -55,19 +82,32 @@ const App = () => {
           }}
         />
         <Route path="/signin">
-          <Signin />
+          <Signin handleLoginSuccess={handleLoginSuccess} />
         </Route>
         <Route path="/signup">
-          <Signup />
+          <Signup
+            handleSignupSuccess={handleSignupSuccess}
+            handleLoginSuccess={handleLoginSuccess}
+          />
+        </Route>
+        <Route path={`/@${profile.id}/rating`}>
+          <Rating profile={profile} />
         </Route>
         <Route path={`/@${profile.id}`}>
-          <Router>
-            <Main profile={profile} />
-          </Router>
+          <Main profile={profile} handleLogout={handleLogout} />
         </Route>
-        <Route path="*">
-          <NoMatch />
+        <Route path="/account/password_reset">
+          <PasswordReset />
         </Route>
+        <Route
+          path="*"
+          render={() => {
+            if (!localStorage.getItem('x-access-token')) {
+              return <Unauthorized />;
+            }
+            return <NoMatch />;
+          }}
+        />
       </Switch>
     </>
   );
