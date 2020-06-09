@@ -1,0 +1,109 @@
+.small-player {
+  position: absolute;
+  .player-window {
+    position: fixed;
+    bottom: 10vh;
+    right: 0;
+    width: 50vw; // todo: 반응형으로 바꾼다
+
+    .player-video {
+      width: 50vw; //100으로 바꿔야
+      height: 18vh; // todo: auto로 바꾼다
+    }
+    .rating-form {
+      display: none;
+    }
+    .music-title {
+      display: none;
+    }
+    .music-progress-bar {
+      display: none;
+    }
+    .music-queue {
+      display: none;
+    }
+  }
+}
+
+.big-player {
+  position: absolute;
+  .player-window {
+    position: static;
+    // top: 10vh;
+    width: 100vw; // todo: 반응형으로 바꾼다
+
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-rows: auto auto auto auto 1fr;
+    gap: 10px;
+    margin-bottom: 10vh;
+
+    .player-video {
+      width: 100vw; //100으로 바꿔야
+      height: 35vh; // todo: auto로 바꾼다
+    }
+    .rating-form {
+      font-size: 2rem;
+      text-align: center;
+    }
+    .music-title {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .music-progress-bar {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+    .music-queue {
+      padding-left: 10px;
+      padding-right: 10px;
+      font-size: 1.15rem;
+      margin: 0;
+      li {
+        display: grid;
+        gap: 10px;
+        grid-auto-flow: column;
+        grid-template-columns: auto 1fr;
+        margin-bottom: 10px;
+        list-style: none;
+        cursor: pointer;
+        div {
+          img {
+            display: block;
+            border-radius: 5px;
+            width: 4.5em;
+          }
+        }
+        p {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.music-nav-bar {
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 10vh;
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  div {
+    display: grid;
+    button {
+      font-size: 2rem;
+      background-color: white;
+      border: rgb(218, 218, 218) solid 1px;
+    }
+  }
+}
+
+.small-window {
+  position: absolute;
+}
+
+.hidden {
+  display: none !important;
+}
