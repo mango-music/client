@@ -10,19 +10,20 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const MusicNavBar = (props) => {
-  let { itemIndex, setItemIndex, isPlayButtonOn, setIsPlayButtonOn } = props;
+  const { itemIndex, setItemIndex, isPlayButtonOn, setIsPlayButtonOn } = props;
   console.log('itemIndex : ', itemIndex);
   let centerButton;
   if (isPlayButtonOn) {
     centerButton = (
       <div>
         <button
+          type="button"
           onClick={() => {
             props.player.playVideo();
             setIsPlayButtonOn(false);
           }}
         >
-          <FontAwesomeIcon icon={faPlay} />
+          <FontAwesomeIcon icon={faPlay} color="#afafaf" />
         </button>
       </div>
     );
@@ -30,12 +31,13 @@ const MusicNavBar = (props) => {
     centerButton = (
       <div>
         <button
+          type="button"
           onClick={() => {
             props.player.pauseVideo();
             setIsPlayButtonOn(true);
           }}
         >
-          <FontAwesomeIcon icon={faPause} />
+          <FontAwesomeIcon icon={faPause} color="#afafaf" />
         </button>
       </div>
     );
@@ -43,12 +45,13 @@ const MusicNavBar = (props) => {
   return (
     <div className="music-nav-bar">
       <div>
-        <button>
-          <FontAwesomeIcon icon={faExchangeAlt} />
+        <button type="button">
+          <FontAwesomeIcon icon={faExchangeAlt} color="#afafaf" />
         </button>
       </div>
       <div>
         <button
+          type="button"
           onClick={() => {
             if (props.currentItems[itemIndex - 1]) {
               props.player.loadVideoById(
@@ -59,12 +62,13 @@ const MusicNavBar = (props) => {
             }
           }}
         >
-          <FontAwesomeIcon icon={faStepBackward} />
+          <FontAwesomeIcon icon={faStepBackward} color="#afafaf" />
         </button>
       </div>
       {centerButton}
       <div>
         <button
+          type="button"
           onClick={() => {
             if (props.currentItems[itemIndex + 1]) {
               props.player.loadVideoById(
@@ -75,12 +79,12 @@ const MusicNavBar = (props) => {
             }
           }}
         >
-          <FontAwesomeIcon icon={faFastForward} />
+          <FontAwesomeIcon icon={faFastForward} color="#afafaf" />
         </button>
       </div>
       <div>
-        <button>
-          <FontAwesomeIcon icon={faRandom} />
+        <button type="button">
+          <FontAwesomeIcon icon={faRandom} color="#afafaf" />
         </button>
       </div>
     </div>
