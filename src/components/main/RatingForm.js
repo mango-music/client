@@ -4,7 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/RatingForm.scss';
 
 const RatingForm = (props) => {
-  const { rating } = props.currentItems[props.itemIndex];
+  const { isShuffleOn, shuffledIndex } = props;
+  let rating;
+  // 셔플일 때
+  if (isShuffleOn && shuffledIndex !== undefined) {
+    const index = props.shuffledQueue[shuffledIndex];
+    rating = props.currentItems[index].rating;
+  } else {
+    rating = props.currentItems[props.itemIndex].rating;
+  }
   return (
     <div className="rating-form">
       <div

@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
@@ -18,6 +18,18 @@ const Main = memo(({ profile, handleLogout }) => {
   const [query, setQuery] = useState('');
   const [queryResult, setQueryResult] = useState([]); // [{music}]
   const [isPlayerMinimized, setPlayerMinimized] = useState(true);
+
+  function getCurrentItem(item) {
+    setCurrentItem(item);
+  }
+  function getCurrentItems(items) {
+    setCurrentItems(items);
+  }
+  // temporyary: 재생 List를 클릭했을 때
+  useEffect(() => {
+    getCurrentItem(fkdtCurrentItem);
+    getCurrentItems(fkdtCurrentItems);
+  }, []);
 
   console.log(profile);
   if (!localStorage.getItem('x-access-token')) {
@@ -48,8 +60,9 @@ const Main = memo(({ profile, handleLogout }) => {
         창 전환 버튼
       </button>
       <MusicPlayer
-        currentItems={fkdtCurrentItems}
-        currentItem={fkdtCurrentItem}
+        currentItems={currentItems}
+        currentItem={currentItem}
+        setCurrentItems={setCurrentItems}
       />
       <Switch>
         <Route exact path={`/@${profile.id}`}>

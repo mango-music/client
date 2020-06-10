@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   faFastForward,
   faStepBackward,
@@ -17,36 +17,81 @@ const MusicNavBar = (props) => {
     setItemIndex,
     isPlayButtonOn,
     setIsPlayButtonOn,
+    isShuffleOn,
+    setIsShuffleOn,
+    shuffledQueue,
+    setShuffledQueue,
+    shuffledIndex,
+    setShuffledIndex,
   } = props;
   // console.log('itemIndex : ', itemIndex);
+
+  function shuffleArrayES6(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
   let centerButton;
   if (isPlayButtonOn) {
     centerButton = (
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            props.player.playVideo();
-            setIsPlayButtonOn(false);
-          }}
-        >
-          <FontAwesomeIcon icon={faPlay} color="#afafaf" />
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => {
+          props.player.playVideo();
+          setIsPlayButtonOn(false);
+        }}
+      >
+        <FontAwesomeIcon icon={faPlay} color="#afafaf" />
+      </button>
     );
   } else {
     centerButton = (
-      <div>
-        <button
-          type="button"
-          onClick={() => {
-            props.player.pauseVideo();
-            setIsPlayButtonOn(true);
-          }}
-        >
-          <FontAwesomeIcon icon={faPause} color="#afafaf" />
-        </button>
-      </div>
+      <button
+        type="button"
+        onClick={() => {
+          props.player.pauseVideo();
+          setIsPlayButtonOn(true);
+        }}
+      >
+        <FontAwesomeIcon icon={faPause} color="#afafaf" />
+      </button>
+    );
+  }
+
+  let shuffleButton;
+  if (isShuffleOn) {
+    shuffleButton = (
+      <button
+        type="button"
+        onClick={() => {
+          console.log('셔플 버튼이 꺼졌습니다.');
+          setIsShuffleOn(false);
+        }}
+      >
+        <FontAwesomeIcon icon={faRandom} color="black" />
+      </button>
+    );
+  } else {
+    shuffleButton = (
+      <button
+        type="button"
+        onClick={() => {
+          const queue = [];
+          for (let i = 0; i < currentItems.length; i++) {
+            queue.push(i);
+          }
+          shuffleArrayES6(queue);
+          console.log('셔플 버튼이 눌렸습니다.');
+          console.log('셔플된 queue : ', queue);
+          setShuffledQueue(queue);
+          setShuffledIndex(undefined);
+          setIsShuffleOn(true);
+        }}
+      >
+        <FontAwesomeIcon icon={faRandom} color="#afafaf" />
+      </button>
     );
   }
 
@@ -62,7 +107,20 @@ const MusicNavBar = (props) => {
           <button
             type="button"
             onClick={() => {
-              if (currentItems[itemIndex - 1]) {
+              if (isShuffleOn) {
+                // 셔플을 누르고 나서 첫 번째 재생시
+                if (shuffledIndex === undefined) {
+                  const index = shuffledQueue[0];
+                  props.player.loadVideoById(currentItems[index].videoId);
+                  setShuffledIndex(0);
+                  setIsPlayButtonOn(false);
+                } else if (shuffledQueue[shuffledIndex - 1] !== undefined) {
+                  const index = shuffledQueue[shuffledIndex - 1];
+                  props.player.loadVideoById(currentItems[index].videoId);
+                  setShuffledIndex(shuffledIndex - 1);
+                  setIsPlayButtonOn(false);
+                }
+              } else if (currentItems[itemIndex - 1]) {
                 props.player.loadVideoById(currentItems[itemIndex - 1].videoId);
                 setItemIndex(itemIndex - 1);
                 setIsPlayButtonOn(false);
@@ -72,12 +130,25 @@ const MusicNavBar = (props) => {
             <FontAwesomeIcon icon={faStepBackward} color="#afafaf" />
           </button>
         </div>
-        {centerButton}
+        <div>{centerButton}</div>
         <div>
           <button
             type="button"
             onClick={() => {
-              if (currentItems[itemIndex + 1]) {
+              if (isShuffleOn) {
+                // 셔플을 누르고 나서 첫 번째 재생시
+                if (shuffledIndex === undefined) {
+                  const index = shuffledQueue[0];
+                  props.player.loadVideoById(currentItems[index].videoId);
+                  setShuffledIndex(0);
+                  setIsPlayButtonOn(false);
+                } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
+                  const index = shuffledQueue[shuffledIndex + 1];
+                  props.player.loadVideoById(currentItems[index].videoId);
+                  setShuffledIndex(shuffledIndex + 1);
+                  setIsPlayButtonOn(false);
+                }
+              } else if (currentItems[itemIndex + 1]) {
                 props.player.loadVideoById(currentItems[itemIndex + 1].videoId);
                 setItemIndex(itemIndex + 1);
                 setIsPlayButtonOn(false);
@@ -87,11 +158,7 @@ const MusicNavBar = (props) => {
             <FontAwesomeIcon icon={faFastForward} color="#afafaf" />
           </button>
         </div>
-        <div>
-          <button type="button">
-            <FontAwesomeIcon icon={faRandom} color="#afafaf" />
-          </button>
-        </div>
+        <div>{shuffleButton}</div>
       </div>
     );
   }
