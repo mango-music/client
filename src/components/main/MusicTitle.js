@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 const MusicTitle = (props) => {
   return (
     <div className="music-title">
-      Pharrell Williams - Happy (Official Music Video)
+      {props.currentItems[props.itemIndex].snippet.title}
     </div>
   );
-}
+};
 
 export default MusicTitle;

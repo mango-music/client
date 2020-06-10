@@ -1,12 +1,14 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Nav from './Nav';
-import Player from '../components/main/Player';
+import MusicPlayer from '../components/main/MusicPlayer';
 import Home from '../components/main/Home';
 import Search from '../components/main/Search';
 import Playlists from '../components/main/Playlists';
 import Profile from '../components/main/Profile';
 import NoMatch from '../components/auth/NoMatch';
+import fakeDataCurrentItem from '../lib/fixtures/fakeDataCurrentItem';
+import fakeDataRecommended from '../lib/fixtures/fakeDataRecommended';
 
 const Main = memo(({ profile, handleLogout }) => {
   console.log(profile);
@@ -17,7 +19,22 @@ const Main = memo(({ profile, handleLogout }) => {
   return (
     <>
       <Nav profile={profile} />
-      <Player />
+      <button
+        onClick={() => {
+          document
+            .getElementById('player-selector')
+            .classList.toggle('big-player');
+          document
+            .getElementById('player-selector')
+            .classList.toggle('small-player');
+        }}
+      >
+        창 전환 버튼
+      </button>
+      <MusicPlayer
+        currentItems={fakeDataRecommended.items}
+        currentItem={fakeDataCurrentItem}
+      />
       <Switch>
         <Route exact path={`/@${profile.id}`}>
           <Home />
@@ -34,7 +51,7 @@ const Main = memo(({ profile, handleLogout }) => {
         <Route path={`/@${profile.id}/player`}>
           <Player />
         </Route>
-        <Route path={`/@${profile.id}/*`}>
+        <Route path={`/@${profile.id}`}>
           <NoMatch />
         </Route>
       </Switch>
