@@ -43,6 +43,7 @@ const Main = memo(({ profile, handleLogout }) => {
             .getElementById('music-nav-bar')
             .classList.toggle('music-nav-bar-none');
         }}
+        id="change-window-button"
       >
         창 전환 버튼
       </button>
