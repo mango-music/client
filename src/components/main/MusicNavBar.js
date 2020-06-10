@@ -33,6 +33,15 @@ const MusicNavBar = (props) => {
     }
   }
 
+  function getIndexByVideoId(videoId) {
+    for (let i = 0; i < currentItems.length; i++) {
+      if (currentItems[i].videoId === videoId) {
+        return i;
+      }
+    }
+    return 0; // 에러 방지
+  }
+
   let centerButton;
   if (isPlayButtonOn) {
     centerButton = (
@@ -68,7 +77,10 @@ const MusicNavBar = (props) => {
         onClick={() => {
           console.log('셔플 버튼이 꺼졌습니다.');
           setIsShuffleOn(false);
-          // TODO: 셔플 인덱스에 메인 인덱스를 맞춰준다.
+          // 셔플 인덱스에 메인 인덱스를 맞춰준다.
+          const shIndex = shuffledQueue[shuffledIndex];
+          const index = getIndexByVideoId(currentItems[shIndex].videoId);
+          setItemIndex(index);
         }}
       >
         <FontAwesomeIcon icon={faRandom} color="black" />
