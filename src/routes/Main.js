@@ -20,6 +20,7 @@ const Main = memo(({ profile, handleLogout }) => {
     <>
       <Nav profile={profile} />
       <button
+        type="button"
         onClick={() => {
           document
             .getElementById('player-selector')
@@ -49,7 +50,7 @@ const Main = memo(({ profile, handleLogout }) => {
           <Profile profile={profile} handleLogout={handleLogout} />
         </Route>
         <Route path={`/@${profile.id}/player`}>
-          <Player />
+          <MusicPlayer />
         </Route>
         <Route path={`/@${profile.id}`}>
           <NoMatch />
