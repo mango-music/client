@@ -119,28 +119,6 @@
   }
 }
 
-.music-nav-bar {
-  position: fixed;
-  bottom: 0;
-  width: 100vw;
-  height: 10vh;
-  display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-  div {
-    display: grid;
-    button {
-      font-size: 1.5rem;
-      background-color: white;
-      border: rgb(218, 218, 218) solid 1px;
-    }
-  }
-}
-
-.music-nav-bar-none {
-  display: none;
-}
-
 .small-window {
   position: absolute;
 }

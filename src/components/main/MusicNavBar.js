@@ -8,6 +8,7 @@ import {
   faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../styles/MusicNavBar.scss';
 
 const MusicNavBar = (props) => {
   const {
