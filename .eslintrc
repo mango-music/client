@@ -7,13 +7,11 @@
   "rules": {
     "indent": ["error", 2],
     "semi": "error",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
-    ],
+    "no-console": 0,
+    "no-tabs": 1,
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-one-expression-per-line": 0,
-    "react/prefer-stateless-function": 0
+    "react/prefer-stateless-function": 0,
+    "react/prop-types": 0
   }
 }
