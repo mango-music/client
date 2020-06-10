@@ -52,9 +52,7 @@ const MusicPlayer = (props) => {
     // 종료됨 => 다음곡 재생
     if (event.data === 0) {
       if (currentItems[itemIndex + 1]) {
-        player.loadVideoById(
-          currentItems[itemIndex + 1].snippet.resourceId.videoId,
-        );
+        player.loadVideoById(currentItems[itemIndex + 1].videoId);
         setItemIndex(itemIndex + 1);
         setIsPlayButtonOn(false);
       }
@@ -68,7 +66,7 @@ const MusicPlayer = (props) => {
       <div id="player-selector" className="big-player">
         <div className="player-window">
           <YouTube
-            videoId={currentItem.snippet.resourceId.videoId}
+            videoId={currentItem.videoId}
             opts={opts}
             onReady={onReady}
             onStateChange={handleStateChange}

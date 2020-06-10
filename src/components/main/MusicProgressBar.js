@@ -17,7 +17,7 @@ const MusicProgressBar = ({ currentTime, durationTime }) => {
       <div className="progress-bar">
         <div
           className="progress-node"
-          style={{ marginLeft: `${progressState}%` }}
+          style={{ marginLeft: `${progressState - 2}%` }}
         ></div>
       </div>
       <div className="play-time">

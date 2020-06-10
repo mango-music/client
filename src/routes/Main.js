@@ -7,8 +7,8 @@ import Search from '../components/main/Search';
 import Playlists from '../components/main/Playlists';
 import Profile from '../components/main/Profile';
 import NoMatch from '../components/auth/NoMatch';
-import fakeDataCurrentItem from '../lib/fixtures/fakeDataCurrentItem';
-import fakeDataRecommended from '../lib/fixtures/fakeDataRecommended';
+import fkdtCurrentItem from '../lib/fixtures/fkdtCurrentItem';
+import fkdtCurrentItems from '../lib/fixtures/fkdtCurrentItems';
 
 const Main = memo(({ profile, handleLogout }) => {
   console.log(profile);
@@ -28,13 +28,19 @@ const Main = memo(({ profile, handleLogout }) => {
           document
             .getElementById('player-selector')
             .classList.toggle('small-player');
+          document
+            .getElementById('music-nav-bar')
+            .classList.toggle('music-nav-bar');
+          document
+            .getElementById('music-nav-bar')
+            .classList.toggle('music-nav-bar-none');
         }}
       >
         창 전환 버튼
       </button>
       <MusicPlayer
-        currentItems={fakeDataRecommended.items}
-        currentItem={fakeDataCurrentItem}
+        currentItems={fkdtCurrentItems}
+        currentItem={fkdtCurrentItem}
       />
       <Switch>
         <Route exact path={`/@${profile.id}`}>
