@@ -8,21 +8,29 @@ import {
   faExchangeAlt,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../styles/MusicNavBar.scss';
 
 const MusicNavBar = (props) => {
-  let { itemIndex, setItemIndex, isPlayButtonOn, setIsPlayButtonOn } = props;
-  console.log('itemIndex : ', itemIndex);
+  const {
+    currentItems,
+    itemIndex,
+    setItemIndex,
+    isPlayButtonOn,
+    setIsPlayButtonOn,
+  } = props;
+  // console.log('itemIndex : ', itemIndex);
   let centerButton;
   if (isPlayButtonOn) {
     centerButton = (
       <div>
         <button
+          type="button"
           onClick={() => {
             props.player.playVideo();
             setIsPlayButtonOn(false);
           }}
         >
-          <FontAwesomeIcon icon={faPlay} />
+          <FontAwesomeIcon icon={faPlay} color="#afafaf" />
         </button>
       </div>
     );
@@ -30,61 +38,64 @@ const MusicNavBar = (props) => {
     centerButton = (
       <div>
         <button
+          type="button"
           onClick={() => {
             props.player.pauseVideo();
             setIsPlayButtonOn(true);
           }}
         >
-          <FontAwesomeIcon icon={faPause} />
+          <FontAwesomeIcon icon={faPause} color="#afafaf" />
         </button>
       </div>
     );
   }
-  return (
-    <div className="music-nav-bar">
-      <div>
-        <button>
-          <FontAwesomeIcon icon={faExchangeAlt} />
-        </button>
+
+  if (props.player) {
+    return (
+      <div id="music-nav-bar" className="music-nav-bar">
+        <div>
+          <button type="button">
+            <FontAwesomeIcon icon={faExchangeAlt} color="#afafaf" />
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              if (currentItems[itemIndex - 1]) {
+                props.player.loadVideoById(currentItems[itemIndex - 1].videoId);
+                setItemIndex(itemIndex - 1);
+                setIsPlayButtonOn(false);
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faStepBackward} color="#afafaf" />
+          </button>
+        </div>
+        {centerButton}
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              if (currentItems[itemIndex + 1]) {
+                props.player.loadVideoById(currentItems[itemIndex + 1].videoId);
+                setItemIndex(itemIndex + 1);
+                setIsPlayButtonOn(false);
+              }
+            }}
+          >
+            <FontAwesomeIcon icon={faFastForward} color="#afafaf" />
+          </button>
+        </div>
+        <div>
+          <button type="button">
+            <FontAwesomeIcon icon={faRandom} color="#afafaf" />
+          </button>
+        </div>
       </div>
-      <div>
-        <button
-          onClick={() => {
-            if (props.currentItems[itemIndex - 1]) {
-              props.player.loadVideoById(
-                props.currentItems[itemIndex - 1].snippet.resourceId.videoId,
-              );
-              setItemIndex(itemIndex - 1);
-              setIsPlayButtonOn(false);
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faStepBackward} />
-        </button>
-      </div>
-      {centerButton}
-      <div>
-        <button
-          onClick={() => {
-            if (props.currentItems[itemIndex + 1]) {
-              props.player.loadVideoById(
-                props.currentItems[itemIndex + 1].snippet.resourceId.videoId,
-              );
-              setItemIndex(itemIndex + 1);
-              setIsPlayButtonOn(false);
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faFastForward} />
-        </button>
-      </div>
-      <div>
-        <button>
-          <FontAwesomeIcon icon={faRandom} />
-        </button>
-      </div>
-    </div>
-  );
+    );
+  }
+  return null;
 };
 
 export default MusicNavBar;
