@@ -1,5 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import '../styles/Nav.scss';
 
 const activeStyle = {
   fontWeight: 'bold',
@@ -8,23 +9,31 @@ const activeStyle = {
 
 const Nav = ({ profile }) => {
   return (
-    <nav>
+    <nav id="navbar">
       <ul>
-        <NavLink exact to={`/@${profile.id}`} activeStyle={activeStyle}>
-          <li>Home</li>
-        </NavLink>
-        <NavLink to={`/@${profile.id}/explore`} activeStyle={activeStyle}>
-          <li>Explore</li>
-        </NavLink>
-        <NavLink to={`/@${profile.id}/library`} activeStyle={activeStyle}>
-          <li>Library</li>
-        </NavLink>
-        <NavLink to={`/@${profile.id}/profile`} activeStyle={activeStyle}>
-          <li>Profile</li>
-        </NavLink>
-        <NavLink to={`/@${profile.id}/player`} activeStyle={activeStyle}>
+        <li>
+          <NavLink exact to={`/@${profile.id}`} activeStyle={activeStyle}>
+            Home
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={`/@${profile.id}/explore`} activeStyle={activeStyle}>
+            Explore
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={`/@${profile.id}/library`} activeStyle={activeStyle}>
+            Library
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to={`/@${profile.id}/profile`} activeStyle={activeStyle}>
+            Profile
+          </NavLink>
+        </li>
+        {/* <NavLink to={`/@${profile.id}/player`} activeStyle={activeStyle}>
           <li>Player</li>
-        </NavLink>
+        </NavLink> */}
       </ul>
     </nav>
   );
