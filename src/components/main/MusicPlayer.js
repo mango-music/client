@@ -72,7 +72,7 @@ const MusicPlayer = (props) => {
             onStateChange={handleStateChange}
             className="iframe-video"
           />
-          <RatingForm starsCount={4} />
+          <RatingForm currentItems={currentItems} itemIndex={itemIndex} />
           <MusicTitle currentItems={currentItems} itemIndex={itemIndex} />
           <MusicProgressBar
             currentTime={currentTime}
