@@ -57,13 +57,20 @@ const MusicPlayer = (props) => {
     if (event.data === 0) {
       if (isShuffleOn) {
         if (shuffledIndex === undefined) {
+          console.log('shuffledQueue : ', shuffledQueue);
+          console.log('currentItems : ', currentItems);
+          console.log('player : ', player);
           const index = shuffledQueue[0];
-          props.player.loadVideoById(currentItems[index].videoId);
+          console.log(
+            'currentItems[index].videoId : ',
+            currentItems[index].videoId,
+          );
+          player.loadVideoById(currentItems[index].videoId);
           setShuffledIndex(0);
           setIsPlayButtonOn(false);
         } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
           const index = shuffledQueue[shuffledIndex + 1];
-          props.player.loadVideoById(currentItems[index].videoId);
+          player.loadVideoById(currentItems[index].videoId);
           setShuffledIndex(shuffledIndex + 1);
           setIsPlayButtonOn(false);
         }
