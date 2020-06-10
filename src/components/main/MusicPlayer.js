@@ -97,9 +97,8 @@ const MusicPlayer = (props) => {
         />
       </div>
     );
-  } else {
-    return null;
   }
+  return null;
 };
 
 export default MusicPlayer;
