@@ -12,9 +12,9 @@ const RatingForm = ({ starsCount }) => {
         }}
       >
         {starsCount >= 1 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} />
+          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
         )}
       </div>
       <div
@@ -23,9 +23,9 @@ const RatingForm = ({ starsCount }) => {
         }}
       >
         {starsCount >= 2 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} />
+          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
         )}
       </div>
       <div
@@ -34,9 +34,9 @@ const RatingForm = ({ starsCount }) => {
         }}
       >
         {starsCount >= 3 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} />
+          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
         )}
       </div>
       <div
@@ -45,9 +45,9 @@ const RatingForm = ({ starsCount }) => {
         }}
       >
         {starsCount >= 4 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} />
+          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
         )}
       </div>
       <div
@@ -56,9 +56,9 @@ const RatingForm = ({ starsCount }) => {
         }}
       >
         {starsCount >= 5 ? (
-          <FontAwesomeIcon icon={faStar} />
+          <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} />
+          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
         )}
       </div>
     </div>
