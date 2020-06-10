@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  faFastForward,
+  faStepForward,
   faStepBackward,
   faPause,
   faPlay,
@@ -68,6 +68,7 @@ const MusicNavBar = (props) => {
         onClick={() => {
           console.log('셔플 버튼이 꺼졌습니다.');
           setIsShuffleOn(false);
+          // TODO: 셔플 인덱스에 메인 인덱스를 맞춰준다.
         }}
       >
         <FontAwesomeIcon icon={faRandom} color="black" />
@@ -112,8 +113,9 @@ const MusicNavBar = (props) => {
                 if (shuffledIndex === undefined) {
                   const index = shuffledQueue[0];
                   props.player.loadVideoById(currentItems[index].videoId);
-                  setShuffledIndex(0);
+                  setShuffledIndex(0); // index를 0으로 초기화
                   setIsPlayButtonOn(false);
+                  // 두 번째 재생시
                 } else if (shuffledQueue[shuffledIndex - 1] !== undefined) {
                   const index = shuffledQueue[shuffledIndex - 1];
                   props.player.loadVideoById(currentItems[index].videoId);
@@ -140,8 +142,9 @@ const MusicNavBar = (props) => {
                 if (shuffledIndex === undefined) {
                   const index = shuffledQueue[0];
                   props.player.loadVideoById(currentItems[index].videoId);
-                  setShuffledIndex(0);
+                  setShuffledIndex(0); // index를 0으로 초기화
                   setIsPlayButtonOn(false);
+                  // 두 번째 재생시
                 } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
                   const index = shuffledQueue[shuffledIndex + 1];
                   props.player.loadVideoById(currentItems[index].videoId);
@@ -155,7 +158,7 @@ const MusicNavBar = (props) => {
               }
             }}
           >
-            <FontAwesomeIcon icon={faFastForward} color="#afafaf" />
+            <FontAwesomeIcon icon={faStepForward} color="#afafaf" />
           </button>
         </div>
         <div>{shuffleButton}</div>
