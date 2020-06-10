@@ -11,6 +11,14 @@ import fakeDataCurrentItem from '../lib/fixtures/fakeDataCurrentItem';
 import fakeDataRecommended from '../lib/fixtures/fakeDataRecommended';
 
 const Main = memo(({ profile, handleLogout }) => {
+  const [recommendedList, setRecommendedList] = useState([]); // [{music}]
+  const [customLists, setCustomLists] = useState([]); // [{playlist}]
+  const [currentItems, setCurrentItems] = useState(null);
+  const [currentItem, setCurrentItem] = useState(null);
+  const [query, setQuery] = useState('');
+  const [queryResult, setQueryResult] = useState([]); // [{music}]
+  const [isPlayerMinimized, setPlayerMinimized] = useState(true);
+
   console.log(profile);
   if (!localStorage.getItem('x-access-token')) {
     localStorage.setItem('x-access-token', 'secret string');
