@@ -7,6 +7,7 @@ const MusicQueue = (props) => {
       {props.currentItems.map((item, index) => {
         return (
           <MusicQueueEntry
+            currentItems={props.currentItems}
             title={item.title}
             thumbnail={item.thumbnail}
             videoId={item.videoId}
@@ -14,6 +15,9 @@ const MusicQueue = (props) => {
             index={index}
             setItemIndex={props.setItemIndex}
             setIsPlayButtonOn={props.setIsPlayButtonOn}
+            isShuffleOn={props.isShuffleOn}
+            setShuffledIndex={props.setShuffledIndex}
+            shuffledQueue={props.shuffledQueue}
             key={item.videoId}
           />
         );

@@ -111,6 +111,9 @@ const MusicPlayer = (props) => {
             setItemIndex={setItemIndex}
             setIsPlayButtonOn={setIsPlayButtonOn}
             player={player}
+            isShuffleOn={isShuffleOn}
+            setShuffledIndex={setShuffledIndex}
+            shuffledQueue={shuffledQueue}
           />
         </div>
         <MusicNavBar
