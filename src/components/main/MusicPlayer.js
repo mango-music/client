@@ -11,10 +11,14 @@ let timer;
 const MusicPlayer = (props) => {
   const { currentItems, currentItem } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
-  const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 state
+  const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [isPlayButtonOn, setIsPlayButtonOn] = useState(false); // 재생 버튼과 일시 정지 버튼을 위한 state
   const [currentTime, setCurrentTime] = useState(0); // 플레이어가 재생하고 있는 시간
   const [durationTime, setDurationTime] = useState(null); // 영상의 총 길이
+  // 셔플 관련 state
+  const [isShuffleOn, setIsShuffleOn] = useState(false); // 셔플 버튼
+  const [shuffledQueue, setShuffledQueue] = useState([]); // [1, 3, 2, 4, 5, 0] 셔플 큐
+  const [shuffledIndex, setShuffledIndex] = useState(undefined); // 셔플 큐의 인덱스를 가리키는 숫자
 
   const opts = {
     playerVars: {
@@ -51,7 +55,19 @@ const MusicPlayer = (props) => {
     }
     // 종료됨 => 다음곡 재생
     if (event.data === 0) {
-      if (currentItems[itemIndex + 1]) {
+      if (isShuffleOn) {
+        if (shuffledIndex === undefined) {
+          const index = shuffledQueue[0];
+          player.loadVideoById(currentItems[index].videoId);
+          setShuffledIndex(0);
+          setIsPlayButtonOn(false);
+        } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
+          const index = shuffledQueue[shuffledIndex + 1];
+          player.loadVideoById(currentItems[index].videoId);
+          setShuffledIndex(shuffledIndex + 1);
+          setIsPlayButtonOn(false);
+        }
+      } else if (currentItems[itemIndex + 1]) {
         player.loadVideoById(currentItems[itemIndex + 1].videoId);
         setItemIndex(itemIndex + 1);
         setIsPlayButtonOn(false);
@@ -72,8 +88,20 @@ const MusicPlayer = (props) => {
             onStateChange={handleStateChange}
             className="iframe-video"
           />
-          <RatingForm currentItems={currentItems} itemIndex={itemIndex} />
-          <MusicTitle currentItems={currentItems} itemIndex={itemIndex} />
+          <RatingForm
+            currentItems={currentItems}
+            itemIndex={itemIndex}
+            isShuffleOn={isShuffleOn}
+            shuffledIndex={shuffledIndex}
+            shuffledQueue={shuffledQueue}
+          />
+          <MusicTitle
+            currentItems={currentItems}
+            itemIndex={itemIndex}
+            isShuffleOn={isShuffleOn}
+            shuffledIndex={shuffledIndex}
+            shuffledQueue={shuffledQueue}
+          />
           <MusicProgressBar
             currentTime={currentTime}
             durationTime={durationTime}
@@ -91,6 +119,12 @@ const MusicPlayer = (props) => {
           setItemIndex={setItemIndex}
           isPlayButtonOn={isPlayButtonOn}
           setIsPlayButtonOn={setIsPlayButtonOn}
+          isShuffleOn={isShuffleOn}
+          setIsShuffleOn={setIsShuffleOn}
+          shuffledQueue={shuffledQueue}
+          setShuffledQueue={setShuffledQueue}
+          shuffledIndex={shuffledIndex}
+          setShuffledIndex={setShuffledIndex}
           player={player}
         />
       </div>
