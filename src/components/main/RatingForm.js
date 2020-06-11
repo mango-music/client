@@ -1,8 +1,13 @@
 import React from 'react';
 import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import postRatingMusic from '../../lib/apis/postRatingMusic';
 import '../../styles/RatingForm.scss';
 import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
+
+// 임시 토큰
+const tokken =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTFiZGZhNmE2NWIwMmUzNzc4MGI1YSIsImVtYWlsIjoic29jcmF0b25lQGdtYWlsLmNvbSIsImlhdCI6MTU5MTg3NjMwNSwiZXhwIjoxNTkxODc4MTA1fQ.N1R97IoB1ubT8h6tPLG5bB44spwWAVFnna7KWSIskRo';
 
 const RatingForm = (props) => {
   const { isShuffleOn, shuffledIndex, setCurrentItems } = props;
@@ -17,9 +22,9 @@ const RatingForm = (props) => {
   return (
     <div className="rating-form">
       <div
-        onClick={() => {
+        onClick={async () => {
           console.log(`${video.title}의 rating를 1로 바꾼다.`);
-          // 해당 video의 rating을 1로 POST
+          await postRatingMusic(video, 1, tokken);
           // currentItems를 다시 호출
           setCurrentItems(fkdtCurrentItems2);
         }}
@@ -31,8 +36,11 @@ const RatingForm = (props) => {
         )}
       </div>
       <div
-        onClick={() => {
+        onClick={async () => {
           console.log(`${video.title}의 rating를 2로 바꾼다.`);
+          await postRatingMusic(video, 2, tokken);
+          // currentItems를 다시 호출
+          setCurrentItems(fkdtCurrentItems2);
         }}
       >
         {video.rating >= 2 ? (
@@ -42,8 +50,11 @@ const RatingForm = (props) => {
         )}
       </div>
       <div
-        onClick={() => {
+        onClick={async () => {
           console.log(`${video.title}의 rating를 3로 바꾼다.`);
+          await postRatingMusic(video, 3, tokken);
+          // currentItems를 다시 호출
+          setCurrentItems(fkdtCurrentItems2);
         }}
       >
         {video.rating >= 3 ? (
@@ -53,8 +64,11 @@ const RatingForm = (props) => {
         )}
       </div>
       <div
-        onClick={() => {
+        onClick={async () => {
           console.log(`${video.title}의 rating를 4로 바꾼다.`);
+          await postRatingMusic(video, 4, tokken);
+          // currentItems를 다시 호출
+          setCurrentItems(fkdtCurrentItems2);
         }}
       >
         {video.rating >= 4 ? (
@@ -64,8 +78,11 @@ const RatingForm = (props) => {
         )}
       </div>
       <div
-        onClick={() => {
+        onClick={async () => {
           console.log(`${video.title}의 rating를 5로 바꾼다.`);
+          await postRatingMusic(video, 5, tokken);
+          // currentItems를 다시 호출
+          setCurrentItems(fkdtCurrentItems2);
         }}
       >
         {video.rating >= 5 ? (
