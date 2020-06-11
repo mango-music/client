@@ -9,7 +9,7 @@ import '../../styles/MusicPlayer.scss';
 
 let timer;
 const MusicPlayer = (props) => {
-  const { currentItems, currentItem } = props; // fakeData 로딩
+  const { currentItems, currentItem, setCurrentItems } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [isPlayButtonOn, setIsPlayButtonOn] = useState(false); // 재생 버튼과 일시 정지 버튼을 위한 state
@@ -106,6 +106,7 @@ const MusicPlayer = (props) => {
           />
           <RatingForm
             currentItems={currentItems}
+            setCurrentItems={setCurrentItems}
             itemIndex={itemIndex}
             isShuffleOn={isShuffleOn}
             shuffledIndex={shuffledIndex}

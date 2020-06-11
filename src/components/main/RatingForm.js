@@ -2,9 +2,10 @@ import React from 'react';
 import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/RatingForm.scss';
+import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
 
 const RatingForm = (props) => {
-  const { isShuffleOn, shuffledIndex } = props;
+  const { isShuffleOn, shuffledIndex, setCurrentItems } = props;
   let video;
   // 셔플일 때
   if (isShuffleOn && shuffledIndex !== undefined) {
@@ -18,6 +19,9 @@ const RatingForm = (props) => {
       <div
         onClick={() => {
           console.log(`${video.title}의 rating를 1로 바꾼다.`);
+          // 해당 video의 rating을 1로 POST
+          // currentItems를 다시 호출
+          setCurrentItems(fkdtCurrentItems2);
         }}
       >
         {video.rating >= 1 ? (
