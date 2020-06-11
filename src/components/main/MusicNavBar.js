@@ -76,11 +76,14 @@ const MusicNavBar = (props) => {
         type="button"
         onClick={() => {
           console.log('셔플 버튼이 꺼졌습니다.');
-          setIsShuffleOn(false);
           // 셔플 인덱스에 메인 인덱스를 맞춰준다.
           const shIndex = shuffledQueue[shuffledIndex];
-          const index = getIndexByVideoId(currentItems[shIndex].videoId);
-          setItemIndex(index);
+          if (shIndex) {
+            console.log('shIndex : ', shIndex);
+            const index = getIndexByVideoId(currentItems[shIndex].videoId);
+            setItemIndex(index);
+          }
+          setIsShuffleOn(false);
         }}
       >
         <FontAwesomeIcon icon={faRandom} color="black" />
