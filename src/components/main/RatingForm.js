@@ -5,22 +5,22 @@ import '../../styles/RatingForm.scss';
 
 const RatingForm = (props) => {
   const { isShuffleOn, shuffledIndex } = props;
-  let rating;
+  let video;
   // 셔플일 때
   if (isShuffleOn && shuffledIndex !== undefined) {
     const index = props.shuffledQueue[shuffledIndex];
-    rating = props.currentItems[index].rating;
+    video = props.currentItems[index];
   } else {
-    rating = props.currentItems[props.itemIndex].rating;
+    video = props.currentItems[props.itemIndex];
   }
   return (
     <div className="rating-form">
       <div
         onClick={() => {
-          console.log('rating를 1로 바꾼다.');
+          console.log(`${video.title}의 rating를 1로 바꾼다.`);
         }}
       >
-        {rating >= 1 ? (
+        {video.rating >= 1 ? (
           <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
           <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
@@ -28,10 +28,10 @@ const RatingForm = (props) => {
       </div>
       <div
         onClick={() => {
-          console.log('rating를 2로 바꾼다.');
+          console.log(`${video.title}의 rating를 2로 바꾼다.`);
         }}
       >
-        {rating >= 2 ? (
+        {video.rating >= 2 ? (
           <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
           <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
@@ -39,10 +39,10 @@ const RatingForm = (props) => {
       </div>
       <div
         onClick={() => {
-          console.log('rating를 3로 바꾼다.');
+          console.log(`${video.title}의 rating를 3로 바꾼다.`);
         }}
       >
-        {rating >= 3 ? (
+        {video.rating >= 3 ? (
           <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
           <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
@@ -50,10 +50,10 @@ const RatingForm = (props) => {
       </div>
       <div
         onClick={() => {
-          console.log('rating를 4로 바꾼다.');
+          console.log(`${video.title}의 rating를 4로 바꾼다.`);
         }}
       >
-        {rating >= 4 ? (
+        {video.rating >= 4 ? (
           <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
           <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
@@ -61,10 +61,10 @@ const RatingForm = (props) => {
       </div>
       <div
         onClick={() => {
-          console.log('rating를 5로 바꾼다.');
+          console.log(`${video.title}의 rating를 5로 바꾼다.`);
         }}
       >
-        {rating >= 5 ? (
+        {video.rating >= 5 ? (
           <FontAwesomeIcon icon={faStar} color="gold" />
         ) : (
           <FontAwesomeIcon icon={faStarOfDavid} color="gold" />

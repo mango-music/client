@@ -23,6 +23,8 @@ const MusicNavBar = (props) => {
     setShuffledQueue,
     shuffledIndex,
     setShuffledIndex,
+    isRepeatOn,
+    setIsRepeatOn,
   } = props;
   // console.log('itemIndex : ', itemIndex);
 
@@ -40,6 +42,33 @@ const MusicNavBar = (props) => {
       }
     }
     return 0; // 에러 방지
+  }
+
+  let repeatButton;
+  if (isRepeatOn) {
+    repeatButton = (
+      <button
+        type="button"
+        onClick={() => {
+          console.log('반복 버튼이 꺼졌습니다.');
+          setIsRepeatOn(false);
+        }}
+      >
+        <FontAwesomeIcon icon={faExchangeAlt} color="black" />
+      </button>
+    );
+  } else {
+    repeatButton = (
+      <button
+        type="button"
+        onClick={() => {
+          console.log('반복 버튼이 켜졌습니다.');
+          setIsRepeatOn(true);
+        }}
+      >
+        <FontAwesomeIcon icon={faExchangeAlt} color="#afafaf" />
+      </button>
+    );
   }
 
   let centerButton;
@@ -78,8 +107,8 @@ const MusicNavBar = (props) => {
           console.log('셔플 버튼이 꺼졌습니다.');
           // 셔플 인덱스에 메인 인덱스를 맞춰준다.
           const shIndex = shuffledQueue[shuffledIndex];
+          // 셔플 버튼을 눌렀을 때 초기값은 undefined가 되므로 예외처리를 해줬다.
           if (shIndex) {
-            console.log('shIndex : ', shIndex);
             const index = getIndexByVideoId(currentItems[shIndex].videoId);
             setItemIndex(index);
           }
@@ -114,11 +143,7 @@ const MusicNavBar = (props) => {
   if (props.player) {
     return (
       <div id="music-nav-bar" className="music-nav-bar">
-        <div>
-          <button type="button">
-            <FontAwesomeIcon icon={faExchangeAlt} color="#afafaf" />
-          </button>
-        </div>
+        <div>{repeatButton}</div>
         <div>
           <button
             type="button"

@@ -19,6 +19,8 @@ const MusicPlayer = (props) => {
   const [isShuffleOn, setIsShuffleOn] = useState(false); // 셔플 버튼
   const [shuffledQueue, setShuffledQueue] = useState([]); // [1, 3, 2, 4, 5, 0] 셔플 큐
   const [shuffledIndex, setShuffledIndex] = useState(undefined); // 셔플 큐의 인덱스를 가리키는 숫자
+  // 반복 재생 관련 state
+  const [isRepeatOn, setIsRepeatOn] = useState(false);
 
   const opts = {
     playerVars: {
@@ -35,6 +37,19 @@ const MusicPlayer = (props) => {
     if (currentSecond) {
       setCurrentTime(currentSecond);
     }
+  };
+
+  const playFirstItem = () => {
+    player.loadVideoById(currentItems[0].videoId);
+    setItemIndex(0);
+    setIsPlayButtonOn(false);
+  };
+
+  const playFirstShuffledItem = () => {
+    const index = shuffledQueue[0];
+    player.loadVideoById(currentItems[index].videoId);
+    setShuffledIndex(0);
+    setIsPlayButtonOn(false);
   };
 
   const handleStateChange = (event) => {
@@ -57,20 +72,21 @@ const MusicPlayer = (props) => {
     if (event.data === 0) {
       if (isShuffleOn) {
         if (shuffledIndex === undefined) {
-          const index = shuffledQueue[0];
-          player.loadVideoById(currentItems[index].videoId);
-          setShuffledIndex(0);
-          setIsPlayButtonOn(false);
+          playFirstShuffledItem();
         } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
           const index = shuffledQueue[shuffledIndex + 1];
           player.loadVideoById(currentItems[index].videoId);
           setShuffledIndex(shuffledIndex + 1);
           setIsPlayButtonOn(false);
+        } else if (isRepeatOn) {
+          playFirstShuffledItem();
         }
-      } else if (currentItems[itemIndex + 1]) {
+      } else if (currentItems[itemIndex + 1] !== undefined) {
         player.loadVideoById(currentItems[itemIndex + 1].videoId);
         setItemIndex(itemIndex + 1);
         setIsPlayButtonOn(false);
+      } else if (isRepeatOn) {
+        playFirstItem();
       }
     }
     handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
@@ -128,6 +144,8 @@ const MusicPlayer = (props) => {
           setShuffledQueue={setShuffledQueue}
           shuffledIndex={shuffledIndex}
           setShuffledIndex={setShuffledIndex}
+          isRepeatOn={isRepeatOn}
+          setIsRepeatOn={setIsRepeatOn}
           player={player}
         />
       </div>
