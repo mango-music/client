@@ -1,10 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import '../styles/App.scss';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
+import RatingConsent from '../components/rating/RatingConsent';
 import Rating from '../components/rating/Rating';
 import Main from './Main'; // -> Nested routes
 import Unauthorized from '../components/auth/Unauthorized';
@@ -13,10 +14,11 @@ import NoMatch from '../components/auth/NoMatch';
 const App = () => {
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
-  // const [isMounted, setMounted] = useState(false);
+  const [isMounted, setMounted] = useState(false);
   const [hasJustCreated, setJustCreated] = useState(false);
+  // const [hasRated, setRated] = useState(false);
 
-  const mounted = useRef(false); // mounted { current: false }
+  // const nickname = useRef(''); // mainUrl { current: '' }
 
   const handleSignupSuccess = () => {
     setJustCreated(true);
@@ -28,15 +30,15 @@ const App = () => {
       email: 'gim2origin@gmail.com',
       lv: 1,
     });
-    // setMounted(true);
+    setMounted(true);
   }, [isLogin]); // memorize this function until dependency(isLogin) updated
-  // const handleLoginFailure = () => {
-  //   setMounted(true);
-  // };
+  const handleLoginFailure = () => {
+    setMounted(true);
+  };
   const handleLogout = () => {
     setLogin(false);
     setProfile({});
-    // setMounted(false);
+    setMounted(false);
     setJustCreated(false);
   };
 
@@ -46,20 +48,20 @@ const App = () => {
     If it's empty, it will run after every render.
     Otherwise, it will run when one of it's values has changed.
   */
-  // useEffect(() => {
-  //   if (!localStorage.getItem('x-access-token')) {
-  //     return handleLoginFailure();
-  //   }
-  //   return handleLoginSuccess();
-  // }, [isMounted]);
   useEffect(() => {
-    if (!mounted.current) {
-      mounted.current = true; // 1. DidMount
+    if (!localStorage.getItem('x-access-token')) {
+      return handleLoginFailure();
     }
-    if (localStorage.getItem('x-access-token')) {
-      return handleLoginSuccess(); // 3. DidUpdate
-    }
-  }, [mounted.current]); // 2. Check dependency change
+    return handleLoginSuccess();
+  }, [isMounted]);
+  // useEffect(() => {
+  //   // if (!mounted.current) {
+  //   //   mounted.current = true; // 1. DidMount
+  //   // }
+  //   if (localStorage.getItem('x-access-token')) {
+  //     return handleLoginSuccess(); // 3. DidUpdate
+  //   }
+  // }, [mounted.current]); // 2. Check dependency change
 
   return (
     <>
@@ -69,9 +71,9 @@ const App = () => {
           path="/"
           render={() => {
             if (hasJustCreated) {
-              return <Redirect to={`/@${profile.id}/rating`} />;
+              return <Redirect to={`/@${profile.id}/rating_consent`} />;
             }
-            if (mounted.current) {
+            if (isMounted) {
               return isLogin ? (
                 <Redirect to={`/@${profile.id}`} />
               ) : (
@@ -89,6 +91,9 @@ const App = () => {
             handleSignupSuccess={handleSignupSuccess}
             handleLoginSuccess={handleLoginSuccess}
           />
+        </Route>
+        <Route path={`/@${profile.id}/rating_consent`}>
+          <RatingConsent profile={profile} />
         </Route>
         <Route path={`/@${profile.id}/rating`}>
           <Rating profile={profile} />
