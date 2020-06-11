@@ -95,60 +95,62 @@ const MusicPlayer = (props) => {
   // 렌더링 조건
   if (currentItems && currentItem) {
     return (
-      <div id="player-selector" className="big-player">
-        <div className="player-window">
-          <YouTube
-            videoId={currentItem.videoId}
-            opts={opts}
-            onReady={onReady}
-            onStateChange={handleStateChange}
-            className="iframe-video"
-          />
-          <RatingForm
+      <div id="player">
+        <div id="player-selector" className="big-player">
+          <div className="player-window">
+            <YouTube
+              videoId={currentItem.videoId}
+              opts={opts}
+              onReady={onReady}
+              onStateChange={handleStateChange}
+              className="iframe-video"
+            />
+            <RatingForm
+              currentItems={currentItems}
+              setCurrentItems={setCurrentItems}
+              itemIndex={itemIndex}
+              isShuffleOn={isShuffleOn}
+              shuffledIndex={shuffledIndex}
+              shuffledQueue={shuffledQueue}
+            />
+            <MusicTitle
+              currentItems={currentItems}
+              itemIndex={itemIndex}
+              isShuffleOn={isShuffleOn}
+              shuffledIndex={shuffledIndex}
+              shuffledQueue={shuffledQueue}
+            />
+            <MusicProgressBar
+              currentTime={currentTime}
+              durationTime={durationTime}
+            />
+            <MusicQueue
+              currentItems={currentItems}
+              setItemIndex={setItemIndex}
+              setIsPlayButtonOn={setIsPlayButtonOn}
+              player={player}
+              isShuffleOn={isShuffleOn}
+              setShuffledIndex={setShuffledIndex}
+              shuffledQueue={shuffledQueue}
+            />
+          </div>
+          <MusicNavBar
             currentItems={currentItems}
-            setCurrentItems={setCurrentItems}
             itemIndex={itemIndex}
-            isShuffleOn={isShuffleOn}
-            shuffledIndex={shuffledIndex}
-            shuffledQueue={shuffledQueue}
-          />
-          <MusicTitle
-            currentItems={currentItems}
-            itemIndex={itemIndex}
-            isShuffleOn={isShuffleOn}
-            shuffledIndex={shuffledIndex}
-            shuffledQueue={shuffledQueue}
-          />
-          <MusicProgressBar
-            currentTime={currentTime}
-            durationTime={durationTime}
-          />
-          <MusicQueue
-            currentItems={currentItems}
             setItemIndex={setItemIndex}
+            isPlayButtonOn={isPlayButtonOn}
             setIsPlayButtonOn={setIsPlayButtonOn}
-            player={player}
             isShuffleOn={isShuffleOn}
-            setShuffledIndex={setShuffledIndex}
+            setIsShuffleOn={setIsShuffleOn}
             shuffledQueue={shuffledQueue}
+            setShuffledQueue={setShuffledQueue}
+            shuffledIndex={shuffledIndex}
+            setShuffledIndex={setShuffledIndex}
+            isRepeatOn={isRepeatOn}
+            setIsRepeatOn={setIsRepeatOn}
+            player={player}
           />
         </div>
-        <MusicNavBar
-          currentItems={currentItems}
-          itemIndex={itemIndex}
-          setItemIndex={setItemIndex}
-          isPlayButtonOn={isPlayButtonOn}
-          setIsPlayButtonOn={setIsPlayButtonOn}
-          isShuffleOn={isShuffleOn}
-          setIsShuffleOn={setIsShuffleOn}
-          shuffledQueue={shuffledQueue}
-          setShuffledQueue={setShuffledQueue}
-          shuffledIndex={shuffledIndex}
-          setShuffledIndex={setShuffledIndex}
-          isRepeatOn={isRepeatOn}
-          setIsRepeatOn={setIsRepeatOn}
-          player={player}
-        />
       </div>
     );
   }

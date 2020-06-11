@@ -1,125 +1,149 @@
-.small-player {
-  // position: absolute;
-  .player-window {
-    position: fixed;
-    bottom: 48px;
-    right: 0;
-    width: 50vw; // 화면 크기
+#player {
+  position: absolute;
+  background-color: rgb(236, 236, 236);
+  width: 100%;
+  display: flex;
+  justify-content: center;
 
-    .iframe-video {
-      position: absolute; // iframe
+  .small-player {
+    @media (min-width: 600px) {
+      .player-window {
+        width: 300px !important;
+      }
+    }
+    .player-window {
+      position: fixed;
+      bottom: 48px;
+      right: 0;
+      width: 50vw; // 화면 크기
+
+      .iframe-video {
+        position: absolute; // iframe
+        width: 100%;
+        height: 100%;
+      }
+      .rating-form {
+        display: none;
+      }
+      .music-title {
+        display: none;
+      }
+      .music-progress-bar {
+        display: none;
+      }
+      .music-queue {
+        display: none;
+      }
+    }
+    .player-window > div:first-child {
+      position: relative; // iframe wrapper
       width: 100%;
-      height: 100%;
-    }
-    .rating-form {
-      display: none;
-    }
-    .music-title {
-      display: none;
-    }
-    .music-progress-bar {
-      display: none;
-    }
-    .music-queue {
-      display: none;
+      padding-bottom: 56.25%;
     }
   }
-  .player-window > div:first-child {
-    position: relative; // iframe wrapper
-    width: 100%;
-    padding-bottom: 56.25%;
-  }
-}
 
-.big-player {
-  // position: absolute;
-  .player-window {
-    position: static;
-    // top: 10vh;
-    width: 100vw; // todo: 반응형으로 바꾼다
+  .big-player {
+    background-color: whitesmoke;
+    @media (min-width: 500px) {
+      .player-window {
+        width: 500px !important;
+      }
+    }
+    // position: absolute;
+    .player-window {
+      position: static;
+      // top: 10vh;
+      width: 100vw; // todo: 반응형으로 바꾼다
 
-    display: grid;
-    grid-auto-flow: row;
-    grid-template-rows: auto auto auto auto 1fr;
-    gap: 10px;
-    margin-bottom: 10vh;
-
-    .iframe-video {
-      position: absolute; // iframe
-      width: 100%;
-      height: 100%;
-    }
-    .rating-form {
-      font-size: 2rem;
-      text-align: center;
-    }
-    .music-title {
-      font-size: 1.5rem;
-      text-align: center;
-      margin-left: 10px;
-      margin-right: 10px;
-    }
-    .music-progress-bar {
       display: grid;
       grid-auto-flow: row;
-      grid-template-columns: 1fr;
+      grid-template-rows: auto auto auto auto 1fr;
       gap: 10px;
-      margin-left: 10px;
-      margin-right: 10px;
-      .progress-bar {
-        background-color: rgb(233, 233, 233);
-        height: 5px;
-        .progress-node {
-          width: 0;
-          height: 100%;
-          background-color: black;
-          margin-left: 0%; // 초기 노드 위치
-        }
+      margin-bottom: 8vh;
+
+      .iframe-video {
+        position: absolute; // iframe
+        width: 100%;
+        height: 100%;
       }
-      .play-time {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        font-size: 1.2rem;
+      .rating-form {
+        font-size: 2rem;
+        text-align: center;
       }
-    }
-    .music-queue {
-      padding-left: 10px;
-      padding-right: 10px;
-      font-size: 1.15rem;
-      margin: 0;
-      li {
+      .music-title {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-left: 10px;
+        margin-right: 10px;
+      }
+      .music-progress-bar {
         display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
         gap: 10px;
-        grid-auto-flow: column;
-        grid-template-columns: auto 1fr;
-        margin-bottom: 10px;
-        list-style: none;
-        cursor: pointer;
-        div {
-          img {
-            display: block;
-            border-radius: 5px;
-            width: 4.5em;
+        margin-left: 10px;
+        margin-right: 10px;
+        .progress-bar {
+          background-color: rgb(233, 233, 233);
+          height: 5px;
+          .progress-node {
+            width: 0;
+            height: 100%;
+            background-color: black;
+            margin-left: 0%; // 초기 노드 위치
           }
         }
-        p {
-          margin: 0;
+        .play-time {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          font-size: 1.2rem;
+        }
+      }
+      .music-queue {
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 1.15rem;
+        margin: 0;
+        li {
+          // border: solid 4px black;
+          display: grid;
+          gap: 10px;
+          grid-auto-flow: column;
+          grid-template-columns: auto 1fr;
+          margin-bottom: 10px;
+          list-style: none;
+          cursor: pointer;
+          div {
+            img {
+              display: block;
+              border-radius: 5px;
+              width: 4.5em;
+            }
+          }
+          p {
+            margin: 0;
+          }
+          transition-property: transform;
+          transition-duration: 300ms;
+        }
+        li:hover {
+          transform: translateX(2%);
         }
       }
     }
+    .player-window > div:first-child {
+      position: relative; // iframe wrapper
+      width: 100%;
+      padding-bottom: 56.25%;
+    }
   }
-  .player-window > div:first-child {
-    position: relative; // iframe wrapper
-    width: 100%;
-    padding-bottom: 56.25%;
+
+  .small-window {
+    position: absolute;
   }
-}
 
-.small-window {
-  position: absolute;
-}
-
-.hidden {
-  display: none !important;
+  .hidden {
+    display: none !important;
+  }
 }
