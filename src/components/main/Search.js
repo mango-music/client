@@ -20,7 +20,7 @@ const Search = (props) => {
         />
         <button
           onClick={() => {
-            searchMusicsByQuerry(querry, 10)
+            searchMusicsByQuerry(querry, 15)
               .then((res) => res.json())
               .then((json) => {
                 console.log(json);
