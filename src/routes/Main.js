@@ -68,6 +68,7 @@ const Main = memo(({ profile, handleLogout }) => {
           <Search
             setCurrentItem={setCurrentItem}
             setCurrentItems={setCurrentItems}
+            currentItems={currentItems}
           />
         </Route>
         <Route path={`/@${profile.id}/library`}>

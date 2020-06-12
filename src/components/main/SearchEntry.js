@@ -1,10 +1,10 @@
 import React from 'react';
 import getMusic from '../../lib/apis/getMusic';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const SearchEntry = (props) => {
-  const { setCurrentItem, setCurrentItems } = props;
+  const { currentItems, setCurrentItem, setCurrentItems } = props;
   return (
     <li>
       <div className="search-image">
@@ -27,13 +27,18 @@ const SearchEntry = (props) => {
               videoId: props.videoId,
               rating: 0, // 초기 rating은 0으로 한다?
             };
+            const newCurrentItems = currentItems.slice();
+            newCurrentItems.unshift(item);
             setCurrentItem(item);
-            setCurrentItems([item]);
+            setCurrentItems(newCurrentItems);
           }
         }}
       >
         {props.title}
       </p>
+      <button className="search-play">
+        <FontAwesomeIcon icon={faPlus} color="#afafaf" />
+      </button>
       <button className="search-ellipsis">
         <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
       </button>

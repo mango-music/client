@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Search.scss';
 
 const Search = (props) => {
-  const { setCurrentItem, setCurrentItems } = props;
+  const { currentItems, setCurrentItem, setCurrentItems } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
   return (
@@ -42,6 +42,7 @@ const Search = (props) => {
                 videoId={item.id.videoId}
                 setCurrentItem={setCurrentItem}
                 setCurrentItems={setCurrentItems}
+                currentItems={currentItems}
                 key={item.id.videoId}
               />
             );
