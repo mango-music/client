@@ -1,10 +1,12 @@
-const postRatingMusic = (item, rating, token) => {
+const postDelRating = (item, token) => {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
   myHeaders.append("Content-Type", "application/json");
 
-  item.rating = rating;
-  var raw = JSON.stringify(item);
+  let obj = {
+    videoId: item.videoId
+  };
+  var raw = JSON.stringify(obj);
 
   var requestOptions = {
     method: 'POST',
@@ -13,13 +15,13 @@ const postRatingMusic = (item, rating, token) => {
     redirect: 'follow'
   };
 
-  fetch("http://13.209.19.101:3000/ratingMusic", requestOptions)
+  fetch("http://13.209.19.101:3000/delRating", requestOptions)
     .then(response => response.text())
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 }
 
-export default postRatingMusic;
+export default postDelRating;
 
 /*
   // item argument 예제
