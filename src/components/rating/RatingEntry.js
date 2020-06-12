@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import fixtures from '../../lib/fixtures/RatingFixtures';
 import { Button, ButtonGroup, makeStyles } from '@material-ui/core';
 

@@ -5,6 +5,7 @@ import '../../styles/Rating.scss';
 import { Button } from '@material-ui/core';
 import fakeItems from '../../lib/fixtures/fkdtCurrentItems';
 import RatingEntry from './RatingEntry';
+import Loading from '../auth/Loading';
 
 class Rating extends PureComponent {
   constructor() {
@@ -23,7 +24,7 @@ class Rating extends PureComponent {
   }
 
   handleRatingUpdate = (videoId, rating) => {
-    // 콜백을 이용한 순차적 setState
+    // Sequential state update using setState callback
     this.setState((prev) => ({
       ratedVideo: { videoId, rating },
       nextVideoIndex: prev.nextVideoIndex + 1,
@@ -44,9 +45,10 @@ class Rating extends PureComponent {
     }));
   };
 
-  handleRatingFinish = () => {
-    const { history, profile } = this.props;
-    history.push(`/@${profile.id}`);
+  handleRatingFinish = (e) => {
+    e.preventDefault();
+    const { history, callbackPath } = this.props;
+    history.push(callbackPath);
   };
 
   componentDidMount() {
@@ -67,19 +69,16 @@ class Rating extends PureComponent {
 
   render() {
     const { isLoading, currentVideo, ratedVideos } = this.state;
+    if (!isLoading) {
+      return <Loading />;
+    }
     return (
       <>
-        {isLoading ? (
-          <>
-            <RatingEntry
-              video={currentVideo}
-              handleRatingUpdate={this.handleRatingUpdate}
-              handleRatingSkip={this.handleRatingSkip}
-            />
-          </>
-        ) : (
-          <h3>Loading...</h3>
-        )}
+        <RatingEntry
+          video={currentVideo}
+          handleRatingUpdate={this.handleRatingUpdate}
+          handleRatingSkip={this.handleRatingSkip}
+        />
         {ratedVideos.length >= 5 ? (
           <Button
             variant="contained"

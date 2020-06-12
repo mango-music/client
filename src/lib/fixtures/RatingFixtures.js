@@ -43,5 +43,5 @@ export default [
         img_alt: 'ic-smirking-face',
         img_width: 96,
         copy: '완전 내 취향이에요'
-    }
+    },
 ];
