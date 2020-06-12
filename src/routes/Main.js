@@ -65,7 +65,10 @@ const Main = memo(({ profile, handleLogout }) => {
           <Home />
         </Route>
         <Route path={`/@${profile.id}/explore`}>
-          <Search />
+          <Search
+            setCurrentItem={setCurrentItem}
+            setCurrentItems={setCurrentItems}
+          />
         </Route>
         <Route path={`/@${profile.id}/library`}>
           <Playlists />
