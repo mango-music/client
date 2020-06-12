@@ -42,18 +42,14 @@ const Main = memo(({ profile, handleLogout }) => {
       <button
         type="button"
         onClick={() => {
-          document
-            .getElementById('player-selector')
-            .classList.toggle('big-player');
-          document
-            .getElementById('player-selector')
-            .classList.toggle('small-player');
-          document
-            .getElementById('music-nav-bar')
-            .classList.toggle('music-nav-bar');
-          document
-            .getElementById('music-nav-bar')
-            .classList.toggle('music-nav-bar-none');
+          const playerSelector = document.getElementById('player-selector');
+          const musicNavBar = document.getElementById('music-nav-bar');
+          if (playerSelector && musicNavBar) {
+            playerSelector.classList.toggle('big-player');
+            playerSelector.classList.toggle('small-player');
+            musicNavBar.classList.toggle('music-nav-bar');
+            musicNavBar.classList.toggle('music-nav-bar-none');
+          }
         }}
         id="change-window-button"
       >
