@@ -30,6 +30,7 @@ const MusicPlayer = (props) => {
   const onReady = (event) => {
     console.log('onReady 호출');
     setPlayer(event.target); // video가 로딩 됐을 때 player 변수로 video를 참조할 수 있게 해준다.
+    event.target.playVideo();
   };
 
   const handleSetCurrentTime = () => {
