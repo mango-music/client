@@ -74,7 +74,7 @@ class Rating extends PureComponent {
             <RatingEntry
               video={currentVideo}
               handleRatingUpdate={this.handleRatingUpdate}
-              handleSkip={this.handleRatingSkip}
+              handleRatingSkip={this.handleRatingSkip}
             />
           </>
         ) : (

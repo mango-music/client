@@ -11,14 +11,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const RatingEntry = ({ video, handleRatingUpdate, handleSkip }) => {
-  const classes = useMemo(useStyles());
+const RatingEntry = ({ video, handleRatingUpdate, handleRatingSkip }) => {
+  const classes = useStyles();
   const handleRatingButtonClick = (e) => {
-    console.log(e.target.value);
-    handleRatingUpdate(video.videoId, e.target.value);
+    e.preventDefault();
+    // console.log(e.currentTarget);
+    handleRatingUpdate(video.videoId, e.currentTarget.value);
   };
   const handleSkipButtonClick = (e) => {
-    handleSkip();
+    handleRatingSkip();
   };
   return (
     <article className="rating_entry">
