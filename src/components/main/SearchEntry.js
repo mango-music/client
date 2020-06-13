@@ -24,7 +24,7 @@ const SearchEntry = (props) => {
             const item = {
               title: props.title,
               thumbnail: props.thumbnail,
-              videoId: props.videoId,
+              videoid: props.videoid,
               rating: 0, // 초기 rating은 0으로 한다?
             };
             const newCurrentItems = currentItems.slice();

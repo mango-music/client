@@ -51,11 +51,11 @@ const Search = (props) => {
               <SearchEntry
                 thumbnail={item.snippet.thumbnails.medium.url}
                 title={item.snippet.title}
-                videoId={item.id.videoId}
+                videoid={item.id.videoid}
                 setCurrentItem={setCurrentItem}
                 setCurrentItems={setCurrentItems}
                 currentItems={currentItems}
-                key={item.id.videoId}
+                key={item.id.videoid}
               />
             );
           })}

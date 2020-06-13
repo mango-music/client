@@ -35,9 +35,9 @@ const MusicNavBar = (props) => {
     }
   }
 
-  function getIndexByVideoId(videoId) {
+  function getIndexByVideoId(videoid) {
     for (let i = 0; i < currentItems.length; i++) {
-      if (currentItems[i].videoId === videoId) {
+      if (currentItems[i].videoid === videoid) {
         return i;
       }
     }
@@ -109,7 +109,7 @@ const MusicNavBar = (props) => {
           const shIndex = shuffledQueue[shuffledIndex];
           // 셔플 버튼을 눌렀을 때 초기값은 undefined가 되므로 예외처리를 해줬다.
           if (shIndex) {
-            const index = getIndexByVideoId(currentItems[shIndex].videoId);
+            const index = getIndexByVideoId(currentItems[shIndex].videoid);
             setItemIndex(index);
           }
           setIsShuffleOn(false);
@@ -152,18 +152,18 @@ const MusicNavBar = (props) => {
                 // 셔플을 누르고 나서 첫 번째 재생시
                 if (shuffledIndex === undefined) {
                   const index = shuffledQueue[0];
-                  props.player.loadVideoById(currentItems[index].videoId);
+                  props.player.loadVideoById(currentItems[index].videoid);
                   setShuffledIndex(0); // index를 0으로 초기화
                   setIsPlayButtonOn(false);
                   // 두 번째 재생시
                 } else if (shuffledQueue[shuffledIndex - 1] !== undefined) {
                   const index = shuffledQueue[shuffledIndex - 1];
-                  props.player.loadVideoById(currentItems[index].videoId);
+                  props.player.loadVideoById(currentItems[index].videoid);
                   setShuffledIndex(shuffledIndex - 1);
                   setIsPlayButtonOn(false);
                 }
               } else if (currentItems[itemIndex - 1]) {
-                props.player.loadVideoById(currentItems[itemIndex - 1].videoId);
+                props.player.loadVideoById(currentItems[itemIndex - 1].videoid);
                 setItemIndex(itemIndex - 1);
                 setIsPlayButtonOn(false);
               }
@@ -181,18 +181,18 @@ const MusicNavBar = (props) => {
                 // 셔플을 누르고 나서 첫 번째 재생시
                 if (shuffledIndex === undefined) {
                   const index = shuffledQueue[0];
-                  props.player.loadVideoById(currentItems[index].videoId);
+                  props.player.loadVideoById(currentItems[index].videoid);
                   setShuffledIndex(0); // index를 0으로 초기화
                   setIsPlayButtonOn(false);
                   // 두 번째 재생시
                 } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
                   const index = shuffledQueue[shuffledIndex + 1];
-                  props.player.loadVideoById(currentItems[index].videoId);
+                  props.player.loadVideoById(currentItems[index].videoid);
                   setShuffledIndex(shuffledIndex + 1);
                   setIsPlayButtonOn(false);
                 }
               } else if (currentItems[itemIndex + 1]) {
-                props.player.loadVideoById(currentItems[itemIndex + 1].videoId);
+                props.player.loadVideoById(currentItems[itemIndex + 1].videoid);
                 setItemIndex(itemIndex + 1);
                 setIsPlayButtonOn(false);
               }

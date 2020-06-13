@@ -11,7 +11,7 @@ const MusicQueue = (props) => {
             currentItems={props.currentItems}
             title={item.title}
             thumbnail={item.thumbnail}
-            videoId={item.videoId}
+            videoid={item.videoid}
             player={props.player}
             index={index}
             setItemIndex={props.setItemIndex}
@@ -19,7 +19,7 @@ const MusicQueue = (props) => {
             isShuffleOn={props.isShuffleOn}
             setShuffledIndex={props.setShuffledIndex}
             shuffledQueue={props.shuffledQueue}
-            key={item.videoId}
+            key={item.videoid}
           />
         );
       })}

@@ -3,9 +3,9 @@ import React, { memo } from 'react';
 const MusicQueueEntry = (props) => {
   const { currentItems, isShuffleOn, shuffledQueue, setShuffledIndex } = props;
   // console.log('MusicQueueEntry rendering');
-  function getIndexByVideoId(videoId) {
+  function getIndexByVideoId(videoid) {
     for (let i = 0; i < currentItems.length; i++) {
-      if (currentItems[i].videoId === videoId) {
+      if (currentItems[i].videoid === videoid) {
         return i;
       }
     }
@@ -18,7 +18,7 @@ const MusicQueueEntry = (props) => {
       onClick={() => {
         if (isShuffleOn) {
           // 셔플 인덱스를 바꿔준다.
-          const index = getIndexByVideoId(props.videoId);
+          const index = getIndexByVideoId(props.videoid);
           let shIndex;
           for (let i = 0; i < shuffledQueue.length; i++) {
             if (shuffledQueue[i] === index) {
@@ -28,7 +28,7 @@ const MusicQueueEntry = (props) => {
           }
           setShuffledIndex(shIndex);
         }
-        props.player.loadVideoById(props.videoId);
+        props.player.loadVideoById(props.videoid);
         props.setItemIndex(props.index);
         props.setIsPlayButtonOn(false);
       }}

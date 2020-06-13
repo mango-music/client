@@ -41,14 +41,14 @@ const MusicPlayer = (props) => {
   };
 
   const playFirstItem = () => {
-    player.loadVideoById(currentItems[0].videoId);
+    player.loadVideoById(currentItems[0].videoid);
     setItemIndex(0);
     setIsPlayButtonOn(false);
   };
 
   const playFirstShuffledItem = () => {
     const index = shuffledQueue[0];
-    player.loadVideoById(currentItems[index].videoId);
+    player.loadVideoById(currentItems[index].videoid);
     setShuffledIndex(0);
     setIsPlayButtonOn(false);
   };
@@ -76,14 +76,14 @@ const MusicPlayer = (props) => {
           playFirstShuffledItem();
         } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
           const index = shuffledQueue[shuffledIndex + 1];
-          player.loadVideoById(currentItems[index].videoId);
+          player.loadVideoById(currentItems[index].videoid);
           setShuffledIndex(shuffledIndex + 1);
           setIsPlayButtonOn(false);
         } else if (isRepeatOn) {
           playFirstShuffledItem();
         }
       } else if (currentItems[itemIndex + 1] !== undefined) {
-        player.loadVideoById(currentItems[itemIndex + 1].videoId);
+        player.loadVideoById(currentItems[itemIndex + 1].videoid);
         setItemIndex(itemIndex + 1);
         setIsPlayButtonOn(false);
       } else if (isRepeatOn) {
@@ -100,7 +100,7 @@ const MusicPlayer = (props) => {
         <div id="player-selector" className="big-player">
           <div className="player-window">
             <YouTube
-              videoId={currentItem.videoId}
+              videoId={currentItem.videoid}
               opts={opts}
               onReady={onReady}
               onStateChange={handleStateChange}
