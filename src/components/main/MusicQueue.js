@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import MusicQueueEntry from './MusicQueueEntry';
 
 const MusicQueue = (props) => {
+  // console.log('MusicQueue rendering');
   return (
     <ul className="music-queue">
       {props.currentItems.map((item, index) => {
@@ -26,4 +27,4 @@ const MusicQueue = (props) => {
   );
 };
 
-export default MusicQueue;
+export default memo(MusicQueue);

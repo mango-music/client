@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { memo } from 'react';
 import {
   faStepForward,
   faStepBackward,
@@ -26,7 +26,7 @@ const MusicNavBar = (props) => {
     isRepeatOn,
     setIsRepeatOn,
   } = props;
-  // console.log('itemIndex : ', itemIndex);
+  // console.log('MusicNavBar rendering');
 
   function shuffleArrayES6(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -208,4 +208,4 @@ const MusicNavBar = (props) => {
   return null;
 };
 
-export default MusicNavBar;
+export default memo(MusicNavBar);

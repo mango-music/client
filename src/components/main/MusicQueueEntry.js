@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const MusicQueueEntry = (props) => {
   const { currentItems, isShuffleOn, shuffledQueue, setShuffledIndex } = props;
+  // console.log('MusicQueueEntry rendering');
   function getIndexByVideoId(videoId) {
     for (let i = 0; i < currentItems.length; i++) {
       if (currentItems[i].videoId === videoId) {
@@ -40,4 +41,4 @@ const MusicQueueEntry = (props) => {
   );
 };
 
-export default MusicQueueEntry;
+export default memo(MusicQueueEntry);

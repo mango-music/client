@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import postRatingMusic from '../../lib/apis/postRatingMusic';
@@ -12,6 +12,7 @@ const tokken =
 
 const RatingForm = (props) => {
   const { isShuffleOn, shuffledIndex, setCurrentItems } = props;
+  console.log('RatingForm rendering');
   let video;
   // 셔플일 때
   if (isShuffleOn && shuffledIndex !== undefined) {
@@ -103,4 +104,4 @@ const RatingForm = (props) => {
   );
 };
 
-export default RatingForm;
+export default memo(RatingForm);

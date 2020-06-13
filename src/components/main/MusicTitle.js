@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { memo } from 'react';
 
 const MusicTitle = (props) => {
   const { isShuffleOn, shuffledIndex } = props;
+  console.log('MusicTitle rendering');
   let title;
   // 셔플일 때
   if (isShuffleOn && shuffledIndex !== undefined) {
@@ -13,4 +14,4 @@ const MusicTitle = (props) => {
   return <div className="music-title">{title}</div>;
 };
 
-export default MusicTitle;
+export default memo(MusicTitle);
