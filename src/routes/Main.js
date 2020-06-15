@@ -4,7 +4,7 @@ import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
 import Home from '../components/main/Home';
 import Search from '../components/main/Search';
-import Playlists from '../components/main/Playlists';
+import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
 import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
@@ -91,7 +91,7 @@ const Main = memo(({ profile, handleLogout }) => {
           />
         </Route>
         <Route path={`/@${profile.id}/library`}>
-          <Playlists
+          <Library
             customLists={customLists}
             setCurrentItems={setCurrentItems}
             setCurrentItem={setCurrentItem}
