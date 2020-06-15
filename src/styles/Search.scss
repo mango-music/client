@@ -40,11 +40,13 @@
     font-size: 1.15rem;
     margin: 0;
     li {
+      position: relative;
+      overflow: visible;
       // border: solid 4px black;
       display: grid;
       gap: 10px;
       grid-auto-flow: column;
-      grid-template-columns: auto 1fr 30px 30px;
+      grid-template-columns: auto 1fr 30px;
       margin-bottom: 10px;
       list-style: none;
       cursor: pointer;
@@ -80,6 +82,19 @@
       }
       // transition-property: transform;
       // transition-duration: 300ms;
+      .search-drop-down-menu {
+        z-index: 2;
+        display: none;
+        background-color: rgba(255, 255, 255, 0.918);
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        right: 30px;
+        top: 0;
+      }
+      .clicked {
+        display: block;
+      }
     }
     // li:hover {
     //   transform: translateX(2%);

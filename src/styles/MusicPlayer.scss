@@ -13,6 +13,7 @@
       }
     }
     .player-window {
+      z-index: 1;
       position: fixed;
       bottom: 48px;
       right: 0;
@@ -48,6 +49,7 @@
       // 부모
       height: 100vh;
     }
+    z-index: 3;
     background-color: whitesmoke;
     // height: 100%;
     @media (min-width: 500px) {

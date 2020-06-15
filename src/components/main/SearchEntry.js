@@ -2,6 +2,7 @@ import React from 'react';
 import getMusic from '../../lib/apis/getMusic';
 import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import SearchDropDownMenu from './SearchDropDownMenu';
 
 const SearchEntry = (props) => {
   const { currentItems, setCurrentItem, setCurrentItems } = props;
@@ -35,12 +36,17 @@ const SearchEntry = (props) => {
       >
         {props.title}
       </p>
-      <button className="search-play">
-        <FontAwesomeIcon icon={faPlus} color="#afafaf" />
-      </button>
-      <button className="search-ellipsis">
+      <button
+        onClick={() => {
+          document
+            .getElementById(`button-${props.videoid}`)
+            .classList.toggle('clicked');
+        }}
+        className="search-ellipsis"
+      >
         <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
       </button>
+      <SearchDropDownMenu videoid={props.videoid} />
     </li>
   );
 };
