@@ -2,9 +2,9 @@ import React from 'react';
 
 const PlaylistsEntry = (props) => {
   const { listName, musics, setCurrentItems, setCurrentItem } = props;
-  console.log(musics);
+  console.log('musics : ', musics);
   return (
-    <div>
+    <li>
       <div
         onClick={() => {
           setCurrentItems(musics);
@@ -13,12 +13,13 @@ const PlaylistsEntry = (props) => {
       >
         {listName}
       </div>
-      <div>
-        {musics.map((music) => {
-          return <div key={music.videoid}>{music.title}</div>; // videoid -> videoId
-        })}
+      <div className="musics">
+        {musics &&
+          musics.map((music) => {
+            return <div key={music.videoid}>{music.title}</div>; // videoid -> videoId
+          })}
       </div>
-    </div>
+    </li>
   );
 };
 

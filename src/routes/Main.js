@@ -7,17 +7,34 @@ import Search from '../components/main/Search';
 import Playlists from '../components/main/Playlists';
 import Profile from '../components/main/Profile';
 import NoMatch from '../components/auth/NoMatch';
+import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import fkdtCurrentItem from '../lib/fixtures/fkdtCurrentItem';
 import fkdtCurrentItems from '../lib/fixtures/fkdtCurrentItems';
+import fkToken from '../lib/fixtures/fkToken';
 
 const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
-  const [customLists, setCustomLists] = useState([]); // [{playlist}]
+  const [customLists, setCustomLists] = useState(null); // [{playlist}]
   const [currentItems, setCurrentItems] = useState(null);
   const [currentItem, setCurrentItem] = useState(null);
   const [query, setQuery] = useState('');
   const [queryResult, setQueryResult] = useState([]); // [{music}]
   const [isPlayerMinimized, setPlayerMinimized] = useState(true);
+
+  useEffect(() => {
+    getUserMusicLists(fkToken)
+      .then((res) => {
+        console.log('res.status : ', res.status);
+        if (res.status === 200) return res.json();
+        return null;
+      })
+      .then((json) => {
+        console.log(json);
+        if (json) setCustomLists(json);
+        else console.log('사용자의 뮤직 리스트를 불러오지 못했습니다.');
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   function getCurrentItem(item) {
     setCurrentItem(item);
@@ -69,10 +86,13 @@ const Main = memo(({ profile, handleLogout }) => {
             setCurrentItem={setCurrentItem}
             setCurrentItems={setCurrentItems}
             currentItems={currentItems}
+            customLists={customLists}
+            setCustomLists={setCustomLists}
           />
         </Route>
         <Route path={`/@${profile.id}/library`}>
           <Playlists
+            customLists={customLists}
             setCurrentItems={setCurrentItems}
             setCurrentItem={setCurrentItem}
           />

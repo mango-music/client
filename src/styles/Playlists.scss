@@ -1,0 +1,19 @@
+#playlists {
+  font-size: 1.5rem;
+  display: grid;
+  gap: 10px;
+  margin: 10px;
+  grid-template-columns: 1fr;
+  // border: solid black 3px;
+  justify-content: center;
+  // width: 400px;
+  h3 {
+  }
+  ul {
+    li {
+      .musics {
+        color: lightgray;
+      }
+    }
+  }
+}

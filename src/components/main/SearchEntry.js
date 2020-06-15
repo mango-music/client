@@ -5,7 +5,14 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchDropDownMenu from './SearchDropDownMenu';
 
 const SearchEntry = (props) => {
-  const { currentItems, setCurrentItem, setCurrentItems } = props;
+  const {
+    currentItems,
+    setCurrentItem,
+    setCurrentItems,
+    customLists,
+    item,
+    setCustomLists,
+  } = props;
 
   return (
     <li>
@@ -46,7 +53,12 @@ const SearchEntry = (props) => {
       >
         <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
       </button>
-      <SearchDropDownMenu videoid={props.videoid} />
+      <SearchDropDownMenu
+        videoid={props.videoid}
+        customLists={customLists}
+        item={item}
+        setCustomLists={setCustomLists}
+      />
     </li>
   );
 };
