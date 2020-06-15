@@ -1,23 +1,29 @@
 import React, { useEffect, useState } from 'react';
 import PlaylistsEntry from './PlaylistsEntry';
 import getUserMusicLists from '../../lib/apis/getUserMusicLists';
+import '../../styles/Playlists.scss';
 
 const Playlists = (props) => {
   const { setCurrentItems, setCurrentItem } = props;
   const [musicLists, setMusicLists] = useState(null);
   const token =
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTFiZGZhNmE2NWIwMmUzNzc4MGI1YSIsImVtYWlsIjoic29jcmF0b25lQGdtYWlsLmNvbSIsImlhdCI6MTU5MjA3MTYyNSwiZXhwIjoxNTkyMDczNDI1fQ.BqmITU7w1mAALHlw4cMOEXn2WevwZ7AWlO9gqmRjVp8';
+    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTFiZGZhNmE2NWIwMmUzNzc4MGI1YSIsImVtYWlsIjoic29jcmF0b25lQGdtYWlsLmNvbSIsImlhdCI6MTU5MjE4NzUzOSwiZXhwIjoxNTkyMTg5MzM5fQ.sseJQSR6PW8xlOivpkJrYymSPhkUAkJQl03vobnbjKQ';
   useEffect(() => {
     getUserMusicLists(token)
-      .then((res) => res.json())
+      .then((res) => {
+        console.log('res.status : ', res.status);
+        if (res.status === 200) return res.json();
+        return null;
+      })
       .then((json) => {
         console.log(json);
-        setMusicLists(json);
+        if (json) setMusicLists(json);
+        else console.log('사용자의 뮤직 리스트를 불러오지 못했습니다.');
       })
       .catch((err) => console.log(err));
   }, []);
   return (
-    <>
+    <div id="playlists">
       <h3>Playlists</h3>
       <ul>
         {musicLists &&
@@ -33,7 +39,7 @@ const Playlists = (props) => {
             );
           })}
       </ul>
-    </>
+    </div>
   );
 };
 
