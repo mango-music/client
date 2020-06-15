@@ -10,8 +10,6 @@ function postAddMusic(item, customLists, setCustomLists, token) {
     title: item.title
   };
 
-  // console.log('obj : ', obj)
-
   var raw = JSON.stringify(obj);
 
   var requestOptions = {
@@ -26,7 +24,7 @@ function postAddMusic(item, customLists, setCustomLists, token) {
     .then(result => {
       console.log('result : ', result);
       const newCustomLists = [...customLists];
-      // 받은 값을 state에 추가해서 리프레쉬한다.
+      // 리스트에 추가하고 받은 값을 state에 추가해서 리프레쉬한다.
       for(let i = 0; i < newCustomLists.length; i++) {
         if(item.listname === newCustomLists[i].listname) {
           newCustomLists[i].musics.push(result);
