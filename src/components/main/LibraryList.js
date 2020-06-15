@@ -15,7 +15,7 @@ const LibraryList = (props) => {
   return (
     <li>
       <div className="library-list-img">
-        <img src={items[0].thumbnail} />
+        {items[0] && <img src={items[0].thumbnail} />}
       </div>
       <div className="library-list-title">
         <p

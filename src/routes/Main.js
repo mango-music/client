@@ -93,6 +93,7 @@ const Main = memo(({ profile, handleLogout }) => {
         <Route path={`/@${profile.id}/library`}>
           <Library
             customLists={customLists}
+            setCustomLists={setCustomLists}
             setCurrentItems={setCurrentItems}
             setCurrentItem={setCurrentItem}
           />
