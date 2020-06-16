@@ -33,6 +33,7 @@ const UserPlaylistItem = (props) => {
           selectedList={selectedList}
           customLists={customLists}
           setCustomLists={setCustomLists}
+          setIsEllipsisOn={setIsEllipsisOn}
         />
       )}
     </li>

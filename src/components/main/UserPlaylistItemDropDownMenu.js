@@ -3,20 +3,26 @@ import postDeleteMusic from '../../lib/apis/postDeleteMusic';
 import fkToken from '../../lib/fixtures/fkToken';
 
 const UserPlaylistItemDropDownMenu = (props) => {
-  const { videoid, selectedList, customLists, setCustomLists } = props;
-  console.log('video id : ', videoid);
+  const {
+    videoid,
+    selectedList,
+    customLists,
+    setCustomLists,
+    setIsEllipsisOn,
+  } = props;
   return (
-    <div className="library-list-item-drop-down-menu">
+    <div className="drop-down-menu">
       <div
-        onClick={() =>
+        onClick={() => {
           postDeleteMusic(
             selectedList,
             videoid,
             customLists,
             setCustomLists,
             fkToken,
-          )
-        }
+          );
+          setIsEllipsisOn(false);
+        }}
       >
         음악 삭제하기
       </div>

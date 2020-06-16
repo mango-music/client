@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchDropDownMenu from './SearchDropDownMenu';
@@ -12,7 +12,7 @@ const SearchEntry = (props) => {
     item,
     setCustomLists,
   } = props;
-
+  const [isEllipsisOn, setIsEllipsisOn] = useState(false);
   return (
     <li>
       <div className="search-image">
@@ -44,20 +44,25 @@ const SearchEntry = (props) => {
       </p>
       <button
         onClick={() => {
-          document
-            .getElementById(`button-${props.videoid}`)
-            .classList.toggle('clicked');
+          if (isEllipsisOn) {
+            setIsEllipsisOn(false);
+          } else {
+            setIsEllipsisOn(true);
+          }
         }}
         className="search-ellipsis"
       >
         <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
       </button>
-      <SearchDropDownMenu
-        videoid={props.videoid}
-        customLists={customLists}
-        item={item}
-        setCustomLists={setCustomLists}
-      />
+      {isEllipsisOn && (
+        <SearchDropDownMenu
+          videoid={props.videoid}
+          customLists={customLists}
+          item={item}
+          setCustomLists={setCustomLists}
+          setIsEllipsisOn={setIsEllipsisOn}
+        />
+      )}
     </li>
   );
 };

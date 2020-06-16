@@ -120,7 +120,7 @@
   }
 }
 
-.library-list-item-drop-down-menu {
+.drop-down-menu {
   z-index: 2;
   display: block;
   background-color: rgba(255, 255, 255, 0.918);
@@ -129,6 +129,9 @@
   position: absolute;
   right: 30px;
   top: 0;
+  div {
+    cursor: pointer;
+  }
 }
 
 // .clicked {
