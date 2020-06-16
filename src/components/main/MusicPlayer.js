@@ -22,6 +22,11 @@ const MusicPlayer = (props) => {
   // 반복 재생 관련 state
   const [isRepeatOn, setIsRepeatOn] = useState(false);
 
+  useEffect(() => {
+    // 이중 timer 방지
+    clearInterval(timer);
+  }, [currentItem]);
+
   const opts = {
     playerVars: {
       autoplay: 1,

@@ -19,7 +19,7 @@ const SearchEntry = (props) => {
         <img src={props.thumbnail} />
       </div>
       <p
-        onClick={() => {
+        onClick={async () => {
           console.log(`${props.title}을 재생합니다.`);
           const newCurrentItems = [...currentItems];
           const item = {
@@ -32,6 +32,7 @@ const SearchEntry = (props) => {
           for (let i = 0; i < newCurrentItems.length; i++) {
             if (newCurrentItems[i].videoid === item.videoid) {
               newCurrentItems.splice(i, 1);
+              await setCurrentItem(null); // currentItem을 변경하기 위해 초기화, 뮤직 플레이어를 조건 렌더링으로 바꾼 뒤 수정
               break;
             }
           }
