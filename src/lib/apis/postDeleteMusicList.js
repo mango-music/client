@@ -1,11 +1,10 @@
-function postDeleteMusic(listname, videoid, customLists, setCustomLists, token) {
+function postDeleteMusicList(listname, customLists, setCustomLists, token) {
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
   myHeaders.append("Content-Type", "application/json");
   
   var raw = JSON.stringify({
-    "listname": listname,
-    "videoid": videoid
+    "listname": listname
   });
   
   var requestOptions = {
@@ -15,7 +14,7 @@ function postDeleteMusic(listname, videoid, customLists, setCustomLists, token) 
     redirect: 'follow'
   };
   
-  fetch("http://13.209.19.101:3000/deleteMusic", requestOptions)
+  fetch("http://13.209.19.101:3000/deleteMusiclist", requestOptions)
     .then(response => {
       if(response.status === 200) {
         const newCustomLists = [...customLists];
@@ -26,19 +25,13 @@ function postDeleteMusic(listname, videoid, customLists, setCustomLists, token) 
             break;
           }
         }
-        const items = newCustomLists[listIndex].musics;
-        for (let i = 0; i < items.length; i++) {
-          if(items[i].videoid === videoid) {
-            items.splice(i, 1);
-            break;
-          }
-        }
+        newCustomLists.splice(listIndex, 1);
         setCustomLists(newCustomLists);
       }
-      return response.text();
+      return response.text()
     })
     .then(result => console.log(result))
     .catch(error => console.log('error', error));
 }
 
-export default postDeleteMusic;
+export default postDeleteMusicList;
