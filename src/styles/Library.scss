@@ -122,6 +122,15 @@
     align-content: center;
     gap: 10px;
     height: 20vw;
+    div {
+      display: grid;
+      align-content: center;
+      input {
+        background-color: rgb(236, 236, 236);
+        padding: 10px;
+        border: 0;
+      }
+    }
   }
 }
 
