@@ -20,6 +20,7 @@ const UserPlaylistItems = (props) => {
             <FontAwesomeIcon icon={faTimes} color="#afafaf" />
           </button>
         </div>
+        <div></div>
         <div>
           <button>
             <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
