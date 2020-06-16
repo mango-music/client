@@ -4,7 +4,7 @@ import { faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UserPlaylistItems = (props) => {
-  const { selectedList, setSelectedList, customLists } = props;
+  const { selectedList, setSelectedList, customLists, setCustomLists } = props;
   let items;
   for (let i = 0; i < customLists.length; i++) {
     if (customLists[i].listname === selectedList) {
@@ -31,7 +31,15 @@ const UserPlaylistItems = (props) => {
       <ul>
         {items &&
           items.map((item) => {
-            return <UserPlaylistItem key={item.videoid} item={item} />;
+            return (
+              <UserPlaylistItem
+                key={item.videoid}
+                item={item}
+                selectedList={selectedList}
+                customLists={customLists}
+                setCustomLists={setCustomLists}
+              />
+            );
           })}
       </ul>
     </div>

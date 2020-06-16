@@ -84,6 +84,7 @@ const Library = (props) => {
           selectedList={selectedList}
           setSelectedList={setSelectedList}
           customLists={customLists}
+          setCustomLists={setCustomLists}
         />
       )}
     </div>

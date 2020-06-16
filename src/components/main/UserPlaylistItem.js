@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import UserPlaylistItemDropDownMenu from './UserPlaylistItemDropDownMenu';
 
 const UserPlaylistItem = (props) => {
-  const { item } = props;
+  const { item, selectedList, customLists, setCustomLists } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
   return (
     <li>
@@ -27,7 +27,14 @@ const UserPlaylistItem = (props) => {
           <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
         </button>
       </div>
-      {isEllipsisOn && <UserPlaylistItemDropDownMenu />}
+      {isEllipsisOn && (
+        <UserPlaylistItemDropDownMenu
+          videoid={item.videoid}
+          selectedList={selectedList}
+          customLists={customLists}
+          setCustomLists={setCustomLists}
+        />
+      )}
     </li>
   );
 };
