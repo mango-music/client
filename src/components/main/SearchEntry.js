@@ -1,6 +1,5 @@
 import React from 'react';
-import getMusic from '../../lib/apis/getMusic';
-import { faPlus, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import SearchDropDownMenu from './SearchDropDownMenu';
 

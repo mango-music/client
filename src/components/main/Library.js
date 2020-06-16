@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import LibraryList from './LibraryList';
-import LibraryListItems from './LibraryListItems';
+import React, { useState } from 'react';
+import UserPlaylist from './UserPlaylist';
+import UserPlaylistItems from './UserPlaylistItems';
 import postMusiclist from '../../lib/apis/postMusiclist';
-import getUserMusicLists from '../../lib/apis/getUserMusicLists';
 import {
   faPlusCircle,
   faCheckCircle,
@@ -20,27 +19,27 @@ const Library = (props) => {
     customLists,
     setCustomLists,
   } = props;
-  const [libraryList, setLibraryList] = useState(null);
-  const [isClickedAdd, setIsClickedAdd] = useState(false);
+  const [selectedList, setSelectedList] = useState(null);
+  const [addButtonOn, setAddButtonOn] = useState(false);
   let addPlaylist;
-  if (isClickedAdd) {
+  if (addButtonOn) {
     addPlaylist = (
       <React.Fragment>
-        <div onClick={() => setIsClickedAdd(false)}>
+        <div onClick={() => setAddButtonOn(false)}>
           <FontAwesomeIcon icon={faTimesCircle} color="#afafaf" />
         </div>
         <div
           onClick={() => {
-            const text = document.getElementById('library-add-input').value;
+            const text = document.getElementById('playlist-input').value;
             console.log('text : ', text);
             postMusiclist(text, customLists, setCustomLists, fkToken);
-            setIsClickedAdd(false);
+            setAddButtonOn(false);
           }}
         >
           <FontAwesomeIcon icon={faCheckCircle} color="#afafaf" />
         </div>
         <div>
-          <input id="library-add-input" type="text" />
+          <input id="playlist-input" type="text" />
         </div>
       </React.Fragment>
     );
@@ -50,7 +49,7 @@ const Library = (props) => {
         <div
           onClick={(e) => {
             // console.log('e : ', e);
-            setIsClickedAdd(true);
+            setAddButtonOn(true);
           }}
         >
           <FontAwesomeIcon icon={faPlusCircle} color="#afafaf" />
@@ -68,22 +67,22 @@ const Library = (props) => {
         {customLists &&
           customLists.map((list) => {
             return (
-              <LibraryList
+              <UserPlaylist
                 key={list._id}
                 listName={list.listname}
                 items={list.musics}
                 setCurrentItems={setCurrentItems}
                 setCurrentItem={setCurrentItem}
-                setLibraryList={setLibraryList}
+                setSelectedList={setSelectedList}
               />
             );
           })}
       </ul>
-      <div id="library-add-playlist">{addPlaylist}</div>
-      {libraryList && (
-        <LibraryListItems
-          libraryList={libraryList}
-          setLibraryList={setLibraryList}
+      <div id="add-playlist">{addPlaylist}</div>
+      {selectedList && (
+        <UserPlaylistItems
+          selectedList={selectedList}
+          setSelectedList={setSelectedList}
           customLists={customLists}
         />
       )}

@@ -1,4 +1,4 @@
-@mixin library-ul {
+@mixin list-ul {
   display: grid;
   gap: 10px;
   grid-auto-flow: row;
@@ -10,7 +10,7 @@
     grid-template-columns: 20vw 1fr 30px;
     grid-auto-rows: 20vw;
     gap: 10px;
-    .library-list-img {
+    .list-img {
       background-color: black;
       display: grid;
       align-content: center;
@@ -18,14 +18,14 @@
         width: 20vw;
       }
     }
-    .library-list-title {
+    .list-title {
       display: grid;
       align-content: center;
       p {
         cursor: pointer;
       }
     }
-    .library-list-button {
+    .list-button {
       display: grid;
       button {
         cursor: pointer;
@@ -63,10 +63,10 @@
   overflow: visible;
 
   ul {
-    @include library-ul;
+    @include list-ul;
   }
 
-  #library-list-items {
+  #user-playlist-items {
     position: absolute;
     top: 0;
     left: 0;
@@ -100,16 +100,16 @@
           color: rgb(236, 236, 236);
         }
       }
-      .library-list-title {
+      .user-playlist-title {
         grid-column: span 2;
       }
     }
     ul {
-      @include library-ul;
+      @include list-ul;
       font-size: 1.2rem;
     }
   }
-  #library-add-playlist {
+  #add-playlist {
     display: grid;
     grid-auto-flow: column;
     // grid-template-columns: 20vw 1fr;

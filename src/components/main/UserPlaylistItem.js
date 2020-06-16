@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import LibraryListItemDropDownMenu from './LibraryListItemDropDownMenu';
+import UserPlaylistItemDropDownMenu from './UserPlaylistItemDropDownMenu';
 
-const LibraryListItem = (props) => {
+const UserPlaylistItem = (props) => {
   const { item } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
   return (
     <li>
-      <div className="library-list-img">
+      <div className="list-img">
         <img src={item.thumbnail} />
       </div>
-      <div className="library-list-title">
+      <div className="list-title">
         <p>{item.title}</p>
       </div>
-      <div className="library-list-button">
+      <div className="list-button">
         <button
           onClick={() => {
             if (isEllipsisOn) {
@@ -27,9 +27,9 @@ const LibraryListItem = (props) => {
           <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
         </button>
       </div>
-      {isEllipsisOn && <LibraryListItemDropDownMenu />}
+      {isEllipsisOn && <UserPlaylistItemDropDownMenu />}
     </li>
   );
 };
 
-export default LibraryListItem;
+export default UserPlaylistItem;

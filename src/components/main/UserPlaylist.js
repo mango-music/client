@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LibraryList = (props) => {
+const UserPlaylist = (props) => {
   const {
     listName,
     items,
     setCurrentItems,
     setCurrentItem,
-    setLibraryList,
+    setSelectedList,
   } = props;
 
-  console.log('items : ', items);
   return (
     <li>
-      <div className="library-list-img">
+      <div className="list-img">
         {items[0] && <img src={items[0].thumbnail} />}
       </div>
-      <div className="library-list-title">
+      <div className="list-title">
         <p
           onClick={() => {
             setCurrentItems(items);
@@ -27,8 +26,8 @@ const LibraryList = (props) => {
           {listName}
         </p>
       </div>
-      <div className="library-list-button">
-        <button onClick={() => setLibraryList(listName)}>
+      <div className="list-button">
+        <button onClick={() => setSelectedList(listName)}>
           <FontAwesomeIcon icon={faAngleRight} color="#afafaf" />
         </button>
       </div>
@@ -36,4 +35,4 @@ const LibraryList = (props) => {
   );
 };
 
-export default LibraryList;
+export default UserPlaylist;

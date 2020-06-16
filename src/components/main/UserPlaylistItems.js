@@ -1,22 +1,22 @@
 import React from 'react';
-import LibraryListItem from './LibraryListItem';
+import UserPlaylistItem from './UserPlaylistItem';
 import { faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const LibraryListItems = (props) => {
-  const { libraryList, setLibraryList, customLists } = props;
+const UserPlaylistItems = (props) => {
+  const { selectedList, setSelectedList, customLists } = props;
   let items;
   for (let i = 0; i < customLists.length; i++) {
-    if (customLists[i].listname === libraryList) {
+    if (customLists[i].listname === selectedList) {
       items = customLists[i].musics;
       break;
     }
   }
   return (
-    <div id="library-list-items">
+    <div id="user-playlist-items">
       <header>
         <div>
-          <button onClick={() => setLibraryList(null)}>
+          <button onClick={() => setSelectedList(null)}>
             <FontAwesomeIcon icon={faTimes} color="#afafaf" />
           </button>
         </div>
@@ -25,17 +25,17 @@ const LibraryListItems = (props) => {
             <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
           </button>
         </div>
-        <div className="library-list-title">{libraryList}</div>
+        <div className="user-playlist-title">{selectedList}</div>
       </header>
 
       <ul>
         {items &&
           items.map((item) => {
-            return <LibraryListItem key={item.videoid} item={item} />;
+            return <UserPlaylistItem key={item.videoid} item={item} />;
           })}
       </ul>
     </div>
   );
 };
 
-export default LibraryListItems;
+export default UserPlaylistItems;
