@@ -1,13 +1,51 @@
 .rating {
-  &_button {
-    border: none;
-    background-color: #fff;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
-    img {
-      width: 64px;
+  &_consent {
+    padding: 16px;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    height: 100vh;
+    header,
+    div {
+      padding: 8px;
+      display: flex;
+      flex-flow: column nowrap;
+      justify-content: flex-start;
     }
-    span {
-      font-size: 13px;
+    div {
+      // height: 192px;
+      overflow: visible;
+    }
+  }
+  &_entry {
+    .youtube {
+      width: 100%;
+      height: 38.2vh; // golden ratio
+    }
+    section {
+      text-align: center; // center inline elements
+      padding: 16px;
+    }
+    .box {
+      &-video {
+        height: 50vh;
+        background: rgb(0, 0, 0);
+      }
+      &-rating {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        margin: 2rem 0;
+      }
+      &-buttons {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%; // 나중에 수정 (side padding: 24px)
+        height: 96px;
+        margin: 0 auto; // 나중에 수정
+        overflow: visible; // prevent shadow crop
+      }
     }
   }
 }

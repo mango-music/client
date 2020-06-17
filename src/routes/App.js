@@ -1,11 +1,11 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import '../styles/App.scss';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
-import RatingConsent from '../components/rating/RatingConsent';
+import RatingConsentScreen from '../components/rating/RatingConsentScreen';
 import Rating from '../components/rating/Rating';
 import Main from './Main'; // Nested routes
 import Loading from '../components/auth/Loading';
@@ -18,7 +18,7 @@ const App = () => {
   const [isMounted, setMounted] = useState(false);
   const [hasJustCreated, setJustCreated] = useState(false);
 
-  // const callbackPath = useRef(null);
+  const callbackPath = useRef(null); // uncontrolled state (not for rendering)
 
   // Memorize these handler functions until [dependency state] updated
   const handleSignupSuccess = useCallback(() => {
@@ -54,22 +54,20 @@ const App = () => {
   */
   useEffect(() => {
     // Execute here on first render (DidMount)
-    // Execute After detecting isMount update (DidUpdate)
-    if (!localStorage.getItem('x-access-token')) {
-      return handleLoginFailure();
+    if (!isMounted) {
+      if (!localStorage.getItem('x-access-token')) {
+        return handleLoginFailure();
+      }
+      return handleLoginSuccess();
     }
-    return handleLoginSuccess();
-  }, [isMounted]); // Check if dependency updated
-  // useEffect(() => {
-  //   // 1. Did Mount (first update)
-  //   if (!mounted.current) {
-  //     mounted.current = true;
-  //     if (localStorage.getItem('x-access-token')) {
-  //       return handleLoginSuccess();
-  //     }
-  //   }
-  //   // 3. Did Update (if mounted.current re-updated)
-  // }, [mounted.current]); // 2. Check dependency change
+    // Execute After detecting profile update (DidUpdate)
+    if (profile.id) {
+      callbackPath.current = `/@${profile.id}`;
+    } else {
+      callbackPath.current = null;
+    }
+  }, [isMounted, profile]); // Check if dependency updated
+
   return (
     <>
       <Switch>
@@ -82,7 +80,7 @@ const App = () => {
             }
             if (isMounted) {
               return isLogin ? (
-                <Redirect to={`/@${profile.id}`} />
+                <Redirect to={callbackPath.current} />
               ) : (
                 <Redirect to="/signin" />
               );
@@ -100,10 +98,10 @@ const App = () => {
           />
         </Route>
         <Route path="/rating_consent">
-          <RatingConsent nickname={profile.id} />
+          <RatingConsentScreen nickname={profile.id} />
         </Route>
         <Route path="/rating">
-          <Rating callbackPath={`/@${profile.id}`} />
+          <Rating callbackPath={`/@${profile.id}`} nickname={profile.id} />
         </Route>
         <Route path={`/@${profile.id}`}>
           <Main profile={profile} handleLogout={handleLogout} />

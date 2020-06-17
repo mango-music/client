@@ -2,10 +2,11 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../../styles/Rating.scss';
-import { Button } from '@material-ui/core';
-import fakeItems from '../../lib/fixtures/fkdtCurrentItems';
+import Button from '@material-ui/core/Button';
+import fakeItems from '../../lib/fixtures/fkdtCurrentItems2';
 import RatingEntry from './RatingEntry';
 import Loading from '../auth/Loading';
+import RatingSuccessDialog from './RatingSuccessDialog';
 
 class Rating extends PureComponent {
   constructor() {
@@ -31,7 +32,7 @@ class Rating extends PureComponent {
     }));
     this.setState((prev) => ({
       ratedVideos: [...prev.ratedVideos, prev.ratedVideo],
-      ratedVideo: { videoId: '', rating: null }, // initialize
+      ratedVideo: { videoId: '', rating: null }, // Initialize
       currentVideo: prev.videos[prev.nextVideoIndex],
     }));
   };
@@ -45,8 +46,7 @@ class Rating extends PureComponent {
     }));
   };
 
-  handleRatingFinish = (e) => {
-    e.preventDefault();
+  handleRatingSuccess = () => {
     const { history, callbackPath } = this.props;
     history.push(callbackPath);
   };
@@ -69,6 +69,7 @@ class Rating extends PureComponent {
 
   render() {
     const { isLoading, currentVideo, ratedVideos } = this.state;
+    const { nickname } = this.props;
     if (!isLoading) {
       return <Loading />;
     }
@@ -76,18 +77,15 @@ class Rating extends PureComponent {
       <>
         <RatingEntry
           video={currentVideo}
+          evaluationCount={ratedVideos.length}
           handleRatingUpdate={this.handleRatingUpdate}
           handleRatingSkip={this.handleRatingSkip}
         />
-        {ratedVideos.length >= 5 ? (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleRatingFinish}
-          >
-            시작하기
-          </Button>
-        ) : null}
+        <RatingSuccessDialog
+          isOpen={ratedVideos.length >= 5} // Render this component when isOpen={true}
+          nickname={nickname}
+          handleRatingSuccess={this.handleRatingSuccess}
+        />
       </>
     );
   }

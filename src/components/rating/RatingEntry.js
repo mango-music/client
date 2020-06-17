@@ -1,54 +1,111 @@
-import React from 'react';
-import fixtures from '../../lib/fixtures/RatingFixtures';
-import { Button, ButtonGroup, makeStyles } from '@material-ui/core';
+import React, { useState, useCallback, useEffect } from 'react';
+import feedback from '../../lib/fixtures/feedback';
+import { Box, Button } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
+import MuiRating from '@material-ui/lab/Rating';
+import ProgressMobileStepper from './ProgressMobileStepper';
+import YouTube from 'react-youtube';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    '& > *': {
-      margin: theme.spacing(1),
+const RatingEntry = ({
+  video,
+  evaluationCount,
+  handleRatingUpdate,
+  handleRatingSkip,
+  handleRatingFinish,
+}) => {
+  const [value, setValue] = useState(0);
+  const [isNextDisabled, setNextDisabled] = useState(false);
+
+  // const buttonClasses = useButtonStyles();
+  // const darkTheme = useTheme();
+
+  const handleRatingButtonClick = useCallback(
+    (e, value) => {
+      // e.preventDefault(); // 이 함수가 props로 전달될 경우 핸들러 함수의 콜백 안에 들어가게 되므로 e를 참조할 수 없게 되는 오류 발생
+      setValue(0);
+      handleRatingUpdate(video.videoId, value);
     },
-  },
-}));
+    [value],
+  );
 
-const RatingEntry = ({ video, handleRatingUpdate, handleRatingSkip }) => {
-  const classes = useStyles();
-  const handleRatingButtonClick = (e) => {
-    e.preventDefault();
-    // console.log(e.currentTarget);
-    handleRatingUpdate(video.videoId, e.currentTarget.value);
-  };
-  const handleSkipButtonClick = (e) => {
+  const handleSkipButtonClick = useCallback(() => {
+    setValue(0);
     handleRatingSkip();
-  };
+  }, [value]);
+
+  useEffect(() => {
+    if (!value || evaluationCount === 5) {
+      // 별점을 누르지 않았거나, 평가 횟수가 5가 되었다면 disable=true
+      setNextDisabled(true);
+    } else {
+      setNextDisabled(false);
+    }
+  }, [value]);
+
   return (
-    <article className="rating_entry">
-      <h2>이 노래는 어떤가요?</h2>
-      <div>
-        <img src={video.thumbnail} alt="thumbnail" />
-      </div>
-      <h3>{video.title}</h3>
-      <div className={classes.root}>
-        <ButtonGroup
-          orientation="vertical"
-          color="primary"
-          aria-label="vertical outlined primary button group"
-        >
-          {fixtures.map((fixture) => (
-            <Button
-              value={fixture.value}
-              onClick={handleRatingButtonClick}
-              className="rating_button"
-            >
-              <img src={fixture.img_src} alt={fixture.img_alt} />
-              <span>{fixture.copy}</span>
-            </Button>
-          ))}
-        </ButtonGroup>
-      </div>
-      <div>
-        <Button onClick={handleSkipButtonClick}>모르는 노래에요</Button>
-      </div>
+    <article className="rating rating_entry">
+      {/* <YouTube videoId={video.videoId} className="youtube" /> */}
+      <header className="box box-video"></header>
+      <section>
+        <span>{video.title}</span>
+        <h2>평가하기</h2>
+        {/* <h2>How would you rate this song?</h2> */}
+        <div className="box box-rating">
+          {/* {value !== null && (
+            <div className="box-rating_feedback">
+              <div>
+                <img
+                  src={feedback[value].emoji.src}
+                  alt={feedback[value].emoji.alt}
+                />
+              </div>
+              <span>{feedback[value].description}</span>
+            </div>
+          )} */}
+          <MuiRating
+            name="rating"
+            size="large"
+            precision={0.5}
+            value={value}
+            onChange={(e, targetValue) => {
+              setValue(targetValue); // e.target.value와 동일 (MaterialUI onChange API)
+            }}
+          />
+        </div>
+        <div className="box box-buttons">
+          <Button
+            variant="text"
+            color="primary"
+            size="large"
+            // className={`${buttonClasses.root} ${buttonClasses.secondary}`}
+            onClick={handleSkipButtonClick}
+          >
+            건너뛰기
+          </Button>
+          <Button
+            variant={!isNextDisabled ? 'contained' : 'text'}
+            color="primary"
+            size="large"
+            // className={
+            //   !isNextDisabled
+            //     ? `${buttonClasses.root} ${buttonClasses.primary}`
+            //     : `${buttonClasses.root} ${buttonClasses.disabled}`
+            // }
+            // className={isNextDisabled ? buttonClasses.disabled : null}
+            onClick={handleRatingButtonClick}
+            disabled={isNextDisabled}
+          >
+            다음으로
+          </Button>
+        </div>
+      </section>
+      <footer>
+        <ProgressMobileStepper
+          evaluationCount={evaluationCount}
+          handleRatingButtonClick={handleRatingButtonClick}
+          handleSkipButtonClick={handleSkipButtonClick}
+        />
+      </footer>
     </article>
   );
 };
