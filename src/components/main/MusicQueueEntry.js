@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 const MusicQueueEntry = (props) => {
   const { currentItems, isShuffleOn, shuffledQueue, setShuffledIndex } = props;
-  function getIndexByVideoId(videoId) {
+  // console.log('MusicQueueEntry rendering');
+  function getIndexByVideoId(videoid) {
     for (let i = 0; i < currentItems.length; i++) {
-      if (currentItems[i].videoId === videoId) {
+      if (currentItems[i].videoid === videoid) {
         return i;
       }
     }
@@ -17,7 +18,7 @@ const MusicQueueEntry = (props) => {
       onClick={() => {
         if (isShuffleOn) {
           // 셔플 인덱스를 바꿔준다.
-          const index = getIndexByVideoId(props.videoId);
+          const index = getIndexByVideoId(props.videoid);
           let shIndex;
           for (let i = 0; i < shuffledQueue.length; i++) {
             if (shuffledQueue[i] === index) {
@@ -27,17 +28,20 @@ const MusicQueueEntry = (props) => {
           }
           setShuffledIndex(shIndex);
         }
-        props.player.loadVideoById(props.videoId);
+        props.player.loadVideoById(props.videoid);
         props.setItemIndex(props.index);
         props.setIsPlayButtonOn(false);
       }}
     >
-      <div>
-        <img src={props.thumbnail} />
+      <div
+        className="queue-image"
+        style={{ backgroundImage: 'url(' + props.thumbnail + ')' }}
+      ></div>
+      <div className="queue-title">
+        <p>{props.title}</p>
       </div>
-      <p>{props.title}</p>
     </li>
   );
 };
 
-export default MusicQueueEntry;
+export default memo(MusicQueueEntry);

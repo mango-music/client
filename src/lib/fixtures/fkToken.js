@@ -1,0 +1,3 @@
+const fkToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTFiZGZhNmE2NWIwMmUzNzc4MGI1YSIsImVtYWlsIjoic29jcmF0b25lQGdtYWlsLmNvbSIsImlhdCI6MTU5MjI3MTY0NywiZXhwIjoxNTkyMjczNDQ3fQ.fKgC2OUgxkMgEtrQUaED605rjvO4ISZfwrqD1dv_pL0';
+
+export default fkToken;

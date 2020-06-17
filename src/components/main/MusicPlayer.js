@@ -9,9 +9,15 @@ import '../../styles/MusicPlayer.scss';
 
 let timer;
 const MusicPlayer = (props) => {
-  const { currentItems, currentItem, setCurrentItems } = props; // fakeData 로딩
+  const {
+    currentItems,
+    currentItem,
+    setCurrentItems,
+    itemIndex,
+    setItemIndex,
+  } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
-  const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
+  // const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [isPlayButtonOn, setIsPlayButtonOn] = useState(false); // 재생 버튼과 일시 정지 버튼을 위한 state
   const [currentTime, setCurrentTime] = useState(0); // 플레이어가 재생하고 있는 시간
   const [durationTime, setDurationTime] = useState(null); // 영상의 총 길이
@@ -22,6 +28,11 @@ const MusicPlayer = (props) => {
   // 반복 재생 관련 state
   const [isRepeatOn, setIsRepeatOn] = useState(false);
 
+  useEffect(() => {
+    // 이중 timer 방지
+    clearInterval(timer);
+  }, [currentItem]);
+
   const opts = {
     playerVars: {
       autoplay: 1,
@@ -30,6 +41,7 @@ const MusicPlayer = (props) => {
   const onReady = (event) => {
     console.log('onReady 호출');
     setPlayer(event.target); // video가 로딩 됐을 때 player 변수로 video를 참조할 수 있게 해준다.
+    event.target.playVideo();
   };
 
   const handleSetCurrentTime = () => {
@@ -40,14 +52,14 @@ const MusicPlayer = (props) => {
   };
 
   const playFirstItem = () => {
-    player.loadVideoById(currentItems[0].videoId);
+    player.loadVideoById(currentItems[0].videoid);
     setItemIndex(0);
     setIsPlayButtonOn(false);
   };
 
   const playFirstShuffledItem = () => {
     const index = shuffledQueue[0];
-    player.loadVideoById(currentItems[index].videoId);
+    player.loadVideoById(currentItems[index].videoid);
     setShuffledIndex(0);
     setIsPlayButtonOn(false);
   };
@@ -75,14 +87,14 @@ const MusicPlayer = (props) => {
           playFirstShuffledItem();
         } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
           const index = shuffledQueue[shuffledIndex + 1];
-          player.loadVideoById(currentItems[index].videoId);
+          player.loadVideoById(currentItems[index].videoid);
           setShuffledIndex(shuffledIndex + 1);
           setIsPlayButtonOn(false);
         } else if (isRepeatOn) {
           playFirstShuffledItem();
         }
       } else if (currentItems[itemIndex + 1] !== undefined) {
-        player.loadVideoById(currentItems[itemIndex + 1].videoId);
+        player.loadVideoById(currentItems[itemIndex + 1].videoid);
         setItemIndex(itemIndex + 1);
         setIsPlayButtonOn(false);
       } else if (isRepeatOn) {
@@ -99,7 +111,7 @@ const MusicPlayer = (props) => {
         <div id="player-selector" className="big-player">
           <div className="player-window">
             <YouTube
-              videoId={currentItem.videoId}
+              videoId={currentItem.videoid}
               opts={opts}
               onReady={onReady}
               onStateChange={handleStateChange}

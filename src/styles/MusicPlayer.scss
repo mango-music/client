@@ -1,9 +1,9 @@
 #player {
   position: absolute;
-  background-color: rgb(236, 236, 236);
   width: 100%;
-  display: flex;
-  justify-content: center;
+  // height: 100%; // 수정해야 함
+  display: flex; // 지우면 재생바가 사라짐
+  justify-content: center; // 늘어나도 가운데 머무르게 함
 
   .small-player {
     @media (min-width: 600px) {
@@ -12,6 +12,7 @@
       }
     }
     .player-window {
+      z-index: 2;
       position: fixed;
       bottom: 48px;
       right: 0;
@@ -43,7 +44,13 @@
   }
 
   .big-player {
+    & {
+      // 부모
+      height: 100vh;
+    }
+    z-index: 3;
     background-color: whitesmoke;
+    // height: 100%;
     @media (min-width: 500px) {
       .player-window {
         width: 500px !important;
@@ -53,7 +60,7 @@
     .player-window {
       position: static;
       // top: 10vh;
-      width: 100vw; // todo: 반응형으로 바꾼다
+      width: 100vw;
 
       display: grid;
       grid-auto-flow: row;
@@ -110,19 +117,23 @@
           display: grid;
           gap: 10px;
           grid-auto-flow: column;
-          grid-template-columns: auto 1fr;
+          grid-template-columns: 70px 1fr;
+
           margin-bottom: 10px;
           list-style: none;
           cursor: pointer;
-          div {
-            img {
-              display: block;
-              border-radius: 5px;
-              width: 4.5em;
-            }
+          .queue-image {
+            width: 70px;
+            height: 70px;
+            background-size: cover;
+            background-position: center center;
           }
-          p {
-            margin: 0;
+          .queue-title {
+            display: grid;
+            align-content: center;
+            p {
+              margin: 0;
+            }
           }
           transition-property: transform;
           transition-duration: 300ms;

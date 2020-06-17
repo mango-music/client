@@ -1,0 +1,156 @@
+@mixin list-ul {
+  display: grid;
+  gap: 10px;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  li {
+    position: relative;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: auto 1fr 30px;
+    margin-bottom: 10px;
+    gap: 10px;
+    .list-img {
+      // height: 20vw;
+      // background-color: black;
+      // display: grid;
+      // align-content: center;
+      img {
+        display: block;
+        width: 5rem;
+      }
+    }
+    .list-title {
+      display: grid;
+      align-content: center;
+      p {
+        cursor: pointer;
+      }
+    }
+    .list-button {
+      display: grid;
+      button {
+        cursor: pointer;
+        font-size: 1.4rem;
+        background-color: rgba(0, 0, 0, 0);
+        border: white solid 0px;
+        svg {
+          transition-property: color;
+          transition-duration: 200ms;
+        }
+      }
+      button:hover {
+        svg {
+          color: black;
+        }
+      }
+      button:active {
+        svg {
+          color: rgb(236, 236, 236);
+        }
+      }
+    }
+  }
+}
+
+#library {
+  // position: relative;
+  display: grid;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  padding: 10px;
+  overflow: visible;
+
+  ul {
+    @include list-ul;
+  }
+
+  #user-playlist-items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 10px;
+    z-index: 1;
+    background-color: lightgray;
+    width: 100vw;
+    height: 100vh;
+    header {
+      position: relative;
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 30px 1fr 30px;
+      gap: 10px;
+      margin-bottom: 10px;
+      button {
+        cursor: pointer;
+        font-size: 1.4rem;
+        background-color: rgba(0, 0, 0, 0);
+        border: white solid 0px;
+        svg {
+          transition-property: color;
+          transition-duration: 200ms;
+        }
+      }
+      button:hover {
+        svg {
+          color: black;
+        }
+      }
+      button:active {
+        svg {
+          color: rgb(236, 236, 236);
+        }
+      }
+      div {
+        display: grid;
+      }
+      .user-playlist-title {
+        grid-column: span 3;
+      }
+    }
+    ul {
+      @include list-ul;
+      font-size: 1.2rem;
+    }
+  }
+  #add-playlist {
+    display: grid;
+    grid-auto-flow: column;
+    // grid-template-columns: 20vw 1fr;
+    justify-content: center;
+    align-content: center;
+    gap: 10px;
+    height: 20vw;
+    div {
+      display: grid;
+      align-content: center;
+      input {
+        background-color: rgb(236, 236, 236);
+        padding: 10px;
+        border: 0;
+      }
+    }
+  }
+}
+
+.drop-down-menu {
+  font-size: 1.2rem;
+  z-index: 2;
+  display: block;
+  background-color: rgba(255, 255, 255, 0.918);
+  padding: 10px;
+  border-radius: 10px;
+  position: absolute;
+  right: 30px;
+  top: 0;
+  div {
+    cursor: pointer;
+  }
+}
+
+// .clicked {
+//   display: block;
+// }

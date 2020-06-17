@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import postRatingMusic from '../../lib/apis/postRatingMusic';
+import postDelRating from '../../lib/apis/postDelRating';
 import '../../styles/RatingForm.scss';
 import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
 
 // 임시 토큰
 const tokken =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTFiZGZhNmE2NWIwMmUzNzc4MGI1YSIsImVtYWlsIjoic29jcmF0b25lQGdtYWlsLmNvbSIsImlhdCI6MTU5MTg3NjMwNSwiZXhwIjoxNTkxODc4MTA1fQ.N1R97IoB1ubT8h6tPLG5bB44spwWAVFnna7KWSIskRo';
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZTFiZGZhNmE2NWIwMmUzNzc4MGI1YSIsImVtYWlsIjoic29jcmF0b25lQGdtYWlsLmNvbSIsImlhdCI6MTU5MTkyOTA3OCwiZXhwIjoxNTkxOTMwODc4fQ.qtMn7jS8NDTf1ICJgQuVfsBHbJrO7S3IuNyANpYLrkg';
 
 const RatingForm = (props) => {
   const { isShuffleOn, shuffledIndex, setCurrentItems } = props;
+  console.log('RatingForm rendering');
   let video;
   // 셔플일 때
   if (isShuffleOn && shuffledIndex !== undefined) {
@@ -23,8 +25,15 @@ const RatingForm = (props) => {
     <div className="rating-form">
       <div
         onClick={async () => {
+          // 서버 조정 후 수정
           console.log(`${video.title}의 rating를 1로 바꾼다.`);
-          await postRatingMusic(video, 1, tokken);
+          if (video.rating === 1) {
+            // 별점 삭제 요청
+            await postDelRating(video);
+          } else {
+            // 별점 입력 요청
+            await postRatingMusic(video, 1, tokken);
+          }
           // currentItems를 다시 호출
           setCurrentItems(fkdtCurrentItems2);
         }}
@@ -95,4 +104,4 @@ const RatingForm = (props) => {
   );
 };
 
-export default RatingForm;
+export default memo(RatingForm);

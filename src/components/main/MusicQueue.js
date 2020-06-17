@@ -1,24 +1,34 @@
-import React from 'react';
+import React, { memo } from 'react';
 import MusicQueueEntry from './MusicQueueEntry';
 
 const MusicQueue = (props) => {
+  const {
+    currentItems,
+    player,
+    setItemIndex,
+    setIsPlayButtonOn,
+    isShuffleOn,
+    setShuffledIndex,
+    shuffledQueue,
+  } = props;
+  // console.log('MusicQueue rendering');
   return (
     <ul className="music-queue">
-      {props.currentItems.map((item, index) => {
+      {currentItems.map((item, index) => {
         return (
           <MusicQueueEntry
-            currentItems={props.currentItems}
+            currentItems={currentItems}
             title={item.title}
             thumbnail={item.thumbnail}
-            videoId={item.videoId}
-            player={props.player}
+            videoid={item.videoid}
+            player={player}
             index={index}
-            setItemIndex={props.setItemIndex}
-            setIsPlayButtonOn={props.setIsPlayButtonOn}
-            isShuffleOn={props.isShuffleOn}
-            setShuffledIndex={props.setShuffledIndex}
-            shuffledQueue={props.shuffledQueue}
-            key={item.videoId}
+            setItemIndex={setItemIndex}
+            setIsPlayButtonOn={setIsPlayButtonOn}
+            isShuffleOn={isShuffleOn}
+            setShuffledIndex={setShuffledIndex}
+            shuffledQueue={shuffledQueue}
+            key={item.videoid}
           />
         );
       })}
@@ -26,4 +36,4 @@ const MusicQueue = (props) => {
   );
 };
 
-export default MusicQueue;
+export default memo(MusicQueue);

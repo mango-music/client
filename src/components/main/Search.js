@@ -1,11 +1,77 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import SearchEntry from './SearchEntry';
+import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../styles/Search.scss';
 
-const Search = () => {
+const Search = (props) => {
+  const {
+    currentItems,
+    setCurrentItem,
+    setCurrentItems,
+    customLists,
+    setCustomLists,
+    setItemIndex,
+  } = props;
+  const [querry, setQuerry] = useState('');
+  const [searchItems, setSearchItems] = useState(null);
+
+  useEffect(() => {
+    const input = document.getElementById('search-text');
+    input.addEventListener('keyup', (event) => {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        document.getElementById('search-button').click();
+      }
+    });
+  }, []);
   return (
-    <>
-      <h3>Search</h3>
-      <input />
-    </>
+    <div id="search">
+      <div id="search-form">
+        <input
+          id="search-text"
+          type="text"
+          onChange={(e) => {
+            setQuerry(e.target.value);
+          }}
+        />
+        <button
+          id="search-button"
+          onClick={() => {
+            searchMusicsByQuerry(querry, 15)
+              .then((res) => res.json())
+              .then((json) => {
+                console.log(json);
+                setSearchItems(json.items);
+              })
+              .catch((err) => console.log(err));
+          }}
+        >
+          <FontAwesomeIcon icon={faSearch} color="#afafaf" />
+        </button>
+      </div>
+      <ul className="search-list">
+        {searchItems &&
+          searchItems.map((item) => {
+            return (
+              <SearchEntry
+                thumbnail={item.snippet.thumbnails.medium.url}
+                title={item.snippet.title}
+                videoid={item.id.videoId}
+                setCurrentItem={setCurrentItem}
+                setCurrentItems={setCurrentItems}
+                currentItems={currentItems}
+                customLists={customLists}
+                key={item.id.videoId}
+                item={item}
+                setCustomLists={setCustomLists}
+                setItemIndex={setItemIndex}
+              />
+            );
+          })}
+      </ul>
+    </div>
   );
 };
 
