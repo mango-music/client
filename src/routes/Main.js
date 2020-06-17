@@ -17,6 +17,7 @@ const Main = memo(({ profile, handleLogout }) => {
   const [customLists, setCustomLists] = useState(null); // [{playlist}]
   const [currentItems, setCurrentItems] = useState(null);
   const [currentItem, setCurrentItem] = useState(null);
+  const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [query, setQuery] = useState('');
   const [queryResult, setQueryResult] = useState([]); // [{music}]
   const [isPlayerMinimized, setPlayerMinimized] = useState(true);
@@ -76,6 +77,8 @@ const Main = memo(({ profile, handleLogout }) => {
         currentItems={currentItems}
         currentItem={currentItem}
         setCurrentItems={setCurrentItems}
+        itemIndex={itemIndex}
+        setItemIndex={setItemIndex}
       />
       <Switch>
         <Route exact path={`/@${profile.id}`}>
@@ -88,6 +91,7 @@ const Main = memo(({ profile, handleLogout }) => {
             currentItems={currentItems}
             customLists={customLists}
             setCustomLists={setCustomLists}
+            setItemIndex={setItemIndex}
           />
         </Route>
         <Route path={`/@${profile.id}/library`}>

@@ -11,6 +11,7 @@ const SearchEntry = (props) => {
     customLists,
     item,
     setCustomLists,
+    setItemIndex,
   } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
   return (
@@ -39,6 +40,7 @@ const SearchEntry = (props) => {
           newCurrentItems.unshift(item);
           setCurrentItem(item);
           setCurrentItems(newCurrentItems);
+          setItemIndex(0);
         }}
       >
         {props.title}

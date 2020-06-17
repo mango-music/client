@@ -9,9 +9,15 @@ import '../../styles/MusicPlayer.scss';
 
 let timer;
 const MusicPlayer = (props) => {
-  const { currentItems, currentItem, setCurrentItems } = props; // fakeData 로딩
+  const {
+    currentItems,
+    currentItem,
+    setCurrentItems,
+    itemIndex,
+    setItemIndex,
+  } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
-  const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
+  // const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [isPlayButtonOn, setIsPlayButtonOn] = useState(false); // 재생 버튼과 일시 정지 버튼을 위한 state
   const [currentTime, setCurrentTime] = useState(0); // 플레이어가 재생하고 있는 시간
   const [durationTime, setDurationTime] = useState(null); // 영상의 총 길이

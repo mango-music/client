@@ -12,6 +12,7 @@ const Search = (props) => {
     setCurrentItems,
     customLists,
     setCustomLists,
+    setItemIndex,
   } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
@@ -65,6 +66,7 @@ const Search = (props) => {
                 key={item.id.videoId}
                 item={item}
                 setCustomLists={setCustomLists}
+                setItemIndex={setItemIndex}
               />
             );
           })}
