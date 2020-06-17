@@ -2,9 +2,11 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../../styles/Rating.scss';
-import { Button } from '@material-ui/core';
-import fakeItems from '../../lib/fixtures/fkdtCurrentItems';
+import Button from '@material-ui/core/Button';
+import fakeItems from '../../lib/fixtures/fkdtCurrentItems2';
 import RatingEntry from './RatingEntry';
+import Loading from '../auth/Loading';
+import RatingSuccessDialog from './RatingSuccessDialog';
 
 class Rating extends PureComponent {
   constructor() {
@@ -23,14 +25,14 @@ class Rating extends PureComponent {
   }
 
   handleRatingUpdate = (videoId, rating) => {
-    // 콜백을 이용한 순차적 setState
+    // Sequential state update using setState callback
     this.setState((prev) => ({
       ratedVideo: { videoId, rating },
       nextVideoIndex: prev.nextVideoIndex + 1,
     }));
     this.setState((prev) => ({
       ratedVideos: [...prev.ratedVideos, prev.ratedVideo],
-      ratedVideo: { videoId: '', rating: null }, // initialize
+      ratedVideo: { videoId: '', rating: null }, // Initialize
       currentVideo: prev.videos[prev.nextVideoIndex],
     }));
   };
@@ -44,9 +46,9 @@ class Rating extends PureComponent {
     }));
   };
 
-  handleRatingFinish = () => {
-    const { history, profile } = this.props;
-    history.push(`/@${profile.id}`);
+  handleRatingSuccess = () => {
+    const { history, callbackPath } = this.props;
+    history.push(callbackPath);
   };
 
   componentDidMount() {
@@ -67,28 +69,23 @@ class Rating extends PureComponent {
 
   render() {
     const { isLoading, currentVideo, ratedVideos } = this.state;
+    const { nickname } = this.props;
+    if (!isLoading) {
+      return <Loading />;
+    }
     return (
       <>
-        {isLoading ? (
-          <>
-            <RatingEntry
-              video={currentVideo}
-              handleRatingUpdate={this.handleRatingUpdate}
-              handleRatingSkip={this.handleRatingSkip}
-            />
-          </>
-        ) : (
-          <h3>Loading...</h3>
-        )}
-        {ratedVideos.length >= 5 ? (
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={this.handleRatingFinish}
-          >
-            시작하기
-          </Button>
-        ) : null}
+        <RatingEntry
+          video={currentVideo}
+          evaluationCount={ratedVideos.length}
+          handleRatingUpdate={this.handleRatingUpdate}
+          handleRatingSkip={this.handleRatingSkip}
+        />
+        <RatingSuccessDialog
+          isOpen={ratedVideos.length >= 5} // Render this component when isOpen={true}
+          nickname={nickname}
+          handleRatingSuccess={this.handleRatingSuccess}
+        />
       </>
     );
   }

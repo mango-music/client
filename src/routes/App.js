@@ -1,13 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import '../styles/App.scss';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
-import RatingConsent from '../components/rating/RatingConsent';
+import RatingConsentScreen from '../components/rating/RatingConsentScreen';
 import Rating from '../components/rating/Rating';
-import Main from './Main'; // -> Nested routes
+import Main from './Main'; // Nested routes
+import Loading from '../components/auth/Loading';
 import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
 
@@ -16,13 +17,14 @@ const App = () => {
   const [profile, setProfile] = useState({});
   const [isMounted, setMounted] = useState(false);
   const [hasJustCreated, setJustCreated] = useState(false);
-  // const [hasRated, setRated] = useState(false);
 
-  // const nickname = useRef(''); // mainUrl { current: '' }
+  const callbackPath = useRef(null); // uncontrolled state (not for rendering)
 
-  const handleSignupSuccess = () => {
+  // Memorize these handler functions until [dependency state] updated
+  const handleSignupSuccess = useCallback(() => {
     setJustCreated(true);
-  };
+  }, [hasJustCreated]);
+
   const handleLoginSuccess = useCallback(() => {
     setLogin(true);
     setProfile({
@@ -31,16 +33,18 @@ const App = () => {
       lv: 1,
     });
     setMounted(true);
-  }, [isLogin]); // memorize this function until dependency(isLogin) updated
-  const handleLoginFailure = () => {
+  }, [isLogin]);
+
+  const handleLoginFailure = useCallback(() => {
     setMounted(true);
-  };
-  const handleLogout = () => {
+  }, [isMounted]);
+
+  const handleLogout = useCallback(() => {
     setLogin(false);
     setProfile({});
     setMounted(false);
     setJustCreated(false);
-  };
+  }, [isLogin]);
 
   /*
     Effect will not run after the initial render.
@@ -49,19 +53,20 @@ const App = () => {
     Otherwise, it will run when one of it's values has changed.
   */
   useEffect(() => {
-    if (!localStorage.getItem('x-access-token')) {
-      return handleLoginFailure();
+    // Execute here on first render (DidMount)
+    if (!isMounted) {
+      if (!localStorage.getItem('x-access-token')) {
+        return handleLoginFailure();
+      }
+      return handleLoginSuccess();
     }
-    return handleLoginSuccess();
-  }, [isMounted]);
-  // useEffect(() => {
-  //   // if (!mounted.current) {
-  //   //   mounted.current = true; // 1. DidMount
-  //   // }
-  //   if (localStorage.getItem('x-access-token')) {
-  //     return handleLoginSuccess(); // 3. DidUpdate
-  //   }
-  // }, [mounted.current]); // 2. Check dependency change
+    // Execute After detecting profile update (DidUpdate)
+    if (profile.id) {
+      callbackPath.current = `/@${profile.id}`;
+    } else {
+      callbackPath.current = null;
+    }
+  }, [isMounted, profile]); // Check if dependency updated
 
   return (
     <>
@@ -71,16 +76,16 @@ const App = () => {
           path="/"
           render={() => {
             if (hasJustCreated) {
-              return <Redirect to={`/@${profile.id}/rating_consent`} />;
+              return <Redirect to="/rating_consent" />;
             }
             if (isMounted) {
               return isLogin ? (
-                <Redirect to={`/@${profile.id}`} />
+                <Redirect to={callbackPath.current} />
               ) : (
                 <Redirect to="/signin" />
               );
             }
-            return <h3>Loading...</h3>;
+            return <Loading />;
           }}
         />
         <Route path="/signin">
@@ -92,11 +97,11 @@ const App = () => {
             handleLoginSuccess={handleLoginSuccess}
           />
         </Route>
-        <Route path={`/@${profile.id}/rating_consent`}>
-          <RatingConsent profile={profile} />
+        <Route path="/rating_consent">
+          <RatingConsentScreen nickname={profile.id} />
         </Route>
-        <Route path={`/@${profile.id}/rating`}>
-          <Rating profile={profile} />
+        <Route path="/rating">
+          <Rating callbackPath={`/@${profile.id}`} nickname={profile.id} />
         </Route>
         <Route path={`/@${profile.id}`}>
           <Main profile={profile} handleLogout={handleLogout} />
