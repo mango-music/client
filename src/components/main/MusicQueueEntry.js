@@ -33,10 +33,13 @@ const MusicQueueEntry = (props) => {
         props.setIsPlayButtonOn(false);
       }}
     >
-      <div>
-        <img src={props.thumbnail} />
+      <div
+        className="queue-image"
+        style={{ backgroundImage: 'url(' + props.thumbnail + ')' }}
+      ></div>
+      <div className="queue-title">
+        <p>{props.title}</p>
       </div>
-      <p>{props.title}</p>
     </li>
   );
 };
