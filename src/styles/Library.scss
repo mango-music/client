@@ -7,15 +7,17 @@
     position: relative;
     display: grid;
     grid-auto-flow: row;
-    grid-template-columns: 20vw 1fr 30px;
+    grid-template-columns: auto 1fr 30px;
+    margin-bottom: 10px;
     gap: 10px;
     .list-img {
-      height: 20vw;
-      background-color: black;
-      display: grid;
-      align-content: center;
+      // height: 20vw;
+      // background-color: black;
+      // display: grid;
+      // align-content: center;
       img {
-        width: 100%;
+        display: block;
+        width: 5rem;
       }
     }
     .list-title {
