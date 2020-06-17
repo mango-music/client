@@ -18,7 +18,9 @@ const UserPlaylist = (props) => {
       </div>
       <div className="list-title">
         <p
-          onClick={() => {
+          onClick={async () => {
+            await setCurrentItem(null);
+            await setCurrentItems(null);
             setCurrentItems(items);
             setCurrentItem(items[0]);
           }}
