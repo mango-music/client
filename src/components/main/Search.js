@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import SearchEntry from './SearchEntry';
 import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
+import MainHeader from './MainHeader';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Search.scss';
@@ -28,6 +29,7 @@ const Search = (props) => {
   }, []);
   return (
     <div id="search">
+      <MainHeader name={'Explore'} />
       <div id="search-form">
         <input
           id="search-text"

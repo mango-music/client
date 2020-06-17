@@ -3,12 +3,13 @@
   gap: 10px;
   grid-auto-flow: row;
   grid-template-columns: 1fr;
+  padding: 0;
   li {
     position: relative;
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: auto 1fr 30px;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     gap: 10px;
     .list-img {
       // height: 20vw;
@@ -55,17 +56,18 @@
 
 #library {
   // position: relative;
-  display: grid;
+  // display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr;
   justify-content: center;
   gap: 10px;
   font-size: 1.5rem;
-  padding: 10px;
+  // padding: 10px;
   overflow: visible;
 
   ul {
     @include list-ul;
+    padding: 10px;
   }
 
   #user-playlist-items {
@@ -123,12 +125,12 @@
     justify-content: center;
     align-content: center;
     gap: 10px;
-    height: 20vw;
+    // height: 20vw;
     div {
       display: grid;
       align-content: center;
       input {
-        background-color: rgb(236, 236, 236);
+        background-color: whitesmoke;
         padding: 10px;
         border: 0;
       }

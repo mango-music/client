@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import UserPlaylist from './UserPlaylist';
 import UserPlaylistItems from './UserPlaylistItems';
+import MainHeader from './MainHeader';
 import postMusiclist from '../../lib/apis/postMusiclist';
 import {
   faPlusCircle,
@@ -62,7 +63,7 @@ const Library = (props) => {
   }
   return (
     <div id="library">
-      <header>Library</header>
+      <MainHeader name={'Library'} />
       <ul>
         {customLists &&
           customLists.map((list) => {

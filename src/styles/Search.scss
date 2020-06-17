@@ -1,6 +1,6 @@
 #search {
-  background-color: rgb(228, 228, 228);
-  height: 100vh;
+  // background-color: rgb(228, 228, 228);
+  // height: 100vh;
   margin-bottom: 48px;
   #search-form {
     display: grid;
@@ -9,6 +9,7 @@
     height: 65px;
     padding: 10px;
     input {
+      background-color: whitesmoke;
       font-size: 1.4rem;
       padding: 10px;
       border: 0px;
@@ -17,7 +18,7 @@
       cursor: pointer;
       font-size: 1.4rem;
       background-color: whitesmoke;
-      border: white solid 0px;
+      border: 0px;
       svg {
         transition-property: color;
         transition-duration: 200ms;
