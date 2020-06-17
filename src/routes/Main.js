@@ -38,7 +38,7 @@ const Main = memo(({ profile, handleLogout }) => {
   }
   return (
     <>
-      <Nav profile={profile} />
+      <Nav nickname={profile.id} />
       <button
         type="button"
         onClick={() => {

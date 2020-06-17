@@ -8,13 +8,23 @@ const theme = createMuiTheme({
     // type: 'dark',
     primary: {
       main: '#ff146a',
-      light: '##f73378',
+      light: '#f73378',
     },
   },
   typography: {
     fontFamily: 'inherit',
   },
   overrides: {
+    MuiBottomNavigationAction: {
+      root: {
+        color: 'rgba(0, 0, 0, 0.38)',
+      },
+      label: {
+        '&$selected': {
+          fontSize: '0.75rem', // 12px (16px)
+        },
+      },
+    },
     MuiRating: {
       root: {
         color: '#ffd740',
@@ -28,8 +38,6 @@ const theme = createMuiTheme({
     },
     MuiButton: {
       containedPrimary: {
-        // backgroundColor: '#ff146a', // default
-        // color: 'white', // default
         boxShadow: '0 5px 20px rgba(245, 0, 87, 0.3)',
         '&:hover': {
           boxShadow: 'none',
