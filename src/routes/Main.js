@@ -18,10 +18,11 @@ const Main = memo(({ profile, handleLogout }) => {
   const [currentItems, setCurrentItems] = useState(null);
   const [currentItem, setCurrentItem] = useState(null);
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
-  const [query, setQuery] = useState('');
-  const [queryResult, setQueryResult] = useState([]); // [{music}]
-  const [isPlayerMinimized, setPlayerMinimized] = useState(true);
+  // const [query, setQuery] = useState('');
+  // const [queryResult, setQueryResult] = useState([]); // [{music}]
+  const [playerSize, setPlayerSize] = useState('big');
 
+  // 사용자의 뮤직 리스트를 불러온다.
   useEffect(() => {
     getUserMusicLists(fkToken)
       .then((res) => {
@@ -37,17 +38,19 @@ const Main = memo(({ profile, handleLogout }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  function getCurrentItem(item) {
-    setCurrentItem(item);
-  }
-  function getCurrentItems(items) {
-    setCurrentItems(items);
-  }
-  // temporyary: 재생 List를 클릭했을 때
+  // TODO: 처음에 페이크 데이터를 플레이어에 로딩한다. localStorage로 바꿔야한다.
   useEffect(() => {
-    getCurrentItem(fkdtCurrentItem);
-    getCurrentItems(fkdtCurrentItems);
+    setCurrentItem(fkdtCurrentItem);
+    setCurrentItems(fkdtCurrentItems);
   }, []);
+
+  const changePlayerSize = () => {
+    if (playerSize === 'big') {
+      setPlayerSize('small');
+    } else if (playerSize === 'small') {
+      setPlayerSize('big');
+    }
+  };
 
   console.log(profile);
   if (!localStorage.getItem('x-access-token')) {
@@ -58,18 +61,9 @@ const Main = memo(({ profile, handleLogout }) => {
     <>
       <Nav profile={profile} />
       <button
-        type="button"
-        onClick={() => {
-          const playerSelector = document.getElementById('player-selector');
-          const musicNavBar = document.getElementById('music-nav-bar');
-          if (playerSelector && musicNavBar) {
-            playerSelector.classList.toggle('big-player');
-            playerSelector.classList.toggle('small-player');
-            musicNavBar.classList.toggle('music-nav-bar');
-            musicNavBar.classList.toggle('music-nav-bar-none');
-          }
-        }}
         id="change-window-button"
+        type="button"
+        onClick={changePlayerSize}
       >
         창 전환 버튼
       </button>
@@ -79,6 +73,7 @@ const Main = memo(({ profile, handleLogout }) => {
         setCurrentItems={setCurrentItems}
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}
+        playerSize={playerSize}
       />
       <Switch>
         <Route exact path={`/@${profile.id}`}>

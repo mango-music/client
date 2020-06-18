@@ -25,6 +25,7 @@ const MusicNavBar = (props) => {
     setShuffledIndex,
     isRepeatOn,
     setIsRepeatOn,
+    playerSize,
   } = props;
   // console.log('MusicNavBar rendering');
 
@@ -142,7 +143,7 @@ const MusicNavBar = (props) => {
 
   if (props.player) {
     return (
-      <div id="music-nav-bar" className="music-nav-bar">
+      <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
         <div>{repeatButton}</div>
         <div>
           <button
