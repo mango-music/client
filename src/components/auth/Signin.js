@@ -2,16 +2,12 @@ import React, { useState } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import {
   TextField,
-  FormControl,
-  InputLabel,
-  Input,
   InputAdornment,
   IconButton,
   Button,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import Visibility from '@material-ui/icons/Visibility';
-import VisibilityOff from '@material-ui/icons/VisibilityOff';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -36,10 +32,6 @@ const useStyles = makeStyles((theme) => ({
 
 const Signin = ({ handleLoginSuccess, history }) => {
   const classes = useStyles();
-  // const [values, setValues] = useState({
-  //   password: '',
-  //   showPassword: false,
-  // });
   const [showPassword, setShowPassword] = useState(false);
 
   const handleSubmit = () => {
@@ -47,11 +39,7 @@ const Signin = ({ handleLoginSuccess, history }) => {
     history.push('/');
   };
 
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handleMouseDownPassword = (e) => {
-    e.preventDefault();
-    setShowPassword(!showPassword);
-  };
+  const handleShowPasswordToggle = () => setShowPassword(!showPassword);
 
   return (
     <>
@@ -62,7 +50,7 @@ const Signin = ({ handleLoginSuccess, history }) => {
             id="email"
             label="Email"
             type="text"
-            margin="normal"
+            // margin="normal"
             error={false}
             helperText={'유효성 검사 피드백'}
           />
@@ -72,7 +60,7 @@ const Signin = ({ handleLoginSuccess, history }) => {
             id="password"
             label="Password"
             type={showPassword ? 'text' : 'password'}
-            margin="normal"
+            // margin="normal"
             error={false}
             helperText={'유효성 검사 피드백'}
             InputProps={{
@@ -80,8 +68,8 @@ const Signin = ({ handleLoginSuccess, history }) => {
                 <InputAdornment position="end">
                   <IconButton
                     aria-label="toggle password visibility"
-                    onClick={handleClickShowPassword}
-                    onMouseDown={handleMouseDownPassword}
+                    onClick={handleShowPasswordToggle}
+                    onMouseDown={handleShowPasswordToggle}
                   >
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
