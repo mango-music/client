@@ -3,7 +3,8 @@ import React from 'react';
 const NoMatch = () => {
   return (
     <>
-      <h3>404 Not Found</h3>
+      <h2>404</h2>
+      <h3>Page not found</h3>
       <p>없는 페이지입니다.</p>
     </>
   );

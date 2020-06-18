@@ -10,6 +10,10 @@ const theme = createMuiTheme({
       main: '#ff146a',
       light: '#f73378',
     },
+    secondary: {
+      main: '#ffc400',
+      light: '#ffcf33',
+    },
   },
   typography: {
     fontFamily: 'inherit',
