@@ -5,6 +5,7 @@
   grid-template-columns: 1fr;
   padding: 0;
   li {
+    overflow: visible;
     position: relative;
     display: grid;
     grid-auto-flow: row;
@@ -140,7 +141,7 @@
 
 .drop-down-menu {
   font-size: 1.2rem;
-  z-index: 2;
+  z-index: 4;
   display: block;
   background-color: rgba(255, 255, 255, 0.918);
   padding: 10px;
@@ -148,6 +149,7 @@
   position: absolute;
   right: 30px;
   top: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
   div {
     cursor: pointer;
   }
