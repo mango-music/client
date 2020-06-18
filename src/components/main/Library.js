@@ -19,6 +19,8 @@ const Library = (props) => {
     setCurrentItem,
     customLists,
     setCustomLists,
+    currentItems,
+    setItemIndex,
   } = props;
   const [selectedList, setSelectedList] = useState(null);
   const [addButtonOn, setAddButtonOn] = useState(false);
@@ -86,6 +88,10 @@ const Library = (props) => {
           setSelectedList={setSelectedList}
           customLists={customLists}
           setCustomLists={setCustomLists}
+          currentItems={currentItems}
+          setCurrentItem={setCurrentItem}
+          setCurrentItems={setCurrentItems}
+          setItemIndex={setItemIndex}
         />
       )}
     </div>

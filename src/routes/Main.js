@@ -100,6 +100,8 @@ const Main = memo(({ profile, handleLogout }) => {
             setCustomLists={setCustomLists}
             setCurrentItems={setCurrentItems}
             setCurrentItem={setCurrentItem}
+            currentItems={currentItems}
+            setItemIndex={setItemIndex}
           />
         </Route>
         <Route path={`/@${profile.id}/profile`}>
