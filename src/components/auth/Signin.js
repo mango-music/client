@@ -48,21 +48,21 @@ const Signin = ({ handleLoginSuccess, history }) => {
         <div>
           <TextField
             id="email"
-            label="Email"
+            label="이메일"
             type="text"
-            // margin="normal"
             error={false}
-            helperText={'유효성 검사 피드백'}
+            helperText={'이메일을 입력하세요.'}
           />
         </div>
         <div>
           <TextField
             id="password"
-            label="Password"
+            label="비밀번호"
             type={showPassword ? 'text' : 'password'}
-            // margin="normal"
             error={false}
-            helperText={'유효성 검사 피드백'}
+            helperText={
+              '비밀번호는 최소 8자 이상이어야 합니다. 다시 시도해 주세요.'
+            }
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -101,7 +101,7 @@ const Signin = ({ handleLoginSuccess, history }) => {
         </Button>
       </div>
       <div>
-        <span>Mango가 처음이신가요?</span>
+        <span style={{ fontSize: '0.875rem' }}>Mango가 처음이신가요?</span>
         <Button
           variant="text"
           color="primary"

@@ -8,7 +8,7 @@ import PasswordReset from '../components/auth/PasswordReset';
 import RatingConsentScreen from '../components/rating/RatingConsentScreen';
 import Rating from '../components/rating/Rating';
 import Main from './Main'; // Nested routes
-import Loading from '../components/auth/Loading';
+import Landing from '../components/auth/Landing';
 import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
 
@@ -85,7 +85,7 @@ const App = () => {
                 <Redirect to="/signin" />
               );
             }
-            return <Loading />;
+            return <Landing />;
           }}
         />
         <Route path="/signin">

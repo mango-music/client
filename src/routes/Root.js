@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 import App from './App';
 
+// [Todo] 나중에 theme 따로 모듈로 만들기
 const theme = createMuiTheme({
   palette: {
     // type: 'dark',
@@ -56,6 +57,8 @@ const theme = createMuiTheme({
         border: 0,
         height: 48,
         padding: '0 30px',
+        fontSize: '1rem',
+        fontWeight: 700,
       },
     },
   },
