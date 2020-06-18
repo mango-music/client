@@ -20,6 +20,10 @@ const RatingSuccessDialog = ({ isOpen, nickname, handleRatingSuccess }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
+        <div style={{ textAlign: 'center', fontSize: '4rem' }}>
+          <span>👌</span>
+        </div>
+
         <DialogTitle id="alert-dialog-title">이 정도면 충분해요!</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">

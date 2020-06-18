@@ -1,12 +1,22 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
+import Button from '@material-ui/core/Button';
 
 const Unauthorized = () => {
   return (
     <>
-      <h3>401 Unauthorized</h3>
+      <h2>401</h2>
+      <h3>Authorization required</h3>
       <p>접근 권한이 없습니다. 로그인 해주세요.</p>
-      <Link to="/signin">로그인</Link>
+      <Button
+        variant="text"
+        color="primary"
+        size="large"
+        component={RouterLink}
+        to="/signin"
+      >
+        로그인
+      </Button>
     </>
   );
 };
