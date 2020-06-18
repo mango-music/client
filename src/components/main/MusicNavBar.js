@@ -27,7 +27,6 @@ const MusicNavBar = (props) => {
     setIsRepeatOn,
     playerSize,
   } = props;
-  // console.log('MusicNavBar rendering');
 
   function shuffleArrayES6(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -45,6 +44,7 @@ const MusicNavBar = (props) => {
     return 0; // 에러 방지
   }
 
+  // 반복 버튼
   let repeatButton;
   if (isRepeatOn) {
     repeatButton = (
@@ -72,6 +72,37 @@ const MusicNavBar = (props) => {
     );
   }
 
+  // 이전 곡 재생 버튼
+  let previousButton = (
+    <button
+      type="button"
+      onClick={() => {
+        if (isShuffleOn) {
+          // 셔플을 누르고 나서 첫 번째 재생시
+          if (shuffledIndex === undefined) {
+            const index = shuffledQueue[0];
+            props.player.loadVideoById(currentItems[index].videoid);
+            setShuffledIndex(0); // index를 0으로 초기화
+            setIsPlayButtonOn(false);
+            // 두 번째 재생시
+          } else if (shuffledQueue[shuffledIndex - 1] !== undefined) {
+            const index = shuffledQueue[shuffledIndex - 1];
+            props.player.loadVideoById(currentItems[index].videoid);
+            setShuffledIndex(shuffledIndex - 1);
+            setIsPlayButtonOn(false);
+          }
+        } else if (currentItems[itemIndex - 1]) {
+          props.player.loadVideoById(currentItems[itemIndex - 1].videoid);
+          setItemIndex(itemIndex - 1);
+          setIsPlayButtonOn(false);
+        }
+      }}
+    >
+      <FontAwesomeIcon icon={faStepBackward} color="#afafaf" />
+    </button>
+  );
+
+  // 재생 버튼, 일시 정지 버튼
   let centerButton;
   if (isPlayButtonOn) {
     centerButton = (
@@ -99,6 +130,37 @@ const MusicNavBar = (props) => {
     );
   }
 
+  // 다음곡 재생 버튼
+  let nextButton = (
+    <button
+      type="button"
+      onClick={() => {
+        if (isShuffleOn) {
+          // 셔플을 누르고 나서 첫 번째 재생시
+          if (shuffledIndex === undefined) {
+            const index = shuffledQueue[0];
+            props.player.loadVideoById(currentItems[index].videoid);
+            setShuffledIndex(0); // index를 0으로 초기화
+            setIsPlayButtonOn(false);
+            // 두 번째 재생시
+          } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
+            const index = shuffledQueue[shuffledIndex + 1];
+            props.player.loadVideoById(currentItems[index].videoid);
+            setShuffledIndex(shuffledIndex + 1);
+            setIsPlayButtonOn(false);
+          }
+        } else if (currentItems[itemIndex + 1]) {
+          props.player.loadVideoById(currentItems[itemIndex + 1].videoid);
+          setItemIndex(itemIndex + 1);
+          setIsPlayButtonOn(false);
+        }
+      }}
+    >
+      <FontAwesomeIcon icon={faStepForward} color="#afafaf" />
+    </button>
+  );
+
+  // 셔플 버튼
   let shuffleButton;
   if (isShuffleOn) {
     shuffleButton = (
@@ -141,67 +203,15 @@ const MusicNavBar = (props) => {
     );
   }
 
+  // player가 활성화 됐을 때만 렌더링
   if (props.player) {
     return (
       <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
+        {playerSize === 'small' ? <div></div> : null}
         <div>{repeatButton}</div>
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              if (isShuffleOn) {
-                // 셔플을 누르고 나서 첫 번째 재생시
-                if (shuffledIndex === undefined) {
-                  const index = shuffledQueue[0];
-                  props.player.loadVideoById(currentItems[index].videoid);
-                  setShuffledIndex(0); // index를 0으로 초기화
-                  setIsPlayButtonOn(false);
-                  // 두 번째 재생시
-                } else if (shuffledQueue[shuffledIndex - 1] !== undefined) {
-                  const index = shuffledQueue[shuffledIndex - 1];
-                  props.player.loadVideoById(currentItems[index].videoid);
-                  setShuffledIndex(shuffledIndex - 1);
-                  setIsPlayButtonOn(false);
-                }
-              } else if (currentItems[itemIndex - 1]) {
-                props.player.loadVideoById(currentItems[itemIndex - 1].videoid);
-                setItemIndex(itemIndex - 1);
-                setIsPlayButtonOn(false);
-              }
-            }}
-          >
-            <FontAwesomeIcon icon={faStepBackward} color="#afafaf" />
-          </button>
-        </div>
+        <div>{previousButton}</div>
         <div>{centerButton}</div>
-        <div>
-          <button
-            type="button"
-            onClick={() => {
-              if (isShuffleOn) {
-                // 셔플을 누르고 나서 첫 번째 재생시
-                if (shuffledIndex === undefined) {
-                  const index = shuffledQueue[0];
-                  props.player.loadVideoById(currentItems[index].videoid);
-                  setShuffledIndex(0); // index를 0으로 초기화
-                  setIsPlayButtonOn(false);
-                  // 두 번째 재생시
-                } else if (shuffledQueue[shuffledIndex + 1] !== undefined) {
-                  const index = shuffledQueue[shuffledIndex + 1];
-                  props.player.loadVideoById(currentItems[index].videoid);
-                  setShuffledIndex(shuffledIndex + 1);
-                  setIsPlayButtonOn(false);
-                }
-              } else if (currentItems[itemIndex + 1]) {
-                props.player.loadVideoById(currentItems[itemIndex + 1].videoid);
-                setItemIndex(itemIndex + 1);
-                setIsPlayButtonOn(false);
-              }
-            }}
-          >
-            <FontAwesomeIcon icon={faStepForward} color="#afafaf" />
-          </button>
-        </div>
+        <div>{nextButton}</div>
         <div>{shuffleButton}</div>
       </div>
     );
