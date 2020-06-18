@@ -6,17 +6,19 @@
   justify-content: center; // 늘어나도 가운데 머무르게 함
 
   .player-small {
-    @media (min-width: 600px) {
+    @media (min-width: 500px) {
       .player-window {
-        width: 300px !important;
+        width: 250px !important;
+        right: 0 !important;
+        left: unset !important;
       }
     }
     .player-window {
       z-index: 2;
       position: fixed;
       bottom: 48px;
-      right: 0;
-      width: 50vw; // 화면 크기
+      left: 0;
+      width: 100px; // 화면 크기
 
       .iframe-video {
         position: absolute; // iframe
@@ -44,10 +46,7 @@
   }
 
   .player-big {
-    & {
-      // 부모
-      height: 100vh;
-    }
+    height: 100vh;
     z-index: 3;
     background-color: whitesmoke;
     // height: 100%;

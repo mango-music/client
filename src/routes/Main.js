@@ -65,7 +65,7 @@ const Main = memo(({ profile, handleLogout }) => {
         type="button"
         onClick={changePlayerSize}
       >
-        창 전환 버튼
+        창전환
       </button>
       <MusicPlayer
         currentItems={currentItems}

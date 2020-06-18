@@ -204,15 +204,27 @@ const MusicNavBar = (props) => {
   }
 
   // player가 활성화 됐을 때만 렌더링
-  if (props.player) {
+  // big일 때
+  if (props.player && playerSize === 'big') {
     return (
       <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
-        {playerSize === 'small' ? <div></div> : null}
         <div>{repeatButton}</div>
         <div>{previousButton}</div>
         <div>{centerButton}</div>
         <div>{nextButton}</div>
         <div>{shuffleButton}</div>
+      </div>
+    );
+    // small일 때
+  } else if (props.player && playerSize === 'small') {
+    return (
+      <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
+        <div></div>
+        <div className="music-nav-bar-title">
+          <marquee>{currentItems[itemIndex].title}</marquee>
+        </div>
+        <div>{centerButton}</div>
+        <div>{nextButton}</div>
       </div>
     );
   }
