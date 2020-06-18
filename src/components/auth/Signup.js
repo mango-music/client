@@ -1,6 +1,13 @@
 import React from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import {
+  TextField,
+  InputAdornment,
+  IconButton,
+  Button,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
 const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
   const handleSubmit = () => {
@@ -10,7 +17,7 @@ const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
   };
   return (
     <>
-      <h2>계정을 생성하세요</h2>
+      <h2>계정생성</h2>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div>
           <label htmlFor="email">
@@ -30,7 +37,7 @@ const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
             <input id="password" datatype="string" />
           </label>
         </div>
-        <button type="submit">계정생성</button>
+        <button type="submit">가입하기</button>
       </form>
       <div>
         <span>이미 Mango 계정이 있나요?</span>

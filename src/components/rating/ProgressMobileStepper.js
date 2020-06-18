@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import MobileStepper from './MobileStepper';
+import StyledMobileStepper from './StyledMobileStepper';
 
 const ProgressMobileStepper = ({
   evaluationCount,
@@ -8,7 +8,7 @@ const ProgressMobileStepper = ({
   handleSkipButtonClick,
 }) => {
   return (
-    <MobileStepper
+    <StyledMobileStepper
       variant="progress"
       steps={6}
       position="bottom"
