@@ -5,18 +5,13 @@
   display: flex; // 지우면 재생바가 사라짐
   justify-content: center; // 늘어나도 가운데 머무르게 함
 
-  .small-player {
-    @media (min-width: 600px) {
-      .player-window {
-        width: 300px !important;
-      }
-    }
+  .player-small {
     .player-window {
-      z-index: 2;
+      z-index: 3;
       position: fixed;
       bottom: 48px;
-      right: 0;
-      width: 50vw; // 화면 크기
+      left: 0;
+      width: 100px; // 화면 크기
 
       .iframe-video {
         position: absolute; // iframe
@@ -43,11 +38,8 @@
     }
   }
 
-  .big-player {
-    & {
-      // 부모
-      height: 100vh;
-    }
+  .player-big {
+    height: 100vh;
     z-index: 3;
     background-color: whitesmoke;
     // height: 100%;

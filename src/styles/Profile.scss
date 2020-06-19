@@ -1,0 +1,25 @@
+#profile {
+  header {
+    text-align: left;
+    display: grid;
+    p {
+      font-size: 2rem;
+    }
+  }
+  font-size: 1.2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: center;
+  gap: 10px;
+  margin: 10px;
+  #profile-image {
+    display: grid;
+    justify-content: center;
+    font-size: 8rem;
+  }
+  button {
+    font-size: 1.2rem;
+    border: 0;
+    padding: 10px;
+  }
+}

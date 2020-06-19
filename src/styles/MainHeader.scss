@@ -1,0 +1,8 @@
+.main-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 10px;
+  p {
+    font-size: 2rem;
+  }
+}

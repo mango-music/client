@@ -1,6 +1,6 @@
 #search {
-  background-color: rgb(228, 228, 228);
-  height: 100vh;
+  // background-color: rgb(228, 228, 228);
+  // height: 100vh;
   margin-bottom: 48px;
   #search-form {
     display: grid;
@@ -9,6 +9,7 @@
     height: 65px;
     padding: 10px;
     input {
+      background-color: whitesmoke;
       font-size: 1.4rem;
       padding: 10px;
       border: 0px;
@@ -17,7 +18,7 @@
       cursor: pointer;
       font-size: 1.4rem;
       background-color: whitesmoke;
-      border: white solid 0px;
+      border: 0px;
       svg {
         transition-property: color;
         transition-duration: 200ms;
@@ -81,24 +82,17 @@
           color: rgb(236, 236, 236);
         }
       }
-      // transition-property: transform;
-      // transition-duration: 300ms;
       .search-drop-down-menu {
-        z-index: 2;
+        z-index: 4;
         display: block;
-        background-color: rgba(255, 255, 255, 0.918);
+        background-color: whitesmoke;
         padding: 10px;
         border-radius: 10px;
         position: absolute;
         right: 30px;
         top: 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
       }
-      // .clicked {
-      //   display: block;
-      // }
     }
-    // li:hover {
-    //   transform: translateX(2%);
-    // }
   }
 }
