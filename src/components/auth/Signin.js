@@ -30,13 +30,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signin = ({ handleLoginSuccess, history }) => {
+const Signin = ({ handlePostSigninData, history }) => {
   const classes = useStyles();
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  });
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = () => {
-    handleLoginSuccess();
-    history.push('/');
+  const handleValueChange = (prop) => (e) => {
+    setValues({ ...values, [prop]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handlePostSigninData(values);
+    setTimeout(() => {
+      history.push('/');
+    }, 1000);
   };
 
   const handleShowPasswordToggle = () => setShowPassword(!showPassword);
@@ -50,6 +61,8 @@ const Signin = ({ handleLoginSuccess, history }) => {
             id="email"
             label="이메일"
             type="text"
+            value={values.email}
+            onChange={handleValueChange('email')}
             error={false}
             helperText={'이메일을 입력하세요.'}
           />
@@ -59,6 +72,8 @@ const Signin = ({ handleLoginSuccess, history }) => {
             id="password"
             label="비밀번호"
             type={showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleValueChange('password')}
             error={false}
             helperText={
               '비밀번호는 최소 8자 이상이어야 합니다. 다시 시도해 주세요.'

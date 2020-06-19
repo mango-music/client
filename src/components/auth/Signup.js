@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import {
   TextField,
@@ -30,17 +30,34 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
+const Signup = ({ handlePostSignupData, history }) => {
   const classes = useStyles();
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+    nickname: '',
+  });
+  const [confirmPassword, setConfirmPassword] = useState(''); // 나중에하기
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = () => {
-    handleSignupSuccess();
-    handleLoginSuccess();
-    history.push('/');
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 까먹지 말자!
+    handlePostSignupData(values);
+    setTimeout(() => {
+      history.push('/');
+    }, 1000);
   };
 
+  const handleValueChange = (prop) => (e) => {
+    setValues({ ...values, [prop]: e.target.value });
+  };
   const handleShowPasswordToggle = () => setShowPassword(!showPassword);
+
+  // useEffect(() => {
+  //   if (isApproved) {
+  //     return history.push('/');
+  //   }
+  // }, [isApproved]);
 
   return (
     <>
@@ -51,6 +68,8 @@ const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
             id="email"
             label="이메일"
             type="text"
+            value={values.email}
+            onChange={handleValueChange('email')}
             error={false}
             helperText={'유효성 검사 피드백'}
           />
@@ -60,6 +79,8 @@ const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
             id="password"
             label="비밀번호"
             type={showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleValueChange('password')}
             error={false}
             helperText={'유효성 검사 피드백'}
             InputProps={{
@@ -82,15 +103,18 @@ const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
             id="password"
             label="비밀번호 확인"
             type={showPassword ? 'text' : 'password'}
+            value={confirmPassword}
+            // onChange={}
             error={false}
             helperText={'유효성 검사 피드백'}
           />
         </div>
         <div>
           <TextField
-            id="username"
+            id="nickname"
             label="사용자명"
             type="text"
+            onChange={handleValueChange('nickname')}
             error={false}
             helperText={'유효성 검사 피드백'}
           />

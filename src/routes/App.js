@@ -1,7 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
 import '../styles/App.scss';
+import axios from 'axios';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
@@ -12,38 +13,67 @@ import Landing from '../components/auth/Landing';
 import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
 
-const App = () => {
+const App = ({ history }) => {
+  // const [isMounted, setMounted] = useState(false);
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
-  const [isMounted, setMounted] = useState(false);
   const [hasJustCreated, setJustCreated] = useState(false);
 
   const callbackPath = useRef(null); // uncontrolled state (not for rendering)
 
   // Memorize these handler functions until [dependency state] updated
-  const handleSignupSuccess = useCallback(() => {
-    setJustCreated(true);
-  }, [hasJustCreated]);
+  const handlePostSignupData = (signupData) => {
+    axios('http://13.209.19.101:3000/signup', signupData)
+      .then((body) => {
+        console.log(body);
+        const { userinfo, access_token, refresh_token } = body.data;
+        localStorage.setItem('x-access-token', access_token);
+        localStorage.setItem('x-refresh-token', refresh_token);
+        localStorage.setItem('x-user-info', JSON.stringify(userinfo));
+        setJustCreated(true);
+        handleLogin();
+      })
+      .catch((err) => {
+        console.log(err); // when 409 error
+      });
+  };
 
-  const handleLoginSuccess = useCallback(() => {
+  const handlePostSigninData = (signinData) => {
+    axios
+      .post('http://13.209.19.101:3000/signin', signinData)
+      .then((body) => {
+        console.log(body);
+        const { userinfo, access_token, refresh_token } = body.data;
+        localStorage.setItem('x-access-token', access_token);
+        localStorage.setItem('x-refresh-token', refresh_token);
+        localStorage.setItem('x-user-info', JSON.stringify(userinfo));
+        handleLogin();
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handleLogin = () => {
+    const userinfo = JSON.parse(localStorage.getItem('x-user-info'));
+    callbackPath.current = `/@${userinfo.nickname}`;
+    console.log(callbackPath);
     setLogin(true);
     setProfile({
-      id: 'socratone',
-      email: 'gim2origin@gmail.com',
-      lv: 1,
+      id: userinfo.nickname,
+      email: userinfo.email,
     });
-    setMounted(true);
-  }, [isLogin]);
-
-  const handleLoginFailure = useCallback(() => {
-    setMounted(true);
-  }, [isMounted]);
+    // history.push('/'); // 동기적으로 작동하는지 계속 디버깅 해보기
+    // setTimeout(() => {
+    //   history.push('/');
+    // }, 500);
+  };
 
   const handleLogout = useCallback(() => {
     setLogin(false);
     setProfile({});
-    setMounted(false);
     setJustCreated(false);
+    callbackPath.current = null;
   }, [isLogin]);
 
   /*
@@ -53,20 +83,46 @@ const App = () => {
     Otherwise, it will run when one of it's values has changed.
   */
   useEffect(() => {
-    // Execute here on first render (DidMount)
-    if (!isMounted) {
-      if (!localStorage.getItem('x-access-token')) {
-        return handleLoginFailure();
-      }
-      return handleLoginSuccess();
+    console.log('Component did mount');
+    if (localStorage.getItem('x-access-token')) {
+      return handleLogin();
     }
-    // Execute After detecting profile update (DidUpdate)
-    if (profile.id) {
-      callbackPath.current = `/@${profile.id}`;
-    } else {
-      callbackPath.current = null;
-    }
-  }, [isMounted, profile]); // Check if dependency updated
+    // if (!isLogin) {
+    //   if (localStorage.getItem('x-access-token')) {
+    //     return handleLogin();
+    //   }
+    // }
+  }, []);
+
+  // useEffect(() => {
+  //   console.log('Component did update');
+  //   if (hasJustCreated) {
+  //     history.push('/');
+  //   }
+  // }, [hasJustCreated]);
+
+  // useEffect(() => {
+  //   console.log('Component did update');
+  // }, [hasJustCreated, isLogin]);
+
+  // useEffect(() => {
+  //   // Execute here on first render (DidMount)
+  //   // if (isMounted && localStorage.getItem('x-access-token')) {
+  //   //   return handleAutoLoginSuccess();
+  //   // }
+  //   // if (isMounted) {
+  //   //   if (!localStorage.getItem('x-access-token')) {
+  //   //     return handleAutoLoginFailure();
+  //   //   }
+  //   //   return handleAutoLoginSuccess();
+  //   // }
+  //   // Execute After detecting profile update (DidUpdate)
+  //   if (profile.id) {
+  //     callbackPath.current = `/@${profile.id}`;
+  //   } else {
+  //     callbackPath.current = null;
+  //   }
+  // }, [profile]); // Check if dependency updated
 
   return (
     <>
@@ -75,35 +131,32 @@ const App = () => {
           exact
           path="/"
           render={() => {
+            console.log('isLogin', isLogin, 'hasJustCreated', hasJustCreated);
             if (hasJustCreated) {
               return <Redirect to="/rating_consent" />;
             }
-            if (isMounted) {
-              return isLogin ? (
-                <Redirect to={callbackPath.current} />
-              ) : (
-                <Redirect to="/signin" />
-              );
+            if (isLogin) {
+              return <Redirect to={callbackPath.current} />;
             }
-            return <Landing />;
+            return <Redirect to="/signin" />;
           }}
         />
         <Route path="/signin">
-          <Signin handleLoginSuccess={handleLoginSuccess} />
+          <Signin handlePostSigninData={handlePostSigninData} />
         </Route>
         <Route path="/signup">
           <Signup
-            handleSignupSuccess={handleSignupSuccess}
-            handleLoginSuccess={handleLoginSuccess}
+            isApproved={hasJustCreated}
+            handlePostSignupData={handlePostSignupData}
           />
         </Route>
         <Route path="/rating_consent">
           <RatingConsentScreen nickname={profile.id} />
         </Route>
         <Route path="/rating">
-          <Rating callbackPath={`/@${profile.id}`} nickname={profile.id} />
+          <Rating callbackPath={callbackPath.current} nickname={profile.id} />
         </Route>
-        <Route path={`/@${profile.id}`}>
+        <Route path={callbackPath.current}>
           <Main profile={profile} handleLogout={handleLogout} />
         </Route>
         <Route path="/account/password_reset">
@@ -123,4 +176,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
