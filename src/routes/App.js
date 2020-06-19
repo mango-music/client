@@ -23,7 +23,8 @@ const App = ({ history }) => {
 
   // Memorize these handler functions until [dependency state] updated
   const handlePostSignupData = (signupData) => {
-    axios('http://13.209.19.101:3000/signup', signupData)
+    axios
+      .post('http://13.209.19.101:3000/signup', signupData)
       .then((body) => {
         console.log(body);
         const { userinfo, access_token, refresh_token } = body.data;

@@ -33,9 +33,9 @@ const useStyles = makeStyles((theme) => ({
 const Signup = ({ handlePostSignupData, history }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
+    nickname: '',
     email: '',
     password: '',
-    nickname: '',
   });
   const [confirmPassword, setConfirmPassword] = useState(''); // 나중에하기
   const [showPassword, setShowPassword] = useState(false);
