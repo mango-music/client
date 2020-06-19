@@ -221,7 +221,7 @@ const MusicNavBar = (props) => {
       <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
         <div></div>
         <div className="music-nav-bar-title">
-          <marquee>{currentItems[itemIndex].title}</marquee>
+          {currentItems[itemIndex].title}
         </div>
         <div>{centerButton}</div>
         <div>{nextButton}</div>
