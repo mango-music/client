@@ -1,43 +1,141 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
-import Button from '@material-ui/core/Button';
+import {
+  TextField,
+  InputAdornment,
+  IconButton,
+  Button,
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { Visibility, VisibilityOff } from '@material-ui/icons';
 
-const Signup = ({ handleSignupSuccess, handleLoginSuccess, history }) => {
-  const handleSubmit = () => {
-    handleSignupSuccess();
-    handleLoginSuccess();
-    history.push('/');
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+    '& label.Mui-focused': {
+      color: theme.palette.info.main,
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: theme.palette.info.main,
+    },
+    '& .MuiInputBase-input': {
+      fontSize: '1.125rem',
+    },
+    '& .MuiInputAdornment-root': {
+      height: 'auto',
+    },
+  },
+}));
+
+const Signup = ({ handlePostSignupData, history }) => {
+  const classes = useStyles();
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+    nickname: '',
+  });
+  const [confirmPassword, setConfirmPassword] = useState(''); // 나중에하기
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // 까먹지 말자!
+    handlePostSignupData(values);
+    setTimeout(() => {
+      history.push('/');
+    }, 1000);
   };
+
+  const handleValueChange = (prop) => (e) => {
+    setValues({ ...values, [prop]: e.target.value });
+  };
+  const handleShowPasswordToggle = () => setShowPassword(!showPassword);
+
+  // useEffect(() => {
+  //   if (isApproved) {
+  //     return history.push('/');
+  //   }
+  // }, [isApproved]);
+
   return (
     <>
-      <h2>계정을 생성하세요</h2>
-      <form onSubmit={handleSubmit} autoComplete="off">
+      <h2>계정 만들기</h2>
+      <form className={classes.root} onSubmit={handleSubmit} autoComplete="off">
         <div>
-          <label htmlFor="email">
-            <span>이메일</span>
-            <input id="email" datatype="string" />
-          </label>
+          <TextField
+            id="email"
+            label="이메일"
+            type="text"
+            value={values.email}
+            onChange={handleValueChange('email')}
+            error={false}
+            helperText={'유효성 검사 피드백'}
+          />
         </div>
         <div>
-          <label htmlFor="nickname">
-            <span>아이디</span>
-            <input id="nickname" datatype="string" />
-          </label>
+          <TextField
+            id="password"
+            label="비밀번호"
+            type={showPassword ? 'text' : 'password'}
+            value={values.password}
+            onChange={handleValueChange('password')}
+            error={false}
+            helperText={'유효성 검사 피드백'}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton
+                    aria-label="toggle password visibility"
+                    onClick={handleShowPasswordToggle}
+                    onMouseDown={handleShowPasswordToggle}
+                  >
+                    {showPassword ? <Visibility /> : <VisibilityOff />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
         </div>
         <div>
-          <label htmlFor="password">
-            <span>비밀번호</span>
-            <input id="password" datatype="string" />
-          </label>
+          <TextField
+            id="password"
+            label="비밀번호 확인"
+            type={showPassword ? 'text' : 'password'}
+            value={confirmPassword}
+            // onChange={}
+            error={false}
+            helperText={'유효성 검사 피드백'}
+          />
         </div>
-        <button type="submit">계정생성</button>
+        <div>
+          <TextField
+            id="nickname"
+            label="사용자명"
+            type="text"
+            onChange={handleValueChange('nickname')}
+            error={false}
+            helperText={'유효성 검사 피드백'}
+          />
+        </div>
+        <div>
+          <Button
+            type="submit"
+            variant="contained"
+            size="large"
+            color="primary"
+          >
+            계정 만들기
+          </Button>
+        </div>
       </form>
       <div>
-        <span>이미 Mango 계정이 있나요?</span>
+        <span style={{ fontSize: '0.875rem' }}>이미 Mango 계정이 있나요?</span>
         <Button
           variant="text"
-          color="secondary"
-          size="medium"
+          color="primary"
+          // size="medium" // Default size
           component={RouterLink}
           to="/signin"
         >
