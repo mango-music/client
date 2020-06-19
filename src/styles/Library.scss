@@ -4,6 +4,7 @@
   grid-auto-flow: row;
   grid-template-columns: 1fr;
   padding: 0;
+  overflow: visible;
   li {
     overflow: visible;
     position: relative;
@@ -13,10 +14,6 @@
     // margin-bottom: 10px;
     gap: 10px;
     .list-img {
-      // height: 20vw;
-      // background-color: black;
-      // display: grid;
-      // align-content: center;
       img {
         display: block;
         width: 5rem;
@@ -77,7 +74,7 @@
     left: 0;
     padding: 10px;
     z-index: 1;
-    background-color: lightgray;
+    background-color: rgb(240, 240, 240);
     width: 100vw;
     height: 100vh;
     header {
