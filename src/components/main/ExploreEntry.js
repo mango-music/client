@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import SearchDropDownMenu from './SearchDropDownMenu';
+import ExploreDropDownMenu from './ExploreDropDownMenu';
 
-const SearchEntry = (props) => {
+const ExploreEntry = (props) => {
   const {
     currentItems,
     setCurrentItem,
@@ -63,7 +63,7 @@ const SearchEntry = (props) => {
         <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
       </button>
       {isEllipsisOn && (
-        <SearchDropDownMenu
+        <ExploreDropDownMenu
           videoid={props.videoid}
           customLists={customLists}
           item={item}
@@ -75,4 +75,4 @@ const SearchEntry = (props) => {
   );
 };
 
-export default SearchEntry;
+export default ExploreEntry;
