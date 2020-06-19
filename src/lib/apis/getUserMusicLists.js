@@ -1,4 +1,10 @@
-const getUserMusicLists = async (token) => {
+const getUserMusicLists = async () => {
+  const token = localStorage.getItem('x-access-token');
+  if(!token) {
+    console.log('x-access-token이 없습니다.')
+    return;
+  }
+
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
 

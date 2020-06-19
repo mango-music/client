@@ -1,4 +1,10 @@
-function postAddMusic(item, customLists, setCustomLists, token) {
+function postAddMusic(item, customLists, setCustomLists) {
+  const token = localStorage.getItem('x-access-token');
+  if(!token) {
+    console.log('x-access-token이 없습니다.')
+    return;
+  }
+
   var myHeaders = new Headers();
   myHeaders.append("Authorization", `Bearer ${token}`);
   myHeaders.append("Content-Type", "application/json");

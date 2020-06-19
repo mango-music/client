@@ -11,8 +11,6 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Library.scss';
 
-import fkToken from '../../lib/fixtures/fkToken';
-
 const Library = (props) => {
   const {
     setCurrentItems,
@@ -35,7 +33,7 @@ const Library = (props) => {
           onClick={() => {
             const text = document.getElementById('playlist-input').value;
             console.log('text : ', text);
-            postMusiclist(text, customLists, setCustomLists, fkToken);
+            postMusiclist(text, customLists, setCustomLists);
             setAddButtonOn(false);
           }}
         >
