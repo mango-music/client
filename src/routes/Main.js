@@ -10,7 +10,6 @@ import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import fkdtCurrentItem from '../lib/fixtures/fkdtCurrentItem';
 import fkdtCurrentItems from '../lib/fixtures/fkdtCurrentItems';
-import fkToken from '../lib/fixtures/fkToken';
 import '../styles/ChangeWindowButton.scss';
 
 const Main = memo(({ profile, handleLogout }) => {
@@ -25,7 +24,9 @@ const Main = memo(({ profile, handleLogout }) => {
 
   // 사용자의 뮤직 리스트를 불러온다.
   useEffect(() => {
-    getUserMusicLists(fkToken)
+    const token = localStorage.getItem('x-access-token');
+    if (!token) return console.log('토큰이 없습니다.');
+    getUserMusicLists(token)
       .then((res) => {
         console.log('res.status : ', res.status);
         if (res.status === 200) return res.json();
