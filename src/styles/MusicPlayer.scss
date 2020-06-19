@@ -6,13 +6,6 @@
   justify-content: center; // 늘어나도 가운데 머무르게 함
 
   .player-small {
-    @media (min-width: 500px) {
-      .player-window {
-        width: 250px !important;
-        right: 0 !important;
-        left: unset !important;
-      }
-    }
     .player-window {
       z-index: 3;
       position: fixed;

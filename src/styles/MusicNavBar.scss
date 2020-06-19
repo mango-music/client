@@ -47,7 +47,7 @@
     height: 56.25px; // 세로 길이
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 100px 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 100px 1fr 1fr 1fr 56.25px 56.25px;
     background-color: whitesmoke;
     div {
       display: grid;
@@ -78,20 +78,6 @@
       font-size: 1.2rem;
       overflow: hidden;
       white-space: nowrap;
-    }
-  }
-  @media (min-width: 500px) {
-    .music-nav-bar-small {
-      display: none;
-      div {
-        display: none;
-        button {
-          display: none;
-        }
-      }
-      .music-nav-bar-title {
-        display: none;
-      }
     }
   }
 }
