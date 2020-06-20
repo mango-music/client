@@ -5,7 +5,6 @@ import Recommends from './Recommends';
 const Home = () => {
   return (
     <>
-      <h2>Recommended for you</h2>
       <ul>
         <Recommends />
       </ul>

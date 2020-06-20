@@ -1,7 +1,7 @@
 import React from 'react';
 import postAddMusic from '../../lib/apis/postAddMusic';
 
-const SearchDropDownMenu = (props) => {
+const ExploreDropDownMenu = (props) => {
   const { customLists, item, setCustomLists, setIsEllipsisOn } = props;
 
   const addMusicToUserPlayList = (list) => {
@@ -34,4 +34,4 @@ const SearchDropDownMenu = (props) => {
   );
 };
 
-export default SearchDropDownMenu;
+export default ExploreDropDownMenu;

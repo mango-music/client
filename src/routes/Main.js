@@ -3,14 +3,14 @@ import { Switch, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
 import Home from '../components/main/Home';
-import Search from '../components/main/Search';
+import Explore from '../components/main/Explore';
 import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
 import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import fkdtCurrentItem from '../lib/fixtures/fkdtCurrentItem';
 import fkdtCurrentItems from '../lib/fixtures/fkdtCurrentItems';
-import fkToken from '../lib/fixtures/fkToken';
+import '../styles/ChangeWindowButton.scss';
 
 const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
@@ -20,11 +20,13 @@ const Main = memo(({ profile, handleLogout }) => {
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   // const [query, setQuery] = useState('');
   // const [queryResult, setQueryResult] = useState([]); // [{music}]
-  const [playerSize, setPlayerSize] = useState('big');
+  const [playerSize, setPlayerSize] = useState('small');
 
   // 사용자의 뮤직 리스트를 불러온다.
   useEffect(() => {
-    getUserMusicLists(fkToken)
+    const token = localStorage.getItem('x-access-token');
+    if (!token) return console.log('토큰이 없습니다.');
+    getUserMusicLists(token)
       .then((res) => {
         console.log('res.status : ', res.status);
         if (res.status === 200) return res.json();
@@ -75,7 +77,7 @@ const Main = memo(({ profile, handleLogout }) => {
           <Home />
         </Route>
         <Route path={`/@${profile.id}/explore`}>
-          <Search
+          <Explore
             setCurrentItem={setCurrentItem}
             setCurrentItems={setCurrentItems}
             currentItems={currentItems}

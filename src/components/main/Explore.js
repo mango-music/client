@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import SearchEntry from './SearchEntry';
+import SearchEntry from './ExploreEntry';
 import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
 import MainHeader from './MainHeader';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../styles/Search.scss';
+import '../../styles/Explore.scss';
 
-const Search = (props) => {
+const Explore = (props) => {
   const {
     currentItems,
     setCurrentItem,
@@ -31,13 +31,6 @@ const Search = (props) => {
     <div id="search">
       <MainHeader name={'Explore'} />
       <div id="search-form">
-        <input
-          id="search-text"
-          type="text"
-          onChange={(e) => {
-            setQuerry(e.target.value);
-          }}
-        />
         <button
           id="search-button"
           onClick={() => {
@@ -52,6 +45,13 @@ const Search = (props) => {
         >
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />
         </button>
+        <input
+          id="search-text"
+          type="text"
+          onChange={(e) => {
+            setQuerry(e.target.value);
+          }}
+        />
       </div>
       <ul className="search-list">
         {searchItems &&
@@ -77,4 +77,4 @@ const Search = (props) => {
   );
 };
 
-export default Search;
+export default Explore;
