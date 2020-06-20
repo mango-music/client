@@ -1,6 +1,8 @@
 @import './common/normal-button.scss';
 
 #recommends {
+  overflow: auto;
+  height: 100vh;
   #play-all-button {
     display: grid;
     margin: 10px;
