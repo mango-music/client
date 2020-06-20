@@ -74,7 +74,13 @@ const Main = memo(({ profile, handleLogout }) => {
       />
       <Switch>
         <Route exact path={`/@${profile.id}`}>
-          <Home />
+          <Home
+            currentItems={currentItems}
+            currentItem={currentItem}
+            setCurrentItems={setCurrentItems}
+            setCurrentItem={setCurrentItem}
+            setItemIndex={setItemIndex}
+          />
         </Route>
         <Route path={`/@${profile.id}/explore`}>
           <Explore
