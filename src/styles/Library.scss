@@ -1,3 +1,5 @@
+@import './common/normal-button.scss';
+
 @mixin list-ul {
   display: grid;
   gap: 10px;
@@ -28,26 +30,7 @@
     }
     .list-button {
       display: grid;
-      button {
-        cursor: pointer;
-        font-size: 1.4rem;
-        background-color: rgba(0, 0, 0, 0);
-        border: white solid 0px;
-        svg {
-          transition-property: color;
-          transition-duration: 200ms;
-        }
-      }
-      button:hover {
-        svg {
-          color: black;
-        }
-      }
-      button:active {
-        svg {
-          color: rgb(236, 236, 236);
-        }
-      }
+      @include normal-button;
     }
   }
 }
@@ -84,26 +67,7 @@
       grid-template-columns: 30px 1fr 30px;
       gap: 10px;
       margin-bottom: 10px;
-      button {
-        cursor: pointer;
-        font-size: 1.4rem;
-        background-color: rgba(0, 0, 0, 0);
-        border: white solid 0px;
-        svg {
-          transition-property: color;
-          transition-duration: 200ms;
-        }
-      }
-      button:hover {
-        svg {
-          color: black;
-        }
-      }
-      button:active {
-        svg {
-          color: rgb(236, 236, 236);
-        }
-      }
+      @include normal-button;
       div {
         display: grid;
       }
@@ -152,7 +116,3 @@
     cursor: pointer;
   }
 }
-
-// .clicked {
-//   display: block;
-// }

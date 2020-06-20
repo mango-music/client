@@ -1,7 +1,6 @@
+@import './common/normal-button.scss';
+
 #search {
-  // background-color: rgb(228, 228, 228);
-  // height: 100vh;
-  // margin-bottom: 300px;
   #search-form {
     display: grid;
     grid-auto-flow: column;
@@ -11,28 +10,12 @@
     input {
       background-color: whitesmoke;
       font-size: 1.4rem;
-      padding: 10px;
+      padding: 10px 10px 10px 0px;
       border: 0px;
     }
+    @include normal-button;
     button {
-      cursor: pointer;
-      font-size: 1.4rem;
       background-color: whitesmoke;
-      border: 0px;
-      svg {
-        transition-property: color;
-        transition-duration: 200ms;
-      }
-    }
-    button:hover {
-      svg {
-        color: black;
-      }
-    }
-    button:active {
-      svg {
-        color: rgb(236, 236, 236);
-      }
     }
   }
 
@@ -45,7 +28,6 @@
     li {
       position: relative;
       overflow: visible;
-      // border: solid 4px black;
       display: grid;
       gap: 10px;
       grid-auto-flow: column;
@@ -56,33 +38,13 @@
       .search-image {
         img {
           display: block;
-          // border-radius: 5px;
           width: 5rem;
         }
       }
       p {
         margin: 0;
       }
-      button {
-        cursor: pointer;
-        font-size: 1.4rem;
-        background-color: rgba(0, 0, 0, 0);
-        border: white solid 0px;
-        svg {
-          transition-property: color;
-          transition-duration: 200ms;
-        }
-      }
-      button:hover {
-        svg {
-          color: black;
-        }
-      }
-      button:active {
-        svg {
-          color: rgb(236, 236, 236);
-        }
-      }
+      @include normal-button;
       .search-drop-down-menu {
         z-index: 4;
         display: block;
