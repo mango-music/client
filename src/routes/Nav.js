@@ -12,6 +12,7 @@ const useNavStyles = makeStyles((theme) => ({
     position: 'fixed',
     left: 0,
     bottom: 0,
+    'z-index': '3',
   },
 })); // Create new classes to Mui Component
 

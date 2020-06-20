@@ -36,19 +36,18 @@
 }
 
 #library {
-  // position: relative;
-  // display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr;
   justify-content: center;
   gap: 10px;
   font-size: 1.5rem;
-  // padding: 10px;
-  overflow: visible;
+  overflow: auto;
+  height: 100vh;
 
   ul {
     @include list-ul;
     padding: 10px;
+    margin-bottom: 120px;
   }
 
   #user-playlist-items {
