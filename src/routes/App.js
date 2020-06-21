@@ -1,8 +1,9 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import '../styles/App.scss';
-import axios from 'axios';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
@@ -13,8 +14,7 @@ import Landing from '../components/auth/Landing';
 import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
 
-const App = ({ history }) => {
-  // const [isMounted, setMounted] = useState(false);
+const App = () => {
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
   const [hasJustCreated, setJustCreated] = useState(false);
@@ -22,39 +22,7 @@ const App = ({ history }) => {
   const callbackPath = useRef(null); // uncontrolled state (not for rendering)
 
   // Memorize these handler functions until [dependency state] updated
-  const handlePostSignupData = (signupData) => {
-    axios('http://13.209.19.101:3000/signup', signupData)
-      .then((body) => {
-        console.log(body);
-        const { userinfo, access_token, refresh_token } = body.data;
-        localStorage.setItem('x-access-token', access_token);
-        localStorage.setItem('x-refresh-token', refresh_token);
-        localStorage.setItem('x-user-info', JSON.stringify(userinfo));
-        setJustCreated(true);
-        handleLogin();
-      })
-      .catch((err) => {
-        console.log(err); // when 409 error
-      });
-  };
-
-  const handlePostSigninData = (signinData) => {
-    axios
-      .post('http://13.209.19.101:3000/signin', signinData)
-      .then((body) => {
-        console.log(body);
-        const { userinfo, access_token, refresh_token } = body.data;
-        localStorage.setItem('x-access-token', access_token);
-        localStorage.setItem('x-refresh-token', refresh_token);
-        localStorage.setItem('x-user-info', JSON.stringify(userinfo));
-        handleLogin();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const handleLogin = () => {
+  const handleLogin = useCallback(() => {
     const userinfo = JSON.parse(localStorage.getItem('x-user-info'));
     callbackPath.current = `/@${userinfo.nickname}`;
     console.log(callbackPath);
@@ -63,10 +31,15 @@ const App = ({ history }) => {
       id: userinfo.nickname,
       email: userinfo.email,
     });
-    // history.push('/'); // 동기적으로 작동하는지 계속 디버깅 해보기
-    // setTimeout(() => {
-    //   history.push('/');
-    // }, 500);
+  }, [isLogin]);
+
+  const handleSignupSuccess = useCallback(() => {
+    setJustCreated(true);
+    handleLogin();
+  }, [hasJustCreated]);
+
+  const handleSigninSuccess = () => {
+    handleLogin();
   };
 
   const handleLogout = useCallback(() => {
@@ -87,42 +60,7 @@ const App = ({ history }) => {
     if (localStorage.getItem('x-access-token')) {
       return handleLogin();
     }
-    // if (!isLogin) {
-    //   if (localStorage.getItem('x-access-token')) {
-    //     return handleLogin();
-    //   }
-    // }
   }, []);
-
-  // useEffect(() => {
-  //   console.log('Component did update');
-  //   if (hasJustCreated) {
-  //     history.push('/');
-  //   }
-  // }, [hasJustCreated]);
-
-  // useEffect(() => {
-  //   console.log('Component did update');
-  // }, [hasJustCreated, isLogin]);
-
-  // useEffect(() => {
-  //   // Execute here on first render (DidMount)
-  //   // if (isMounted && localStorage.getItem('x-access-token')) {
-  //   //   return handleAutoLoginSuccess();
-  //   // }
-  //   // if (isMounted) {
-  //   //   if (!localStorage.getItem('x-access-token')) {
-  //   //     return handleAutoLoginFailure();
-  //   //   }
-  //   //   return handleAutoLoginSuccess();
-  //   // }
-  //   // Execute After detecting profile update (DidUpdate)
-  //   if (profile.id) {
-  //     callbackPath.current = `/@${profile.id}`;
-  //   } else {
-  //     callbackPath.current = null;
-  //   }
-  // }, [profile]); // Check if dependency updated
 
   return (
     <>
@@ -142,13 +80,10 @@ const App = ({ history }) => {
           }}
         />
         <Route path="/signin">
-          <Signin handlePostSigninData={handlePostSigninData} />
+          <Signin handleSigninSuccess={handleSigninSuccess} />
         </Route>
         <Route path="/signup">
-          <Signup
-            isApproved={hasJustCreated}
-            handlePostSignupData={handlePostSignupData}
-          />
+          <Signup handleSignupSuccess={handleSignupSuccess} />
         </Route>
         <Route path="/rating_consent">
           <RatingConsentScreen nickname={profile.id} />
@@ -176,4 +111,4 @@ const App = ({ history }) => {
   );
 };
 
-export default withRouter(App);
+export default App;

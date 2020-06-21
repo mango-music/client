@@ -49,11 +49,6 @@ const Main = memo(({ profile, handleLogout }) => {
     getCurrentItems(fkdtCurrentItems);
   }, []);
 
-  console.log(profile);
-  if (!localStorage.getItem('x-access-token')) {
-    localStorage.setItem('x-access-token', 'secret string');
-    localStorage.setItem('x-refresh-token', 'secret string');
-  }
   return (
     <>
       <Nav nickname={profile.id} />
