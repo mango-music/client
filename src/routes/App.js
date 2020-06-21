@@ -3,7 +3,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
-import '../styles/App.scss';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
@@ -13,6 +12,7 @@ import Main from './Main'; // Nested routes
 import Landing from '../components/auth/Landing';
 import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
+import '../styles/account.scss';
 
 const App = () => {
   const [isLogin, setLogin] = useState(false);

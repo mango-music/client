@@ -11,23 +11,21 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import postAccountData from '../../lib/apis/postAccountData';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-    '& label.Mui-focused': {
-      color: theme.palette.info.main,
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: theme.palette.info.main,
-    },
-    '& .MuiInputBase-input': {
+  root: {},
+  textField: {
+    '& .MuiInputLabel-formControl': {
       fontSize: '1.125rem',
+      top: '0.5rem',
     },
-    '& .MuiInputAdornment-root': {
-      height: 'auto',
+    '& .MuiInputLabel-shrink': {
+      top: 0,
     },
+    '& .MuiInputBase-root': {
+      padding: '6px 0',
+    },
+    // '& .Mui-error:after': {
+    //   borderBottomColor: `${theme.palette.error.main} !important`,
+    // },
   },
 }));
 
@@ -65,10 +63,10 @@ const Signin = ({ handleSigninSuccess, history }) => {
   };
 
   return (
-    <>
+    <main className="account signin">
       <h2>로그인</h2>
-      <form className={classes.root} onSubmit={handleSubmit} autoComplete="off">
-        <div>
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <div className="textField-container">
           <TextField
             id="email"
             label="이메일"
@@ -77,9 +75,11 @@ const Signin = ({ handleSigninSuccess, history }) => {
             onChange={handleValueUpdate('email')}
             // error={false}
             // helperText="이메일을 입력하세요."
+            fullWidth
+            className={classes.textField}
           />
         </div>
-        <div>
+        <div className="textField-container">
           <TextField
             id="password"
             label="비밀번호"
@@ -88,6 +88,8 @@ const Signin = ({ handleSigninSuccess, history }) => {
             onChange={handleValueUpdate('password')}
             // error={false}
             // helperText="비밀번호는 최소 8자 이상이어야 합니다. 다시 시도해 주세요."
+            fullWidth
+            className={classes.textField}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -103,7 +105,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
             }}
           />
         </div>
-        <div>
+        <div className="button-container">
           <Button
             type="submit"
             variant="contained"
@@ -114,7 +116,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
           </Button>
         </div>
       </form>
-      <div>
+      {/* <div>
         <Button
           variant="text"
           color="default"
@@ -124,8 +126,8 @@ const Signin = ({ handleSigninSuccess, history }) => {
         >
           비밀번호를 잊으셨나요?
         </Button>
-      </div>
-      <div>
+      </div> */}
+      <div className="options-container">
         <span style={{ fontSize: '0.875rem' }}>Mango가 처음이신가요?</span>
         <Button
           variant="text"
@@ -137,7 +139,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
           가입하기
         </Button>
       </div>
-    </>
+    </main>
   );
 };
 

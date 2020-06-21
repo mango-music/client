@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import {
   TextField,
@@ -8,43 +8,38 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
-import '../../styles/Signup.scss';
 import validate from '../../lib/utils/validate';
 import postAccountData from '../../lib/apis/postAccountData';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .Mui-focused': {
-      color: '#303030 !important',
-      borderBottomColor: '#303030 !important',
-    },
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '100%',
-    },
-    '& .MuiInput-underline:after': {
-      borderBottomColor: '#303030',
-    },
-    '& .Mui-error:after': {
-      borderBottomColor: theme.palette.error.main,
-    },
-    '& .MuiInputBase-input': {
+  root: {},
+  textField: {
+    '& .MuiInputLabel-formControl': {
       fontSize: '1.125rem',
+      top: '0.5rem',
     },
-    '& .MuiInputAdornment-root': {
-      height: 'auto',
+    '& .MuiInputLabel-shrink': {
+      top: 0,
     },
+    '& .MuiInputBase-root': {
+      padding: '6px 0',
+    },
+    // '& .Mui-error:after': {
+    //   borderBottomColor: `${theme.palette.error.main} !important`,
+    // },
   },
 }));
 
+const initialValues = {
+  email: '',
+  password: '',
+  confirm_password: '',
+  nickname: '',
+};
+
 const Signup = ({ handleSignupSuccess, history }) => {
   const classes = useStyles();
-  const [values, setValues] = useState({
-    email: '',
-    password: '',
-    confirm_password: '',
-    nickname: '',
-  });
+  const [values, setValues] = useState(initialValues);
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState(null);
 
@@ -63,7 +58,8 @@ const Signup = ({ handleSignupSuccess, history }) => {
     // 409
     if (!status) {
       // eslint-disable-next-line no-alert
-      window.alert('이미 존재하는 이메일 입니다.'); // (임시)
+      window.alert('이미 가입된 이메일 입니다.'); // (임시)
+      setValues(initialValues);
       return;
     }
     // 201
@@ -87,29 +83,34 @@ const Signup = ({ handleSignupSuccess, history }) => {
   };
 
   return (
-    <div id="Signup">
+    <main className="account signup">
       <h2>계정 만들기</h2>
-      <form className={classes.root} onSubmit={handleSubmit} autoComplete="off">
-        <div className="TextField-container">
+      <form onSubmit={handleSubmit} autoComplete="off">
+        <div className="textField-container">
           <TextField
             id="email"
             label="이메일"
-            variant="standard"
             type="text"
             value={values.email}
             onChange={handleValueUpdate('email')}
             onBlur={handleValidation} // same as onfocusout event
             error={errors && errors.email}
             helperText={errors && errors.email ? errors.email : null} // 'message' or null
-            // autoFocus // when mounted
+            autoFocus // when mounted
             required
+            fullWidth
+            className={classes.textField}
+            // InputProps={
+            //   inputProps: ({
+            //     classes: classes
+            //   }
+            // }
           />
         </div>
-        <div className="TextField-container">
+        <div className="textField-container">
           <TextField
             id="password"
             label="비밀번호"
-            variant="outlined"
             type={showPassword ? 'text' : 'password'}
             value={values.password}
             onChange={handleValueUpdate('password')}
@@ -117,6 +118,8 @@ const Signup = ({ handleSignupSuccess, history }) => {
             error={errors && errors.password}
             helperText={errors && errors.password ? errors.password : null}
             required
+            fullWidth
+            className={classes.textField}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -132,11 +135,10 @@ const Signup = ({ handleSignupSuccess, history }) => {
             }}
           />
         </div>
-        <div className="TextField-container">
+        <div className="textField-container">
           <TextField
             id="password"
             label="비밀번호 확인"
-            variant="outlined"
             type={showPassword ? 'text' : 'password'}
             value={values.confirm_password}
             onChange={handleValueUpdate('confirm_password')}
@@ -146,22 +148,25 @@ const Signup = ({ handleSignupSuccess, history }) => {
               errors && errors.confirm_password ? errors.confirm_password : null
             }
             required
+            fullWidth
+            className={classes.textField}
           />
         </div>
-        <div className="TextField-container">
+        <div className="textField-container">
           <TextField
             id="nickname"
             label="사용자명"
-            variant="outlined"
             type="text"
             onChange={handleValueUpdate('nickname')}
             onBlur={handleValidation}
             error={errors && errors.nickname}
             helperText={errors && errors.nickname ? errors.nickname : null}
             required
+            fullWidth
+            className={classes.textField}
           />
         </div>
-        <div>
+        <div className="button-container">
           <Button
             type="submit"
             variant="contained"
@@ -172,7 +177,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
           </Button>
         </div>
       </form>
-      <div>
+      <div className="options-container">
         <span style={{ fontSize: '0.875rem' }}>이미 Mango 계정이 있나요?</span>
         <Button
           variant="text"
@@ -183,7 +188,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
           로그인
         </Button>
       </div>
-    </div>
+    </main>
   );
 };
 

@@ -1,0 +1,27 @@
+.account {
+  padding: 0.5rem;
+  width: calc(100% - 2rem);
+  margin: 0 auto;
+  h2 {
+    margin: 2rem 0;
+    font-size: 2rem;
+  }
+  form {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-start;
+  }
+  .textField-container {
+    min-height: 6rem;
+    height: auto;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .button-container {
+    margin: 2rem 0;
+  }
+  .options-container {
+    text-align: center;
+  }
+}
