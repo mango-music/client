@@ -2,12 +2,24 @@ import React from 'react';
 import Recommends from './Recommends';
 // import Playlists from './Playlists';
 
-const Home = () => {
+const Home = (props) => {
+  const {
+    currentItems,
+    currentItem,
+    setCurrentItems,
+    setCurrentItem,
+    setItemIndex,
+  } = props;
   return (
     <>
-      <h2>Recommended for you</h2>
       <ul>
-        <Recommends />
+        <Recommends
+          currentItems={currentItems}
+          currentItem={currentItem}
+          setCurrentItems={setCurrentItems}
+          setCurrentItem={setCurrentItem}
+          setItemIndex={setItemIndex}
+        />
       </ul>
     </>
   );
