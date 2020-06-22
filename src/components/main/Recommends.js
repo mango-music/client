@@ -35,7 +35,7 @@ const Recommends = (props) => {
         <button
           onClick={async () => {
             await setCurrentItem(null);
-            await setCurrentItems(null);
+            await setCurrentItems([]);
             setCurrentItems(fkdtRecommends);
             setCurrentItem(fkdtRecommends[0]);
           }}
