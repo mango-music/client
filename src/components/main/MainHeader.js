@@ -1,16 +1,21 @@
 import React from 'react';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link as RouterLink } from 'react-router-dom';
 import '../../styles/MainHeader.scss';
+import IconButton from '@material-ui/core/IconButton';
+import { AccountCircle } from '@material-ui/icons';
 
-const MainHeader = (props) => {
-  const { name } = props;
+const MainHeader = ({ title, nickname }) => {
   return (
     <header className="main-header">
-      <p>{name}</p>
-      <p>
-        <FontAwesomeIcon icon={faUser} color="#afafaf" />
-      </p>
+      <p>{title}</p>
+      <IconButton
+        aria-label="profile page"
+        size="medium"
+        component={RouterLink}
+        to={`/@${nickname}/profile`}
+      >
+        <AccountCircle style={{ fontSize: '30px' }} />
+      </IconButton>
     </header>
   );
 };

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import MainHeader from './MainHeader';
-import RecommendsEntry from './RecommendsEntry';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import MainHeader from './MainHeader';
+import RecommendsEntry from './RecommendsEntry';
 import getRecommendedMusic from '../../lib/apis/getRecommendedMusic';
 import '../../styles/Recommends.scss';
 import fkdtRecommends from '../../lib/fixtures/fkdtRecommends';
@@ -16,6 +16,7 @@ const Recommends = (props) => {
     setItemIndex,
     customLists,
     setCustomLists,
+    nickname,
   } = props;
   const [recommends, setRecommends] = useState([]);
 
@@ -30,7 +31,7 @@ const Recommends = (props) => {
 
   return (
     <div id="recommends">
-      <MainHeader name={'Recommends'} />
+      <MainHeader title="Recommends" nickname={nickname} />
       <div id="play-all-button">
         <button
           onClick={async () => {
