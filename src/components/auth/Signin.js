@@ -97,6 +97,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
                     aria-label="toggle password visibility"
                     onClick={handleShowPasswordToggle}
                     onMouseDown={handleShowPasswordToggle}
+                    disableRipple
                   >
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
@@ -109,8 +110,9 @@ const Signin = ({ handleSigninSuccess, history }) => {
           <Button
             type="submit"
             variant="contained"
-            size="large"
             color="primary"
+            size="large"
+            fullWidth
           >
             로그인
           </Button>
@@ -131,7 +133,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
         <span style={{ fontSize: '0.875rem' }}>Mango가 처음이신가요?</span>
         <Button
           variant="text"
-          color="primary"
+          color="secondary"
           size="medium"
           component={RouterLink}
           to="/signup"
