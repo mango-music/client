@@ -27,11 +27,11 @@ const Main = memo(({ profile, handleLogout }) => {
     const token = localStorage.getItem('x-access-token');
     if (!token) return console.log('토큰이 없습니다.');
     getUserMusicLists(token)
-      .then((res) => {
-        console.log('res.status : ', res.status);
-        if (res.status === 200) return res.json();
-        return null;
-      })
+      // .then((res) => {
+      // console.log('res.status : ', res.status);
+      // if (res.status === 200) return res.json();
+      // return null;
+      // })
       .then((json) => {
         console.log(json);
         if (json) setCustomLists(json);
