@@ -84,7 +84,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
 
   return (
     <main className="account signup">
-      <h2>계정 만들기</h2>
+      <h2>가입하기</h2>
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="textField-container">
           <TextField
@@ -100,11 +100,6 @@ const Signup = ({ handleSignupSuccess, history }) => {
             required
             fullWidth
             className={classes.textField}
-            // InputProps={
-            //   inputProps: ({
-            //     classes: classes
-            //   }
-            // }
           />
         </div>
         <div className="textField-container">
@@ -127,6 +122,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
                     aria-label="toggle password visibility"
                     onClick={handleShowPasswordToggle}
                     onMouseDown={handleShowPasswordToggle}
+                    disableRipple
                   >
                     {showPassword ? <Visibility /> : <VisibilityOff />}
                   </IconButton>
@@ -170,10 +166,11 @@ const Signup = ({ handleSignupSuccess, history }) => {
           <Button
             type="submit"
             variant="contained"
-            size="large"
             color="primary"
+            size="large"
+            fullWidth
           >
-            계정 만들기
+            가입
           </Button>
         </div>
       </form>
@@ -181,7 +178,8 @@ const Signup = ({ handleSignupSuccess, history }) => {
         <span style={{ fontSize: '0.875rem' }}>이미 Mango 계정이 있나요?</span>
         <Button
           variant="text"
-          color="primary"
+          color="secondary"
+          size="medium"
           component={RouterLink}
           to="/signin"
         >

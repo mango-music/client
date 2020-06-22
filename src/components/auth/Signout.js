@@ -22,6 +22,7 @@ const Signout = ({ handleLogout, history }) => {
       variant="outlined"
       color="primary"
       size="large"
+      fullWidth
       onClick={handleClick}
     >
       로그아웃

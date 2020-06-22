@@ -63,23 +63,21 @@ const theme = createMuiTheme({
       },
     },
     MuiButton: {
-      containedPrimary: {
+      contained: {
         boxShadow: '0 5px 20px rgba(245, 0, 87, 0.3)',
         '&:hover': {
           boxShadow: 'none',
         },
       },
-      textSecondary: {
-        // color: '#ffd600',
-      },
+      // outlinedPrimary: {
+      //   border: '1px solid #ff146a',
+      // },
       sizeLarge: {
-        width: '100%',
-        borderRadius: 3,
-        border: 0,
+        // width: '100%',
         height: 48,
         padding: '0 30px',
         fontSize: '1rem',
-        fontWeight: 700,
+        // fontWeight: 700,
       },
     },
   },
