@@ -58,6 +58,7 @@
     background-color: rgb(240, 240, 240);
     width: 100vw;
     height: 100vh;
+    overflow: auto;
     header {
       position: relative;
       display: grid;
@@ -77,6 +78,7 @@
     ul {
       @include list-ul;
       font-size: 1.2rem;
+      margin-bottom: 120px;
     }
   }
   #add-playlist {
