@@ -1,6 +1,8 @@
 @import './common/normal-button.scss';
 
 #search {
+  overflow: auto;
+  height: 100vh;
   #search-form {
     display: grid;
     grid-auto-flow: column;
@@ -24,10 +26,8 @@
     padding-right: 10px;
     font-size: 1.15rem;
     margin-bottom: 120px;
-    overflow: visible;
     li {
       position: relative;
-      overflow: visible;
       display: grid;
       gap: 10px;
       grid-auto-flow: column;

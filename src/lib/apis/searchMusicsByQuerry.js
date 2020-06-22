@@ -14,7 +14,7 @@ const searchMusicsByQuerry = async (text, listCount) => {
     `&videoCategoryId=${videoCategoryId}`)
 }
 
-module.exports = searchMusicsByQuerry;
+export default searchMusicsByQuerry;
 
 /*
 사용 예제

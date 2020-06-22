@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import UserPlaylist from './UserPlaylist';
 import UserPlaylistItems from './UserPlaylistItems';
 import MainHeader from './MainHeader';
@@ -69,7 +69,7 @@ const Library = (props) => {
           customLists.map((list) => {
             return (
               <UserPlaylist
-                key={list._id}
+                key={list.listname}
                 listName={list.listname}
                 items={list.musics}
                 setCurrentItems={setCurrentItems}
@@ -96,4 +96,4 @@ const Library = (props) => {
   );
 };
 
-export default Library;
+export default memo(Library);
