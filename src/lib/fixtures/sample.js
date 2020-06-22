@@ -1,5 +1,23 @@
-// 발라드
-const BALLAD = [
+/* eslint-disable import/prefer-default-export */
+/*
+  [README]
+  * import { <장르> } from '... /fixtures/sample'
+  
+  * <장르>의 값은 [배열] 입니다
+  
+  * 장르 리스트
+  * - 발라드: BALLAD
+  * - 댄스: DANCE
+  * - 힙합: HIPHOP
+  * - R&B,SOUL: RB_SOUL
+  * - 락&메탈: ROCK_METAL
+  * - 인디: INDE
+  * - 포크&블루스: FOLK_BLUES
+  * - 팝: POP
+*/
+
+/* 발라드 */
+export const BALLAD = [
   {
     title:
       '[슬기로운 의사생활 OST] 전미도- 사랑하게 될 줄 알았어 (I Knew I Love) MV',
@@ -7,13 +25,12 @@ const BALLAD = [
     videoid: 'rOCymN-Rwiw',
   },
   {
-    title: '조정석 - 아로하 (Aloha)(슬기로운 의사생활 OST PART.03) / 가사',
+    title: '조정석 - 아로하(Aloha)(슬기로운 의사생활 OST PART.03)',
     thumbnail: '',
     videoid: 'g8oRKbYrZ6Q',
   },
   {
-    title:
-      'Baek A Yeon(백아연) “Shouldn’t Have…(이럴거면 그러지말지) (Feat. Young K)” M/V',
+    title: '백아연 - “Shouldn’t Have…(이럴거면 그러지말지) (Feat. Young K)”',
     thumbnail: '',
     videoid: 'x815A21RIto',
   },
@@ -29,8 +46,8 @@ const BALLAD = [
   },
 ];
 
-// 댄스
-const DANCE = [
+/* 댄스 */
+export const DANCE = [
   {
     title: 'TWICE - MORE&MORE M/V',
     thumbnail: '',
@@ -47,8 +64,7 @@ const DANCE = [
     videoid: 'c7rCyll5AeY',
   },
   {
-    title:
-      'OH MY GIRL(오마이걸) -살짝 설렜어(Color Coded Lyrics Eng/Rom/Han/가사)',
+    title: 'OH MY GIRL(오마이걸) - 살짝 설렜어(Nonstop)',
     thumbnail: '',
     videoid: '_Swwnu3ohpM',
   },
@@ -63,8 +79,9 @@ const DANCE = [
     videoid: 'uR8Mrt1IpXg',
   },
 ];
-// 힙합
-const HIPHOP = [
+
+/* 힙합 */
+export const HIPHOP = [
   {
     title: '창모 (CHANGMO) - METEOR MV',
     thumbnail: '',
@@ -117,8 +134,8 @@ const HIPHOP = [
   },
 ];
 
-// R&B
-const RB_SOUL = [
+/* R&B, Soul */
+export const RB_SOUL = [
   {
     title: '[MV] IU(아이유) _ Through the Night(밤편지)',
     thumbnail: '',
@@ -162,8 +179,8 @@ const RB_SOUL = [
   },
 ];
 
-// 인디
-const INDE = [
+/* 인디 */
+export const INDE = [
   {
     title: '정준일 - 안아줘 (Hug Me)',
     thumbnail: '',
@@ -211,8 +228,8 @@ const INDE = [
   },
 ];
 
-// ROCK
-const ROCK_METAL = [
+/* 락 & 메탈 */
+export const ROCK_METAL = [
   {
     title: '패닉 -  달팽이',
     thumbnail: '',
@@ -254,8 +271,9 @@ const ROCK_METAL = [
     videoid: 'QqMt41xA1oE',
   },
 ];
-// 포크 & 블루스
-const FOLK_BLUES = [
+
+/* 포크 & 블루스 */
+export const FOLK_BLUES = [
   {
     title: '김광석 - 서른 즈음에',
     thumbnail: '',
@@ -272,8 +290,9 @@ const FOLK_BLUES = [
     videoid: 'SZkkZLSCv44',
   },
 ];
-// 팝
-const POP = [
+
+/* 해외 */
+export const POP = [
   {
     title: 'Adam levine - lost stars (Lyrics)',
     thumbnail: '',
@@ -371,4 +390,35 @@ const POP = [
   },
 ];
 
-export { BALLAD, DANCE, HIPHOP, RB_SOUL, ROCK_METAL, INDE, FOLK_BLUES, POP };
+export const samples = [
+  RB_SOUL[0],
+  DANCE[3],
+  BALLAD[1],
+  POP[7],
+  RB_SOUL[4],
+  HIPHOP[0],
+  DANCE[5],
+  ROCK_METAL[3],
+  POP[1],
+  INDE[3],
+  DANCE[4],
+  BALLAD[2],
+  HIPHOP[6],
+  FOLK_BLUES[1],
+  INDE[5],
+  POP[8],
+  RB_SOUL[3],
+  DANCE[0],
+  BALLAD[3],
+  POP[2],
+  RB_SOUL[2],
+  HIPHOP[2],
+  ROCK_METAL[5],
+  INDE[4],
+  POP[0],
+  DANCE[1],
+  HIPHOP[4],
+  BALLAD[4],
+  INDE[0],
+  POP[6],
+];
