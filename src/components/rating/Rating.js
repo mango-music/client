@@ -3,10 +3,19 @@ import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 import '../../styles/Rating.scss';
 import Button from '@material-ui/core/Button';
-import fakeItems from '../../lib/fixtures/fkdtCurrentItems2';
 import RatingEntry from './RatingEntry';
 import Loading from '../auth/Loading';
 import RatingSuccessDialog from './RatingSuccessDialog';
+import { samples } from '../../lib/fixtures/sample';
+import postRatingMusiclist from '../../lib/apis/postRatingMusiclist';
+import axios from 'axios';
+
+const initialValues = {
+  title: '',
+  thumbnail: '',
+  videoid: '',
+  rating: null,
+};
 
 class Rating extends PureComponent {
   constructor() {
@@ -17,22 +26,19 @@ class Rating extends PureComponent {
       currentVideo: {},
       nextVideoIndex: 0,
       ratedVideos: [],
-      ratedVideo: {
-        videoId: '',
-        rating: null,
-      },
+      ratedVideo: initialValues,
     };
   }
 
-  handleRatingUpdate = (videoId, rating) => {
+  handleRatingUpdate = (video, rating) => {
     // Sequential state update using setState callback
     this.setState((prev) => ({
-      ratedVideo: { videoId, rating },
+      ratedVideo: { ...video, rating },
       nextVideoIndex: prev.nextVideoIndex + 1,
     }));
     this.setState((prev) => ({
       ratedVideos: [...prev.ratedVideos, prev.ratedVideo],
-      ratedVideo: { videoId: '', rating: null }, // Initialize
+      ratedVideo: initialValues,
       currentVideo: prev.videos[prev.nextVideoIndex],
     }));
   };
@@ -46,16 +52,38 @@ class Rating extends PureComponent {
     }));
   };
 
-  handleRatingSuccess = () => {
+  handleRatingSuccess = async () => {
     const { history, callbackPath } = this.props;
-    history.push(callbackPath);
+    const status = await postRatingMusiclist(this.state.ratedVideos);
+    console.log(status);
+    // [Todo] 에러 상태에 따른 화면 분기
+    switch (status) {
+      case 401:
+        // 권한 없음
+        return history.push('/*');
+      case 404:
+        // 잘못된 토큰
+        window.alert('잘못된 토큰 입니다.');
+        break;
+      case 419:
+        // 만료된 토큰
+        window.alert('만료된 토큰 입니다. 갱신이 필요합니다.');
+        break;
+      case 500:
+        // 서버 에러
+        window.alert('잘못된 토큰 입니다.');
+        break;
+      default:
+        // 201
+        return history.push(callbackPath);
+    }
   };
 
   componentDidMount() {
     this.setState({
       isLoading: true,
-      videos: fakeItems,
-      currentVideo: fakeItems[0],
+      videos: samples,
+      currentVideo: samples[0],
     });
   }
 
@@ -82,7 +110,7 @@ class Rating extends PureComponent {
           handleRatingSkip={this.handleRatingSkip}
         />
         <RatingSuccessDialog
-          isOpen={ratedVideos.length >= 5} // Render this component when isOpen={true}
+          isOpen={ratedVideos.length >= 15} // Render this component when isOpen={true}
           nickname={nickname}
           handleRatingSuccess={this.handleRatingSuccess}
         />
