@@ -47,7 +47,6 @@
   ul {
     @include list-ul;
     padding: 10px;
-    margin-bottom: 120px;
   }
 
   #user-playlist-items {
@@ -88,6 +87,7 @@
     align-content: center;
     gap: 10px;
     // height: 20vw;
+    margin-bottom: 120px;
     div {
       display: grid;
       align-content: center;
