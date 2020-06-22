@@ -48,7 +48,6 @@ const Main = memo(({ profile, handleLogout }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  // TODO: 처음에 페이크 데이터를 플레이어에 로딩한다. localStorage로 바꿔야한다.
   useEffect(() => {
     console.log('이전에 재생한 큐를 불러옵니다.');
     const playedItems = JSON.parse(localStorage.getItem('playedItems'));

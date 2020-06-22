@@ -105,7 +105,6 @@ const MusicPlayer = (props) => {
     handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
   };
 
-  // 렌더링 조건
   if (currentItems && currentItem) {
     return (
       <div id="player">
