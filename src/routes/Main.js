@@ -8,20 +8,30 @@ import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
 import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
-import fkdtCurrentItem from '../lib/fixtures/fkdtCurrentItem';
-import fkdtCurrentItems from '../lib/fixtures/fkdtCurrentItems';
+import getRatingMusiclist from '../lib/apis/getRatingMusiclist';
 import '../styles/ChangeWindowButton.scss';
 
 const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
+  const [ratedMusics, setRatedMusics] = useState([]);
   const [customLists, setCustomLists] = useState(null); // [{playlist}]
   const [currentItems, setCurrentItems] = useState(null);
   const [currentItem, setCurrentItem] = useState(null);
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [playerSize, setPlayerSize] = useState('small');
 
-  // 사용자의 뮤직 리스트를 불러온다.
   useEffect(() => {
+    console.log('사용자가 평가한 음악 리스트를 불러옵니다.');
+    const token = localStorage.getItem('x-access-token');
+    if (!token) return console.log('토큰이 없습니다.');
+    getRatingMusiclist().then((data) => {
+      // console.log('사용자가 평가한 데이터 : ', data);
+      setRatedMusics(ratedMusics);
+    });
+  }, []);
+
+  useEffect(() => {
+    console.log('사용자의 뮤직리스트를 불러옵니다.');
     const token = localStorage.getItem('x-access-token');
     if (!token) return console.log('토큰이 없습니다.');
     getUserMusicLists(token)
@@ -40,9 +50,22 @@ const Main = memo(({ profile, handleLogout }) => {
 
   // TODO: 처음에 페이크 데이터를 플레이어에 로딩한다. localStorage로 바꿔야한다.
   useEffect(() => {
-    setCurrentItem(fkdtCurrentItem);
-    setCurrentItems(fkdtCurrentItems);
+    console.log('이전에 재생한 큐를 불러옵니다.');
+    const playedItems = JSON.parse(localStorage.getItem('playedItems'));
+    console.log('playedItems : ', playedItems);
+    if (Array.isArray(playedItems)) {
+      setCurrentItem(playedItems[0]);
+      setCurrentItems(playedItems);
+    }
   }, []);
+
+  // 현재 재생 큐 저장
+  useEffect(() => {
+    console.log('현재 재생 큐를 저장합니다.');
+    if (Array.isArray(currentItems)) {
+      localStorage.setItem('playedItems', JSON.stringify(currentItems));
+    }
+  }, [currentItems]);
 
   const changePlayerSize = () => {
     if (playerSize === 'big') {
