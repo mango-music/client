@@ -15,6 +15,7 @@ const MusicPlayer = (props) => {
     setCurrentItems,
     itemIndex,
     setItemIndex,
+    playerSize,
   } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
   // const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
@@ -108,7 +109,7 @@ const MusicPlayer = (props) => {
   if (currentItems && currentItem) {
     return (
       <div id="player">
-        <div id="player-selector" className="big-player">
+        <div id="player-selector" className={'player-' + playerSize}>
           <div className="player-window">
             <YouTube
               videoId={currentItem.videoid}
@@ -161,6 +162,7 @@ const MusicPlayer = (props) => {
             isRepeatOn={isRepeatOn}
             setIsRepeatOn={setIsRepeatOn}
             player={player}
+            playerSize={playerSize}
           />
         </div>
       </div>

@@ -1,19 +1,26 @@
 import React from 'react';
 import Signout from '../auth/Signout';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../styles/Profile.scss';
 
 const Profile = ({ profile, handleLogout }) => {
   return (
-    <>
-      <h2>Profile</h2>
-      <ul>
-        <li>Level: {profile.lv}</li>
-        <li>Id: {profile.id}</li>
-        <li>Email: {profile.email}</li>
-      </ul>
+    <div id="profile">
+      <header>
+        <p>Profile</p>
+      </header>
+      <div id="profile-image">
+        <FontAwesomeIcon icon={faUser} color="#afafaf" />
+      </div>
+
+      <div>{profile.id}</div>
+      <div>{profile.email}</div>
+
       <div>
         <Signout handleLogout={handleLogout} />
       </div>
-    </>
+    </div>
   );
 };
 

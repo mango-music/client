@@ -1,0 +1,61 @@
+@import './common/normal-button.scss';
+
+#search {
+  overflow: auto;
+  height: 100vh;
+  #search-form {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 45px 1fr;
+    height: 65px;
+    padding: 10px;
+    input {
+      background-color: whitesmoke;
+      font-size: 1.4rem;
+      padding: 10px 10px 10px 0px;
+      border: 0px;
+    }
+    @include normal-button;
+    button {
+      background-color: whitesmoke;
+    }
+  }
+
+  .search-list {
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 1.15rem;
+    margin-bottom: 120px;
+    li {
+      position: relative;
+      display: grid;
+      gap: 10px;
+      grid-auto-flow: column;
+      grid-template-columns: auto 1fr 30px;
+      margin-bottom: 10px;
+      list-style: none;
+      cursor: pointer;
+      .search-image {
+        img {
+          display: block;
+          width: 5rem;
+        }
+      }
+      p {
+        margin: 0;
+      }
+      @include normal-button;
+      .search-drop-down-menu {
+        z-index: 4;
+        display: block;
+        background-color: whitesmoke;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        right: 30px;
+        top: 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+}

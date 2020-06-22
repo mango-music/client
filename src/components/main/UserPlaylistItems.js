@@ -5,7 +5,16 @@ import { faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UserPlaylistItems = (props) => {
-  const { selectedList, setSelectedList, customLists, setCustomLists } = props;
+  const {
+    selectedList,
+    setSelectedList,
+    customLists,
+    setCustomLists,
+    currentItems,
+    setCurrentItems,
+    setCurrentItem,
+    setItemIndex,
+  } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
   let items;
   for (let i = 0; i < customLists.length; i++) {
@@ -58,6 +67,10 @@ const UserPlaylistItems = (props) => {
                 selectedList={selectedList}
                 customLists={customLists}
                 setCustomLists={setCustomLists}
+                currentItems={currentItems}
+                setCurrentItems={setCurrentItems}
+                setCurrentItem={setCurrentItem}
+                setItemIndex={setItemIndex}
               />
             );
           })}

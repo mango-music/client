@@ -1,6 +1,5 @@
 import React from 'react';
 import postDeleteMusicList from '../../lib/apis/postDeleteMusicList';
-import fkToken from '../../lib/fixtures/fkToken';
 
 const UserPlaylistItemsDropDownMenu = (props) => {
   const {
@@ -14,12 +13,7 @@ const UserPlaylistItemsDropDownMenu = (props) => {
     <div className="drop-down-menu">
       <div
         onClick={() => {
-          postDeleteMusicList(
-            selectedList,
-            customLists,
-            setCustomLists,
-            fkToken,
-          );
+          postDeleteMusicList(selectedList, customLists, setCustomLists);
           setIsEllipsisOn(false);
           setSelectedList(null);
         }}

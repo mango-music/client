@@ -3,6 +3,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { Home, Explore, LibraryMusic, AccountCircle } from '@material-ui/icons';
+import '../styles/Nav.scss';
 
 const useNavStyles = makeStyles((theme) => ({
   root: {
@@ -11,6 +12,7 @@ const useNavStyles = makeStyles((theme) => ({
     position: 'fixed',
     left: 0,
     bottom: 0,
+    'z-index': '3',
   },
 })); // Create new classes to Mui Component
 

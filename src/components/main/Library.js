@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 import UserPlaylist from './UserPlaylist';
 import UserPlaylistItems from './UserPlaylistItems';
+import MainHeader from './MainHeader';
 import postMusiclist from '../../lib/apis/postMusiclist';
 import {
   faPlusCircle,
@@ -10,14 +11,14 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Library.scss';
 
-import fkToken from '../../lib/fixtures/fkToken';
-
 const Library = (props) => {
   const {
     setCurrentItems,
     setCurrentItem,
     customLists,
     setCustomLists,
+    currentItems,
+    setItemIndex,
   } = props;
   const [selectedList, setSelectedList] = useState(null);
   const [addButtonOn, setAddButtonOn] = useState(false);
@@ -32,7 +33,7 @@ const Library = (props) => {
           onClick={() => {
             const text = document.getElementById('playlist-input').value;
             console.log('text : ', text);
-            postMusiclist(text, customLists, setCustomLists, fkToken);
+            postMusiclist(text, customLists, setCustomLists);
             setAddButtonOn(false);
           }}
         >
@@ -62,13 +63,13 @@ const Library = (props) => {
   }
   return (
     <div id="library">
-      <header>Library</header>
+      <MainHeader name={'Library'} />
       <ul>
         {customLists &&
           customLists.map((list) => {
             return (
               <UserPlaylist
-                key={list._id}
+                key={list.listname}
                 listName={list.listname}
                 items={list.musics}
                 setCurrentItems={setCurrentItems}
@@ -85,10 +86,14 @@ const Library = (props) => {
           setSelectedList={setSelectedList}
           customLists={customLists}
           setCustomLists={setCustomLists}
+          currentItems={currentItems}
+          setCurrentItem={setCurrentItem}
+          setCurrentItems={setCurrentItems}
+          setItemIndex={setItemIndex}
         />
       )}
     </div>
   );
 };
 
-export default Library;
+export default memo(Library);

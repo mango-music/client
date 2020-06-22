@@ -1,20 +1,21 @@
+@import './common/normal-button.scss';
+
 @mixin list-ul {
   display: grid;
   gap: 10px;
   grid-auto-flow: row;
   grid-template-columns: 1fr;
+  padding: 0;
+  overflow: visible;
   li {
+    overflow: visible;
     position: relative;
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: auto 1fr 30px;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
     gap: 10px;
     .list-img {
-      // height: 20vw;
-      // background-color: black;
-      // display: grid;
-      // align-content: center;
       img {
         display: block;
         width: 5rem;
@@ -29,43 +30,24 @@
     }
     .list-button {
       display: grid;
-      button {
-        cursor: pointer;
-        font-size: 1.4rem;
-        background-color: rgba(0, 0, 0, 0);
-        border: white solid 0px;
-        svg {
-          transition-property: color;
-          transition-duration: 200ms;
-        }
-      }
-      button:hover {
-        svg {
-          color: black;
-        }
-      }
-      button:active {
-        svg {
-          color: rgb(236, 236, 236);
-        }
-      }
+      @include normal-button;
     }
   }
 }
 
 #library {
-  // position: relative;
-  display: grid;
   grid-auto-flow: row;
   grid-template-columns: 1fr;
   justify-content: center;
   gap: 10px;
   font-size: 1.5rem;
-  padding: 10px;
-  overflow: visible;
+  overflow: auto;
+  height: 100vh;
 
   ul {
     @include list-ul;
+    padding: 10px;
+    margin-bottom: 120px;
   }
 
   #user-playlist-items {
@@ -74,7 +56,7 @@
     left: 0;
     padding: 10px;
     z-index: 1;
-    background-color: lightgray;
+    background-color: rgb(240, 240, 240);
     width: 100vw;
     height: 100vh;
     header {
@@ -84,31 +66,13 @@
       grid-template-columns: 30px 1fr 30px;
       gap: 10px;
       margin-bottom: 10px;
-      button {
-        cursor: pointer;
-        font-size: 1.4rem;
-        background-color: rgba(0, 0, 0, 0);
-        border: white solid 0px;
-        svg {
-          transition-property: color;
-          transition-duration: 200ms;
-        }
-      }
-      button:hover {
-        svg {
-          color: black;
-        }
-      }
-      button:active {
-        svg {
-          color: rgb(236, 236, 236);
-        }
-      }
+      @include normal-button;
       div {
         display: grid;
       }
       .user-playlist-title {
         grid-column: span 3;
+        font-size: 2rem;
       }
     }
     ul {
@@ -123,12 +87,12 @@
     justify-content: center;
     align-content: center;
     gap: 10px;
-    height: 20vw;
+    // height: 20vw;
     div {
       display: grid;
       align-content: center;
       input {
-        background-color: rgb(236, 236, 236);
+        background-color: whitesmoke;
         padding: 10px;
         border: 0;
       }
@@ -138,7 +102,7 @@
 
 .drop-down-menu {
   font-size: 1.2rem;
-  z-index: 2;
+  z-index: 4;
   display: block;
   background-color: rgba(255, 255, 255, 0.918);
   padding: 10px;
@@ -146,11 +110,8 @@
   position: absolute;
   right: 30px;
   top: 0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
   div {
     cursor: pointer;
   }
 }
-
-// .clicked {
-//   display: block;
-// }

@@ -1,8 +1,7 @@
 import React from 'react';
 import postAddMusic from '../../lib/apis/postAddMusic';
-import fkToken from '../../lib/fixtures/fkToken';
 
-const SearchDropDownMenu = (props) => {
+const ExploreDropDownMenu = (props) => {
   const { customLists, item, setCustomLists, setIsEllipsisOn } = props;
 
   const addMusicToUserPlayList = (list) => {
@@ -14,7 +13,7 @@ const SearchDropDownMenu = (props) => {
       title: item.snippet.title,
     };
     // console.log('setCustomLists : ', setCustomLists);
-    postAddMusic(obj, customLists, setCustomLists, fkToken);
+    postAddMusic(obj, customLists, setCustomLists);
   };
 
   return (
@@ -35,4 +34,4 @@ const SearchDropDownMenu = (props) => {
   );
 };
 
-export default SearchDropDownMenu;
+export default ExploreDropDownMenu;
