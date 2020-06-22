@@ -18,7 +18,7 @@ const Recommends = (props) => {
   // 추천 리스트 요청
   useEffect(() => {
     setRecommends(fkdtRecommends);
-  });
+  }, []);
 
   return (
     <div id="recommends">

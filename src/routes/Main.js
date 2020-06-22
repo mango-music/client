@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
-import Home from '../components/main/Home';
+import Recommends from '../components/main/Recommends';
 import Explore from '../components/main/Explore';
 import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
@@ -74,7 +74,7 @@ const Main = memo(({ profile, handleLogout }) => {
       />
       <Switch>
         <Route exact path={`/@${profile.id}`}>
-          <Home
+          <Recommends
             currentItems={currentItems}
             currentItem={currentItem}
             setCurrentItems={setCurrentItems}

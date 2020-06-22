@@ -8,6 +8,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
+import postAccountData from '../../lib/apis/postAccountData';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,7 +31,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Signin = ({ handlePostSigninData, history }) => {
+const Signin = ({ handleSigninSuccess, history }) => {
   const classes = useStyles();
   const [values, setValues] = useState({
     email: '',
@@ -38,19 +39,30 @@ const Signin = ({ handlePostSigninData, history }) => {
   });
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleValueChange = (prop) => (e) => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const status = await postAccountData('signin', values);
+    console.log(status);
+    // 404 - 가입되지 않은 이메일 혹은 비밀번호가 틀림?
+    if (!status) {
+      // eslint-disable-next-line no-alert
+      window.alert('가입되지 않은 이메일이거나 잘못된 비밀번호 입니다.'); // (임시)
+      return;
+    }
+    // 200
+    handleSigninSuccess();
+    setTimeout(() => {
+      history.push('/');
+    }, 500);
+  };
+
+  const handleValueUpdate = (prop) => (e) => {
     setValues({ ...values, [prop]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    handlePostSigninData(values);
-    setTimeout(() => {
-      history.push('/');
-    }, 1000);
+  const handleShowPasswordToggle = () => {
+    setShowPassword(!showPassword);
   };
-
-  const handleShowPasswordToggle = () => setShowPassword(!showPassword);
 
   return (
     <>
@@ -62,9 +74,9 @@ const Signin = ({ handlePostSigninData, history }) => {
             label="이메일"
             type="text"
             value={values.email}
-            onChange={handleValueChange('email')}
-            error={false}
-            helperText={'이메일을 입력하세요.'}
+            onChange={handleValueUpdate('email')}
+            // error={false}
+            // helperText="이메일을 입력하세요."
           />
         </div>
         <div>
@@ -73,11 +85,9 @@ const Signin = ({ handlePostSigninData, history }) => {
             label="비밀번호"
             type={showPassword ? 'text' : 'password'}
             value={values.password}
-            onChange={handleValueChange('password')}
-            error={false}
-            helperText={
-              '비밀번호는 최소 8자 이상이어야 합니다. 다시 시도해 주세요.'
-            }
+            onChange={handleValueUpdate('password')}
+            // error={false}
+            // helperText="비밀번호는 최소 8자 이상이어야 합니다. 다시 시도해 주세요."
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
