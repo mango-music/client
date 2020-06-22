@@ -108,6 +108,7 @@ const Main = memo(({ profile, handleLogout }) => {
             customLists={customLists}
             setCustomLists={setCustomLists}
             setItemIndex={setItemIndex}
+            nickname={profile.id}
           />
         </Route>
         <Route path={`/@${profile.id}/library`}>
@@ -118,6 +119,7 @@ const Main = memo(({ profile, handleLogout }) => {
             setCurrentItem={setCurrentItem}
             currentItems={currentItems}
             setItemIndex={setItemIndex}
+            nickname={profile.id}
           />
         </Route>
         <Route path={`/@${profile.id}/rating`}>

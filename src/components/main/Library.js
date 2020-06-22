@@ -19,6 +19,7 @@ const Library = (props) => {
     setCustomLists,
     currentItems,
     setItemIndex,
+    nickname,
   } = props;
   const [selectedList, setSelectedList] = useState(null);
   const [addButtonOn, setAddButtonOn] = useState(false);
@@ -63,7 +64,7 @@ const Library = (props) => {
   }
   return (
     <div id="library">
-      <MainHeader name={'Library'} />
+      <MainHeader title={'Library'} nickname={nickname} />
       <ul>
         {customLists &&
           customLists.map((list) => {

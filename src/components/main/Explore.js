@@ -14,6 +14,7 @@ const Explore = (props) => {
     customLists,
     setCustomLists,
     setItemIndex,
+    nickname,
   } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
@@ -29,7 +30,7 @@ const Explore = (props) => {
   }, []);
   return (
     <div id="search">
-      <MainHeader name={'Explore'} />
+      <MainHeader title={'Explore'} nickname={nickname} />
       <div id="search-form">
         <button
           id="search-button"
