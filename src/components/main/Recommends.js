@@ -3,6 +3,7 @@ import MainHeader from './MainHeader';
 import RecommendsEntry from './RecommendsEntry';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import getRecommendedMusic from '../../lib/apis/getRecommendedMusic';
 import '../../styles/Recommends.scss';
 import fkdtRecommends from '../../lib/fixtures/fkdtRecommends';
 
@@ -17,9 +18,14 @@ const Recommends = (props) => {
     setCustomLists,
   } = props;
   const [recommends, setRecommends] = useState([]);
-  // 추천 리스트 요청
+
   useEffect(() => {
-    setRecommends(fkdtRecommends);
+    console.log('추천 재생 리스트를 불러옵니다.');
+    getRecommendedMusic().then((data) => {
+      console.log('추천 재생 리스트의 데이터 : ', data);
+      // setRecommends(data);
+    });
+    setRecommends(fkdtRecommends); // 이거 대신 위로 바꿔야 함
   }, []);
 
   return (
