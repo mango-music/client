@@ -87,7 +87,9 @@ const Library = (props) => {
       <MainHeader title={'Library'} nickname={nickname} />
       <ul>
         <li>
-          <div></div>
+          <div className="list-img">
+            {ratedMusics[0] && <img src={ratedMusics[0].thumbnail} />}
+          </div>
           <div className="list-title">
             <p
               onClick={async () => {
@@ -97,7 +99,7 @@ const Library = (props) => {
                 setCurrentItem(ratedMusics[0]);
               }}
             >
-              평가한 음악 보기
+              Rated Musics
             </p>
           </div>
           <div className="list-button">

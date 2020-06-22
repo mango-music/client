@@ -50,7 +50,7 @@ const UserPlaylistRated = (props) => {
             setSelectedList={setSelectedList}
           />
         )} */}
-        <div className="user-playlist-title">평가한 음악</div>
+        <div className="user-playlist-title">Rated Musics</div>
       </header>
 
       <ul>
