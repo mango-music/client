@@ -105,7 +105,7 @@ const MusicPlayer = (props) => {
     handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
   };
 
-  if (currentItems && currentItem) {
+  if (currentItems.length > 0 && currentItem) {
     return (
       <div id="player">
         <div id="player-selector" className={'player-' + playerSize}>

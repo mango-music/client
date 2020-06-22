@@ -15,7 +15,7 @@ const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
   const [ratedMusics, setRatedMusics] = useState([]);
   const [customLists, setCustomLists] = useState(null); // [{playlist}]
-  const [currentItems, setCurrentItems] = useState(null);
+  const [currentItems, setCurrentItems] = useState([]);
   const [currentItem, setCurrentItem] = useState(null);
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [playerSize, setPlayerSize] = useState('small');
@@ -35,11 +35,6 @@ const Main = memo(({ profile, handleLogout }) => {
     const token = localStorage.getItem('x-access-token');
     if (!token) return console.log('토큰이 없습니다.');
     getUserMusicLists(token)
-      // .then((res) => {
-      // console.log('res.status : ', res.status);
-      // if (res.status === 200) return res.json();
-      // return null;
-      // })
       .then((json) => {
         console.log(json);
         if (json) setCustomLists(json);
@@ -50,9 +45,9 @@ const Main = memo(({ profile, handleLogout }) => {
 
   useEffect(() => {
     console.log('이전에 재생한 큐를 불러옵니다.');
-    const playedItems = JSON.parse(localStorage.getItem('playedItems'));
-    console.log('playedItems : ', playedItems);
+    let playedItems = localStorage.getItem('playedItems');
     if (Array.isArray(playedItems)) {
+      playedItems = JSON.parse(playedItems);
       setCurrentItem(playedItems[0]);
       setCurrentItems(playedItems);
     }
