@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
-import { Home, Explore, LibraryMusic, AccountCircle } from '@material-ui/icons';
+import { Home, Explore, LibraryMusic, Grade } from '@material-ui/icons';
 import '../styles/Nav.scss';
 
 const useNavStyles = makeStyles((theme) => ({
@@ -25,7 +25,7 @@ const Nav = ({ nickname }) => {
       onChange={(event, newValue) => {
         setValue(newValue);
       }}
-      showLabels={true}
+      showLabels
       classes={classes}
     >
       <BottomNavigationAction
@@ -48,11 +48,17 @@ const Nav = ({ nickname }) => {
         to={`/@${nickname}/library`}
       />
       <BottomNavigationAction
+        label="Rating"
+        icon={<Grade />}
+        component={RouterLink}
+        to={`/@${nickname}/rating`}
+      />
+      {/* <BottomNavigationAction
         label="Profile"
         icon={<AccountCircle />}
         component={RouterLink}
         to={`/@${nickname}/profile`}
-      />
+      /> */}
     </BottomNavigation>
   );
 };

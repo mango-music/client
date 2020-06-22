@@ -97,6 +97,7 @@ const Main = memo(({ profile, handleLogout }) => {
             setItemIndex={setItemIndex}
             customLists={customLists}
             setCustomLists={setCustomLists}
+            nickname={profile.id}
           />
         </Route>
         <Route path={`/@${profile.id}/explore`}>
@@ -118,6 +119,9 @@ const Main = memo(({ profile, handleLogout }) => {
             currentItems={currentItems}
             setItemIndex={setItemIndex}
           />
+        </Route>
+        <Route path={`/@${profile.id}/rating`}>
+          {/* 추가 평가하기 컴포넌트 요기요 */}
         </Route>
         <Route path={`/@${profile.id}/profile`}>
           <Profile profile={profile} handleLogout={handleLogout} />
