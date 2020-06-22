@@ -3,7 +3,7 @@
 #search {
   overflow: auto;
   height: 100vh;
-  #search-form {
+  form {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 45px 1fr;
@@ -21,7 +21,7 @@
     }
   }
 
-  .search-list {
+  ul {
     padding-left: 10px;
     padding-right: 10px;
     font-size: 1.15rem;

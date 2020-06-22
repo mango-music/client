@@ -19,42 +19,42 @@ const Explore = (props) => {
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
 
-  useEffect(() => {
-    const input = document.getElementById('search-text');
-    input.addEventListener('keyup', (event) => {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById('search-button').click();
-      }
-    });
-  }, []);
+  const input = React.createRef();
+  const searchButton = React.createRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchMusicsByQuerry(querry, 15)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setSearchItems(json.items);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div id="search">
       <MainHeader title={'Explore'} nickname={nickname} />
-      <div id="search-form">
-        <button
-          id="search-button"
-          onClick={() => {
-            searchMusicsByQuerry(querry, 15)
-              .then((res) => res.json())
-              .then((json) => {
-                console.log(json);
-                setSearchItems(json.items);
-              })
-              .catch((err) => console.log(err));
-          }}
-        >
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <button ref={searchButton}>
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />
         </button>
         <input
-          id="search-text"
           type="text"
+          ref={input}
           onChange={(e) => {
             setQuerry(e.target.value);
           }}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) {
+              e.preventDefault();
+              searchButton.current.click();
+            }
+          }}
         />
-      </div>
-      <ul className="search-list">
+      </form>
+      <ul>
         {searchItems &&
           searchItems.map((item) => {
             return (
