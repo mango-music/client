@@ -13,6 +13,8 @@ const Recommends = (props) => {
     setCurrentItems,
     setCurrentItem,
     setItemIndex,
+    customLists,
+    setCustomLists,
   } = props;
   const [recommends, setRecommends] = useState([]);
   // 추천 리스트 요청
@@ -45,6 +47,8 @@ const Recommends = (props) => {
             setCurrentItems={setCurrentItems}
             setCurrentItem={setCurrentItem}
             setItemIndex={setItemIndex}
+            customLists={customLists}
+            setCustomLists={setCustomLists}
           />
         ))}
       </ul>

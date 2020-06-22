@@ -18,8 +18,6 @@ const Main = memo(({ profile, handleLogout }) => {
   const [currentItems, setCurrentItems] = useState(null);
   const [currentItem, setCurrentItem] = useState(null);
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
-  // const [query, setQuery] = useState('');
-  // const [queryResult, setQueryResult] = useState([]); // [{music}]
   const [playerSize, setPlayerSize] = useState('small');
 
   // 사용자의 뮤직 리스트를 불러온다.
@@ -80,6 +78,8 @@ const Main = memo(({ profile, handleLogout }) => {
             setCurrentItems={setCurrentItems}
             setCurrentItem={setCurrentItem}
             setItemIndex={setItemIndex}
+            customLists={customLists}
+            setCustomLists={setCustomLists}
           />
         </Route>
         <Route path={`/@${profile.id}/explore`}>

@@ -1,18 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import RecommendsDropDownMenu from './RecommendsDropDownMenu';
 import '../../styles/Recommends.scss';
 import fkdtRecommends from '../../lib/fixtures/fkdtRecommends';
 
 const RecommendsEntry = (props) => {
   const {
     currentItems,
-    currentItem,
     setCurrentItems,
     setCurrentItem,
     setItemIndex,
     video,
+    customLists,
+    setCustomLists,
   } = props;
+  const [isEllipsisOn, setIsEllipsisOn] = useState(false);
 
   const playVideo = async (video) => {
     const newCurrentItems = [...currentItems];
@@ -47,10 +50,28 @@ const RecommendsEntry = (props) => {
         {video.title}
       </div>
       <div className="recommends-button">
-        <button>
+        <button
+          onClick={() => {
+            if (isEllipsisOn) {
+              setIsEllipsisOn(false);
+            } else {
+              setIsEllipsisOn(true);
+            }
+          }}
+          className="search-ellipsis"
+        >
           <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
         </button>
       </div>
+      {isEllipsisOn && (
+        <RecommendsDropDownMenu
+          videoid={video.videoid}
+          customLists={customLists}
+          item={video}
+          setCustomLists={setCustomLists}
+          setIsEllipsisOn={setIsEllipsisOn}
+        />
+      )}
     </li>
   );
 };
