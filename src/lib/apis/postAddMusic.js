@@ -9,7 +9,7 @@ const postAddMusic = async (item, customLists, setCustomLists) => {
   const newCustomLists = [...customLists];
   for(let i = 0; i < newCustomLists.length; i++) {
     if(item.listname === newCustomLists[i].listname) {
-      newCustomLists[i].musics.push(result);
+      newCustomLists[i].musics.push(res.data);
       break;
     }
   }
