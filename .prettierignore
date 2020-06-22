@@ -2,7 +2,7 @@
 **/spec
 **/test
 **/bower_components
-**/lib
+# **/lib
 **/vendor
 **/*.min.js
 **/public
