@@ -7,7 +7,7 @@ import {
   HIPHOP,
   RB_SOUL,
   ROCK_METAL,
-  INDE,
+  INDIE,
   FOLK_BLUES,
   POP,
 } from '../../lib/fixtures/sample';
@@ -23,7 +23,7 @@ const AdditionalRating = (props) => {
     { name: HIPHOP, string: 'HIPHOP' },
     { name: RB_SOUL, string: 'RB_SOUL' },
     { name: ROCK_METAL, string: 'ROCK_METAL' },
-    { name: INDE, string: 'INDE' },
+    { name: INDIE, string: 'INDIE' },
     { name: FOLK_BLUES, string: 'FOLK_BLUES' },
     { name: POP, string: 'POP' },
   ];
