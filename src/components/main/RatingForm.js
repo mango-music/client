@@ -1,10 +1,12 @@
 import React, { memo } from 'react';
-import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../styles/RatingForm.scss';
+import MuiRating from '@material-ui/lab/Rating';
+import { Star, StarBorder } from '@material-ui/icons';
+import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
 import postRatingMusic from '../../lib/apis/postRatingMusic';
 import postDelRating from '../../lib/apis/postDelRating';
-import '../../styles/RatingForm.scss';
-import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
 
 const RatingForm = (props) => {
   const { isShuffleOn, shuffledIndex, setCurrentItems } = props;
@@ -34,11 +36,7 @@ const RatingForm = (props) => {
           setCurrentItems(fkdtCurrentItems2);
         }}
       >
-        {video.rating >= 1 ? (
-          <FontAwesomeIcon icon={faStar} color="gold" />
-        ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
-        )}
+        {video.rating >= 1 ? <Star /> : <StarBorder />}
       </div>
       <div
         onClick={async () => {
@@ -48,11 +46,7 @@ const RatingForm = (props) => {
           setCurrentItems(fkdtCurrentItems2);
         }}
       >
-        {video.rating >= 2 ? (
-          <FontAwesomeIcon icon={faStar} color="gold" />
-        ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
-        )}
+        {video.rating >= 2 ? <Star /> : <StarBorder />}
       </div>
       <div
         onClick={async () => {
@@ -62,11 +56,7 @@ const RatingForm = (props) => {
           setCurrentItems(fkdtCurrentItems2);
         }}
       >
-        {video.rating >= 3 ? (
-          <FontAwesomeIcon icon={faStar} color="gold" />
-        ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
-        )}
+        {video.rating >= 3 ? <Star /> : <StarBorder />}
       </div>
       <div
         onClick={async () => {
@@ -76,11 +66,7 @@ const RatingForm = (props) => {
           setCurrentItems(fkdtCurrentItems2);
         }}
       >
-        {video.rating >= 4 ? (
-          <FontAwesomeIcon icon={faStar} color="gold" />
-        ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
-        )}
+        {video.rating >= 4 ? <Star /> : <StarBorder />}
       </div>
       <div
         onClick={async () => {
@@ -90,11 +76,7 @@ const RatingForm = (props) => {
           setCurrentItems(fkdtCurrentItems2);
         }}
       >
-        {video.rating >= 5 ? (
-          <FontAwesomeIcon icon={faStar} color="gold" />
-        ) : (
-          <FontAwesomeIcon icon={faStarOfDavid} color="gold" />
-        )}
+        {video.rating >= 5 ? <Star /> : <StarBorder />}
       </div>
     </div>
   );

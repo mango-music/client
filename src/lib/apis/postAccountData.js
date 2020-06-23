@@ -18,6 +18,7 @@ async function postAccountData(path, data) {
     })
     .catch((err) => {
       console.log(err); // when 409 error
+      // result = err.response.status;
     });
   return result;
 }

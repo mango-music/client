@@ -1,15 +1,10 @@
 .account {
-  padding: 0.5rem;
-  width: calc(100% - 2rem);
-  margin: 0 auto;
-  h2 {
-    margin: 2rem 0;
-    font-size: 2rem;
-  }
+  padding: '0.5rem';
   form {
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-start;
+    overflow: visible;
   }
   .textField-container {
     min-height: 6rem;
@@ -20,6 +15,7 @@
   }
   .button-container {
     margin: 2rem 0;
+    overflow: visible;
   }
   .options-container {
     text-align: center;

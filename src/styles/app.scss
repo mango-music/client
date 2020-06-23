@@ -1,0 +1,22 @@
+@import './account.scss';
+
+.app {
+  &_header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 97px;
+    max-height: 97px;
+    padding: 1rem;
+    > h1 {
+      padding: 0 0.5rem;
+    }
+  }
+  &_main {
+    // padding: 1rem;
+    position: relative;
+    div.account {
+      padding: 0 0.5rem;
+    }
+  }
+}
