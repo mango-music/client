@@ -21,8 +21,8 @@ const RatingEntry = ({
 
   const handleRatingButtonClick = () => {
     // e.preventDefault(); // 이 함수가 props로 전달될 경우 핸들러 함수의 콜백 안에 들어가게 되므로 e를 참조할 수 없게 되는 오류 발생
-    setValue(0);
     handleRatingUpdate(video, value);
+    setValue(0);
   };
 
   const handleSkipButtonClick = () => {

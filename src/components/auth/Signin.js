@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import {
+  Box,
   TextField,
   InputAdornment,
   IconButton,
@@ -63,8 +64,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
   };
 
   return (
-    <main className="account signin">
-      <h2>로그인</h2>
+    <Box className="account signin">
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="textField-container">
           <TextField
@@ -141,7 +141,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
           가입하기
         </Button>
       </div>
-    </main>
+    </Box>
   );
 };
 
