@@ -37,6 +37,8 @@ const MusicPlayer = (props) => {
   const opts = {
     playerVars: {
       autoplay: 1,
+      rel: 0,
+      playsinline: 1,
     },
   };
   const onReady = (event) => {
