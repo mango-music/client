@@ -49,7 +49,7 @@ const Explore = (props) => {
 
   return (
     <div id="search">
-      <MainHeader title={'Explore'} nickname={nickname} />
+      <MainHeader title="Explore" nickname={nickname} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />
