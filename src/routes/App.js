@@ -28,8 +28,8 @@ const App = () => {
     console.log(callbackPath);
     setLogin(true);
     setProfile({
-      id: userinfo.nickname,
       email: userinfo.email,
+      nickname: userinfo.nickname,
     });
   }, [isLogin]);
 
@@ -86,26 +86,27 @@ const App = () => {
           <Signup handleSignupSuccess={handleSignupSuccess} />
         </Route>
         <Route path="/rating_consent">
-          <RatingConsentScreen nickname={profile.id} />
+          <RatingConsentScreen nickname={profile.nickname} />
         </Route>
         <Route path="/rating">
-          <Rating callbackPath={callbackPath.current} nickname={profile.id} />
-        </Route>
-        <Route path={callbackPath.current}>
-          <Main profile={profile} handleLogout={handleLogout} />
-        </Route>
-        <Route path="/account/password_reset">
-          <PasswordReset />
+          <Rating
+            callbackPath={callbackPath.current}
+            nickname={profile.nickname}
+          />
         </Route>
         <Route
-          path="*"
+          path={callbackPath.current}
           render={() => {
             if (!localStorage.getItem('x-access-token')) {
               return <Unauthorized />;
             }
-            return <NoMatch />;
+            return <Main profile={profile} handleLogout={handleLogout} />;
           }}
         />
+        <Route path="/account/password_reset">
+          <PasswordReset />
+        </Route>
+        <Route path="/*" component={NoMatch} />
       </Switch>
     </>
   );
