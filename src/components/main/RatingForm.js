@@ -1,10 +1,6 @@
 import React, { memo, useState } from 'react';
-// import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/RatingForm.scss';
 import MuiRating from '@material-ui/lab/Rating';
-import { Star, StarBorder } from '@material-ui/icons';
-import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
 import postRatingMusic from '../../lib/apis/postRatingMusic';
 import postDelRating from '../../lib/apis/postDelRating';
 
@@ -30,6 +26,7 @@ const RatingForm = (props) => {
   const getStars = () => {
     let stars = null;
     if (video.rating) {
+      console.log(video.title, '의 video.rating이 얼마?', video.rating);
       stars = video.rating;
     }
     return stars;
@@ -37,33 +34,29 @@ const RatingForm = (props) => {
   return (
     <div className="rating-form">
       <MuiRating
-        name="rating"
+        name="playerRating"
         size="large"
         precision={0.5}
         value={getStars()} // 초기값
-        onChange={(e, targetValue) => {
-          console.log(`${video.title}에 ${targetValue}점을 매깁니다.`);
-          // setStars(targetValue);
-          // postRatingMusic(video, stars);
+        onChange={(e, starsCount) => {
+          console.log(`${video.title}에 ${starsCount}점을 매깁니다.`);
+          const newCurrentItems = [...currentItems];
+          for (let i = 0; i < newCurrentItems.length; i++) {
+            if (newCurrentItems[i].videoid === video.videoid) {
+              newCurrentItems[i].rating = starsCount;
+              break;
+            }
+          }
+          setCurrentItems(newCurrentItems);
+          if (starsCount) {
+            // 별점을 매길 때
+            postRatingMusic(video, starsCount);
+          } else {
+            // 별점을 삭제할 때
+            postDelRating(video.videoid);
+          }
         }}
       />
-      {/* <div
-        onClick={async () => {
-          // 서버 조정 후 수정
-          console.log(`${video.title}의 rating를 1로 바꾼다.`);
-          if (video.rating === 1) {
-            // 별점 삭제 요청
-            await postDelRating(video);
-          } else {
-            // 별점 입력 요청
-            await postRatingMusic(video, 1);
-          }
-          // currentItems를 다시 호출
-          setCurrentItems(fkdtCurrentItems2);
-        }}
-      >
-        {video.rating >= 1 ? <Star /> : <StarBorder />}
-      </div>*/}
     </div>
   );
 };

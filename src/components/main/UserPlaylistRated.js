@@ -16,6 +16,7 @@ const UserPlaylistRated = (props) => {
     setItemIndex,
     items,
     setRatedButtonOn,
+    videoIdRatings,
   } = props;
   // const [isEllipsisOn, setIsEllipsisOn] = useState(false);
 
@@ -67,6 +68,7 @@ const UserPlaylistRated = (props) => {
                 setCurrentItems={setCurrentItems}
                 setCurrentItem={setCurrentItem}
                 setItemIndex={setItemIndex}
+                videoIdRatings={videoIdRatings}
               />
             );
           })}

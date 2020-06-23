@@ -15,6 +15,7 @@ import '../styles/ChangeWindowButton.scss';
 const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
   const [ratedMusics, setRatedMusics] = useState([]);
+  const [videoIdRatings, setVideoIdRatings] = useState({});
   const [customLists, setCustomLists] = useState(null); // [{playlist}]
   const [currentItems, setCurrentItems] = useState([]);
   const [currentItem, setCurrentItem] = useState(null);
@@ -28,6 +29,12 @@ const Main = memo(({ profile, handleLogout }) => {
     getRatingMusiclist().then((data) => {
       console.log('사용자가 평가한 데이터 : ', data);
       setRatedMusics(data);
+      // 사용자가 평가한 videoid를 객체에 담아둔다. { videoid(wefwfwef): rating(3.5) }
+      const ratings = {};
+      data.forEach((video) => {
+        ratings[video.videoid] = video.rating;
+      });
+      setVideoIdRatings(ratings);
     });
   }, []);
 
@@ -44,25 +51,25 @@ const Main = memo(({ profile, handleLogout }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    console.log('이전에 재생한 큐를 불러옵니다.');
-    let playedItems = localStorage.getItem('playedItems');
-    if (playedItems) {
-      playedItems = JSON.parse(playedItems);
-      if (Array.isArray(playedItems)) {
-        setCurrentItem(playedItems[0]);
-        setCurrentItems(playedItems);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log('이전에 재생한 큐를 불러옵니다.');
+  //   let playedItems = localStorage.getItem('playedItems');
+  //   if (playedItems) {
+  //     playedItems = JSON.parse(playedItems);
+  //     if (Array.isArray(playedItems)) {
+  //       setCurrentItem(playedItems[0]);
+  //       setCurrentItems(playedItems);
+  //     }
+  //   }
+  // }, []);
 
   // 현재 재생 큐 저장
-  useEffect(() => {
-    console.log('현재 재생 큐를 저장합니다.');
-    if (Array.isArray(currentItems)) {
-      localStorage.setItem('playedItems', JSON.stringify(currentItems));
-    }
-  }, [currentItems]);
+  // useEffect(() => {
+  //   console.log('현재 재생 큐를 저장합니다.');
+  //   if (Array.isArray(currentItems)) {
+  //     localStorage.setItem('playedItems', JSON.stringify(currentItems));
+  //   }
+  // }, [currentItems]);
 
   const changePlayerSize = () => {
     if (playerSize === 'big') {
@@ -77,13 +84,13 @@ const Main = memo(({ profile, handleLogout }) => {
   return (
     <>
       <Nav nickname={nickname} />
-      <button
+      {/* <button
         id="change-window-button"
         type="button"
         onClick={changePlayerSize}
       >
         창전환
-      </button>
+      </button> */}
       <MusicPlayer
         currentItems={currentItems}
         currentItem={currentItem}
@@ -104,6 +111,7 @@ const Main = memo(({ profile, handleLogout }) => {
             customLists={customLists}
             setCustomLists={setCustomLists}
             nickname={nickname}
+            videoIdRatings={videoIdRatings}
           />
         </Route>
         <Route path={`/@${nickname}/explore`}>
@@ -115,6 +123,7 @@ const Main = memo(({ profile, handleLogout }) => {
             setCustomLists={setCustomLists}
             setItemIndex={setItemIndex}
             nickname={profile.id}
+            videoIdRatings={videoIdRatings}
           />
         </Route>
         <Route path={`/@${nickname}/library`}>
@@ -127,10 +136,14 @@ const Main = memo(({ profile, handleLogout }) => {
             setItemIndex={setItemIndex}
             nickname={profile.id}
             ratedMusics={ratedMusics}
+            videoIdRatings={videoIdRatings}
           />
         </Route>
         <Route path={`/@${nickname}/rating`}>
-          <AdditionalRating nickname={nickname} />
+          <AdditionalRating
+            nickname={nickname}
+            videoIdRatings={videoIdRatings}
+          />
         </Route>
         <Route path={`/@${nickname}/profile`}>
           <Profile profile={profile} handleLogout={handleLogout} />

@@ -23,6 +23,7 @@ const Library = (props) => {
     setItemIndex,
     nickname,
     ratedMusics,
+    videoIdRatings,
   } = props;
   const [selectedList, setSelectedList] = useState(null);
   const [addButtonOn, setAddButtonOn] = useState(false);
@@ -30,6 +31,21 @@ const Library = (props) => {
 
   const input = React.createRef();
   const addButton = React.createRef();
+
+  const playVideos = async (curruentVideos) => {
+    await setCurrentItem(null);
+    await setCurrentItems([]);
+    const videos = [...curruentVideos];
+    for (let i = 0; i < videos.length; i++) {
+      const videoId = videos[i].videoid;
+      if (videoIdRatings[videoId]) {
+        const rating = videoIdRatings[videoId];
+        videos[i].rating = rating;
+      }
+    }
+    setCurrentItems(videos);
+    setCurrentItem(videos[0]);
+  };
 
   let addPlaylist;
   if (addButtonOn) {
@@ -70,7 +86,6 @@ const Library = (props) => {
       <React.Fragment>
         <div
           onClick={(e) => {
-            // console.log('e : ', e);
             setAddButtonOn(true);
           }}
         >
@@ -91,16 +106,7 @@ const Library = (props) => {
             {ratedMusics[0] && <img src={ratedMusics[0].thumbnail} />}
           </div>
           <div className="list-title">
-            <p
-              onClick={async () => {
-                await setCurrentItem(null);
-                await setCurrentItems([]);
-                setCurrentItems(ratedMusics);
-                setCurrentItem(ratedMusics[0]);
-              }}
-            >
-              Rated Musics
-            </p>
+            <p onClick={() => playVideos(ratedMusics)}>Rated Musics</p>
           </div>
           <div className="list-button">
             <button onClick={() => setRatedButtonOn(true)}>
@@ -115,9 +121,8 @@ const Library = (props) => {
                 key={list.listname}
                 listName={list.listname}
                 items={list.musics}
-                setCurrentItems={setCurrentItems}
-                setCurrentItem={setCurrentItem}
                 setSelectedList={setSelectedList}
+                playVideos={playVideos}
               />
             );
           })}
@@ -133,6 +138,7 @@ const Library = (props) => {
           setCurrentItem={setCurrentItem}
           setCurrentItems={setCurrentItems}
           setItemIndex={setItemIndex}
+          videoIdRatings={videoIdRatings}
         />
       )}
       {ratedButtonOn && (
@@ -147,6 +153,7 @@ const Library = (props) => {
           setCurrentItems={setCurrentItems}
           setItemIndex={setItemIndex}
           items={ratedMusics}
+          videoIdRatings={videoIdRatings}
         />
       )}
     </div>

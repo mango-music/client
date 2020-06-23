@@ -3,13 +3,7 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const UserPlaylist = (props) => {
-  const {
-    listName,
-    items,
-    setCurrentItems,
-    setCurrentItem,
-    setSelectedList,
-  } = props;
+  const { listName, items, setSelectedList, playVideos } = props;
 
   const getThumbnail = () => {
     if (items[0]) {
@@ -22,16 +16,7 @@ const UserPlaylist = (props) => {
     <li>
       <div className="list-img">{getThumbnail()}</div>
       <div className="list-title">
-        <p
-          onClick={async () => {
-            await setCurrentItem(null);
-            await setCurrentItems([]);
-            setCurrentItems(items);
-            setCurrentItem(items[0]);
-          }}
-        >
-          {listName}
-        </p>
+        <p onClick={() => playVideos(items)}>{listName}</p>
       </div>
       <div className="list-button">
         <button onClick={() => setSelectedList(listName)}>
