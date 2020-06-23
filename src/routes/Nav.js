@@ -16,6 +16,8 @@ const useNavStyles = makeStyles((theme) => ({
   },
 })); // Create new classes to Mui Component
 
+// const RouterLink = (path, props) => <Link {...props} to={path} />;
+
 const Nav = ({ nickname }) => {
   const [value, setValue] = useState(0);
   const classes = useNavStyles();

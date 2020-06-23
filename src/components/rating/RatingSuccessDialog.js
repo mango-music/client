@@ -21,9 +21,14 @@ const RatingSuccessDialog = ({ isOpen, nickname, handleRatingSuccess }) => {
         aria-describedby="alert-dialog-description"
       >
         <div style={{ textAlign: 'center', fontSize: '4rem' }}>
-          <span role="img" aria-labelledby="ok-emoji">
-            👌
-          </span>
+          <iframe
+            src="https://giphy.com/embed/2yqYbPakQKDFhNZbW9"
+            width="100%"
+            height="auto"
+            frameBorder="0"
+            title="success-gif"
+            // allowFullScreen
+          />
         </div>
 
         <DialogTitle id="alert-dialog-title">이 정도면 충분해요!</DialogTitle>

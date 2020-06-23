@@ -110,7 +110,7 @@ class Rating extends PureComponent {
           handleRatingSkip={this.handleRatingSkip}
         />
         <RatingSuccessDialog
-          isOpen={ratedVideos.length >= 15} // Render this component when isOpen={true}
+          isOpen={ratedVideos.length >= 3} // Render this component when isOpen=true
           nickname={nickname}
           handleRatingSuccess={this.handleRatingSuccess}
         />

@@ -7,6 +7,14 @@ const Unauthorized = () => {
     <>
       <h2>401</h2>
       <h3>Authorization required</h3>
+      <iframe
+        src="https://giphy.com/embed/RYjnzPS8u0jAs"
+        width="320"
+        height="auto"
+        frameBorder="0"
+        title="police-chasing-gif"
+        // allowFullScreen
+      />
       <p>접근 권한이 없습니다. 로그인 해주세요.</p>
       <Button
         variant="text"

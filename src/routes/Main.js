@@ -70,9 +70,11 @@ const Main = memo(({ profile, handleLogout }) => {
     }
   };
 
+  const { nickname } = profile;
+
   return (
     <>
-      <Nav nickname={profile.id} />
+      <Nav nickname={nickname} />
       <button
         id="change-window-button"
         type="button"
@@ -89,7 +91,7 @@ const Main = memo(({ profile, handleLogout }) => {
         playerSize={playerSize}
       />
       <Switch>
-        <Route exact path={`/@${profile.id}`}>
+        <Route exact path={`/@${nickname}`}>
           <Recommends
             currentItems={currentItems}
             currentItem={currentItem}
@@ -98,10 +100,10 @@ const Main = memo(({ profile, handleLogout }) => {
             setItemIndex={setItemIndex}
             customLists={customLists}
             setCustomLists={setCustomLists}
-            nickname={profile.id}
+            nickname={nickname}
           />
         </Route>
-        <Route path={`/@${profile.id}/explore`}>
+        <Route path={`/@${nickname}/explore`}>
           <Explore
             setCurrentItem={setCurrentItem}
             setCurrentItems={setCurrentItems}
@@ -112,7 +114,7 @@ const Main = memo(({ profile, handleLogout }) => {
             nickname={profile.id}
           />
         </Route>
-        <Route path={`/@${profile.id}/library`}>
+        <Route path={`/@${nickname}/library`}>
           <Library
             customLists={customLists}
             setCustomLists={setCustomLists}
@@ -124,18 +126,16 @@ const Main = memo(({ profile, handleLogout }) => {
             ratedMusics={ratedMusics}
           />
         </Route>
-        <Route path={`/@${profile.id}/rating`}>
-          <AdditionalRating nickname={profile.id} />
+        <Route path={`/@${nickname}/rating`}>
+          <AdditionalRating nickname={nickname} />
         </Route>
-        <Route path={`/@${profile.id}/profile`}>
+        <Route path={`/@${nickname}/profile`}>
           <Profile profile={profile} handleLogout={handleLogout} />
         </Route>
-        <Route path={`/@${profile.id}/player`}>
+        <Route path={`/@${nickname}/player`}>
           <MusicPlayer />
         </Route>
-        <Route path={`/@${profile.id}`}>
-          <NoMatch />
-        </Route>
+        <Route path="/*" component={NoMatch} />
       </Switch>
     </>
   );
