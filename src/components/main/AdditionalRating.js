@@ -35,6 +35,7 @@ const AdditionalRating = (props) => {
         {genreArr.map(({ name, string }) => {
           return (
             <p
+              key={string}
               onClick={() => {
                 setGenre(name);
               }}
