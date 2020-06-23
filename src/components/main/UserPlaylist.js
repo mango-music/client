@@ -11,11 +11,16 @@ const UserPlaylist = (props) => {
     setSelectedList,
   } = props;
 
+  const getThumbnail = () => {
+    if (items[0]) {
+      return <img src={items[0].thumbnail} alt="" />;
+    }
+    return <div />;
+  };
+
   return (
     <li>
-      <div className="list-img">
-        {items[0] && <img src={items[0].thumbnail} />}
-      </div>
+      <div className="list-img">{getThumbnail()}</div>
       <div className="list-title">
         <p
           onClick={async () => {
