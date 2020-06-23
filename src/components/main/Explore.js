@@ -14,46 +14,61 @@ const Explore = (props) => {
     customLists,
     setCustomLists,
     setItemIndex,
+    nickname,
   } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
 
   useEffect(() => {
-    const input = document.getElementById('search-text');
-    input.addEventListener('keyup', (event) => {
-      if (event.keyCode === 13) {
-        event.preventDefault();
-        document.getElementById('search-button').click();
+    let searchedItems = localStorage.getItem('searchedItems');
+    if (searchedItems) {
+      searchedItems = JSON.parse(searchedItems);
+      if (Array.isArray(searchedItems)) {
+        setSearchItems(searchedItems);
       }
-    });
+    }
   }, []);
+
+  useEffect(() => {
+    localStorage.setItem('searchedItems', JSON.stringify(searchItems));
+  }, [searchItems]);
+
+  const input = React.createRef();
+  const searchButton = React.createRef();
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    searchMusicsByQuerry(querry, 15)
+      .then((res) => res.json())
+      .then((json) => {
+        console.log(json);
+        setSearchItems(json.items);
+      })
+      .catch((err) => console.log(err));
+  };
+
   return (
     <div id="search">
-      <MainHeader name={'Explore'} />
-      <div id="search-form">
-        <button
-          id="search-button"
-          onClick={() => {
-            searchMusicsByQuerry(querry, 15)
-              .then((res) => res.json())
-              .then((json) => {
-                console.log(json);
-                setSearchItems(json.items);
-              })
-              .catch((err) => console.log(err));
-          }}
-        >
+      <MainHeader title="Explore" nickname={nickname} />
+      <form onSubmit={(e) => handleSubmit(e)}>
+        <button ref={searchButton}>
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />
         </button>
         <input
-          id="search-text"
           type="text"
+          ref={input}
           onChange={(e) => {
             setQuerry(e.target.value);
           }}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) {
+              e.preventDefault();
+              searchButton.current.click();
+            }
+          }}
         />
-      </div>
-      <ul className="search-list">
+      </form>
+      <ul>
         {searchItems &&
           searchItems.map((item) => {
             return (

@@ -6,6 +6,7 @@ import Recommends from '../components/main/Recommends';
 import Explore from '../components/main/Explore';
 import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
+import AdditionalRating from '../components/main/AdditionalRating';
 import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import getRatingMusiclist from '../lib/apis/getRatingMusiclist';
@@ -25,8 +26,8 @@ const Main = memo(({ profile, handleLogout }) => {
     const token = localStorage.getItem('x-access-token');
     if (!token) return console.log('토큰이 없습니다.');
     getRatingMusiclist().then((data) => {
-      // console.log('사용자가 평가한 데이터 : ', data);
-      setRatedMusics(ratedMusics);
+      console.log('사용자가 평가한 데이터 : ', data);
+      setRatedMusics(data);
     });
   }, []);
 
@@ -46,10 +47,12 @@ const Main = memo(({ profile, handleLogout }) => {
   useEffect(() => {
     console.log('이전에 재생한 큐를 불러옵니다.');
     let playedItems = localStorage.getItem('playedItems');
-    if (Array.isArray(playedItems)) {
+    if (playedItems) {
       playedItems = JSON.parse(playedItems);
-      setCurrentItem(playedItems[0]);
-      setCurrentItems(playedItems);
+      if (Array.isArray(playedItems)) {
+        setCurrentItem(playedItems[0]);
+        setCurrentItems(playedItems);
+      }
     }
   }, []);
 
@@ -88,6 +91,7 @@ const Main = memo(({ profile, handleLogout }) => {
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}
         playerSize={playerSize}
+        changePlayerSize={changePlayerSize}
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>
@@ -110,6 +114,7 @@ const Main = memo(({ profile, handleLogout }) => {
             customLists={customLists}
             setCustomLists={setCustomLists}
             setItemIndex={setItemIndex}
+            nickname={profile.id}
           />
         </Route>
         <Route path={`/@${nickname}/library`}>
@@ -120,10 +125,12 @@ const Main = memo(({ profile, handleLogout }) => {
             setCurrentItem={setCurrentItem}
             currentItems={currentItems}
             setItemIndex={setItemIndex}
+            nickname={profile.id}
+            ratedMusics={ratedMusics}
           />
         </Route>
         <Route path={`/@${nickname}/rating`}>
-          {/* 추가 평가하기 컴포넌트 요기요 */}
+          <AdditionalRating nickname={nickname} />
         </Route>
         <Route path={`/@${nickname}/profile`}>
           <Profile profile={profile} handleLogout={handleLogout} />
@@ -132,9 +139,6 @@ const Main = memo(({ profile, handleLogout }) => {
           <MusicPlayer />
         </Route>
         <Route path="/*" component={NoMatch} />
-        {/* <Route path="*" >
-          <NoMatch />
-        </Route> */}
       </Switch>
     </>
   );
