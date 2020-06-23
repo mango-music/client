@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 
 const MusicTitle = (props) => {
-  const { isShuffleOn, shuffledIndex } = props;
+  const { isShuffleOn, shuffledIndex, changePlayerSize } = props;
   console.log('MusicTitle rendering');
   let title;
   // 셔플일 때
@@ -11,7 +11,11 @@ const MusicTitle = (props) => {
   } else {
     title = props.currentItems[props.itemIndex].title;
   }
-  return <div className="music-title">{title}</div>;
+  return (
+    <p className="music-title" onClick={changePlayerSize}>
+      {title}
+    </p>
+  );
 };
 
 export default memo(MusicTitle);

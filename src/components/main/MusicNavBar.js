@@ -26,6 +26,7 @@ const MusicNavBar = (props) => {
     isRepeatOn,
     setIsRepeatOn,
     playerSize,
+    changePlayerSize,
   } = props;
 
   function shuffleArrayES6(array) {
@@ -220,7 +221,7 @@ const MusicNavBar = (props) => {
     return (
       <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
         <div></div>
-        <div className="music-nav-bar-title">
+        <div className="music-nav-bar-title" onClick={changePlayerSize}>
           {currentItems[itemIndex].title}
         </div>
         <div>{centerButton}</div>

@@ -91,6 +91,7 @@ const Main = memo(({ profile, handleLogout }) => {
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}
         playerSize={playerSize}
+        changePlayerSize={changePlayerSize}
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>
