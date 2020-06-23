@@ -19,6 +19,20 @@ const Explore = (props) => {
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
 
+  useEffect(() => {
+    let searchedItems = localStorage.getItem('searchedItems');
+    if (searchedItems) {
+      searchedItems = JSON.parse(searchedItems);
+      if (Array.isArray(searchedItems)) {
+        setSearchItems(searchedItems);
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('searchedItems', JSON.stringify(searchItems));
+  }, [searchItems]);
+
   const input = React.createRef();
   const searchButton = React.createRef();
 
@@ -35,7 +49,7 @@ const Explore = (props) => {
 
   return (
     <div id="search">
-      <MainHeader title={'Explore'} nickname={nickname} />
+      <MainHeader title="Explore" nickname={nickname} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />

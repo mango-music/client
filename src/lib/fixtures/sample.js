@@ -11,7 +11,7 @@
   * - 힙합: HIPHOP
   * - R&B,SOUL: RB_SOUL
   * - 락&메탈: ROCK_METAL
-  * - 인디: INDE
+  * - 인디: INDIE
   * - 포크&블루스: FOLK_BLUES
   * - 팝: POP
 */
@@ -180,7 +180,7 @@ export const RB_SOUL = [
 ];
 
 /* 인디 */
-export const INDE = [
+export const INDIE = [
   {
     title: '정준일 - 안아줘 (Hug Me)',
     thumbnail: '',
@@ -400,12 +400,12 @@ export const samples = [
   DANCE[5],
   ROCK_METAL[3],
   POP[1],
-  INDE[3],
+  INDIE[3],
   DANCE[4],
   BALLAD[2],
   HIPHOP[6],
   FOLK_BLUES[1],
-  INDE[5],
+  INDIE[5],
   POP[8],
   RB_SOUL[3],
   DANCE[0],
@@ -414,11 +414,11 @@ export const samples = [
   RB_SOUL[2],
   HIPHOP[2],
   ROCK_METAL[5],
-  INDE[4],
+  INDIE[4],
   POP[0],
   DANCE[1],
   HIPHOP[4],
   BALLAD[4],
-  INDE[0],
+  INDIE[0],
   POP[6],
 ];

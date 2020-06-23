@@ -7,7 +7,9 @@ import { AccountCircle } from '@material-ui/icons';
 const MainHeader = ({ title, nickname }) => {
   return (
     <header className="main-header">
-      <p>{title}</p>
+      <div>
+        <p>{title}</p>
+      </div>
       <IconButton
         aria-label="profile page"
         size="medium"

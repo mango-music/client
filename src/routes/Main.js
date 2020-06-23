@@ -47,10 +47,12 @@ const Main = memo(({ profile, handleLogout }) => {
   useEffect(() => {
     console.log('이전에 재생한 큐를 불러옵니다.');
     let playedItems = localStorage.getItem('playedItems');
-    if (Array.isArray(playedItems)) {
+    if (playedItems) {
       playedItems = JSON.parse(playedItems);
-      setCurrentItem(playedItems[0]);
-      setCurrentItems(playedItems);
+      if (Array.isArray(playedItems)) {
+        setCurrentItem(playedItems[0]);
+        setCurrentItems(playedItems);
+      }
     }
   }, []);
 
@@ -89,6 +91,7 @@ const Main = memo(({ profile, handleLogout }) => {
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}
         playerSize={playerSize}
+        changePlayerSize={changePlayerSize}
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>

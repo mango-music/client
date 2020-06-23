@@ -16,6 +16,7 @@ const MusicPlayer = (props) => {
     itemIndex,
     setItemIndex,
     playerSize,
+    changePlayerSize,
   } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
   // const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
@@ -37,6 +38,8 @@ const MusicPlayer = (props) => {
   const opts = {
     playerVars: {
       autoplay: 1,
+      rel: 0,
+      playsinline: 1,
     },
   };
   const onReady = (event) => {
@@ -117,16 +120,17 @@ const MusicPlayer = (props) => {
               onStateChange={handleStateChange}
               className="iframe-video"
             />
-            <RatingForm
+            <MusicTitle
               currentItems={currentItems}
-              setCurrentItems={setCurrentItems}
               itemIndex={itemIndex}
               isShuffleOn={isShuffleOn}
               shuffledIndex={shuffledIndex}
               shuffledQueue={shuffledQueue}
+              changePlayerSize={changePlayerSize}
             />
-            <MusicTitle
+            <RatingForm
               currentItems={currentItems}
+              setCurrentItems={setCurrentItems}
               itemIndex={itemIndex}
               isShuffleOn={isShuffleOn}
               shuffledIndex={shuffledIndex}
@@ -162,6 +166,7 @@ const MusicPlayer = (props) => {
             setIsRepeatOn={setIsRepeatOn}
             player={player}
             playerSize={playerSize}
+            changePlayerSize={changePlayerSize}
           />
         </div>
       </div>
