@@ -48,7 +48,7 @@ const RecommendsEntry = (props) => {
       <div
         className="recommends-title"
         onClick={() => {
-          console.log('ssssss : ', video.videoid);
+          console.log('video가뭡니까? : ', video);
           console.log(`${video.title}을 재생합니다.`);
           playVideo(video);
         }}
