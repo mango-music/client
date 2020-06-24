@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import '../../styles/rating.scss';
+import '../../styles/Rating.scss';
 import Button from '@material-ui/core/Button';
 import RatingEntry from './RatingEntry';
 import Loading from '../auth/Loading';
