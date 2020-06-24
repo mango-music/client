@@ -14,10 +14,16 @@ const RecommendsEntry = (props) => {
     video,
     customLists,
     setCustomLists,
+    videoIdRatings,
   } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
 
   const playVideo = async (video) => {
+    // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
+    let rating = null;
+    if (videoIdRatings[video.videoid]) {
+      rating = videoIdRatings[video.videoid];
+    }
     const newCurrentItems = [...currentItems];
     // currentItems에 중복된 비디오가 있다면 삭제
     for (let i = 0; i < newCurrentItems.length; i++) {
@@ -27,6 +33,7 @@ const RecommendsEntry = (props) => {
         break;
       }
     }
+    video.rating = rating;
     newCurrentItems.unshift(video);
     console.log('video : ', video);
     setCurrentItem(video);

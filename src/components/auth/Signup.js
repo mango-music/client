@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link as RouterLink, withRouter } from 'react-router-dom';
 import {
+  Box,
   TextField,
   InputAdornment,
   IconButton,
@@ -12,7 +13,12 @@ import validate from '../../lib/utils/validate';
 import postAccountData from '../../lib/apis/postAccountData';
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    display: 'flex',
+    flexFlow: 'column nowrap',
+    overflow: 'auto',
+    padding: theme.spacing(1),
+  },
   textField: {
     '& .MuiInputLabel-formControl': {
       fontSize: '1.125rem',
@@ -54,9 +60,9 @@ const Signup = ({ handleSignupSuccess, history }) => {
     }
     const { confirm_password, ...data } = values; // 필요한 부분만 추출
     const status = await postAccountData('signup', data);
-    console.log(status ? 201 : 409);
+    console.log(status);
     // 409
-    if (!status) {
+    if (status === 409) {
       // eslint-disable-next-line no-alert
       window.alert('이미 가입된 이메일 입니다.'); // (임시)
       setValues(initialValues);
@@ -81,10 +87,9 @@ const Signup = ({ handleSignupSuccess, history }) => {
   const handleShowPasswordToggle = () => {
     setShowPassword(!showPassword);
   };
-
+  // className="account signup"
   return (
-    <main className="account signup">
-      <h2>가입하기</h2>
+    <Box component="div" className="account signup">
       <form onSubmit={handleSubmit} autoComplete="off">
         <div className="textField-container">
           <TextField
@@ -98,6 +103,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             helperText={errors && errors.email ? errors.email : null} // 'message' or null
             autoFocus // when mounted
             required
+            autoComplete="off"
             fullWidth
             className={classes.textField}
           />
@@ -113,6 +119,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             error={errors && errors.password}
             helperText={errors && errors.password ? errors.password : null}
             required
+            autoComplete="off"
             fullWidth
             className={classes.textField}
             InputProps={{
@@ -168,7 +175,6 @@ const Signup = ({ handleSignupSuccess, history }) => {
             variant="contained"
             color="primary"
             size="large"
-            fullWidth
           >
             가입
           </Button>
@@ -186,7 +192,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
           로그인
         </Button>
       </div>
-    </main>
+    </Box>
   );
 };
 

@@ -5,20 +5,20 @@ import { BottomNavigation, BottomNavigationAction } from '@material-ui/core';
 import { Home, Explore, LibraryMusic, Grade } from '@material-ui/icons';
 import '../styles/Nav.scss';
 
-const useNavStyles = makeStyles((theme) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    backgroundColor: theme.palette.common.white,
+    // backgroundColor: theme.palette.grey,
     position: 'fixed',
     left: 0,
     bottom: 0,
-    'z-index': '3',
+    zIndex: 3,
   },
 })); // Create new classes to Mui Component
 
 const Nav = ({ nickname }) => {
   const [value, setValue] = useState(0);
-  const classes = useNavStyles();
+  const classes = useStyles();
   return (
     <BottomNavigation
       value={value}
@@ -32,7 +32,7 @@ const Nav = ({ nickname }) => {
         label="Home"
         icon={<Home />}
         component={RouterLink}
-        exact
+        // exact
         to={`/@${nickname}`}
       />
       <BottomNavigationAction

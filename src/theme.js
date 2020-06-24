@@ -2,24 +2,35 @@ import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
 
 const theme = createMuiTheme({
   palette: {
-    // type: 'dark',
+    type: 'dark',
     primary: {
-      main: '#ff146a',
-      light: '#f73378',
+      main: '#ffc107',
+      light: '#ffcd38',
     },
     secondary: {
-      main: '#ffc400',
-      light: '#ffcf33',
+      main: '#2196f3',
     },
   },
   typography: {
     fontFamily: 'inherit',
+    h1: {
+      fontSize: '2rem',
+      fontWeight: 700,
+    },
   },
   overrides: {
+    MuiContainer: {
+      root: {
+        paddingTop: '44px',
+        scrollPaddingTop: '44px',
+        backgroundColor: '#303030',
+        height: '100vh',
+      },
+    },
     MuiFormLabel: {
       root: {
         '&$focused': {
-          color: '#303030',
+          color: 'inherit',
         },
       },
       focused: {},
@@ -32,7 +43,7 @@ const theme = createMuiTheme({
     MuiInput: {
       underline: {
         '&:after': {
-          borderBottom: '1px solid #303030',
+          borderBottom: '2px solid #fff',
         },
       },
     },
@@ -53,7 +64,7 @@ const theme = createMuiTheme({
     },
     MuiRating: {
       root: {
-        color: '#ffd740',
+        color: '#ffc107', // '#ffd740',
       },
       label: {
         overflow: 'hidden', // no-scroll-bar
@@ -63,21 +74,35 @@ const theme = createMuiTheme({
       },
     },
     MuiButton: {
-      contained: {
-        boxShadow: '0 5px 20px rgba(245, 0, 87, 0.3)',
-        '&:hover': {
-          boxShadow: 'none',
-        },
+      containedPrimary: {
+        // background: 'linear-gradient(to right, #FF5F6D 0%, #FFC371 100%)',
+        background: 'linear-gradient(to right, #ffb347 0%, #ffcc33 100%)',
+        // background: 'linear-gradient(90deg, #F7971E 0%, #FFD200 100%)',
+        // background:
+        //   'linear-gradient(135deg, rgba(255,23,68,1) 50%, rgba(255,152,0,1) 100%)',
+        // background: '#ff9800',
+        // 'linear-gradient(135deg, rgba(255,23,68,1) 0%, rgba(255,154,21,1) 100%)',
+        color: '#fff',
+        // boxShadow: '0 5px 20px rgba(255, 193, 7, 0.3)',
+        // '&:hover': {
+        //   boxShadow: 'none',
+        // },
+      },
+      containedSecondary: {
+        // boxShadow: '0 5px 20px rgba(33, 150, 243, 0.3)',
+        // '&:hover': {
+        //   boxShadow: 'none',
+        // },
       },
       // outlinedPrimary: {
       //   border: '1px solid #ff146a',
       // },
       sizeLarge: {
-        // width: '100%',
+        width: '100%',
         height: 48,
         padding: '0 30px',
-        fontSize: '1rem',
-        // fontWeight: 700,
+        fontSize: '1.125rem',
+        fontWeight: 700,
       },
     },
   },

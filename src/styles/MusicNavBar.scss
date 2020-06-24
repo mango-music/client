@@ -14,7 +14,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    background-color: whitesmoke;
+    background-color: #121212;
     div {
       display: grid;
       @include normal-button;
@@ -31,7 +31,7 @@
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 100px 1fr 1fr 1fr 56.25px 56.25px;
-    background-color: whitesmoke;
+    background-color: #121212;
     div {
       display: grid;
       @include normal-button;
@@ -46,6 +46,7 @@
       overflow: hidden;
       white-space: nowrap;
       margin-left: 10px;
+      cursor: pointer;
     }
   }
 }

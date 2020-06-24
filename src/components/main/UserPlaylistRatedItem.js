@@ -6,16 +6,12 @@ import UserPlaylistItemDropDownMenu from './UserPlaylistItemDropDownMenu';
 const UserPlaylistItem = (props) => {
   const {
     item,
-    selectedList,
-    customLists,
-    setCustomLists,
     currentItems,
     setCurrentItem,
     setCurrentItems,
     setItemIndex,
     videoIdRatings,
   } = props;
-  const [isEllipsisOn, setIsEllipsisOn] = useState(false);
 
   const playVideo = async () => {
     // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
@@ -53,28 +49,6 @@ const UserPlaylistItem = (props) => {
           {item.title}
         </p>
       </div>
-      <div className="list-button">
-        <button
-          onClick={() => {
-            if (isEllipsisOn) {
-              setIsEllipsisOn(false);
-            } else {
-              setIsEllipsisOn(true);
-            }
-          }}
-        >
-          <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
-        </button>
-      </div>
-      {isEllipsisOn && (
-        <UserPlaylistItemDropDownMenu
-          videoid={item.videoid}
-          selectedList={selectedList}
-          customLists={customLists}
-          setCustomLists={setCustomLists}
-          setIsEllipsisOn={setIsEllipsisOn}
-        />
-      )}
     </li>
   );
 };

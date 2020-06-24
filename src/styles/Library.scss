@@ -20,6 +20,11 @@
         display: block;
         width: 5rem;
       }
+      div {
+        background-color: #121212;
+        height: 100%;
+        width: 5rem;
+      }
     }
     .list-title {
       display: grid;
@@ -55,7 +60,7 @@
     left: 0;
     padding: 10px;
     z-index: 1;
-    background-color: rgb(240, 240, 240);
+    background-color: #545453;
     width: 100vw;
     height: 100vh;
     overflow: auto;
@@ -94,7 +99,7 @@
       display: grid;
       align-content: center;
       input {
-        background-color: whitesmoke;
+        background-color: #121212;
         padding: 10px;
         border: 0;
       }
@@ -106,7 +111,7 @@
   font-size: 1.2rem;
   z-index: 4;
   display: block;
-  background-color: rgba(255, 255, 255, 0.918);
+  background-color: #696969;
   padding: 10px;
   border-radius: 10px;
   position: absolute;

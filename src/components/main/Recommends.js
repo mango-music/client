@@ -17,6 +17,7 @@ const Recommends = (props) => {
     customLists,
     setCustomLists,
     nickname,
+    videoIdRatings,
   } = props;
   const [recommends, setRecommends] = useState([]);
 
@@ -29,18 +30,26 @@ const Recommends = (props) => {
     setRecommends(fkdtRecommends); // 이거 대신 위로 바꿔야 함
   }, []);
 
+  const playVideos = async () => {
+    await setCurrentItem(null);
+    await setCurrentItems([]);
+    const videos = [...recommends];
+    for (let i = 0; i < videos.length; i++) {
+      const videoId = videos[i].videoid;
+      if (videoIdRatings[videoId]) {
+        const rating = videoIdRatings[videoId];
+        videos[i].rating = rating;
+      }
+    }
+    setCurrentItems(videos);
+    setCurrentItem(videos[0]);
+  };
+
   return (
     <div id="recommends">
       <MainHeader title="Recommends" nickname={nickname} />
       <div id="play-all-button">
-        <button
-          onClick={async () => {
-            await setCurrentItem(null);
-            await setCurrentItems([]);
-            setCurrentItems(fkdtRecommends);
-            setCurrentItem(fkdtRecommends[0]);
-          }}
-        >
+        <button onClick={playVideos}>
           Play All <FontAwesomeIcon icon={faPlay} color="#afafaf" />
         </button>
       </div>
@@ -56,6 +65,7 @@ const Recommends = (props) => {
             setItemIndex={setItemIndex}
             customLists={customLists}
             setCustomLists={setCustomLists}
+            videoIdRatings={videoIdRatings}
           />
         ))}
       </ul>
