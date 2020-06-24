@@ -143,6 +143,7 @@ const Main = memo(({ profile, handleLogout }) => {
           <AdditionalRating
             nickname={nickname}
             videoIdRatings={videoIdRatings}
+            setVideoIdRatings={setVideoIdRatings}
           />
         </Route>
         <Route path={`/@${nickname}/profile`}>
