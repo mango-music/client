@@ -1,0 +1,26 @@
+// @import './common/normal-button.scss';
+#wrapper {
+  display: grid;
+  grid-auto-rows: 300px;
+  grid-auto-columns: 1400px;
+  grid-template-areas: 'list' 'recommends ';
+}
+#recommends {
+  grid-area: recommends;
+}
+
+.list {
+  grid-area: list;
+}
+.list .thumbnail {
+  width: 250px;
+}
+#kpop {
+  ul li {
+    list-style: none;
+    display: inline;
+    width: 400;
+    margin-left: 20px;
+    margin-bottom: 20px;
+  }
+}
