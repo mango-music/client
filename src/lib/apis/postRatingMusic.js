@@ -14,6 +14,7 @@ const postRatingMusic = async (
     newVideoIdRatings[item.videoid] = rating;
     setVideoIdRatings(newVideoIdRatings);
   }
+  return res.status;
 };
 
 export default postRatingMusic;

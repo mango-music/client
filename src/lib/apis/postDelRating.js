@@ -11,6 +11,7 @@ const postDelRating = async (item, videoIdRatings, setVideoIdRatings) => {
     delete newVideoIdRatings[videoid];
     setVideoIdRatings(newVideoIdRatings);
   }
+  return res.status;
 };
 
 export default postDelRating;

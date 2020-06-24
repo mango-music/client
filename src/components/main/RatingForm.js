@@ -12,6 +12,8 @@ const RatingForm = (props) => {
     currentItems,
     shuffledQueue,
     itemIndex,
+    videoIdRatings,
+    setVideoIdRatings,
   } = props;
   console.log('RatingForm rendering');
   let video;
@@ -38,22 +40,44 @@ const RatingForm = (props) => {
         size="large"
         precision={0.5}
         value={getStars()} // 초기값
-        onChange={(e, starsCount) => {
+        onChange={async (e, starsCount) => {
           console.log(`${video.title}에 ${starsCount}점을 매깁니다.`);
-          const newCurrentItems = [...currentItems];
-          for (let i = 0; i < newCurrentItems.length; i++) {
-            if (newCurrentItems[i].videoid === video.videoid) {
-              newCurrentItems[i].rating = starsCount;
-              break;
-            }
-          }
-          setCurrentItems(newCurrentItems);
-          if (starsCount) {
-            // 별점을 매길 때
-            postRatingMusic(video, starsCount);
-          } else {
+
+          if (starsCount === null) {
             // 별점을 삭제할 때
-            postDelRating(video.videoid);
+            const status = await postDelRating(
+              video,
+              videoIdRatings,
+              setVideoIdRatings,
+            );
+            if (status === 200) {
+              const newCurrentItems = [...currentItems];
+              for (let i = 0; i < newCurrentItems.length; i++) {
+                if (newCurrentItems[i].videoid === video.videoid) {
+                  newCurrentItems[i].rating = null;
+                  break;
+                }
+              }
+              setCurrentItems(newCurrentItems);
+            }
+          } else {
+            // 별점을 매길 때
+            const status = await postRatingMusic(
+              video,
+              starsCount,
+              videoIdRatings,
+              setVideoIdRatings,
+            );
+            if (status === 200) {
+              const newCurrentItems = [...currentItems];
+              for (let i = 0; i < newCurrentItems.length; i++) {
+                if (newCurrentItems[i].videoid === video.videoid) {
+                  newCurrentItems[i].rating = starsCount;
+                  break;
+                }
+              }
+              setCurrentItems(newCurrentItems);
+            }
           }
         }}
       />

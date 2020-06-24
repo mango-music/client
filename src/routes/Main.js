@@ -14,8 +14,8 @@ import '../styles/ChangeWindowButton.scss';
 
 const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
-  const [ratedMusics, setRatedMusics] = useState([]);
-  const [videoIdRatings, setVideoIdRatings] = useState({});
+  const [ratedMusics, setRatedMusics] = useState([]); // 서버에서 받아오는 사용자 별점 데이터
+  const [videoIdRatings, setVideoIdRatings] = useState({}); // 서버에서 받아온 별점 데이터를 객체에 담고 여기에 최신화를 시킨다.
   const [customLists, setCustomLists] = useState(null); // [{playlist}]
   const [currentItems, setCurrentItems] = useState([]);
   const [currentItem, setCurrentItem] = useState(null);
@@ -29,7 +29,7 @@ const Main = memo(({ profile, handleLogout }) => {
     getRatingMusiclist().then((data) => {
       console.log('사용자가 평가한 데이터 : ', data);
       setRatedMusics(data);
-      // 사용자가 평가한 videoid를 객체에 담아둔다. { videoid(wefwfwef): rating(3.5) }
+      // 사용자가 평가한 videoid를 객체에 담아둔다. { videoid: rating }
       const ratings = {};
       data.forEach((video) => {
         ratings[video.videoid] = video.rating;
@@ -99,6 +99,8 @@ const Main = memo(({ profile, handleLogout }) => {
         setItemIndex={setItemIndex}
         playerSize={playerSize}
         changePlayerSize={changePlayerSize}
+        videoIdRatings={videoIdRatings}
+        setVideoIdRatings={setVideoIdRatings}
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>
