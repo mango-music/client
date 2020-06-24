@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import MainHeader from './MainHeader';
 import RecommendsEntry from './RecommendsEntry';
-import getRecommendedMusic from '../../lib/apis/getRecommendedMusic';
-import '../../styles/Recommends.scss';
-import fkdtRecommends from '../../lib/fixtures/fkdtRecommends';
+import getRecommendedMusic from '../../../lib/apis/getRecommendedMusic';
+import '../../../styles/Recommends.scss';
+import fkdtRecommends from '../../../lib/fixtures/fkdtRecommends';
 
 const Recommends = (props) => {
   const {
@@ -17,21 +16,17 @@ const Recommends = (props) => {
     customLists,
     setCustomLists,
     nickname,
+    setPlayerSize,
+    videoIdRatings,
   } = props;
   const [recommends, setRecommends] = useState([]);
 
   useEffect(() => {
-    console.log('추천 재생 리스트를 불러옵니다.');
-    getRecommendedMusic().then((data) => {
-      console.log('추천 재생 리스트의 데이터 : ', data);
-      // setRecommends(data);
-    });
     setRecommends(fkdtRecommends); // 이거 대신 위로 바꿔야 함
   }, []);
 
   return (
     <div id="recommends">
-      <MainHeader title="Recommends" nickname={nickname} />
       <div id="play-all-button">
         <button
           onClick={async () => {
@@ -39,6 +34,7 @@ const Recommends = (props) => {
             await setCurrentItems([]);
             setCurrentItems(fkdtRecommends);
             setCurrentItem(fkdtRecommends[0]);
+            setPlayerSize('big');
           }}
         >
           Play All <FontAwesomeIcon icon={faPlay} color="#afafaf" />
@@ -56,6 +52,7 @@ const Recommends = (props) => {
             setItemIndex={setItemIndex}
             customLists={customLists}
             setCustomLists={setCustomLists}
+            videoIdRatings={videoIdRatings}
           />
         ))}
       </ul>

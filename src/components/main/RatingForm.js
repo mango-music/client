@@ -1,83 +1,86 @@
-import React, { memo } from 'react';
-// import { faStar, faStarOfDavid } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { memo, useState } from 'react';
 import '../../styles/RatingForm.scss';
 import MuiRating from '@material-ui/lab/Rating';
-import { Star, StarBorder } from '@material-ui/icons';
-import fkdtCurrentItems2 from '../../lib/fixtures/fkdtCurrentItems2';
 import postRatingMusic from '../../lib/apis/postRatingMusic';
 import postDelRating from '../../lib/apis/postDelRating';
 
 const RatingForm = (props) => {
-  const { isShuffleOn, shuffledIndex, setCurrentItems } = props;
+  const {
+    isShuffleOn,
+    shuffledIndex,
+    setCurrentItems,
+    currentItems,
+    shuffledQueue,
+    itemIndex,
+    videoIdRatings,
+    setVideoIdRatings,
+  } = props;
   console.log('RatingForm rendering');
   let video;
   // 셔플일 때
   if (isShuffleOn && shuffledIndex !== undefined) {
-    const index = props.shuffledQueue[shuffledIndex];
-    video = props.currentItems[index];
+    const index = shuffledQueue[shuffledIndex];
+    video = currentItems[index];
   } else {
-    video = props.currentItems[props.itemIndex];
+    video = currentItems[itemIndex];
   }
+
+  const getStars = () => {
+    let stars = null;
+    if (video.rating) {
+      console.log(video.title, '의 video.rating이 얼마?', video.rating);
+      stars = video.rating;
+    }
+    return stars;
+  };
   return (
     <div className="rating-form">
-      <div
-        onClick={async () => {
-          // 서버 조정 후 수정
-          console.log(`${video.title}의 rating를 1로 바꾼다.`);
-          if (video.rating === 1) {
-            // 별점 삭제 요청
-            await postDelRating(video);
+      <MuiRating
+        name="playerRating"
+        size="large"
+        precision={0.5}
+        value={getStars()} // 초기값
+        onChange={async (e, starsCount) => {
+          console.log(`${video.title}에 ${starsCount}점을 매깁니다.`);
+
+          if (starsCount === null) {
+            // 별점을 삭제할 때
+            const status = await postDelRating(
+              video,
+              videoIdRatings,
+              setVideoIdRatings,
+            );
+            if (status === 200) {
+              const newCurrentItems = [...currentItems];
+              for (let i = 0; i < newCurrentItems.length; i++) {
+                if (newCurrentItems[i].videoid === video.videoid) {
+                  newCurrentItems[i].rating = null;
+                  break;
+                }
+              }
+              setCurrentItems(newCurrentItems);
+            }
           } else {
-            // 별점 입력 요청
-            await postRatingMusic(video, 1);
+            // 별점을 매길 때
+            const status = await postRatingMusic(
+              video,
+              starsCount,
+              videoIdRatings,
+              setVideoIdRatings,
+            );
+            if (status === 200) {
+              const newCurrentItems = [...currentItems];
+              for (let i = 0; i < newCurrentItems.length; i++) {
+                if (newCurrentItems[i].videoid === video.videoid) {
+                  newCurrentItems[i].rating = starsCount;
+                  break;
+                }
+              }
+              setCurrentItems(newCurrentItems);
+            }
           }
-          // currentItems를 다시 호출
-          setCurrentItems(fkdtCurrentItems2);
         }}
-      >
-        {video.rating >= 1 ? <Star /> : <StarBorder />}
-      </div>
-      <div
-        onClick={async () => {
-          console.log(`${video.title}의 rating를 2로 바꾼다.`);
-          await postRatingMusic(video, 2);
-          // currentItems를 다시 호출
-          setCurrentItems(fkdtCurrentItems2);
-        }}
-      >
-        {video.rating >= 2 ? <Star /> : <StarBorder />}
-      </div>
-      <div
-        onClick={async () => {
-          console.log(`${video.title}의 rating를 3로 바꾼다.`);
-          await postRatingMusic(video, 3);
-          // currentItems를 다시 호출
-          setCurrentItems(fkdtCurrentItems2);
-        }}
-      >
-        {video.rating >= 3 ? <Star /> : <StarBorder />}
-      </div>
-      <div
-        onClick={async () => {
-          console.log(`${video.title}의 rating를 4로 바꾼다.`);
-          await postRatingMusic(video, 4);
-          // currentItems를 다시 호출
-          setCurrentItems(fkdtCurrentItems2);
-        }}
-      >
-        {video.rating >= 4 ? <Star /> : <StarBorder />}
-      </div>
-      <div
-        onClick={async () => {
-          console.log(`${video.title}의 rating를 5로 바꾼다.`);
-          await postRatingMusic(video, 5);
-          // currentItems를 다시 호출
-          setCurrentItems(fkdtCurrentItems2);
-        }}
-      >
-        {video.rating >= 5 ? <Star /> : <StarBorder />}
-      </div>
+      />
     </div>
   );
 };

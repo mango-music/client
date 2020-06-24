@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import SearchEntry from './ExploreEntry';
+import ExploreEntry from './ExploreEntry';
 import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
 import MainHeader from './MainHeader';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ const Explore = (props) => {
     setCustomLists,
     setItemIndex,
     nickname,
+    videoIdRatings,
   } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
@@ -72,10 +73,7 @@ const Explore = (props) => {
         {searchItems &&
           searchItems.map((item) => {
             return (
-              <SearchEntry
-                thumbnail={item.snippet.thumbnails.medium.url}
-                title={item.snippet.title}
-                videoid={item.id.videoId}
+              <ExploreEntry
                 setCurrentItem={setCurrentItem}
                 setCurrentItems={setCurrentItems}
                 currentItems={currentItems}
@@ -84,6 +82,7 @@ const Explore = (props) => {
                 item={item}
                 setCustomLists={setCustomLists}
                 setItemIndex={setItemIndex}
+                videoIdRatings={videoIdRatings}
               />
             );
           })}

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RecommendsDropDownMenu from './RecommendsDropDownMenu';
-import '../../styles/Recommends.scss';
-import fkdtRecommends from '../../lib/fixtures/fkdtRecommends';
+import '../../../styles/Recommends.scss';
 
 const RecommendsEntry = (props) => {
   const {
@@ -14,10 +13,16 @@ const RecommendsEntry = (props) => {
     video,
     customLists,
     setCustomLists,
+    videoIdRatings,
   } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
 
   const playVideo = async (video) => {
+    // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
+    let rating = null;
+    if (videoIdRatings[video.videoid]) {
+      rating = videoIdRatings[video.videoid];
+    }
     const newCurrentItems = [...currentItems];
     // currentItems에 중복된 비디오가 있다면 삭제
     for (let i = 0; i < newCurrentItems.length; i++) {
@@ -27,6 +32,7 @@ const RecommendsEntry = (props) => {
         break;
       }
     }
+    video.rating = rating;
     newCurrentItems.unshift(video);
     console.log('video : ', video);
     setCurrentItem(video);
@@ -42,7 +48,7 @@ const RecommendsEntry = (props) => {
       <div
         className="recommends-title"
         onClick={() => {
-          console.log('ssssss : ', video.videoid);
+          console.log('video가뭡니까? : ', video);
           console.log(`${video.title}을 재생합니다.`);
           playVideo(video);
         }}
@@ -63,15 +69,15 @@ const RecommendsEntry = (props) => {
           <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
         </button>
       </div>
-      {isEllipsisOn && (
-        <RecommendsDropDownMenu
-          videoid={video.videoid}
-          customLists={customLists}
-          item={video}
-          setCustomLists={setCustomLists}
-          setIsEllipsisOn={setIsEllipsisOn}
-        />
-      )}
+      {/* {isEllipsisOn && ( */}
+      {/* // <RecommendsDropDownMenu */}
+      {/* // videoid={video.videoid} */}
+      {/* // customLists={customLists} */}
+      {/* // item={video} */}
+      {/* // setCustomLists={setCustomLists} */}
+      {/* // setIsEllipsisOn={setIsEllipsisOn} */}
+      {/* // /> */}
+      {/* )} */}
     </li>
   );
 };

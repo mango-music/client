@@ -14,7 +14,7 @@ import {
 import '../../styles/AdditionalRating.scss';
 
 const AdditionalRating = (props) => {
-  const { nickname } = props;
+  const { nickname, videoIdRatings, setVideoIdRatings } = props;
   const [genre, setGenre] = useState(BALLAD);
 
   const genreArr = [
@@ -24,7 +24,7 @@ const AdditionalRating = (props) => {
     { name: RB_SOUL, string: 'RB_SOUL' },
     { name: ROCK_METAL, string: 'ROCK_METAL' },
     { name: INDIE, string: 'INDIE' },
-    { name: FOLK_BLUES, string: 'FOLK_BLUES' },
+    // { name: FOLK_BLUES, string: 'FOLK_BLUES' },
     { name: POP, string: 'POP' },
   ];
 
@@ -47,7 +47,12 @@ const AdditionalRating = (props) => {
       </nav>
       <ul>
         {genre.map((music) => (
-          <AdditionalRatingEntry key={music.videoid} music={music} />
+          <AdditionalRatingEntry
+            key={music.videoid}
+            music={music}
+            videoIdRatings={videoIdRatings}
+            setVideoIdRatings={setVideoIdRatings}
+          />
         ))}
       </ul>
     </div>
