@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RecommendsEntry from './RecommendsEntry';
 import getRecommendedMusic from '../../../lib/apis/getRecommendedMusic';
 import '../../../styles/Recommends.scss';
-import fkdtRecommends from '../../../lib/fixtures/fkdtRecommends';
 
 const Recommends = (props) => {
   const {
@@ -22,7 +21,9 @@ const Recommends = (props) => {
   const [recommends, setRecommends] = useState([]);
 
   useEffect(() => {
-    setRecommends(fkdtRecommends); // 이거 대신 위로 바꿔야 함
+    getRecommendedMusic().then((data) => {
+      setRecommends(data);
+    });
   }, []);
 
   return (
@@ -32,8 +33,8 @@ const Recommends = (props) => {
           onClick={async () => {
             await setCurrentItem(null);
             await setCurrentItems([]);
-            setCurrentItems(fkdtRecommends);
-            setCurrentItem(fkdtRecommends[0]);
+            setCurrentItems(recommends);
+            setCurrentItem(recommends[0]);
             setPlayerSize('big');
           }}
         >
