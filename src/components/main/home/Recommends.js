@@ -17,6 +17,7 @@ const Recommends = (props) => {
     setCustomLists,
     nickname,
     setPlayerSize,
+    videoIdRatings,
   } = props;
   const [recommends, setRecommends] = useState([]);
 
@@ -51,6 +52,7 @@ const Recommends = (props) => {
             setItemIndex={setItemIndex}
             customLists={customLists}
             setCustomLists={setCustomLists}
+            videoIdRatings={videoIdRatings}
           />
         ))}
       </ul>

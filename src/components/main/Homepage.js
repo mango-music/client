@@ -19,6 +19,7 @@ const Homepage = (props) => {
     setCustomLists,
     nickname,
     setPlayerSize,
+    videoIdRatings,
   } = props;
   useEffect(() => {
     getRecommendedPlaylist(10000)
@@ -84,6 +85,7 @@ const Homepage = (props) => {
         setCustomLists={setCustomLists}
         nickname={nickname}
         setPlayerSize={setPlayerSize}
+        videoIdRatings={videoIdRatings}
       />
     </div>
   );
