@@ -1,8 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import Button from '@material-ui/core/Button';
+import { Box, Button, Typography } from '@material-ui/core';
 import MuiRating from '@material-ui/lab/Rating';
+import { makeStyles } from '@material-ui/core/styles';
 import YouTube from 'react-youtube';
 import ProgressMobileStepper from './ProgressMobileStepper';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    zIndex: 100,
+  },
+}));
 
 const opts = {
   playerVars: {
@@ -16,6 +26,7 @@ const RatingEntry = ({
   handleRatingUpdate,
   handleRatingSkip,
 }) => {
+  const classes = useStyles();
   const [value, setValue] = useState(0);
   const [isNextDisabled, setNextDisabled] = useState(false);
 
@@ -37,16 +48,18 @@ const RatingEntry = ({
     } else {
       setNextDisabled(false);
     }
-  }, [value]);
-
+  }, [value, evaluationCount]);
+  // className="rating rating_entry"
   return (
-    <article className="rating rating_entry">
-      <YouTube videoId={video.videoid} className="youtube" opts={opts} />
-      <section>
-        <h2>{video.title}</h2>
-        <p>평가하기</p>
+    <Box className={`${classes.root} card`}>
+      <Box component="header">
+        <YouTube videoId={video.videoid} className="card_media" opts={opts} />
+      </Box>
+      <Box component="section" className="card_content">
+        <Typography variant="subtitle1">{video.title}</Typography>
+        <Typography variant="subtitle2">평가하기</Typography>
         {/* <h2>How would you rate this song?</h2> */}
-        <div className="box box-rating">
+        <Box className="card_content_inputs">
           <MuiRating
             name="rating"
             size="large"
@@ -56,11 +69,11 @@ const RatingEntry = ({
               setValue(targetValue); // e.target.value와 동일 (MaterialUI onChange API)
             }}
           />
-        </div>
-        <div className="box box-buttons">
+        </Box>
+        <Box className="card_content_buttons">
           <Button
             variant="text"
-            color="primary"
+            color="secondary"
             size="large"
             onClick={handleSkipButtonClick}
           >
@@ -75,16 +88,16 @@ const RatingEntry = ({
           >
             다음으로
           </Button>
-        </div>
-      </section>
-      <footer>
+        </Box>
+      </Box>
+      <Box component="footer">
         <ProgressMobileStepper
           evaluationCount={evaluationCount}
           handleRatingButtonClick={handleRatingButtonClick}
           handleSkipButtonClick={handleSkipButtonClick}
         />
-      </footer>
-    </article>
+      </Box>
+    </Box>
   );
 };
 

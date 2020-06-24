@@ -16,7 +16,7 @@ import NoMatch from '../components/auth/NoMatch';
 import '../styles/app.scss';
 import usePageTitle from '../lib/utils/usePageTitle';
 
-const App = ({ location }) => {
+const App = ({ history, location }) => {
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
   const [hasJustCreated, setJustCreated] = useState(false);
@@ -25,7 +25,7 @@ const App = ({ location }) => {
   const callbackPath = useRef(null); // uncontrolled state (not for rendering)
 
   // Memorize these handler functions until [dependency state] updated
-  const handleLogin = useCallback(() => {
+  const handleLogin = () => {
     const userinfo = JSON.parse(localStorage.getItem('x-user-info'));
     callbackPath.current = `/@${userinfo.nickname}`;
     console.log(callbackPath);
@@ -34,7 +34,7 @@ const App = ({ location }) => {
       email: userinfo.email,
       nickname: userinfo.nickname,
     });
-  }, [isLogin]);
+  };
 
   const handleSignupSuccess = useCallback(() => {
     setJustCreated(true);
@@ -61,15 +61,25 @@ const App = ({ location }) => {
   useEffect(() => {
     console.log('Component did mount');
     if (localStorage.getItem('x-access-token')) {
-      return handleLogin();
+      handleLogin();
     }
   }, []);
 
+  useEffect(() => {
+    // after useEffect with no dependency (did mount)
+    if (isLogin) {
+      console.log('Component did update');
+      return history.push('/');
+    }
+  }, [isLogin]);
+
   return (
     <Container disableGutters className="app">
-      <Box component="header" className="app_header">
-        <Typography variant="h1">{title}</Typography>
-      </Box>
+      {location.pathname !== '/rating' ? (
+        <Box component="header" className="app_header">
+          <Typography variant="h1">{title}</Typography>
+        </Box>
+      ) : null}
       <Box component="main" className="app_main">
         <Switch>
           <Route

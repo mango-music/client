@@ -11,9 +11,7 @@ const ProgressMobileStepper = ({ evaluationCount }) => {
       activeStep={evaluationCount}
       nextButton={
         // eslint-disable-next-line react/jsx-wrap-multilines
-        <span style={{ color: '#f73378' }}>
-          {`${evaluationCount} \u2215 15`}
-        </span>
+        <span>{`${evaluationCount} \u2215 15`}</span>
       }
     />
   );

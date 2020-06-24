@@ -13,12 +13,7 @@ import validate from '../../lib/utils/validate';
 import postAccountData from '../../lib/apis/postAccountData';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    display: 'flex',
-    flexFlow: 'column nowrap',
-    overflow: 'auto',
-    padding: theme.spacing(1),
-  },
+  root: {},
   textField: {
     '& .MuiInputLabel-formControl': {
       fontSize: '1.125rem',
@@ -30,9 +25,6 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiInputBase-root': {
       padding: '6px 0',
     },
-    // '& .Mui-error:after': {
-    //   borderBottomColor: `${theme.palette.error.main} !important`,
-    // },
   },
 }));
 
@@ -87,7 +79,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
   const handleShowPasswordToggle = () => {
     setShowPassword(!showPassword);
   };
-  // className="account signup"
+
   return (
     <Box component="div" className="account signup">
       <form onSubmit={handleSubmit} autoComplete="off">

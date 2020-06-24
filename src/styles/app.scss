@@ -1,5 +1,3 @@
-@import './account.scss';
-
 .app {
   &_header {
     display: flex;
@@ -13,10 +11,13 @@
     }
   }
   &_main {
-    // padding: 1rem;
+    padding: 1rem;
     position: relative;
     div.account {
       padding: 0 0.5rem;
     }
   }
 }
+
+@import './account.scss';
+@import './rating.scss';
