@@ -1,6 +1,7 @@
 import axios from 'axios';
 import refresh from './refresh';
 const apiHelper = async (url, body) => {
+  console.log(body);
   const token = localStorage.getItem('x-access-token');
   if (!token) return console.log('x-access-token이 없습니다.');
   const headers = { Authorization: `Bearer ${token}` };
@@ -12,6 +13,9 @@ const apiHelper = async (url, body) => {
     return res;
   } catch (err) {
     console.log(err);
+    if (!err.response) {
+      return;
+    }
     if (err.response.status === 419) {
       refresh();
       apiHelper(url, body);
