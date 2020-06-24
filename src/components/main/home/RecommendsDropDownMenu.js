@@ -1,5 +1,5 @@
 import React from 'react';
-import postAddMusic from '../../lib/apis/postAddMusic';
+import postAddMusic from '../../../lib/apis/postAddMusic';
 
 const RecommendsDropDownMenu = (props) => {
   const { customLists, item, setCustomLists, setIsEllipsisOn } = props;

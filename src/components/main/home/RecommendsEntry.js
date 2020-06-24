@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RecommendsDropDownMenu from './RecommendsDropDownMenu';
-import '../../styles/Recommends.scss';
-import fkdtRecommends from '../../lib/fixtures/fkdtRecommends';
+import '../../../styles/Recommends.scss';
 
 const RecommendsEntry = (props) => {
   const {
@@ -70,15 +69,15 @@ const RecommendsEntry = (props) => {
           <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
         </button>
       </div>
-      {isEllipsisOn && (
-        <RecommendsDropDownMenu
-          videoid={video.videoid}
-          customLists={customLists}
-          item={video}
-          setCustomLists={setCustomLists}
-          setIsEllipsisOn={setIsEllipsisOn}
-        />
-      )}
+      {/* {isEllipsisOn && ( */}
+      {/* // <RecommendsDropDownMenu */}
+      {/* // videoid={video.videoid} */}
+      {/* // customLists={customLists} */}
+      {/* // item={video} */}
+      {/* // setCustomLists={setCustomLists} */}
+      {/* // setIsEllipsisOn={setIsEllipsisOn} */}
+      {/* // /> */}
+      {/* )} */}
     </li>
   );
 };

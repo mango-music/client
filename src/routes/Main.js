@@ -2,7 +2,7 @@ import React, { memo, useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
-import Recommends from '../components/main/Recommends';
+import Recommends from '../components/main/home/Recommends';
 import Explore from '../components/main/Explore';
 import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
@@ -11,6 +11,8 @@ import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import getRatingMusiclist from '../lib/apis/getRatingMusiclist';
 import '../styles/ChangeWindowButton.scss';
+import { ImageOutlined, Home } from '@material-ui/icons';
+import Homepage from '../components/main/Homepage';
 
 const Main = memo(({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
@@ -102,7 +104,7 @@ const Main = memo(({ profile, handleLogout }) => {
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>
-          <Recommends
+          <Homepage
             currentItems={currentItems}
             currentItem={currentItem}
             setCurrentItems={setCurrentItems}
@@ -112,6 +114,7 @@ const Main = memo(({ profile, handleLogout }) => {
             setCustomLists={setCustomLists}
             nickname={nickname}
             videoIdRatings={videoIdRatings}
+            setPlayerSize={setPlayerSize}
           />
         </Route>
         <Route path={`/@${nickname}/explore`}>
