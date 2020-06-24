@@ -17,40 +17,37 @@
       overflow: visible;
     }
   }
-  &_entry {
-    .youtube {
-      width: 100%;
-      height: 50vh;
-      // height: 38.2vh; // golden ratio
-      background: rgb(0, 0, 0);
+}
+
+.card {
+  width: 100%;
+  min-width: 360px;
+  overflow: visible !important;
+  // overflow-x: visible !important;
+  // overflow-y: visible !important;
+  &_media {
+    width: 100%;
+    height: 50vh;
+    background: #000;
+    // height: 38.2vh; // golden ratio
+  }
+  &_content {
+    padding: 1rem;
+    text-align: center; // center inline elements
+    &_inputs {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin: 2rem 0;
     }
-    section {
-      text-align: center; // center inline elements
-      padding: 16px;
-      p {
-        margin: 1rem 0;
-      }
-    }
-    .box {
-      // &-video {
-      //   height: 50vh;
-      //   background: rgb(0, 0, 0);
-      // }
-      &-rating {
-        display: flex;
-        justify-content: center;
-        align-content: center;
-        margin: 2rem 0;
-      }
-      &-buttons {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        width: 100%; // 나중에 수정 (side padding: 24px)
-        height: 96px;
-        margin: 0 auto; // 나중에 수정
-        overflow: visible; // prevent shadow crop
-      }
+    &_buttons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%; // 나중에 수정 (side padding: 24px)
+      height: 96px;
+      margin: 0 auto; // 나중에 수정
+      overflow: visible; // prevent shadow crop
     }
   }
 }

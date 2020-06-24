@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
-import '../../styles/Rating.scss';
+import '../../styles/rating.scss';
 import Button from '@material-ui/core/Button';
 import RatingEntry from './RatingEntry';
 import Loading from '../auth/Loading';
@@ -110,7 +110,7 @@ class Rating extends PureComponent {
           handleRatingSkip={this.handleRatingSkip}
         />
         <RatingSuccessDialog
-          isOpen={ratedVideos.length >= 3} // Render this component when isOpen=true
+          isOpen={ratedVideos.length >= 15} // Render this component when isOpen=true
           nickname={nickname}
           handleRatingSuccess={this.handleRatingSuccess}
         />

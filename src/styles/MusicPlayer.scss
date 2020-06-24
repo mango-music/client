@@ -1,12 +1,14 @@
 #player {
   position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   display: flex; // 지우면 재생바가 사라짐
   justify-content: center; // 늘어나도 가운데 머무르게 함
 
   .player-small {
     .player-window {
-      z-index: 3;
+      z-index: 100;
       position: fixed;
       bottom: 56px;
       left: 0;
@@ -40,7 +42,7 @@
   .player-big {
     overflow-y: auto; // 스크롤 바
     height: 100vh;
-    z-index: 3;
+    z-index: 100;
     background-color: #121212;
     @media (min-width: 500px) {
       .player-window {

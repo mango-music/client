@@ -6,7 +6,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  overflow: hidden;
 }
 
 body {
@@ -16,6 +15,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #fff;
+  height: 100vh;
+  // overflow: hidden;
 }
 
 code {
@@ -57,7 +58,16 @@ select:-webkit-autofill:focus {
   -webkit-text-fill-color: #fff !important;
 }
 
-#root {
-  height: 100vh;
-  overflow: hidden;
+div {
+  ::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+  }
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
+
+// #root {
+//   height: 100vh;
+// }

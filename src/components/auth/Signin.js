@@ -24,9 +24,6 @@ const useStyles = makeStyles((theme) => ({
     '& .MuiInputBase-root': {
       padding: '6px 0',
     },
-    // '& .Mui-error:after': {
-    //   borderBottomColor: `${theme.palette.error.main} !important`,
-    // },
   },
 }));
 

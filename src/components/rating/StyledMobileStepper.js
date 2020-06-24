@@ -1,18 +1,17 @@
-import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import MobileStepper from '@material-ui/core/MobileStepper';
 
-const StyledMobileStepper = withStyles({
+const StyledMobileStepper = withStyles((theme) => ({
   root: {
     maxWidth: '100%',
     flexGrow: 1,
-    backgroundColor: '#fff',
     padding: '16px',
   },
   progress: {
     width: '80%',
     borderRadius: 2,
+    backgroundColor: 'rgba(255, 255, 255, 0.3)',
   },
-})(MobileStepper);
+}))(MobileStepper);
 
 export default StyledMobileStepper;

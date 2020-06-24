@@ -127,7 +127,7 @@ const Main = memo(({ profile, handleLogout }) => {
             customLists={customLists}
             setCustomLists={setCustomLists}
             setItemIndex={setItemIndex}
-            nickname={profile.id}
+            nickname={nickname}
             videoIdRatings={videoIdRatings}
           />
         </Route>
@@ -139,7 +139,7 @@ const Main = memo(({ profile, handleLogout }) => {
             setCurrentItem={setCurrentItem}
             currentItems={currentItems}
             setItemIndex={setItemIndex}
-            nickname={profile.id}
+            nickname={nickname}
             ratedMusics={ratedMusics}
             videoIdRatings={videoIdRatings}
           />
@@ -157,7 +157,7 @@ const Main = memo(({ profile, handleLogout }) => {
         <Route path={`/@${nickname}/player`}>
           <MusicPlayer />
         </Route>
-        <Route path="/*" component={NoMatch} />
+        <Route path={`/@${nickname}`} component={NoMatch} />
       </Switch>
     </>
   );

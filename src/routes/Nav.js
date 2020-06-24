@@ -8,17 +8,21 @@ import '../styles/Nav.scss';
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
-    // backgroundColor: theme.palette.grey,
     position: 'fixed',
     left: 0,
     bottom: 0,
-    zIndex: 3,
+    zIndex: 10,
+    borderTop: '1px solid rgba(255, 255, 255, 0.3)',
   },
-})); // Create new classes to Mui Component
+}));
 
 const Nav = ({ nickname }) => {
-  const [value, setValue] = useState(0);
   const classes = useStyles();
+  const [value, setValue] = useState(0);
+  const handleLinkClick = (e) => {
+    e.stopPropagation(); // can prevent overlapped click event?
+    console.log('Page changed!');
+  };
   return (
     <BottomNavigation
       value={value}
@@ -34,24 +38,28 @@ const Nav = ({ nickname }) => {
         component={RouterLink}
         // exact
         to={`/@${nickname}`}
+        onClick={handleLinkClick}
       />
       <BottomNavigationAction
         label="Explore"
         icon={<Explore />}
         component={RouterLink}
         to={`/@${nickname}/explore`}
+        onClick={handleLinkClick}
       />
       <BottomNavigationAction
         label="Library"
         icon={<LibraryMusic />}
         component={RouterLink}
         to={`/@${nickname}/library`}
+        onClick={handleLinkClick}
       />
       <BottomNavigationAction
         label="Rating"
         icon={<Grade />}
         component={RouterLink}
         to={`/@${nickname}/rating`}
+        onClick={handleLinkClick}
       />
       {/* <BottomNavigationAction
         label="Profile"
