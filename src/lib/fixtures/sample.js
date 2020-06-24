@@ -275,23 +275,23 @@ export const ROCK_METAL = [
 ];
 
 /* 포크 & 블루스 */
-// export const FORK_BLUES = [
-//   {
-//     title: '김광석 - 서른 즈음에',
-//     thumbnail: 'https://i.ytimg.com/vi/WLIHgHUu55Q/hqdefault.jpg',
-//     videoid: 'fC9WtJskvgE',
-//   },
-//   {
-//     title: '김광석 - 사랑했지만 (Love Has Gone)',
-//     thumbnail: 'https://i.ytimg.com/vi/QQLpyd7n6yA/hqdefault.jpg',
-//     videoid: 'QQLpyd7n6yA',
-//   },
-//   {
-//     title: '자전거 탄 풍경 - 너에게 난, 나에게 넌',
-//     thumbnail: 'https://i.ytimg.com/vi/OTxw3W6RF2M/mqdefault.jpg',
-//     videoid: 'SZkkZLSCv44',
-//   },
-// ];
+export const FOLK_BLUES = [
+  {
+    title: '김광석 - 서른 즈음에',
+    thumbnail: 'https://i.ytimg.com/vi/WLIHgHUu55Q/hqdefault.jpg',
+    videoid: 'fC9WtJskvgE',
+  },
+  {
+    title: '김광석 - 사랑했지만 (Love Has Gone)',
+    thumbnail: 'https://i.ytimg.com/vi/QQLpyd7n6yA/hqdefault.jpg',
+    videoid: 'QQLpyd7n6yA',
+  },
+  {
+    title: '자전거 탄 풍경 - 너에게 난, 나에게 넌',
+    thumbnail: 'https://i.ytimg.com/vi/OTxw3W6RF2M/mqdefault.jpg',
+    videoid: 'SZkkZLSCv44',
+  },
+];
 /* 해외 */
 export const POP = [
   {
@@ -408,6 +408,7 @@ export const samples = [
   INDIE[5],
   POP[8],
   RB_SOUL[3],
+  FOLK_BLUES[3],
   DANCE[0],
   BALLAD[3],
   POP[2],
