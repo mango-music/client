@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import UserPlaylistRatedItem from './UserPlaylistRatedItem';
 import UserPlaylistItemsDropDownMenu from './UserPlaylistItemsDropDownMenu';
+import getRatingMusiclist from '../../lib/apis/getRatingMusiclist';
 import { faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
@@ -14,11 +15,22 @@ const UserPlaylistRated = (props) => {
     setCurrentItems,
     setCurrentItem,
     setItemIndex,
-    items,
     setRatedButtonOn,
     videoIdRatings,
   } = props;
-  // const [isEllipsisOn, setIsEllipsisOn] = useState(false);
+
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    console.log(
+      '사용자의 별점 리스트를 클릭하면 서버에서 데이터를 한 번 더 요청합니다.',
+    );
+    const token = localStorage.getItem('x-access-token');
+    if (!token) return console.log('토큰이 없습니다.');
+    getRatingMusiclist().then((items) => {
+      setItems(items);
+    });
+  }, []);
 
   return (
     <div id="user-playlist-items">
@@ -55,23 +67,22 @@ const UserPlaylistRated = (props) => {
       </header>
 
       <ul>
-        {items &&
-          items.map((item) => {
-            return (
-              <UserPlaylistRatedItem
-                key={item.videoid}
-                item={item}
-                // selectedList={selectedList}
-                // customLists={customLists}
-                // setCustomLists={setCustomLists}
-                currentItems={currentItems}
-                setCurrentItems={setCurrentItems}
-                setCurrentItem={setCurrentItem}
-                setItemIndex={setItemIndex}
-                videoIdRatings={videoIdRatings}
-              />
-            );
-          })}
+        {items.map((item) => {
+          return (
+            <UserPlaylistRatedItem
+              key={item.videoid}
+              item={item}
+              // selectedList={selectedList}
+              // customLists={customLists}
+              // setCustomLists={setCustomLists}
+              currentItems={currentItems}
+              setCurrentItems={setCurrentItems}
+              setCurrentItem={setCurrentItem}
+              setItemIndex={setItemIndex}
+              videoIdRatings={videoIdRatings}
+            />
+          );
+        })}
       </ul>
     </div>
   );

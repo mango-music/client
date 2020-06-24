@@ -152,7 +152,6 @@ const Library = (props) => {
           setCurrentItem={setCurrentItem}
           setCurrentItems={setCurrentItems}
           setItemIndex={setItemIndex}
-          items={ratedMusics}
           videoIdRatings={videoIdRatings}
         />
       )}
