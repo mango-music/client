@@ -14,7 +14,7 @@ import {
 import '../../styles/AdditionalRating.scss';
 
 const AdditionalRating = (props) => {
-  const { nickname } = props;
+  const { nickname, videoIdRatings } = props;
   const [genre, setGenre] = useState(BALLAD);
 
   const genreArr = [
@@ -47,7 +47,11 @@ const AdditionalRating = (props) => {
       </nav>
       <ul>
         {genre.map((music) => (
-          <AdditionalRatingEntry key={music.videoid} music={music} />
+          <AdditionalRatingEntry
+            key={music.videoid}
+            music={music}
+            videoIdRatings={videoIdRatings}
+          />
         ))}
       </ul>
     </div>
