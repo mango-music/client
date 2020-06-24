@@ -24,7 +24,7 @@ const AdditionalRating = (props) => {
     { name: RB_SOUL, string: 'RB_SOUL' },
     { name: ROCK_METAL, string: 'ROCK_METAL' },
     { name: INDIE, string: 'INDIE' },
-    // { name: FOLK_BLUES, string: 'FOLK_BLUES' },
+    { name: FOLK_BLUES, string: 'FOLK_BLUES' },
     { name: POP, string: 'POP' },
   ];
 
