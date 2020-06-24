@@ -64,7 +64,7 @@ div {
   }
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none; /* IE 10+ */
-  overflow-y: scroll;
+  overflow-y: hidden;
   overflow-x: hidden;
 }
 
