@@ -4,7 +4,7 @@ import postRatingMusic from '../../lib/apis/postRatingMusic';
 import postDelRating from '../../lib/apis/postDelRating';
 
 const AdditionalRatingEntry = (props) => {
-  const { music, videoIdRatings } = props;
+  const { music, videoIdRatings, setVideoIdRatings } = props;
   const src = `https://www.youtube.com/embed/${music.videoid}?autoplay=0`;
 
   const getStars = () => {
@@ -27,7 +27,7 @@ const AdditionalRatingEntry = (props) => {
       </div>
       <div className="stars">
         <MuiRating
-          name="additionalRating"
+          name={music.videoid}
           size="large"
           precision={0.5}
           value={getStars()} // 초기값
@@ -35,12 +35,17 @@ const AdditionalRatingEntry = (props) => {
             console.log(
               `AdditionalRatingEntry : ${music.title}에 ${starsCount}점을 매깁니다.`,
             );
-            if (starsCount) {
-              // 별점을 매길 때
-              postRatingMusic(music, starsCount);
-            } else {
+            if (starsCount === null) {
               // 별점을 삭제할 때
-              postDelRating(music.videoid);
+              postDelRating(music, videoIdRatings, setVideoIdRatings);
+            } else {
+              // 별점을 매길 때
+              postRatingMusic(
+                music,
+                starsCount,
+                videoIdRatings,
+                setVideoIdRatings,
+              );
             }
           }}
         />
