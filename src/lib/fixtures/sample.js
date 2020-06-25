@@ -408,7 +408,7 @@ export const samples = [
   INDIE[5],
   POP[8],
   RB_SOUL[3],
-  FOLK_BLUES[3],
+  FOLK_BLUES[2],
   DANCE[0],
   BALLAD[3],
   POP[2],
