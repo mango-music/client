@@ -8,18 +8,27 @@
     overflow-x: auto;
     gap: 16px;
     grid-template-columns: 25vh;
+    overflow: visible;
     li {
       display: grid;
       grid-auto-flow: row;
       grid-template-rows: 25vh;
       gap: 16px;
       align-content: start;
+      overflow: inherit;
       div {
         width: 25vh;
         height: 25vh;
         background-size: cover;
         background-position: center center;
         cursor: pointer;
+        overflow: inherit;
+        transition-property: transform;
+        transition-duration: 300ms;
+        transform: scale(1);
+      }
+      div:hover {
+        transform: scale(1.05);
       }
       p {
         font-size: 1.2rem;
@@ -103,6 +112,7 @@
     }
   }
   .recommend-musics {
+    overflow: visible;
     @include home-ul;
   }
 }
