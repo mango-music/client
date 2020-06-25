@@ -35,17 +35,26 @@ const Ranks = (props) => {
   };
   return (
     <li>
-      <span className="recommends-ranking">{ranking}. </span>
-      <img className="recommends-rank-img" src={thumbnail} />
-      <span
-        className="recommends-rank-title"
-        onClick={() => {
-          playVideo(video);
+      <div className="rank-number">
+        <p className="recommends-ranking">{ranking}. </p>
+      </div>
+      <div
+        style={{
+          backgroundImage: 'url(' + thumbnail + ')',
         }}
-      >
-        {' '}
-        {title}
-      </span>
+        className="rank-image"
+      ></div>
+      {/* <img className="recommends-rank-img" src={thumbnail} /> */}
+      <div className="rank-title">
+        <p
+          className="recommends-rank-title pointer"
+          onClick={() => {
+            playVideo(video);
+          }}
+        >
+          {title}
+        </p>
+      </div>
     </li>
   );
 };
