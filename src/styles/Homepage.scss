@@ -4,26 +4,48 @@
 @include player-brother-big;
 #wrapper {
   display: grid;
-  grid-auto-rows: 300px;
-  grid-auto-columns: 1400px;
-  grid-template-areas: 'list' 'recommends ';
-}
-#recommends {
-  grid-area: recommends;
-}
-
-.list {
-  grid-area: list;
-}
-.list .thumbnail {
-  width: 250px;
+  grid-auto-flow: row;
+  grid-template-rows: 100px 300px 1fr;
+  gap: 200px;
+  margin-bottom: 200px;
 }
 #kpop {
-  ul li {
-    list-style: none;
-    display: inline;
-    width: 400;
-    margin-left: 20px;
-    margin-bottom: 20px;
+  ul {
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    gap: 20px;
+    grid-column: span 2;
+    grid-auto-columns: 300px;
   }
+  .kpop-title {
+    display: grid;
+    color: yellow;
+  }
+
+  .kpop-music-title {
+    cursor: pointer;
+  }
+
+  .kpop-button {
+    display: grid;
+    justify-content: end;
+    cursor: pointer;
+  }
+
+  display: grid;
+  gap: 20px;
+  grid-auto-flow: row;
+  grid-template-columns: 1fr 1fr;
+}
+
+.kpop-music-image {
+  img {
+    width: 100%;
+  }
+  cursor: pointer;
+}
+
+.kpop-music-image:hover {
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 30px 30px rgba(0, 0, 0, 0.22);
 }
