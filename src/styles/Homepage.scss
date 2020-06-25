@@ -1,29 +1,104 @@
 // @import './common/normal-button.scss';
 @import './common/player-brother-big.scss';
-
 @include player-brother-big;
+@mixin home-ul {
+  ul {
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    gap: 16px;
+    grid-template-columns: 25vh;
+    li {
+      display: grid;
+      grid-auto-flow: row;
+      gap: 16px;
+      align-content: start;
+      div {
+        width: 25vh;
+        height: 25vh;
+        background-size: cover;
+        background-position: center center;
+        cursor: pointer;
+      }
+      p {
+        font-size: 1.2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 #wrapper {
   display: grid;
-  grid-auto-rows: 300px;
-  grid-auto-columns: 1400px;
-  grid-template-areas: 'list' 'recommends ';
-}
-#recommends {
-  grid-area: recommends;
+  grid-auto-flow: row;
+  grid-template-rows: 1fr;
+  margin-bottom: 200px;
+  overflow-y: unset;
 }
 
-.list {
-  grid-area: list;
-}
-.list .thumbnail {
-  width: 250px;
-}
 #kpop {
-  ul li {
-    list-style: none;
-    display: inline;
-    width: 400;
-    margin-left: 20px;
-    margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+  header {
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-size: 1.25rem;
+    }
   }
+  @include home-ul;
+}
+
+#recommends {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  overflow-y: unset;
+  header {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-size: 1.25rem;
+    }
+  }
+  .rank {
+    overflow-y: unset;
+    ul {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      li {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 10px 50px 1fr;
+        gap: 8px;
+        .rank-image {
+          width: 50px;
+          height: 50px;
+          background-size: cover;
+          background-position: center center;
+          cursor: pointer;
+        }
+        .rank-number,
+        .rank-title {
+          display: grid;
+          align-items: center;
+        }
+      }
+    }
+  }
+  .recommend-musics {
+    @include home-ul;
+  }
+}
+
+.pointer {
+  cursor: pointer;
 }

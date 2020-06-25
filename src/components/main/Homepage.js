@@ -2,11 +2,8 @@ import React, { useState, useEffect } from 'react';
 import getRecommendedPlaylist from '../../lib/apis/getRecommendedPlaylist';
 import KpopMusicEntry from './home/KpopMusicEntry';
 import '../../styles/Homepage.scss';
-import './home/Recommends';
 import Recommends from './home/Recommends';
-import MainHeader from './MainHeader';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const Homepage = (props) => {
   const [musics, setMusics] = useState([]);
   const {
@@ -22,13 +19,15 @@ const Homepage = (props) => {
     videoIdRatings,
     playerSize,
   } = props;
+
   useEffect(() => {
-    getRecommendedPlaylist(10000)
+    getRecommendedPlaylist(20)
       .then((res) => res.json())
       .then((data) => {
         setMusics(data.items);
       });
   }, []);
+
   const kpopMusics = [];
   const kpopMusiclist = musics.map((video) => {
     const { id, snippet } = video;
@@ -55,25 +54,22 @@ const Homepage = (props) => {
   // ));
   return (
     <div id="wrapper" className={`player-brother-${playerSize}`}>
-      {/* <MainHeader nickname={nickname} /> */}
       <div id="kpop">
-        <div id="play-all-button">
-          <button
+        <header className="kpop-title">
+          <p>K-pop top 20</p>
+          <p
             onClick={async () => {
               await setCurrentItem(null);
               await setCurrentItems([]);
-              {
-                console.log(kpopMusics);
-              }
               setCurrentItems(kpopMusics);
               setCurrentItem(kpopMusics[0]);
               setPlayerSize('big');
             }}
+            className="pointer"
           >
-            Play All <FontAwesomeIcon icon={faPlay} color="#afafaf" />
-          </button>
-        </div>
-        K-pop
+            모두 듣기
+          </p>
+        </header>
         <ul className="list">{kpopMusiclist}</ul>
       </div>
       <Recommends

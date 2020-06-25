@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ImageOutlined, Home } from '@material-ui/icons';
@@ -59,17 +60,17 @@ const Main = ({ profile, handleLogout }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  useEffect(() => {
-    console.log('이전에 재생한 큐를 불러옵니다.');
-    let playedItems = localStorage.getItem('playedItems');
-    if (playedItems) {
-      playedItems = JSON.parse(playedItems);
-      if (Array.isArray(playedItems)) {
-        setCurrentItem(playedItems[0]);
-        setCurrentItems(playedItems);
-      }
-    }
-  }, []);
+  // useEffect(() => {
+  //   console.log('이전에 재생한 큐를 불러옵니다.');
+  //   let playedItems = localStorage.getItem('playedItems');
+  //   if (playedItems) {
+  //     playedItems = JSON.parse(playedItems);
+  //     if (Array.isArray(playedItems)) {
+  //       setCurrentItem(playedItems[0]);
+  //       setCurrentItems(playedItems);
+  //     }
+  //   }
+  // }, []);
 
   useEffect(() => {
     console.log('현재 재생 큐를 저장합니다.');

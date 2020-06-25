@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { faPlay } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPlay } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RecommendsEntry from './RecommendsEntry';
 import getRecommendedMusic from '../../../lib/apis/getRecommendedMusic';
 import '../../../styles/Recommends.scss';
+import Ranks from './Ranks';
 
 const Recommends = (props) => {
   const {
@@ -26,10 +27,45 @@ const Recommends = (props) => {
     });
   }, []);
 
+  const recommnendRanks = recommends.map((video, index) => (
+    <Ranks
+      key={video.videoid}
+      ranking={index + 1}
+      video={video}
+      currentItems={currentItems}
+      currentItem={currentItem}
+      setCurrentItems={setCurrentItems}
+      setCurrentItem={setCurrentItem}
+      setItemIndex={setItemIndex}
+      customLists={customLists}
+      setCustomLists={setCustomLists}
+      videoIdRatings={videoIdRatings}
+    />
+  ));
+
+  const recommendMusics = recommends.map((video) => (
+    <RecommendsEntry
+      key={video.videoid}
+      video={video}
+      currentItems={currentItems}
+      currentItem={currentItem}
+      setCurrentItems={setCurrentItems}
+      setCurrentItem={setCurrentItem}
+      setItemIndex={setItemIndex}
+      customLists={customLists}
+      setCustomLists={setCustomLists}
+      videoIdRatings={videoIdRatings}
+    />
+  ));
   return (
     <div id="recommends">
-      <div id="play-all-button">
-        <button
+      <header className="recommends-title">
+        <p>
+          <span style={{ color: '#fdc10b' }}>{nickname}</span>님이 좋아하실만한
+          음악이에요
+        </p>
+
+        <p
           onClick={async () => {
             await setCurrentItem(null);
             await setCurrentItems([]);
@@ -37,26 +73,20 @@ const Recommends = (props) => {
             setCurrentItem(recommends[0]);
             setPlayerSize('big');
           }}
+          className="pointer"
         >
-          Play All <FontAwesomeIcon icon={faPlay} color="#afafaf" />
-        </button>
+          모두 듣기
+        </p>
+      </header>
+      <div className="rank">
+        {/* <span className="ranks-title">
+          취향이 비슷한 유저가 추천해준 노래 Top 100
+        </span> */}
+        <ul className="ranks-list">{recommnendRanks}</ul>
       </div>
-      <ul>
-        {recommends.map((video) => (
-          <RecommendsEntry
-            key={video.videoid}
-            video={video}
-            currentItems={currentItems}
-            currentItem={currentItem}
-            setCurrentItems={setCurrentItems}
-            setCurrentItem={setCurrentItem}
-            setItemIndex={setItemIndex}
-            customLists={customLists}
-            setCustomLists={setCustomLists}
-            videoIdRatings={videoIdRatings}
-          />
-        ))}
-      </ul>
+      <div className="recommend-musics">
+        <ul className="recommend-list">{recommendMusics}</ul>
+      </div>
     </div>
   );
 };

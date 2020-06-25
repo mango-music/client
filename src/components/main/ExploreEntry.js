@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MoreVert } from '@material-ui/icons';
 import ExploreDropDownMenu from './ExploreDropDownMenu';
 
 const ExploreEntry = (props) => {
@@ -53,14 +52,16 @@ const ExploreEntry = (props) => {
       <div className="search-image">
         <img src={thumbnail} />
       </div>
-      <p
-        onClick={() => {
-          console.log(`${title}을 재생합니다.`);
-          playVideo();
-        }}
-      >
-        {title}
-      </p>
+      <div className="search-title">
+        <p
+          onClick={() => {
+            console.log(`${title}을 재생합니다.`);
+            playVideo();
+          }}
+        >
+          {title}
+        </p>
+      </div>
       <button
         onClick={() => {
           if (isEllipsisOn) {
@@ -71,7 +72,7 @@ const ExploreEntry = (props) => {
         }}
         className="search-ellipsis"
       >
-        <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
+        <MoreVert />
       </button>
       {isEllipsisOn && (
         <ExploreDropDownMenu

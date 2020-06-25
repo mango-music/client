@@ -30,21 +30,21 @@ const Musiclist = (props) => {
   };
 
   return (
-    <li>
-      <img
-        className="thumbnail"
-        src={`http://img.youtube.com/vi/${videoid}/mqdefault.jpg`}
-      />
+    <li
+      onClick={() => {
+        console.log('ssssss : ', video.videoid);
+        console.log(`${video.title}을 재생합니다.`);
+        playVideo(video);
+      }}
+    >
       <div
-        className="recommends-title"
-        onClick={() => {
-          console.log('ssssss : ', video.videoid);
-          console.log(`${video.title}을 재생합니다.`);
-          playVideo(video);
+        className="kpop-music-image"
+        style={{
+          backgroundImage:
+            'url(' + `http://img.youtube.com/vi/${videoid}/mqdefault.jpg` + ')',
         }}
-      >
-        {video.title}
-      </div>
+      ></div>
+      <p className="kpop-music-title">{video.title}</p>
     </li>
   );
 };

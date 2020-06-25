@@ -9,17 +9,20 @@
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 45px 1fr;
-    height: 65px;
+    // height: 60px;
     padding: 10px;
     input {
       background-color: whitesmoke;
-      font-size: 1.4rem;
-      padding: 10px 10px 10px 0px;
+      font-size: 1.2rem;
+      padding: 10px 10px 10px 10px;
       border: 0px;
     }
     @include normal-button;
     button {
-      background-color: whitesmoke;
+      background-color: rgba(245, 245, 245, 0);
+      svg {
+        font-size: 1.8rem;
+      }
     }
   }
 
@@ -46,8 +49,12 @@
           width: 5rem;
         }
       }
-      p {
-        margin: 0;
+      .search-title {
+        display: grid;
+        align-content: center;
+        p {
+          margin: 0;
+        }
       }
       @include normal-button;
       .search-drop-down-menu {

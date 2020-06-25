@@ -1,6 +1,4 @@
 import React, { useState } from 'react';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import RecommendsDropDownMenu from './RecommendsDropDownMenu';
 import '../../../styles/Recommends.scss';
 
@@ -15,7 +13,6 @@ const RecommendsEntry = (props) => {
     setCustomLists,
     videoIdRatings,
   } = props;
-  const [isEllipsisOn, setIsEllipsisOn] = useState(false);
 
   const playVideo = async (video) => {
     // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
@@ -41,43 +38,23 @@ const RecommendsEntry = (props) => {
   };
 
   return (
-    <li>
-      <div className="recommends-image">
-        <img src={video.thumbnail} />
-      </div>
+    <li
+      onClick={() => {
+        console.log('ssssss : ', video.videoid);
+        console.log(`${video.title}을 재생합니다.`);
+        playVideo(video);
+      }}
+    >
       <div
-        className="recommends-title"
-        onClick={() => {
-          console.log('video가뭡니까? : ', video);
-          console.log(`${video.title}을 재생합니다.`);
-          playVideo(video);
+        className="recommends-music-image"
+        style={{
+          backgroundImage:
+            'url(' +
+            `http://img.youtube.com/vi/${video.videoid}/mqdefault.jpg` +
+            ')',
         }}
-      >
-        {video.title}
-      </div>
-      <div className="recommends-button">
-        <button
-          onClick={() => {
-            if (isEllipsisOn) {
-              setIsEllipsisOn(false);
-            } else {
-              setIsEllipsisOn(true);
-            }
-          }}
-          className="search-ellipsis"
-        >
-          <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
-        </button>
-      </div>
-      {/* {isEllipsisOn && ( */}
-      {/* // <RecommendsDropDownMenu */}
-      {/* // videoid={video.videoid} */}
-      {/* // customLists={customLists} */}
-      {/* // item={video} */}
-      {/* // setCustomLists={setCustomLists} */}
-      {/* // setIsEllipsisOn={setIsEllipsisOn} */}
-      {/* // /> */}
-      {/* )} */}
+      ></div>
+      <p className="recommends-music-title">{video.title}</p>
     </li>
   );
 };

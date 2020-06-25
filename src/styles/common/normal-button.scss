@@ -1,10 +1,11 @@
 @mixin normal-button {
   button {
     cursor: pointer;
-    font-size: 1.4rem;
     background-color: rgba(0, 0, 0, 0);
-    border: white solid 0px;
+    border: 0px;
     svg {
+      font-size: 1.8rem;
+      color: whitesmoke;
       transition-property: color;
       transition-duration: 200ms;
     }
@@ -16,7 +17,7 @@
   }
   button:active {
     svg {
-      color: rgb(236, 236, 236);
+      color: whitesmoke;
     }
   }
 }
