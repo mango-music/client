@@ -46,14 +46,14 @@
   grid-auto-flow: row;
   grid-template-columns: 1fr;
   justify-content: center;
-  gap: 10px;
-  font-size: 1.5rem;
+  // gap: 10px;
+  font-size: 1.3rem;
   overflow: auto;
   height: 100vh;
 
   ul {
     @include list-ul;
-    padding: 10px;
+    // padding: 8px;
   }
 
   #user-playlist-items {

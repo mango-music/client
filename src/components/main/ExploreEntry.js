@@ -52,14 +52,16 @@ const ExploreEntry = (props) => {
       <div className="search-image">
         <img src={thumbnail} />
       </div>
-      <p
-        onClick={() => {
-          console.log(`${title}을 재생합니다.`);
-          playVideo();
-        }}
-      >
-        {title}
-      </p>
+      <div className="search-title">
+        <p
+          onClick={() => {
+            console.log(`${title}을 재생합니다.`);
+            playVideo();
+          }}
+        >
+          {title}
+        </p>
+      </div>
       <button
         onClick={() => {
           if (isEllipsisOn) {
