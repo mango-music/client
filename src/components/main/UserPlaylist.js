@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React from 'react';
+import { NavigateNext } from '@material-ui/icons';
 
 const UserPlaylist = (props) => {
   const { listName, items, setSelectedList, playVideos } = props;
@@ -23,7 +22,7 @@ const UserPlaylist = (props) => {
       </div>
       <div className="list-button">
         <button onClick={() => setSelectedList(listName)}>
-          <FontAwesomeIcon icon={faAngleRight} color="#afafaf" />
+          <NavigateNext />
         </button>
       </div>
     </li>

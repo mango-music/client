@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ExploreEntry from './ExploreEntry';
 import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
+import MainHeader from './MainHeader';
+import { Search } from '@material-ui/icons';
 import '../../styles/Explore.scss';
 
 const Explore = (props) => {
@@ -39,7 +39,7 @@ const Explore = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchMusicsByQuerry(querry, 15)
+    searchMusicsByQuerry(querry, 20)
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
@@ -55,7 +55,7 @@ const Explore = (props) => {
     <div id="search" className={`player-brother-${playerSize}`}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>
-          <FontAwesomeIcon icon={faSearch} color="#afafaf" />
+          <Search />
         </button>
         <input
           type="text"

@@ -42,20 +42,21 @@ const Recommends = (props) => {
         </button>
       </div>
       <ul>
-        {recommends.map((video) => (
-          <RecommendsEntry
-            key={video.videoid}
-            video={video}
-            currentItems={currentItems}
-            currentItem={currentItem}
-            setCurrentItems={setCurrentItems}
-            setCurrentItem={setCurrentItem}
-            setItemIndex={setItemIndex}
-            customLists={customLists}
-            setCustomLists={setCustomLists}
-            videoIdRatings={videoIdRatings}
-          />
-        ))}
+        {recommends &&
+          recommends.map((video) => (
+            <RecommendsEntry
+              key={video.videoid}
+              video={video}
+              currentItems={currentItems}
+              currentItem={currentItem}
+              setCurrentItems={setCurrentItems}
+              setCurrentItem={setCurrentItem}
+              setItemIndex={setItemIndex}
+              customLists={customLists}
+              setCustomLists={setCustomLists}
+              videoIdRatings={videoIdRatings}
+            />
+          ))}
       </ul>
     </div>
   );

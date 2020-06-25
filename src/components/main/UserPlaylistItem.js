@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Close, MoreVert } from '@material-ui/icons';
 import UserPlaylistItemDropDownMenu from './UserPlaylistItemDropDownMenu';
 
 const UserPlaylistItem = (props) => {
@@ -63,7 +62,7 @@ const UserPlaylistItem = (props) => {
             }
           }}
         >
-          <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
+          <MoreVert />
         </button>
       </div>
       {isEllipsisOn && (
