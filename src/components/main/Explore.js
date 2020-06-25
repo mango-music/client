@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ExploreEntry from './ExploreEntry';
-import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
-import MainHeader from './MainHeader';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ExploreEntry from './ExploreEntry';
+import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
 import '../../styles/Explore.scss';
 
 const Explore = (props) => {
@@ -16,6 +15,7 @@ const Explore = (props) => {
     setItemIndex,
     nickname,
     videoIdRatings,
+    playerSize,
   } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
@@ -48,9 +48,11 @@ const Explore = (props) => {
       .catch((err) => console.log(err));
   };
 
+  if (playerSize === 'big') {
+  }
+
   return (
-    <div id="search">
-      <MainHeader title="Explore" nickname={nickname} />
+    <div id="search" className={`player-brother-${playerSize}`}>
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />

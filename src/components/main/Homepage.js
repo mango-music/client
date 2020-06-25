@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import getRecommendedPlaylist from '../../lib/apis/getRecommendedPlaylist';
 import KpopMusicEntry from './home/KpopMusicEntry';
 import '../../styles/Homepage.scss';
-import './home/Recommends';
 import Recommends from './home/Recommends';
 import MainHeader from './MainHeader';
 const Homepage = (props) => {
@@ -18,6 +17,7 @@ const Homepage = (props) => {
     nickname,
     setPlayerSize,
     videoIdRatings,
+    playerSize,
   } = props;
   useEffect(() => {
     getRecommendedPlaylist(20)
@@ -53,6 +53,7 @@ const Homepage = (props) => {
   return (
     <div id="wrapper">
       <MainHeader nickname={nickname} />
+    <div id="wrapper" className={`player-brother-${playerSize}`}>
       <div id="kpop">
         <div className="kpop-title">
           <span>K-pop top 20</span>

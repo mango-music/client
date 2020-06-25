@@ -2,9 +2,9 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  display: flex; // 지우면 재생바가 사라짐
-  justify-content: center; // 늘어나도 가운데 머무르게 함
+  display: grid; // 지우면 재생바가 사라짐
+  grid-auto-flow: row;
+  // justify-content: center; // 늘어나도 가운데 머무르게 함
 
   .player-small {
     .player-window {
@@ -43,10 +43,10 @@
     overflow-y: auto; // 스크롤 바
     height: 100vh;
     z-index: 100;
-    background-color: #121212;
-    @media (min-width: 500px) {
+    background-color: #303030;
+    @media (min-width: 700px) {
       .player-window {
-        width: 500px !important;
+        width: 50vw !important;
       }
     }
     .player-window {
@@ -82,12 +82,12 @@
         margin-left: 10px;
         margin-right: 10px;
         .progress-bar {
-          background-color: rgb(233, 233, 233);
+          background-color: #5a5a5a;
           height: 5px;
           .progress-node {
             width: 0;
             height: 100%;
-            background-color: black;
+            background-color: #fdc10b;
             margin-left: 0%; // 초기 노드 위치
           }
         }

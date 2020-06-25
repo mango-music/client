@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import MainHeader from './MainHeader';
 import AdditionalRatingEntry from './AdditionalRatingEntry';
 import {
   BALLAD,
@@ -14,23 +13,22 @@ import {
 import '../../styles/AdditionalRating.scss';
 
 const AdditionalRating = (props) => {
-  const { nickname, videoIdRatings, setVideoIdRatings } = props;
+  const { nickname, videoIdRatings, setVideoIdRatings, playerSize } = props;
   const [genre, setGenre] = useState(BALLAD);
 
   const genreArr = [
-    { name: BALLAD, string: 'BALLAD' },
-    { name: DANCE, string: 'DANCE' },
-    { name: HIPHOP, string: 'HIPHOP' },
-    { name: RB_SOUL, string: 'RB_SOUL' },
-    { name: ROCK_METAL, string: 'ROCK_METAL' },
-    { name: INDIE, string: 'INDIE' },
-    // { name: FOLK_BLUES, string: 'FOLK_BLUES' },
-    { name: POP, string: 'POP' },
+    { name: BALLAD, string: '발라드' },
+    { name: DANCE, string: '댄스' },
+    { name: HIPHOP, string: '힙합' },
+    { name: RB_SOUL, string: '알앤비' },
+    { name: ROCK_METAL, string: '락' },
+    { name: INDIE, string: '인디' },
+    { name: FOLK_BLUES, string: '포크' },
+    { name: POP, string: '팝' },
   ];
 
   return (
-    <div id="additional-rating">
-      <MainHeader title="Raiting" nickname={nickname} />
+    <div id="additional-rating" className={`player-brother-${playerSize}`}>
       <nav>
         {genreArr.map(({ name, string }) => {
           return (

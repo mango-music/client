@@ -11,6 +11,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Visibility, VisibilityOff } from '@material-ui/icons';
 import postAccountData from '../../lib/apis/postAccountData';
 
+// const token =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZjBhZDhhNTU0MWRiN2NkNWI5MGZlNyIsImVtYWlsIjoibGlzYXN1QG5hdGUuY29tIiwiaWF0IjoxNTkzMDgzMjE4LCJleHAiOjE1OTMwODUwMTh9.H0kgqH3N5YUkSWIGb67eZhClFT1H0TMxCKJ1Lad6LFE';
+// const userinfo = { email: 'lisasu@nate.com', nickname: 'kirin' };
+
 const useStyles = makeStyles((theme) => ({
   root: {},
   textField: {
@@ -40,12 +44,13 @@ const Signin = ({ handleSigninSuccess, history }) => {
     const status = await postAccountData('signin', values);
     console.log(status);
     // 404 - 가입되지 않은 이메일 혹은 비밀번호가 틀림?
-    if (!status) {
+    if (status !== 200) {
       // eslint-disable-next-line no-alert
-      window.alert('가입되지 않은 이메일이거나 잘못된 비밀번호 입니다.'); // (임시)
-      return;
+      return window.alert('가입되지 않은 이메일이거나 잘못된 비밀번호 입니다.'); // (임시)
     }
-    // 200
+    // fakeAuth
+    // localStorage.setItem('x-access-token', token);
+    // localStorage.setItem('x-user-info', JSON.stringify(userinfo));
     handleSigninSuccess();
     setTimeout(() => {
       history.push('/');

@@ -2,8 +2,15 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
-import { Container, Typography, Box } from '@material-ui/core';
+import {
+  Switch,
+  Route,
+  Redirect,
+  withRouter,
+  Link as RouterLink,
+} from 'react-router-dom';
+import { Container, Typography, Box, IconButton } from '@material-ui/core';
+import { AccountCircle } from '@material-ui/icons';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
@@ -20,8 +27,12 @@ const App = ({ history, location }) => {
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
   const [hasJustCreated, setJustCreated] = useState(false);
+  // const [hasProfileUpdated, setProfileUpdated] = useState(false);
 
-  const title = usePageTitle(location.pathname);
+  const { pathname } = location;
+  const { nickname } = profile;
+  const title = usePageTitle(pathname, nickname);
+  console.log(pathname, nickname, title);
   const callbackPath = useRef(null); // uncontrolled state (not for rendering)
 
   // Memorize these handler functions until [dependency state] updated
@@ -74,10 +85,29 @@ const App = ({ history, location }) => {
   }, [isLogin]);
 
   return (
-    <Container disableGutters className="app">
-      {location.pathname !== '/rating' ? (
+    <Container
+      style={{ maxWidth: '100vw', minWidth: '360px' }}
+      disableGutters
+      className="app"
+    >
+      {pathname !== '/rating' ? (
         <Box component="header" className="app_header">
           <Typography variant="h1">{title}</Typography>
+          {pathname === callbackPath.current ? (
+            <IconButton
+              aria-label="profile-image"
+              size="medium"
+              component={RouterLink}
+              to={`/@${nickname}/profile`}
+            >
+              <AccountCircle
+                style={{
+                  fontSize: '30px',
+                  color: 'rgba(255,255,255,0.7)',
+                }}
+              />
+            </IconButton>
+          ) : null}
         </Box>
       ) : null}
       <Box component="main" className="app_main">
@@ -103,13 +133,10 @@ const App = ({ history, location }) => {
             <Signup handleSignupSuccess={handleSignupSuccess} />
           </Route>
           <Route path="/rating_consent">
-            <RatingConsentScreen nickname={profile.nickname} />
+            <RatingConsentScreen nickname={nickname} />
           </Route>
           <Route path="/rating">
-            <Rating
-              callbackPath={callbackPath.current}
-              nickname={profile.nickname}
-            />
+            <Rating callbackPath={callbackPath.current} nickname={nickname} />
           </Route>
           <Route
             path={callbackPath.current}
