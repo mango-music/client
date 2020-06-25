@@ -84,7 +84,6 @@ const Recommends = (props) => {
       <div className="recommends-musics">
         <ul className="recommend-list">{recommendMusics}</ul>
       </div>
-      {/* </div> */}
     </div>
   );
 };
