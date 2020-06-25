@@ -2,11 +2,11 @@ import React, { useState, useEffect } from 'react';
 import getRecommendedPlaylist from '../../lib/apis/getRecommendedPlaylist';
 import KpopMusicEntry from './home/KpopMusicEntry';
 import '../../styles/Homepage.scss';
-import './home/Recommends';
 import Recommends from './home/Recommends';
-import MainHeader from './MainHeader';
+
 import { faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 const Homepage = (props) => {
   const [musics, setMusics] = useState([]);
   const {
@@ -55,7 +55,6 @@ const Homepage = (props) => {
   // ));
   return (
     <div id="wrapper" className={`player-brother-${playerSize}`}>
-      {/* <MainHeader nickname={nickname} /> */}
       <div id="kpop">
         <div id="play-all-button">
           <button

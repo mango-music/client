@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import MainHeader from './MainHeader';
 import AdditionalRatingEntry from './AdditionalRatingEntry';
 import {
   BALLAD,
@@ -30,7 +29,6 @@ const AdditionalRating = (props) => {
 
   return (
     <div id="additional-rating" className={`player-brother-${playerSize}`}>
-      <MainHeader title="Raiting" nickname={nickname} />
       <nav>
         {genreArr.map(({ name, string }) => {
           return (

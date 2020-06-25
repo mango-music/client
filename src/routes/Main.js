@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useState, useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { ImageOutlined, Home } from '@material-ui/icons';

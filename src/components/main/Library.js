@@ -1,9 +1,4 @@
 import React, { useState, memo, useEffect } from 'react';
-import UserPlaylist from './UserPlaylist';
-import UserPlaylistItems from './UserPlaylistItems';
-import UserPlaylistRated from './UserPlaylistRated';
-import MainHeader from './MainHeader';
-import postMusiclist from '../../lib/apis/postMusiclist';
 import {
   faPlusCircle,
   faCheckCircle,
@@ -11,6 +6,10 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import UserPlaylist from './UserPlaylist';
+import UserPlaylistItems from './UserPlaylistItems';
+import UserPlaylistRated from './UserPlaylistRated';
+import postMusiclist from '../../lib/apis/postMusiclist';
 import '../../styles/Library.scss';
 
 const Library = (props) => {
@@ -51,7 +50,7 @@ const Library = (props) => {
   let addPlaylist;
   if (addButtonOn) {
     addPlaylist = (
-      <React.Fragment>
+      <>
         <div onClick={() => setAddButtonOn(false)}>
           <FontAwesomeIcon icon={faTimesCircle} color="#afafaf" />
         </div>
@@ -80,11 +79,11 @@ const Library = (props) => {
             }}
           />
         </div>
-      </React.Fragment>
+      </>
     );
   } else {
     addPlaylist = (
-      <React.Fragment>
+      <>
         <div
           onClick={(e) => {
             setAddButtonOn(true);
@@ -95,12 +94,11 @@ const Library = (props) => {
         <div>
           <p>Add new playlist</p>
         </div>
-      </React.Fragment>
+      </>
     );
   }
   return (
     <div id="library" className={`player-brother-${playerSize}`}>
-      <MainHeader title={'Library'} nickname={nickname} />
       <ul>
         <li>
           <div className="list-img">

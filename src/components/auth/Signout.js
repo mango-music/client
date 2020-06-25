@@ -8,7 +8,6 @@ const Signout = ({ handleLogout, history }) => {
     const access_token = localStorage.getItem('x-access-token');
     const refresh_token = localStorage.getItem('x-refresh-token');
     const res = await postSignout({ access_token, refresh_token });
-    // console.log(status);
     console.log(res);
     if (res === 'ok') {
       handleLogout();

@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import ExploreEntry from './ExploreEntry';
-import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
-import MainHeader from './MainHeader';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import ExploreEntry from './ExploreEntry';
+import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
 import '../../styles/Explore.scss';
 
 const Explore = (props) => {
@@ -54,7 +53,6 @@ const Explore = (props) => {
 
   return (
     <div id="search" className={`player-brother-${playerSize}`}>
-      <MainHeader title="Explore" nickname={nickname} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>
           <FontAwesomeIcon icon={faSearch} color="#afafaf" />
