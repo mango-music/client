@@ -4,7 +4,8 @@ import { withRouter } from 'react-router-dom';
 import Signout from '../auth/Signout';
 import '../../styles/Profile.scss';
 import changeName from '../../lib/apis/changeName';
-// import mockup from '../../images/mockup.png';
+import CreateIcon from '@material-ui/icons/Create';
+
 
 const Profile = ({ profile, handleLogout }) => {
   const [value, setValue] = useState(profile.nickname);
@@ -40,6 +41,12 @@ const Profile = ({ profile, handleLogout }) => {
         {/* 여기를 누르면 파일 이미지를 업로드할 수 있고, 그 결과로 업로드된 이미지가 배경으로 변경됩니다 */}
       </div>
       <div>
+//         <input className="changeNick" />
+//         <span id="nickChange-Icon">
+//           <CreateIcon onClick={handleEditButtonClick} />
+//         </span>
+//         {/* <button onClick={handleEditButtonClick}>변경하기</button> */}
+
         <form onSubmit={handleNicknameUpdate} autoComplete="off">
           <input type="text" value={value} onChange={handleChange} />
           <button type="submit">변경</button>
@@ -47,7 +54,6 @@ const Profile = ({ profile, handleLogout }) => {
       </div>
       <div>{profile.nickname}</div>
       <div>{profile.email}</div>
-
       <div>
         <Signout handleLogout={handleLogout} />
       </div>
