@@ -53,7 +53,7 @@ const Homepage = (props) => {
   // <Ranks music={music} ranking={index} />
   // ));
   return (
-    <div id="wrapper" className={`player-brother-${playerSize}`}>
+    <div id="home" className={`player-brother-${playerSize}`}>
       <div id="kpop">
         <header className="kpop-title">
           <p>K-pop top 20</p>

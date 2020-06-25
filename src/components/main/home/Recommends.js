@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-// import { faPlay } from '@fortawesome/free-solid-svg-icons';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { MoreVert } from '@material-ui/icons';
 import RecommendsEntry from './RecommendsEntry';
 import getRecommendedMusic from '../../../lib/apis/getRecommendedMusic';
 import '../../../styles/Recommends.scss';
@@ -83,6 +82,7 @@ const Recommends = (props) => {
           취향이 비슷한 유저가 추천해준 노래 Top 100
         </span> */}
         <ul className="ranks-list">{recommnendRanks}</ul>
+        <div className="rank-arrow"></div>
       </div>
       <div className="recommend-musics">
         <ul className="recommend-list">{recommendMusics}</ul>

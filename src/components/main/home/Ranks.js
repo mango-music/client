@@ -36,7 +36,7 @@ const Ranks = (props) => {
   return (
     <li>
       <div className="rank-number">
-        <p className="recommends-ranking">{ranking}. </p>
+        <p className="recommends-ranking">{ranking}</p>
       </div>
       <div
         style={{

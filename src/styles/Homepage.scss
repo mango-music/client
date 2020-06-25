@@ -1,6 +1,6 @@
 // @import './common/normal-button.scss';
 @import './common/player-brother-big.scss';
-@include player-brother-big;
+// @include player-brother-big;
 @mixin home-ul {
   ul {
     display: grid;
@@ -11,6 +11,7 @@
     li {
       display: grid;
       grid-auto-flow: row;
+      grid-template-rows: 25vh;
       gap: 16px;
       align-content: start;
       div {
@@ -31,17 +32,15 @@
   }
 }
 
-#wrapper {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-rows: 1fr;
-  margin-bottom: 200px;
-  overflow-y: unset;
+#home {
+  padding: 8px;
+  height: 100vh;
 }
 
 #kpop {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-auto-flow: row;
+  // grid-template-rows: auto 1fr;
   gap: 16px;
   margin-bottom: 32px;
   header {
@@ -58,7 +57,7 @@
   display: grid;
   grid-template-columns: 300px 1fr;
   gap: 16px;
-  overflow-y: unset;
+  margin-bottom: 120px;
   header {
     grid-column: span 2;
     display: flex;
@@ -68,16 +67,19 @@
     }
   }
   .rank {
-    overflow-y: unset;
+    display: grid;
+    gap: 16px;
     ul {
+      height: 25vh;
       display: grid;
       grid-auto-flow: row;
       grid-template-columns: 1fr;
       gap: 4px;
+      overflow: overlay;
       li {
         display: grid;
         grid-auto-flow: column;
-        grid-template-columns: 10px 50px 1fr;
+        grid-template-columns: 22px 50px 1fr;
         gap: 8px;
         .rank-image {
           width: 50px;
@@ -91,7 +93,13 @@
           display: grid;
           align-items: center;
         }
+        .rank-number {
+          justify-self: center;
+        }
       }
+    }
+    .rank-arrow {
+      text-align: center;
     }
   }
   .recommend-musics {
