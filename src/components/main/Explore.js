@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ExploreEntry from './ExploreEntry';
 import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
-import MainHeader from './MainHeader';
 import { Search } from '@material-ui/icons';
 import '../../styles/Explore.scss';
 

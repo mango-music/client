@@ -38,7 +38,8 @@ const MusicNavBar = (props) => {
       left: 0,
       bottom: 0,
       zIndex: 10,
-      borderTop: '1px solid rgba(255, 255, 255, 0.3)',
+      borderTop: '1px solid rgba(28, 31, 12, 0.7)',
+      backgroundColor: '#1C1C1F',
     },
   }));
   const classes = useStyles();
