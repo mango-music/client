@@ -53,11 +53,6 @@ const App = ({ history, location }) => {
     callbackPath.current = null;
   }, [isLogin]);
 
-  // const handleProfileUpdate = (string) => {
-  //   console.log('닉네임을 변경합니다.');
-  //   setProfileUpdated(true);
-  // };
-
   /*
     Effect will not run after the initial render.
     Thereafter, it depends on the array of values that should be observed.
@@ -78,13 +73,6 @@ const App = ({ history, location }) => {
       return history.push('/');
     }
   }, [isLogin]);
-
-  // useEffect(() => {
-  //   if (hasProfileUpdated) {
-  //     console.log('Component did update');
-  //     return history.push('/');
-  //   }
-  // }, [hasProfileUpdated]);
 
   return (
     <Container
