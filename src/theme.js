@@ -1,5 +1,4 @@
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme';
-import { PlayCircleFilledWhiteRounded } from '@material-ui/icons';
 
 const theme = createMuiTheme({
   palette: {
@@ -9,7 +8,11 @@ const theme = createMuiTheme({
       // light: '#ffcd38',
     },
     secondary: {
-      main: '#2196f3', // blue tone
+      main: '#64b5f6',
+      // main: '#2196f3', // blue tone
+    },
+    error: {
+      main: '#e57373',
     },
   },
   typography: {
@@ -24,7 +27,7 @@ const theme = createMuiTheme({
       root: {
         // paddingTop: '44px',
         // scrollPaddingTop: '44px',
-        backgroundColor: '#303030',
+        backgroundColor: '#2a2a2e',
         height: '100vh',
       },
     },
@@ -55,7 +58,7 @@ const theme = createMuiTheme({
     },
     MuiBottomNavigationAction: {
       root: {
-        color: 'rgba(0, 0, 0, 0.38)',
+        // color: 'rgba(0, 0, 0, 0.38)',
       },
       label: {
         '&$selected': {
@@ -65,7 +68,7 @@ const theme = createMuiTheme({
     },
     MuiRating: {
       root: {
-        color: '#ffc107', // '#ffd740',
+        color: '#ffb347', // '#ffc107', '#ffd740',ffb347
       },
       label: {
         overflow: 'hidden', // no-scroll-bar
@@ -91,8 +94,9 @@ const theme = createMuiTheme({
       },
       textSizeLarge: {},
       containedSizeLarge: {
-        // fontSize: '1.125rem',
+        fontSize: '1rem',
         fontWeight: 700,
+        color: '#2a2a2e',
       },
       sizeLarge: {
         width: '100%',
