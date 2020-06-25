@@ -158,7 +158,6 @@ const MusicNavBar = (props) => {
         onChange={(event, newValue) => {
           setValue(newValue);
         }}
-        showLabels
         classes={classes}
         className="music-nav-bar-big"
       >

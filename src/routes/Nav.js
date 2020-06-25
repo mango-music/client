@@ -37,7 +37,7 @@ const Nav = ({ nickname, playerSize }) => {
       component={Paper}
       showLabels
       classes={classes}
-      className={`player-brother-${playerSize}`}
+      className={`player-brother-nav-${playerSize}`}
     >
       <BottomNavigationAction
         label="Home"

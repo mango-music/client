@@ -5,6 +5,7 @@ import MusicTitle from './MusicTitle';
 import MusicProgressBar from './MusicProgressBar';
 import MusicNavBar from './MusicNavBar';
 import MusicQueue from './MusicQueue';
+import { Close, OpenInNew } from '@material-ui/icons';
 import '../../styles/MusicPlayer.scss';
 
 let timer;
@@ -12,6 +13,7 @@ const MusicPlayer = (props) => {
   const {
     currentItems,
     currentItem,
+    setCurrentItem,
     setCurrentItems,
     itemIndex,
     setItemIndex,
@@ -61,6 +63,7 @@ const MusicPlayer = (props) => {
     player.loadVideoById(currentItems[0].videoid);
     setItemIndex(0);
     setIsPlayButtonOn(false);
+    setItemIndex(0);
   };
 
   const playFirstShuffledItem = () => {
@@ -110,18 +113,34 @@ const MusicPlayer = (props) => {
     handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
   };
 
+  const stopPlayer = () => {
+    setCurrentItem(null);
+    setCurrentItems([]);
+    changePlayerSize();
+  };
+
   if (currentItems.length > 0 && currentItem) {
     return (
       <div id="player">
         <div id="player-selector" className={'player-' + playerSize}>
           <div className="player-window">
-            <YouTube
-              videoId={currentItem.videoid}
-              opts={opts}
-              onReady={onReady}
-              onStateChange={handleStateChange}
-              className="iframe-video"
-            />
+            <header>
+              <div>
+                <Close onClick={stopPlayer} />
+              </div>
+              <div>
+                <OpenInNew onClick={changePlayerSize} />
+              </div>
+            </header>
+            <section>
+              <YouTube
+                videoId={currentItem.videoid}
+                opts={opts}
+                onReady={onReady}
+                onStateChange={handleStateChange}
+                className="iframe-video"
+              />
+            </section>
             <MusicTitle
               currentItems={currentItems}
               itemIndex={itemIndex}
