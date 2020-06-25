@@ -1,4 +1,7 @@
 // @import './common/normal-button.scss';
+@import './common/player-brother-big.scss';
+
+@include player-brother-big;
 #wrapper {
   display: grid;
   grid-auto-rows: 300px;

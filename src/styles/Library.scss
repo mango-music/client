@@ -1,10 +1,12 @@
 @import './common/normal-button.scss';
+@import './common/player-brother-big.scss';
 
+@include player-brother-big;
 @mixin list-ul {
   display: grid;
-  gap: 10px;
+
   grid-auto-flow: row;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   padding: 0;
   overflow: visible;
   li {
@@ -13,7 +15,7 @@
     display: grid;
     grid-auto-flow: row;
     grid-template-columns: auto 1fr 30px;
-    // margin-bottom: 10px;
+    margin: 8px;
     gap: 10px;
     .list-img {
       img {
@@ -98,10 +100,13 @@
     div {
       display: grid;
       align-content: center;
+      height: 50px;
       input {
         background-color: #121212;
         padding: 10px;
         border: 0;
+        color: whitesmoke;
+        font-size: 1.2rem;
       }
     }
   }

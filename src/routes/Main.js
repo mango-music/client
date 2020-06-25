@@ -88,25 +88,24 @@ const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
   //   setNickname(string);
   // };
 
-  // useEffect(() => {
-  //   console.log('이전에 재생한 큐를 불러옵니다.');
-  //   let playedItems = localStorage.getItem('playedItems');
-  //   if (playedItems) {
-  //     playedItems = JSON.parse(playedItems);
-  //     if (Array.isArray(playedItems)) {
-  //       setCurrentItem(playedItems[0]);
-  //       setCurrentItems(playedItems);
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    console.log('이전에 재생한 큐를 불러옵니다.');
+    let playedItems = localStorage.getItem('playedItems');
+    if (playedItems) {
+      playedItems = JSON.parse(playedItems);
+      if (Array.isArray(playedItems)) {
+        setCurrentItem(playedItems[0]);
+        setCurrentItems(playedItems);
+      }
+    }
+  }, []);
 
-  // 현재 재생 큐 저장
-  // useEffect(() => {
-  //   console.log('현재 재생 큐를 저장합니다.');
-  //   if (Array.isArray(currentItems)) {
-  //     localStorage.setItem('playedItems', JSON.stringify(currentItems));
-  //   }
-  // }, [currentItems]);
+  useEffect(() => {
+    console.log('현재 재생 큐를 저장합니다.');
+    if (Array.isArray(currentItems)) {
+      localStorage.setItem('playedItems', JSON.stringify(currentItems));
+    }
+  }, [currentItems]);
 
   const changePlayerSize = () => {
     if (playerSize === 'big') {
@@ -120,7 +119,7 @@ const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
 
   return (
     <>
-      <Nav nickname={nickname} />
+      <Nav nickname={nickname} playerSize={playerSize} />
       {/* <button
         id="change-window-button"
         type="button"
@@ -154,6 +153,7 @@ const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
             nickname={nickname}
             videoIdRatings={videoIdRatings}
             setPlayerSize={setPlayerSize}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/explore`}>
@@ -166,6 +166,7 @@ const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
             setItemIndex={setItemIndex}
             nickname={nickname}
             videoIdRatings={videoIdRatings}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/library`}>
@@ -179,6 +180,7 @@ const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
             nickname={nickname}
             ratedMusics={ratedMusics}
             videoIdRatings={videoIdRatings}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/rating`}>
@@ -186,6 +188,7 @@ const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
             nickname={nickname}
             videoIdRatings={videoIdRatings}
             setVideoIdRatings={setVideoIdRatings}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/profile`}>

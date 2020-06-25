@@ -1,9 +1,9 @@
 @import './common/normal-button.scss';
 
 #player {
-  @media (min-width: 500px) {
+  @media (min-width: 700px) {
     .music-nav-bar-big {
-      width: 500px !important;
+      width: 50vw !important;
     }
   }
   .music-nav-bar-big {
