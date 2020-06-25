@@ -6,7 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Profile.scss';
 import changeName from '../../lib/apis/changeName';
-import changeNickname from '../../images/changeNickname.png';
+import CreateIcon from '@material-ui/icons/Create';
 
 const Profile = ({ profile, handleProfileUpdate, handleLogout }) => {
   const handleEditButtonClick = async () => {
@@ -35,11 +35,13 @@ const Profile = ({ profile, handleProfileUpdate, handleLogout }) => {
       </div>
       <div>
         <input className="changeNick" />
-        <button onClick={handleEditButtonClick}>변경하기</button>
+        <span id="nickChange-Icon">
+          <CreateIcon onClick={handleEditButtonClick} />
+        </span>
+        {/* <button onClick={handleEditButtonClick}>변경하기</button> */}
       </div>
       <div>{profile.nickname}</div>
       <div>{profile.email}</div>
-
       <div>
         <Signout handleLogout={handleLogout} />
       </div>
