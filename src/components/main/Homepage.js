@@ -3,7 +3,7 @@ import getRecommendedPlaylist from '../../lib/apis/getRecommendedPlaylist';
 import KpopMusicEntry from './home/KpopMusicEntry';
 import '../../styles/Homepage.scss';
 import Recommends from './home/Recommends';
-import MainHeader from './MainHeader';
+
 const Homepage = (props) => {
   const [musics, setMusics] = useState([]);
   const {
@@ -51,8 +51,6 @@ const Homepage = (props) => {
   // <Ranks music={music} ranking={index} />
   // ));
   return (
-    <div id="wrapper">
-      <MainHeader nickname={nickname} />
     <div id="wrapper" className={`player-brother-${playerSize}`}>
       <div id="kpop">
         <div className="kpop-title">
