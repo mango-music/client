@@ -24,6 +24,7 @@ const Library = (props) => {
     nickname,
     ratedMusics,
     videoIdRatings,
+    playerSize,
   } = props;
   const [selectedList, setSelectedList] = useState(null);
   const [addButtonOn, setAddButtonOn] = useState(false);
@@ -98,7 +99,7 @@ const Library = (props) => {
     );
   }
   return (
-    <div id="library">
+    <div id="library" className={`player-brother-${playerSize}`}>
       <MainHeader title={'Library'} nickname={nickname} />
       <ul>
         <li>
