@@ -1,5 +1,7 @@
 @import './common/normal-button.scss';
+@import './common/player-brother-big.scss';
 
+@include player-brother-big;
 #search {
   overflow: auto;
   height: 100vh;

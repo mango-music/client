@@ -16,6 +16,7 @@ const Explore = (props) => {
     setItemIndex,
     nickname,
     videoIdRatings,
+    playerSize,
   } = props;
   const [querry, setQuerry] = useState('');
   const [searchItems, setSearchItems] = useState(null);
@@ -48,8 +49,11 @@ const Explore = (props) => {
       .catch((err) => console.log(err));
   };
 
+  if (playerSize === 'big') {
+  }
+
   return (
-    <div id="search">
+    <div id="search" className={`player-brother-${playerSize}`}>
       <MainHeader title="Explore" nickname={nickname} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>

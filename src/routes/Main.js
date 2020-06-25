@@ -84,7 +84,7 @@ const Main = memo(({ profile, handleLogout }) => {
 
   return (
     <>
-      <Nav nickname={nickname} />
+      <Nav nickname={nickname} playerSize={playerSize} />
       {/* <button
         id="change-window-button"
         type="button"
@@ -128,6 +128,7 @@ const Main = memo(({ profile, handleLogout }) => {
             setItemIndex={setItemIndex}
             nickname={nickname}
             videoIdRatings={videoIdRatings}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/library`}>
@@ -141,6 +142,7 @@ const Main = memo(({ profile, handleLogout }) => {
             nickname={nickname}
             ratedMusics={ratedMusics}
             videoIdRatings={videoIdRatings}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/rating`}>
@@ -148,6 +150,7 @@ const Main = memo(({ profile, handleLogout }) => {
             nickname={nickname}
             videoIdRatings={videoIdRatings}
             setVideoIdRatings={setVideoIdRatings}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/profile`}>
