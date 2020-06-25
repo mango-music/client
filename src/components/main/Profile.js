@@ -6,6 +6,7 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Profile.scss';
 import changeName from '../../lib/apis/changeName';
+import changeNickname from '../../images/changeNickname.png';
 
 const Profile = (props) => {
   const { profile, handleLogout, history } = props;
@@ -17,9 +18,6 @@ const Profile = (props) => {
     console.log(userinfo);
     history.push('/');
   };
-
-  //기존에 있던 userinfo.nickname을 바꿔서 서버에 전송했음
-  //기존에 있던 userinfo.nickname을 바꾼 닉네임으로 바꿔서 다시 저장.
 
   return (
     <div id="profile">
@@ -38,8 +36,15 @@ const Profile = (props) => {
         >
           변경하기
         </button>
+        {/* <img
+          src={changeNickname}
+          id="nickChange-icon"
+          onClick={() => {
+            a();
+          }}
+        /> */}
       </div>
-      <div>{profile.id}</div>
+      <div>{profile.nickname}</div>
       <div>{profile.email}</div>
 
       <div>
