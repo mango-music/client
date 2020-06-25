@@ -91,7 +91,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             value={values.email}
             onChange={handleValueUpdate('email')}
             onBlur={handleValidation} // same as onfocusout event
-            error={errors && errors.email}
+            error={!!(errors && errors.email)} // !!로 표현식 결과를 boolean으로 판단할 수 있게 함
             helperText={errors && errors.email ? errors.email : null} // 'message' or null
             autoFocus // when mounted
             required
@@ -108,7 +108,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             value={values.password}
             onChange={handleValueUpdate('password')}
             onBlur={handleValidation}
-            error={errors && errors.password}
+            error={!!(errors && errors.password)}
             helperText={errors && errors.password ? errors.password : null}
             required
             autoComplete="off"
@@ -138,7 +138,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             value={values.confirm_password}
             onChange={handleValueUpdate('confirm_password')}
             onBlur={handleValidation}
-            error={errors && errors.confirm_password}
+            error={!!(errors && errors.confirm_password)}
             helperText={
               errors && errors.confirm_password ? errors.confirm_password : null
             }
@@ -154,7 +154,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             type="text"
             onChange={handleValueUpdate('nickname')}
             onBlur={handleValidation}
-            error={errors && errors.nickname}
+            error={!!(errors && errors.nickname)}
             helperText={errors && errors.nickname ? errors.nickname : null}
             required
             fullWidth

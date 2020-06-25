@@ -8,15 +8,21 @@ import '../../styles/Profile.scss';
 import changeName from '../../lib/apis/changeName';
 import changeNickname from '../../images/changeNickname.png';
 
-const Profile = (props) => {
-  const { profile, handleLogout, history } = props;
-  const a = async () => {
-    var userinfo = await changeName(
+const Profile = ({ profile, handleProfileUpdate, handleLogout }) => {
+  const handleEditButtonClick = async () => {
+    const userinfo = await changeName(
       document.querySelector('.changeNick').value,
     );
-    localStorage.setItem('x-user-info', JSON.stringify(userinfo));
     console.log(userinfo);
-    history.push('/');
+    if (userinfo) {
+      localStorage.setItem('x-user-info', JSON.stringify(userinfo));
+      location.reload();
+      // let currentPath = location.pathname;
+      // console.log(currentPath);
+      // window.location.href = currentPath;
+    } else {
+      return window.alert('이미 존재하는 닉네임 입니다.');
+    }
   };
 
   return (
@@ -29,20 +35,7 @@ const Profile = (props) => {
       </div>
       <div>
         <input className="changeNick" />
-        <button
-          onClick={() => {
-            a();
-          }}
-        >
-          변경하기
-        </button>
-        {/* <img
-          src={changeNickname}
-          id="nickChange-icon"
-          onClick={() => {
-            a();
-          }}
-        /> */}
+        <button onClick={handleEditButtonClick}>변경하기</button>
       </div>
       <div>{profile.nickname}</div>
       <div>{profile.email}</div>

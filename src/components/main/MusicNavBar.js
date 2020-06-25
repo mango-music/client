@@ -1,13 +1,13 @@
 import React, { memo } from 'react';
+// import { IconButton } from '@material-ui/core';
 import {
-  faStepForward,
-  faStepBackward,
-  faPause,
-  faPlay,
-  faRandom,
-  faExchangeAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  PlayArrow,
+  Pause,
+  SkipNext,
+  SkipPrevious,
+  Repeat,
+  Shuffle,
+} from '@material-ui/icons';
 import '../../styles/MusicNavBar.scss';
 
 const MusicNavBar = (props) => {
@@ -56,7 +56,8 @@ const MusicNavBar = (props) => {
           setIsRepeatOn(false);
         }}
       >
-        <FontAwesomeIcon icon={faExchangeAlt} color="black" />
+        {/* <FontAwesomeIcon icon={faExchangeAlt} color="black" /> */}
+        <Repeat />
       </button>
     );
   } else {
@@ -68,13 +69,14 @@ const MusicNavBar = (props) => {
           setIsRepeatOn(true);
         }}
       >
-        <FontAwesomeIcon icon={faExchangeAlt} color="#afafaf" />
+        {/* <FontAwesomeIcon icon={faExchangeAlt} color="#afafaf" /> */}
+        <Repeat />
       </button>
     );
   }
 
   // 이전 곡 재생 버튼
-  let previousButton = (
+  const previousButton = (
     <button
       type="button"
       onClick={() => {
@@ -99,7 +101,8 @@ const MusicNavBar = (props) => {
         }
       }}
     >
-      <FontAwesomeIcon icon={faStepBackward} color="#afafaf" />
+      <SkipPrevious />
+      {/* <FontAwesomeIcon icon={faStepBackward} color="#afafaf" /> */}
     </button>
   );
 
@@ -114,7 +117,8 @@ const MusicNavBar = (props) => {
           setIsPlayButtonOn(false);
         }}
       >
-        <FontAwesomeIcon icon={faPlay} color="#afafaf" />
+        {/* <FontAwesomeIcon icon={faPlay} color="#afafaf" /> */}
+        <PlayArrow />
       </button>
     );
   } else {
@@ -126,13 +130,14 @@ const MusicNavBar = (props) => {
           setIsPlayButtonOn(true);
         }}
       >
-        <FontAwesomeIcon icon={faPause} color="#afafaf" />
+        {/* <FontAwesomeIcon icon={faPause} color="#afafaf" /> */}
+        <Pause />
       </button>
     );
   }
 
   // 다음곡 재생 버튼
-  let nextButton = (
+  const nextButton = (
     <button
       type="button"
       onClick={() => {
@@ -157,7 +162,8 @@ const MusicNavBar = (props) => {
         }
       }}
     >
-      <FontAwesomeIcon icon={faStepForward} color="#afafaf" />
+      {/* <FontAwesomeIcon icon={faStepForward} color="#afafaf" /> */}
+      <SkipNext />
     </button>
   );
 
@@ -179,7 +185,8 @@ const MusicNavBar = (props) => {
           setIsShuffleOn(false);
         }}
       >
-        <FontAwesomeIcon icon={faRandom} color="black" />
+        {/* <FontAwesomeIcon icon={faRandom} color="black" /> */}
+        <Shuffle />
       </button>
     );
   } else {
@@ -199,7 +206,8 @@ const MusicNavBar = (props) => {
           setIsShuffleOn(true);
         }}
       >
-        <FontAwesomeIcon icon={faRandom} color="#afafaf" />
+        {/* <FontAwesomeIcon icon={faRandom} color="#afafaf" /> */}
+        <Shuffle style={{ color: 'red' }} />
       </button>
     );
   }
@@ -208,7 +216,7 @@ const MusicNavBar = (props) => {
   // big일 때
   if (props.player && playerSize === 'big') {
     return (
-      <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
+      <div id="music-nav-bar" className={`music-nav-bar-${playerSize}`}>
         <div>{repeatButton}</div>
         <div>{previousButton}</div>
         <div>{centerButton}</div>
@@ -217,10 +225,11 @@ const MusicNavBar = (props) => {
       </div>
     );
     // small일 때
-  } else if (props.player && playerSize === 'small') {
+  }
+  if (props.player && playerSize === 'small') {
     return (
-      <div id="music-nav-bar" className={'music-nav-bar-' + playerSize}>
-        <div></div>
+      <div id="music-nav-bar" className={`music-nav-bar-${playerSize}`}>
+        <div />
         <div className="music-nav-bar-title" onClick={changePlayerSize}>
           {currentItems[itemIndex].title}
         </div>

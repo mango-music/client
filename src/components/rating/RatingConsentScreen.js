@@ -25,7 +25,7 @@ const RatingConsentScreen = ({ nickname }) => {
         </Button>
         <Button
           variant="text"
-          color="gray"
+          color="secondary"
           size="large"
           component={RouterLink}
           to={`/@${nickname}`}
