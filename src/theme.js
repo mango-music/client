@@ -5,11 +5,11 @@ const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: '#ffb347',
+      main: '#ffb347', // yellow tone
       // light: '#ffcd38',
     },
     secondary: {
-      main: '#2196f3',
+      main: '#2196f3', // blue tone
     },
   },
   typography: {
@@ -22,8 +22,8 @@ const theme = createMuiTheme({
   overrides: {
     MuiContainer: {
       root: {
-        paddingTop: '44px',
-        scrollPaddingTop: '44px',
+        // paddingTop: '44px',
+        // scrollPaddingTop: '44px',
         backgroundColor: '#303030',
         height: '100vh',
       },

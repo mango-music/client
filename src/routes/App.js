@@ -20,6 +20,7 @@ const App = ({ history, location }) => {
   const [isLogin, setLogin] = useState(false);
   const [profile, setProfile] = useState({});
   const [hasJustCreated, setJustCreated] = useState(false);
+  // const [hasProfileUpdated, setProfileUpdated] = useState(false);
 
   const title = usePageTitle(location.pathname);
   const callbackPath = useRef(null); // uncontrolled state (not for rendering)
@@ -52,6 +53,11 @@ const App = ({ history, location }) => {
     callbackPath.current = null;
   }, [isLogin]);
 
+  // const handleProfileUpdate = (string) => {
+  //   console.log('닉네임을 변경합니다.');
+  //   setProfileUpdated(true);
+  // };
+
   /*
     Effect will not run after the initial render.
     Thereafter, it depends on the array of values that should be observed.
@@ -73,8 +79,19 @@ const App = ({ history, location }) => {
     }
   }, [isLogin]);
 
+  // useEffect(() => {
+  //   if (hasProfileUpdated) {
+  //     console.log('Component did update');
+  //     return history.push('/');
+  //   }
+  // }, [hasProfileUpdated]);
+
   return (
-    <Container disableGutters className="app">
+    <Container
+      style={{ maxWidth: '100vw', minWidth: '360px' }}
+      disableGutters
+      className="app"
+    >
       {location.pathname !== '/rating' ? (
         <Box component="header" className="app_header">
           <Typography variant="h1">{title}</Typography>

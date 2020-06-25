@@ -6,20 +6,24 @@ import { faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../styles/Profile.scss';
 import changeName from '../../lib/apis/changeName';
+import {} from '@material-ui/core';
 
-const Profile = (props) => {
-  const { profile, handleLogout, history } = props;
-  const a = async () => {
-    var userinfo = await changeName(
+const Profile = ({ profile, handleProfileUpdate, handleLogout }) => {
+  const handleEditButtonClick = async () => {
+    const userinfo = await changeName(
       document.querySelector('.changeNick').value,
     );
-    localStorage.setItem('x-user-info', JSON.stringify(userinfo));
     console.log(userinfo);
-    history.push('/');
+    if (userinfo) {
+      localStorage.setItem('x-user-info', JSON.stringify(userinfo));
+      location.reload();
+      // let currentPath = location.pathname;
+      // console.log(currentPath);
+      // window.location.href = currentPath;
+    } else {
+      return window.alert('이미 존재하는 닉네임 입니다.');
+    }
   };
-
-  //기존에 있던 userinfo.nickname을 바꿔서 서버에 전송했음
-  //기존에 있던 userinfo.nickname을 바꾼 닉네임으로 바꿔서 다시 저장.
 
   return (
     <div id="profile">
@@ -31,13 +35,7 @@ const Profile = (props) => {
       </div>
       <div>
         <input className="changeNick" />
-        <button
-          onClick={() => {
-            a();
-          }}
-        >
-          변경하기
-        </button>
+        <button onClick={handleEditButtonClick}>변경하기</button>
       </div>
       <div>{profile.id}</div>
       <div>{profile.email}</div>

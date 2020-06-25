@@ -1,5 +1,6 @@
-import React, { memo, useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { useState, useEffect, useRef } from 'react';
+import { Switch, Route, Redirect, useHistory } from 'react-router-dom';
+import { ImageOutlined, Home } from '@material-ui/icons';
 import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
 import Recommends from '../components/main/home/Recommends';
@@ -11,10 +12,22 @@ import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import getRatingMusiclist from '../lib/apis/getRatingMusiclist';
 import '../styles/ChangeWindowButton.scss';
-import { ImageOutlined, Home } from '@material-ui/icons';
 import Homepage from '../components/main/Homepage';
 
-const Main = memo(({ profile, handleLogout }) => {
+const Refresh = ({ path = '/' }) => (
+  <Route
+    path={path}
+    component={({ history, location, match }) => {
+      history.replace({
+        ...location,
+        pathname: location.pathname.substring(match.path.length),
+      });
+      return null;
+    }}
+  />
+);
+
+const Main = ({ profile, handleProfileUpdate, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
   const [ratedMusics, setRatedMusics] = useState([]); // 서버에서 받아오는 사용자 별점 데이터
   const [videoIdRatings, setVideoIdRatings] = useState({}); // 서버에서 받아온 별점 데이터를 객체에 담고 여기에 최신화를 시킨다.
@@ -23,6 +36,10 @@ const Main = memo(({ profile, handleLogout }) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [playerSize, setPlayerSize] = useState('small');
+  // const [nickname, setNickname] = useState(profile.nickname);
+
+  // const profileRef = useRef({ ...profile });
+  // const history = useHistory();
 
   useEffect(() => {
     console.log('사용자가 평가한 음악 리스트를 불러옵니다.');
@@ -52,6 +69,24 @@ const Main = memo(({ profile, handleLogout }) => {
       })
       .catch((err) => console.log(err));
   }, []);
+
+  // useEffect(() => {
+  //   const stored_nickname = JSON.parse(localStorage.getItem('x-user-info'))
+  //     .nickname;
+  //   console.log('현재 닉네임', stored_nickname);
+  //   if (stored_nickname !== nickname) {
+  //     console.log('프로필 닉네임 변경을 인지하고 프로필 객체를 변경합니다.');
+  //     profileRef.current.nickname = stored_nickname;
+  //     // localStorage.setItem('x-user-info', JSON.stringify(profileRef.current));
+  //     // setNickname(stored_nickname);
+  //     history.push('/');
+  //   }
+  // }, [nickname]);
+
+  // const handleNicknameUpdate = (string) => {
+  //   console.log('닉네임 상태를 변경 합니다.');
+  //   setNickname(string);
+  // };
 
   // useEffect(() => {
   //   console.log('이전에 재생한 큐를 불러옵니다.');
@@ -105,7 +140,9 @@ const Main = memo(({ profile, handleLogout }) => {
         setVideoIdRatings={setVideoIdRatings}
       />
       <Switch>
+        <Route path="/*/reload" component={null} />
         <Route exact path={`/@${nickname}`}>
+          {/* <h1>Hello world</h1> */}
           <Homepage
             currentItems={currentItems}
             currentItem={currentItem}
@@ -152,15 +189,20 @@ const Main = memo(({ profile, handleLogout }) => {
           />
         </Route>
         <Route path={`/@${nickname}/profile`}>
-          <Profile profile={profile} handleLogout={handleLogout} />
+          <Profile
+            profile={profile}
+            handleProfileUpdate={handleProfileUpdate}
+            handleLogout={handleLogout}
+          />
         </Route>
         <Route path={`/@${nickname}/player`}>
           <MusicPlayer />
         </Route>
+        <Refresh />
         <Route path={`/@${nickname}`} component={NoMatch} />
       </Switch>
     </>
   );
-});
+};
 
-export default Main;
+export default React.memo(Main);

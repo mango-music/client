@@ -40,7 +40,7 @@ const Signin = ({ handleSigninSuccess, history }) => {
     const status = await postAccountData('signin', values);
     console.log(status);
     // 404 - 가입되지 않은 이메일 혹은 비밀번호가 틀림?
-    if (!status) {
+    if (status !== 200) {
       // eslint-disable-next-line no-alert
       window.alert('가입되지 않은 이메일이거나 잘못된 비밀번호 입니다.'); // (임시)
       return;
