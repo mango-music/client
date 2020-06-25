@@ -20,6 +20,9 @@
     @include normal-button;
     button {
       background-color: whitesmoke;
+      svg {
+        font-size: 2rem;
+      }
     }
   }
 

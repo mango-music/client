@@ -5,12 +5,11 @@ import UserPlaylistRated from './UserPlaylistRated';
 import MainHeader from './MainHeader';
 import postMusiclist from '../../lib/apis/postMusiclist';
 import {
-  faPlusCircle,
-  faCheckCircle,
-  faTimesCircle,
-  faAngleRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+  AddCircleOutline,
+  CheckCircleOutline,
+  HighlightOff,
+  NavigateNext,
+} from '@material-ui/icons';
 import '../../styles/Library.scss';
 
 const Library = (props) => {
@@ -53,7 +52,7 @@ const Library = (props) => {
     addPlaylist = (
       <React.Fragment>
         <div onClick={() => setAddButtonOn(false)}>
-          <FontAwesomeIcon icon={faTimesCircle} color="#afafaf" />
+          <HighlightOff />
         </div>
         <div
           id="add-playlist-button"
@@ -65,7 +64,7 @@ const Library = (props) => {
             setAddButtonOn(false);
           }}
         >
-          <FontAwesomeIcon icon={faCheckCircle} color="#afafaf" />
+          <CheckCircleOutline />
         </div>
         <div>
           <input
@@ -90,7 +89,7 @@ const Library = (props) => {
             setAddButtonOn(true);
           }}
         >
-          <FontAwesomeIcon icon={faPlusCircle} color="#afafaf" />
+          <AddCircleOutline />
         </div>
         <div>
           <p>Add new playlist</p>
@@ -111,7 +110,7 @@ const Library = (props) => {
           </div>
           <div className="list-button">
             <button onClick={() => setRatedButtonOn(true)}>
-              <FontAwesomeIcon icon={faAngleRight} color="#afafaf" />
+              <NavigateNext />
             </button>
           </div>
         </li>

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { MoreVert } from '@material-ui/icons';
 import ExploreDropDownMenu from './ExploreDropDownMenu';
 
 const ExploreEntry = (props) => {
@@ -71,7 +70,7 @@ const ExploreEntry = (props) => {
         }}
         className="search-ellipsis"
       >
-        <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
+        <MoreVert />
       </button>
       {isEllipsisOn && (
         <ExploreDropDownMenu

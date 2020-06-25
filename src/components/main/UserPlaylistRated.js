@@ -2,8 +2,7 @@ import React, { useState, useEffect } from 'react';
 import UserPlaylistRatedItem from './UserPlaylistRatedItem';
 import UserPlaylistItemsDropDownMenu from './UserPlaylistItemsDropDownMenu';
 import getRatingMusiclist from '../../lib/apis/getRatingMusiclist';
-import { faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Close } from '@material-ui/icons';
 
 const UserPlaylistRated = (props) => {
   const {
@@ -40,7 +39,7 @@ const UserPlaylistRated = (props) => {
       <header>
         <div>
           <button onClick={() => setRatedButtonOn(false)}>
-            <FontAwesomeIcon icon={faTimes} color="#afafaf" />
+            <Close />
           </button>
         </div>
         <div></div>
