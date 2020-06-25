@@ -116,6 +116,7 @@ const Main = memo(({ profile, handleLogout }) => {
             nickname={nickname}
             videoIdRatings={videoIdRatings}
             setPlayerSize={setPlayerSize}
+            playerSize={playerSize}
           />
         </Route>
         <Route path={`/@${nickname}/explore`}>
