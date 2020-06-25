@@ -20,6 +20,7 @@ const Homepage = (props) => {
     nickname,
     setPlayerSize,
     videoIdRatings,
+    playerSize,
   } = props;
   useEffect(() => {
     getRecommendedPlaylist(10000)
@@ -53,7 +54,7 @@ const Homepage = (props) => {
   // <Ranks music={music} ranking={index} />
   // ));
   return (
-    <div id="wrapper">
+    <div id="wrapper" className={`player-brother-${playerSize}`}>
       {/* <MainHeader nickname={nickname} /> */}
       <div id="kpop">
         <div id="play-all-button">
