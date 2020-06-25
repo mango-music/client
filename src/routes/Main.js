@@ -102,6 +102,7 @@ const Main = ({ profile, handleLogout }) => {
       <MusicPlayer
         currentItems={currentItems}
         currentItem={currentItem}
+        setCurrentItem={setCurrentItem}
         setCurrentItems={setCurrentItems}
         itemIndex={itemIndex}
         setItemIndex={setItemIndex}
