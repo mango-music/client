@@ -5,6 +5,7 @@ const postDelRating = async (item, videoIdRatings, setVideoIdRatings) => {
   const { videoid } = item;
   const body = { videoid };
   const res = await apiHelper(url, body);
+  if (!res) return;
   console.log('postDelRating res : ', res);
   if (res.status === 200) {
     const newVideoIdRatings = { ...videoIdRatings };

@@ -24,6 +24,10 @@ const UserPlaylistItems = (props) => {
       break;
     }
   }
+
+  const newItems = [...items];
+  newItems.reverse();
+
   return (
     <div id="user-playlist-items">
       <header>
@@ -60,7 +64,7 @@ const UserPlaylistItems = (props) => {
 
       <ul>
         {items &&
-          items.map((item) => {
+          newItems.map((item) => {
             return (
               <UserPlaylistItem
                 key={item.videoid}

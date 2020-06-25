@@ -7,9 +7,10 @@ const Signout = ({ handleLogout, history }) => {
   const handleClick = async () => {
     const access_token = localStorage.getItem('x-access-token');
     const refresh_token = localStorage.getItem('x-refresh-token');
-    const { status } = await postSignout({ access_token, refresh_token });
+    const res = await postSignout({ access_token, refresh_token });
     // console.log(status);
-    if (status === 200) {
+    console.log(res);
+    if (res === 'ok') {
       handleLogout();
       localStorage.clear();
       setTimeout(() => history.push('/'), 0);

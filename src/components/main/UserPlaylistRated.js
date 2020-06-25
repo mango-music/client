@@ -28,7 +28,10 @@ const UserPlaylistRated = (props) => {
     const token = localStorage.getItem('x-access-token');
     if (!token) return console.log('토큰이 없습니다.');
     getRatingMusiclist().then((items) => {
-      setItems(items);
+      const newItems = [...items];
+      newItems.reverse();
+      setItems(newItems);
+      console.log('사용자가 평가한 데이터 : ', newItems);
     });
   }, []);
 

@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Nav = ({ nickname }) => {
+const Nav = ({ nickname, playerSize }) => {
   const classes = useStyles();
   const [value, setValue] = useState(0);
   const handleLinkClick = (e) => {
@@ -31,6 +31,7 @@ const Nav = ({ nickname }) => {
       }}
       showLabels
       classes={classes}
+      className={`player-brother-${playerSize}`}
     >
       <BottomNavigationAction
         label="Home"
