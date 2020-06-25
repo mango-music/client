@@ -39,7 +39,7 @@ const Explore = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    searchMusicsByQuerry(querry, 15)
+    searchMusicsByQuerry(querry, 20)
       .then((res) => res.json())
       .then((json) => {
         console.log(json);
@@ -53,7 +53,7 @@ const Explore = (props) => {
 
   return (
     <div id="search" className={`player-brother-${playerSize}`}>
-      <MainHeader title="Explore" nickname={nickname} />
+      <MainHeader title="음악 찾기" nickname={nickname} />
       <form onSubmit={(e) => handleSubmit(e)}>
         <button ref={searchButton}>
           <Search />

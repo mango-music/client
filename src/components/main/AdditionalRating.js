@@ -30,7 +30,7 @@ const AdditionalRating = (props) => {
 
   return (
     <div id="additional-rating" className={`player-brother-${playerSize}`}>
-      <MainHeader title="Raiting" nickname={nickname} />
+      <MainHeader title="평가하기" nickname={nickname} />
       <nav>
         {genreArr.map(({ name, string }) => {
           return (

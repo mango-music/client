@@ -92,21 +92,21 @@ const Library = (props) => {
           <AddCircleOutline />
         </div>
         <div>
-          <p>Add new playlist</p>
+          <p>재생 목록 추가하기</p>
         </div>
       </React.Fragment>
     );
   }
   return (
     <div id="library" className={`player-brother-${playerSize}`}>
-      <MainHeader title={'Library'} nickname={nickname} />
+      <MainHeader title="라이브러리" nickname={nickname} />
       <ul>
         <li>
           <div className="list-img">
             {ratedMusics[0] && <img src={ratedMusics[0].thumbnail} />}
           </div>
           <div className="list-title">
-            <p onClick={() => playVideos(ratedMusics)}>Rated Musics</p>
+            <p onClick={() => playVideos(ratedMusics)}>내가 평가한 음악</p>
           </div>
           <div className="list-button">
             <button onClick={() => setRatedButtonOn(true)}>
