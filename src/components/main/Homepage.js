@@ -19,6 +19,7 @@ const Homepage = (props) => {
     videoIdRatings,
     playerSize,
   } = props;
+
   useEffect(() => {
     getRecommendedPlaylist(20)
       .then((res) => res.json())
@@ -26,6 +27,7 @@ const Homepage = (props) => {
         setMusics(data.items);
       });
   }, []);
+
   const kpopMusics = [];
   const kpopMusiclist = musics.map((video) => {
     const { id, snippet } = video;
@@ -53,11 +55,9 @@ const Homepage = (props) => {
   return (
     <div id="wrapper" className={`player-brother-${playerSize}`}>
       <div id="kpop">
-        <div className="kpop-title">
-          <span>K-pop top 20</span>
-        </div>
-        <div className="kpop-button">
-          <span
+        <header className="kpop-title">
+          <p>K-pop top 20</p>
+          <p
             onClick={async () => {
               await setCurrentItem(null);
               await setCurrentItems([]);
@@ -65,10 +65,11 @@ const Homepage = (props) => {
               setCurrentItem(kpopMusics[0]);
               setPlayerSize('big');
             }}
+            className="pointer"
           >
             모두 듣기
-          </span>
-        </div>
+          </p>
+        </header>
         <ul className="list">{kpopMusiclist}</ul>
       </div>
       <Recommends

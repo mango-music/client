@@ -45,10 +45,16 @@ const RecommendsEntry = (props) => {
         playVideo(video);
       }}
     >
-      <div className="recommends-music-image">
-        <img src={`http://img.youtube.com/vi/${video.videoid}/mqdefault.jpg`} />
-      </div>
-      <div className="recommends-music-title">{video.title}</div>
+      <div
+        className="recommends-music-image"
+        style={{
+          backgroundImage:
+            'url(' +
+            `http://img.youtube.com/vi/${video.videoid}/mqdefault.jpg` +
+            ')',
+        }}
+      ></div>
+      <p className="recommends-music-title">{video.title}</p>
     </li>
   );
 };

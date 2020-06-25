@@ -59,11 +59,13 @@ const Recommends = (props) => {
   ));
   return (
     <div id="recommends">
-      <div className="recommends-title">
-        <span>{nickname} 님이 좋아하실만한 음악이에요</span>
-      </div>
-      <div className="recommends-button">
-        <span
+      <header className="recommends-title">
+        <p>
+          <span style={{ color: '#fdc10b' }}>{nickname}</span>님이 좋아하실만한
+          음악이에요
+        </p>
+
+        <p
           onClick={async () => {
             await setCurrentItem(null);
             await setCurrentItems([]);
@@ -71,17 +73,18 @@ const Recommends = (props) => {
             setCurrentItem(recommends[0]);
             setPlayerSize('big');
           }}
+          className="pointer"
         >
           모두 듣기
-        </span>
-      </div>
-      <div className="ranks">
-        <span className="ranks-title">
+        </p>
+      </header>
+      <div className="rank">
+        {/* <span className="ranks-title">
           취향이 비슷한 유저가 추천해준 노래 Top 100
-        </span>
+        </span> */}
         <ul className="ranks-list">{recommnendRanks}</ul>
       </div>
-      <div className="recommends-musics">
+      <div className="recommend-musics">
         <ul className="recommend-list">{recommendMusics}</ul>
       </div>
     </div>

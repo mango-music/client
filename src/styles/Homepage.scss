@@ -1,51 +1,104 @@
 // @import './common/normal-button.scss';
 @import './common/player-brother-big.scss';
-
 @include player-brother-big;
-#wrapper {
-  display: grid;
-  grid-auto-flow: row;
-  grid-template-rows: 100px 300px 1fr;
-  gap: 200px;
-  margin-bottom: 200px;
-}
-#kpop {
+@mixin home-ul {
   ul {
     display: grid;
     grid-auto-flow: column;
     overflow-x: auto;
-    gap: 20px;
-    grid-column: span 2;
-    grid-auto-columns: 300px;
+    gap: 16px;
+    grid-template-columns: 25vh;
+    li {
+      display: grid;
+      grid-auto-flow: row;
+      gap: 16px;
+      align-content: start;
+      div {
+        width: 25vh;
+        height: 25vh;
+        background-size: cover;
+        background-position: center center;
+        cursor: pointer;
+      }
+      p {
+        font-size: 1.2rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        cursor: pointer;
+      }
+    }
   }
-  .kpop-title {
-    display: grid;
-    color: yellow;
-  }
+}
 
-  .kpop-music-title {
-    cursor: pointer;
-  }
-
-  .kpop-button {
-    display: grid;
-    justify-content: end;
-    cursor: pointer;
-  }
-
+#wrapper {
   display: grid;
-  gap: 20px;
   grid-auto-flow: row;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  margin-bottom: 200px;
+  overflow-y: unset;
 }
 
-.kpop-music-image {
-  img {
-    width: 100%;
+#kpop {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 32px;
+  header {
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-size: 1.25rem;
+    }
   }
-  cursor: pointer;
+  @include home-ul;
 }
 
-.kpop-music-image:hover {
-  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 30px 30px rgba(0, 0, 0, 0.22);
+#recommends {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  overflow-y: unset;
+  header {
+    grid-column: span 2;
+    display: flex;
+    justify-content: space-between;
+    p {
+      font-size: 1.25rem;
+    }
+  }
+  .rank {
+    overflow-y: unset;
+    ul {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      li {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 10px 50px 1fr;
+        gap: 8px;
+        .rank-image {
+          width: 50px;
+          height: 50px;
+          background-size: cover;
+          background-position: center center;
+          cursor: pointer;
+        }
+        .rank-number,
+        .rank-title {
+          display: grid;
+          align-items: center;
+        }
+      }
+    }
+  }
+  .recommend-musics {
+    @include home-ul;
+  }
+}
+
+.pointer {
+  cursor: pointer;
 }

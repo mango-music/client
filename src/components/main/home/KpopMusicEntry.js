@@ -37,10 +37,14 @@ const Musiclist = (props) => {
         playVideo(video);
       }}
     >
-      <div className="kpop-music-image">
-        <img src={`http://img.youtube.com/vi/${videoid}/mqdefault.jpg`} />
-      </div>
-      <div className="kpop-music-title">{video.title}</div>
+      <div
+        className="kpop-music-image"
+        style={{
+          backgroundImage:
+            'url(' + `http://img.youtube.com/vi/${videoid}/mqdefault.jpg` + ')',
+        }}
+      ></div>
+      <p className="kpop-music-title">{video.title}</p>
     </li>
   );
 };
