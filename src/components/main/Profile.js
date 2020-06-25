@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import Signout from '../auth/Signout';
 import '../../styles/Profile.scss';
 import changeName from '../../lib/apis/changeName';
-import mockup from '../../images/mockup.png';
+// import mockup from '../../images/mockup.png';
 
 const Profile = ({ profile, handleLogout }) => {
   const [value, setValue] = useState(profile.nickname);

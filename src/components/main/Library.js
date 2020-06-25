@@ -1,15 +1,14 @@
-import React, { useState, memo, useEffect } from 'react';
-import {
-  faPlusCircle,
-  faCheckCircle,
-  faTimesCircle,
-  faAngleRight,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useState, memo } from 'react';
 import UserPlaylist from './UserPlaylist';
 import UserPlaylistItems from './UserPlaylistItems';
 import UserPlaylistRated from './UserPlaylistRated';
 import postMusiclist from '../../lib/apis/postMusiclist';
+import {
+  AddCircleOutline,
+  CheckCircleOutline,
+  HighlightOff,
+  NavigateNext,
+} from '@material-ui/icons';
 import '../../styles/Library.scss';
 
 const Library = (props) => {
@@ -52,7 +51,7 @@ const Library = (props) => {
     addPlaylist = (
       <>
         <div onClick={() => setAddButtonOn(false)}>
-          <FontAwesomeIcon icon={faTimesCircle} color="#afafaf" />
+          <HighlightOff />
         </div>
         <div
           id="add-playlist-button"
@@ -64,7 +63,7 @@ const Library = (props) => {
             setAddButtonOn(false);
           }}
         >
-          <FontAwesomeIcon icon={faCheckCircle} color="#afafaf" />
+          <CheckCircleOutline />
         </div>
         <div>
           <input
@@ -89,10 +88,10 @@ const Library = (props) => {
             setAddButtonOn(true);
           }}
         >
-          <FontAwesomeIcon icon={faPlusCircle} color="#afafaf" />
+          <AddCircleOutline />
         </div>
         <div>
-          <p>Add new playlist</p>
+          <p>재생 목록 추가하기</p>
         </div>
       </>
     );
@@ -105,11 +104,11 @@ const Library = (props) => {
             {ratedMusics[0] && <img src={ratedMusics[0].thumbnail} />}
           </div>
           <div className="list-title">
-            <p onClick={() => playVideos(ratedMusics)}>Rated Musics</p>
+            <p onClick={() => playVideos(ratedMusics)}>내가 평가한 음악</p>
           </div>
           <div className="list-button">
             <button onClick={() => setRatedButtonOn(true)}>
-              <FontAwesomeIcon icon={faAngleRight} color="#afafaf" />
+              <NavigateNext />
             </button>
           </div>
         </li>

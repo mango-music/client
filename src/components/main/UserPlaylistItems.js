@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import UserPlaylistItem from './UserPlaylistItem';
 import UserPlaylistItemsDropDownMenu from './UserPlaylistItemsDropDownMenu';
-import { faTimes, faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Close, MoreVert } from '@material-ui/icons';
 
 const UserPlaylistItems = (props) => {
   const {
@@ -33,7 +32,7 @@ const UserPlaylistItems = (props) => {
       <header>
         <div>
           <button onClick={() => setSelectedList(null)}>
-            <FontAwesomeIcon icon={faTimes} color="#afafaf" />
+            <Close />
           </button>
         </div>
         <div></div>
@@ -47,7 +46,7 @@ const UserPlaylistItems = (props) => {
               }
             }}
           >
-            <FontAwesomeIcon icon={faEllipsisV} color="#afafaf" />
+            <MoreVert />
           </button>
         </div>
         {isEllipsisOn && (
