@@ -68,7 +68,7 @@
     left: 0;
     padding: 10px;
     z-index: 1;
-    background-color: #545453;
+    background-color: #2a2a2e;
     width: 100vw;
     height: 100vh;
     overflow: auto;
@@ -78,6 +78,8 @@
       grid-auto-flow: row;
       grid-template-columns: 30px 1fr 30px;
       gap: 10px;
+      margin: 0 8px 8px 8px;
+      padding-left: 4px;
       margin-bottom: 10px;
       @include normal-button;
       @include ellipsis-button;
@@ -86,7 +88,7 @@
       }
       .user-playlist-title {
         grid-column: span 3;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
     }
     ul {

@@ -137,6 +137,7 @@ const Library = (props) => {
           setCurrentItems={setCurrentItems}
           setItemIndex={setItemIndex}
           videoIdRatings={videoIdRatings}
+          playerSize={playerSize}
         />
       )}
       {ratedButtonOn && (
