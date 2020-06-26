@@ -31,8 +31,14 @@
     .list-title {
       display: grid;
       align-content: center;
+      height: 45px; // 박스 범위
       p {
         cursor: pointer;
+        // 글자 숨기는 속성
+        overflow: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .list-button {
@@ -74,6 +80,7 @@
       gap: 10px;
       margin-bottom: 10px;
       @include normal-button;
+      @include ellipsis-button;
       div {
         display: grid;
       }
@@ -86,6 +93,11 @@
       @include list-ul;
       font-size: 1.2rem;
       margin-bottom: 120px;
+      li {
+        .list-button {
+          @include ellipsis-button;
+        }
+      }
     }
   }
   #add-playlist {

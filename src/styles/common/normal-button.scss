@@ -21,3 +21,11 @@
     }
   }
 }
+
+@mixin ellipsis-button {
+  button {
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+}

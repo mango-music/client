@@ -48,7 +48,7 @@
     overflow-y: auto; // 스크롤 바
     height: 100vh;
     z-index: 100;
-    background-color: #2a2a2e;
+    background-color: black;
     @media (min-width: 700px) {
       .player-window {
         width: 50vw !important;
@@ -60,7 +60,7 @@
       display: grid;
       grid-auto-flow: row;
       grid-template-rows: auto auto auto auto 1fr;
-      gap: 10px;
+      gap: 8px;
       margin-bottom: 8vh;
       .rating-form {
         font-size: 2rem;
@@ -72,6 +72,10 @@
         margin-left: 10px;
         margin-right: 10px;
         cursor: pointer;
+        // 글자 숨기는 기능
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .music-progress-bar {
         display: grid;
@@ -133,12 +137,15 @@
         }
       }
       header {
+        background-color: black;
         padding: 0 16px 0 16px;
         display: flex;
         justify-content: space-between;
-        svg {
+        div {
           cursor: pointer;
-          font-size: 1.8rem;
+          svg {
+            font-size: 1.8rem;
+          }
         }
       }
       @media (min-width: 700px) {

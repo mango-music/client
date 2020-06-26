@@ -69,6 +69,12 @@
         }
       }
       @include normal-button;
+      @include ellipsis-button;
+      button {
+        svg {
+          font-size: 1.2rem;
+        }
+      }
       .search-drop-down-menu {
         z-index: 4;
         display: block;
