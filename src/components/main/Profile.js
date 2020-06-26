@@ -41,11 +41,6 @@ const Profile = ({ profile, handleLogout }) => {
         {/* 여기를 누르면 파일 이미지를 업로드할 수 있고, 그 결과로 업로드된 이미지가 배경으로 변경됩니다 */}
       </div>
       <div>
-//         <input className="changeNick" />
-//         <span id="nickChange-Icon">
-//           <CreateIcon onClick={handleEditButtonClick} />
-//         </span>
-//         {/* <button onClick={handleEditButtonClick}>변경하기</button> */}
 
         <form onSubmit={handleNicknameUpdate} autoComplete="off">
           <input type="text" value={value} onChange={handleChange} />
