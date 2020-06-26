@@ -5,7 +5,7 @@ import MusicTitle from './MusicTitle';
 import MusicProgressBar from './MusicProgressBar';
 import MusicNavBar from './MusicNavBar';
 import MusicQueue from './MusicQueue';
-import { Close, OpenInNew } from '@material-ui/icons';
+import { Close, Remove } from '@material-ui/icons';
 import '../../styles/MusicPlayer.scss';
 
 let timer;
@@ -126,11 +126,11 @@ const MusicPlayer = (props) => {
         <div id="player-selector" className={'player-' + playerSize}>
           <div className="player-window">
             <header>
-              <div>
-                <Close onClick={stopPlayer} />
+              <div onClick={stopPlayer}>
+                <Close />
               </div>
-              <div>
-                <OpenInNew onClick={changePlayerSize} />
+              <div onClick={changePlayerSize}>
+                <Remove />
               </div>
             </header>
             <section>
