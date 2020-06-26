@@ -21,8 +21,13 @@ const Recommends = (props) => {
   const [recommends, setRecommends] = useState([]);
 
   useEffect(() => {
+    console.log('추천 음악을 요청합니다.');
     getRecommendedMusic().then((data) => {
-      setRecommends(data);
+      if (Array.isArray(data)) {
+        setRecommends(data);
+      } else {
+        console.log('추천 음악을 요청했지만 배열로 받지 못했습니다.');
+      }
     });
   }, []);
 
