@@ -1,3 +1,5 @@
+@import './mixins';
+
 .app {
   &_header {
     display: flex;
@@ -18,13 +20,6 @@
       padding: 0 0.5rem;
     }
   }
-}
-
-.flexbox-centering {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 @import './account.scss';
