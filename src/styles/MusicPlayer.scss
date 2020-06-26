@@ -60,7 +60,7 @@
       display: grid;
       grid-auto-flow: row;
       grid-template-rows: auto auto auto auto 1fr;
-      gap: 8px;
+      // gap: 8px;
       margin-bottom: 8vh;
       .rating-form {
         font-size: 2rem;
@@ -69,8 +69,8 @@
       .music-title {
         font-size: 1.4rem;
         text-align: center;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 16px;
+        margin-right: 16px;
         cursor: pointer;
         // 글자 숨기는 기능
         white-space: nowrap;
@@ -81,16 +81,15 @@
         display: grid;
         grid-auto-flow: row;
         grid-template-columns: 1fr;
-        gap: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
+        gap: 8px;
+        margin: 8px 16px 8px 16px;
         .progress-bar {
           background-color: #5a5a5a;
           height: 5px;
           .progress-node {
             width: 0;
             height: 100%;
-            background-color: #fdc10b;
+            background-color: #ffb347;
             margin-left: 0%; // 초기 노드 위치
           }
         }
@@ -102,8 +101,8 @@
         }
       }
       .music-queue {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
         font-size: 1.15rem;
         margin: 0;
         li {
@@ -112,14 +111,13 @@
           gap: 10px;
           grid-auto-flow: column;
           grid-template-columns: 70px 1fr;
+          height: 70px;
 
           margin-bottom: 10px;
           list-style: none;
           cursor: pointer;
           .queue-image {
-            width: 70px;
-            height: 70px;
-            background-size: cover;
+            height: 100%;
             background-position: center center;
           }
           .queue-title {
@@ -141,6 +139,7 @@
         padding: 0 16px 0 16px;
         display: flex;
         justify-content: space-between;
+        margin-top: 8px;
         div {
           cursor: pointer;
           svg {
