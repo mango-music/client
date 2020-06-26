@@ -19,7 +19,6 @@ const apiHelper = async (url, body) => {
     if (err.response.status === 419) {
       refresh();
       apiHelper(url, body);
-      return;
     }
     return err.response;
   }

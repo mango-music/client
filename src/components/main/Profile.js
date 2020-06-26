@@ -72,12 +72,6 @@ const Profile = ({ profile, handleLogout }) => {
         )}
       </span>
       <div>
-        {/* <input className="changeNick" />
-        <span id="nickChange-Icon">
-        <CreateIcon onClick={handleEditButtonClick} />
-        </span> */}
-        {/* <button onClick={handleEditButtonClick}>변경하기</button> */}
-
         <form onSubmit={handleNicknameUpdate} autoComplete="off">
           <input type="text" value={value} onChange={handleChange} />
           <button type="submit">변경</button>
