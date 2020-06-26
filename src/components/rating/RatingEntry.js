@@ -53,7 +53,7 @@ const RatingEntry = ({
       setNextDisabled(false);
     }
   }, [value, evaluationCount]);
-  // className="rating rating_entry"
+
   return (
     <Box className={classes.root}>
       <Box className="card">

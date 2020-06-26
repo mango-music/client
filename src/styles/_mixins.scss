@@ -1,0 +1,15 @@
+@mixin flexbox-centering {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin text-ellipsis($lines: 2) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: $lines; /* 라인수 */
+  -webkit-box-orient: vertical;
+  word-wrap: break-word;
+  height: auto;
+}

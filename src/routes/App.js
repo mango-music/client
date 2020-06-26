@@ -2,24 +2,20 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useCallback, useRef } from 'react';
-import {
-  Switch,
-  Route,
-  Redirect,
-  withRouter,
-  Link as RouterLink,
-} from 'react-router-dom';
-import { Container, Typography, Box, IconButton } from '@material-ui/core';
-import { AccountCircle } from '@material-ui/icons';
+import { Switch, Route, Redirect, withRouter } from 'react-router-dom';
+import { Container, Typography, Box } from '@material-ui/core';
+// import { AccountCircle } from '@material-ui/icons';
 import Signin from '../components/auth/Signin';
 import Signup from '../components/auth/Signup';
 import PasswordReset from '../components/auth/PasswordReset';
 import RatingConsentScreen from '../components/rating/RatingConsentScreen';
 import Rating from '../components/rating/Rating';
 import Main from './Main'; // Nested routes
-import Landing from '../components/auth/Landing';
+// import Landing from '../components/auth/Landing';
 import Unauthorized from '../components/auth/Unauthorized';
 import NoMatch from '../components/auth/NoMatch';
+import ProfileButton from './ProfileButton';
+import BackButton from './BackButton';
 import '../styles/app.scss';
 import usePageTitle from '../lib/utils/usePageTitle';
 
@@ -92,20 +88,10 @@ const App = ({ history, location }) => {
     >
       {pathname !== '/rating' ? (
         <Box component="header" className="app_header">
+          {title === '프로필' ? <BackButton nickname={nickname} /> : null}
           <Typography variant="h2">{title}</Typography>
           {pathname === callbackPath.current ? (
-            <IconButton
-              aria-label="profile-image"
-              size="medium"
-              component={RouterLink}
-              to={`/@${nickname}/profile`}
-            >
-              <AccountCircle
-                style={{
-                  color: 'rgba(255,255,255,0.7)',
-                }}
-              />
-            </IconButton>
+            <ProfileButton nickname={nickname} />
           ) : null}
         </Box>
       ) : null}
