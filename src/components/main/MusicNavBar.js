@@ -199,7 +199,7 @@ const MusicNavBar = (props) => {
       <div id="music-nav-bar" className="music-nav-bar-small">
         <div />
         <div className="music-nav-bar-title" onClick={changePlayerSize}>
-          {currentItems[itemIndex].title}
+          <marquee>{currentItems[itemIndex].title}</marquee>
         </div>
         <div>
           <button onClick={handlePlay}>
