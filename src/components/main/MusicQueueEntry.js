@@ -1,9 +1,21 @@
-import React, { memo } from 'react';
+import React, { memo, useState } from 'react';
 import { MoreVert } from '@material-ui/icons';
+import MusicQueueEntryDropDownMenu from './MusicQueueEntryDropDownMenu';
 
 const MusicQueueEntry = (props) => {
-  const { currentItems, isShuffleOn, shuffledQueue, setShuffledIndex } = props;
+  const {
+    currentItems,
+    isShuffleOn,
+    shuffledQueue,
+    setShuffledIndex,
+    customLists,
+    setCustomLists,
+    item,
+  } = props;
   // console.log('MusicQueueEntry rendering');
+
+  const [isEllipsisOn, setIsEllipsisOn] = useState(false);
+
   const getIndexByVideoId = (videoid) => {
     for (let i = 0; i < currentItems.length; i++) {
       if (currentItems[i].videoid === videoid) {
@@ -41,10 +53,26 @@ const MusicQueueEntry = (props) => {
         <p>{props.title}</p>
       </div>
       <div className="queue-ellipsis">
-        <button>
+        <button
+          onClick={() => {
+            if (isEllipsisOn) {
+              setIsEllipsisOn(false);
+            } else {
+              setIsEllipsisOn(true);
+            }
+          }}
+        >
           <MoreVert />
         </button>
       </div>
+      {isEllipsisOn && (
+        <MusicQueueEntryDropDownMenu
+          customLists={customLists}
+          setCustomLists={setCustomLists}
+          setIsEllipsisOn={setIsEllipsisOn}
+          item={item}
+        />
+      )}
     </li>
   );
 };

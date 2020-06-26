@@ -21,6 +21,8 @@ const MusicPlayer = (props) => {
     changePlayerSize,
     videoIdRatings,
     setVideoIdRatings,
+    customLists,
+    setCustomLists,
   } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
   // const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
@@ -177,6 +179,8 @@ const MusicPlayer = (props) => {
               isShuffleOn={isShuffleOn}
               setShuffledIndex={setShuffledIndex}
               shuffledQueue={shuffledQueue}
+              customLists={customLists}
+              setCustomLists={setCustomLists}
             />
           </div>
           <MusicNavBar

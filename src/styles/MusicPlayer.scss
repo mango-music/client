@@ -64,6 +64,7 @@
       grid-template-rows: auto auto auto auto 1fr;
       // gap: 8px;
       margin-bottom: 8vh;
+      overflow: visible;
       .rating-form {
         font-size: 2rem;
         text-align: center;
@@ -107,8 +108,10 @@
         padding-right: 16px;
         font-size: 1.15rem;
         margin: 0;
+        overflow: visible;
         li {
           // border: solid 4px black;
+          position: relative;
           display: grid;
           gap: 10px;
           grid-auto-flow: column;
@@ -148,8 +151,14 @@
           }
           .queue-ellipsis {
             display: grid;
+            // position: relative;
             @include normal-button;
             @include ellipsis-button;
+            // div {
+            //   position: absolute;
+            //   width: 50px;
+            //   height: 100px;
+            // }
           }
         }
       }

@@ -1,18 +1,19 @@
 import React from 'react';
 import postAddMusic from '../../lib/apis/postAddMusic';
 
-const ExploreDropDownMenu = (props) => {
+const MusicQueueEntryDropDownMenu = (props) => {
   const { customLists, item, setCustomLists, setIsEllipsisOn } = props;
 
   const addMusicToUserPlayList = (list) => {
     // console.log('item : ', item);
     var obj = {
       listname: list.listname,
-      thumbnail: item.snippet.thumbnails.medium.url,
-      videoid: item.id.videoId,
-      title: item.snippet.title,
+      thumbnail: item.thumbnail,
+      videoid: item.videoid,
+      title: item.title,
     };
     // console.log('setCustomLists : ', setCustomLists);
+    console.log('재생목록', list.listname, '에', obj, '를 요청합니다.');
     postAddMusic(obj, customLists, setCustomLists);
   };
 
@@ -35,4 +36,4 @@ const ExploreDropDownMenu = (props) => {
   );
 };
 
-export default ExploreDropDownMenu;
+export default MusicQueueEntryDropDownMenu;
