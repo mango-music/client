@@ -10,6 +10,8 @@ const MusicQueue = (props) => {
     isShuffleOn,
     setShuffledIndex,
     shuffledQueue,
+    setCustomLists,
+    customLists,
   } = props;
   // console.log('MusicQueue rendering');
   return (
@@ -29,6 +31,9 @@ const MusicQueue = (props) => {
             setShuffledIndex={setShuffledIndex}
             shuffledQueue={shuffledQueue}
             key={item.videoid}
+            customLists={customLists}
+            setCustomLists={setCustomLists}
+            item={item}
           />
         );
       })}

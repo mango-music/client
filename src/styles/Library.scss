@@ -85,6 +85,18 @@
       @include ellipsis-button;
       div {
         display: grid;
+        .x-button {
+          text-align: start;
+          svg {
+            font-size: 1.5rem;
+          }
+        }
+        .e-button {
+          text-align: center;
+          svg {
+            font-size: 1.5rem;
+          }
+        }
       }
       .user-playlist-title {
         grid-column: span 3;
@@ -109,7 +121,7 @@
     justify-content: center;
     align-content: center;
     gap: 10px;
-    // height: 20vw;
+    margin-top: 8px;
     margin-bottom: 120px;
     div {
       display: grid;
@@ -122,22 +134,35 @@
         color: whitesmoke;
         font-size: 1.2rem;
       }
+      svg {
+        cursor: pointer;
+      }
     }
   }
 }
 
 .drop-down-menu {
   font-size: 1.2rem;
-  z-index: 4;
+  color: whitesmoke;
+  z-index: 20;
   display: block;
-  background-color: #696969;
+  background-color: #575757;
   padding: 10px;
   border-radius: 10px;
   position: absolute;
   right: 30px;
   top: 0;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
+  p {
+    font-size: 1.3rem;
+  }
   div {
     cursor: pointer;
+  }
+  div:hover {
+    color: #ffb347;
+  }
+  div:active {
+    color: whitesmoke;
   }
 }

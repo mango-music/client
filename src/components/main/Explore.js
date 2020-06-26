@@ -54,9 +54,6 @@ const Explore = (props) => {
   return (
     <div id="search" className={`player-brother-${playerSize}`}>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <button ref={searchButton}>
-          <Search />
-        </button>
         <TextField
           type="text"
           ref={input}
@@ -72,19 +69,9 @@ const Explore = (props) => {
           fullWidth
           variant="outlined"
         />
-        {/* <input
-          type="text"
-          ref={input}
-          onChange={(e) => {
-            setQuerry(e.target.value);
-          }}
-          onKeyUp={(e) => {
-            if (e.keyCode === 13) {
-              e.preventDefault();
-              searchButton.current.click();
-            }
-          }}
-        /> */}
+        <button ref={searchButton}>
+          <Search />
+        </button>
       </form>
       <ul>
         {searchItems &&

@@ -32,7 +32,7 @@ const UserPlaylistItems = (props) => {
     <div id="user-playlist-items" className={`player-brother-${playerSize}`}>
       <header>
         <div>
-          <button onClick={() => setSelectedList(null)}>
+          <button onClick={() => setSelectedList(null)} className="x-button">
             <Close />
           </button>
         </div>
@@ -46,6 +46,7 @@ const UserPlaylistItems = (props) => {
                 setIsEllipsisOn(true);
               }
             }}
+            className="e-button"
           >
             <MoreVert />
           </button>

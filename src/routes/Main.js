@@ -4,7 +4,6 @@ import { Switch, Route } from 'react-router-dom';
 import { ImageOutlined, Home } from '@material-ui/icons';
 import Nav from './Nav';
 import MusicPlayer from '../components/main/MusicPlayer';
-import Recommends from '../components/main/home/Recommends';
 import Explore from '../components/main/Explore';
 import Library from '../components/main/Library';
 import Profile from '../components/main/Profile';
@@ -12,7 +11,6 @@ import AdditionalRating from '../components/main/AdditionalRating';
 import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import getRatingMusiclist from '../lib/apis/getRatingMusiclist';
-import '../styles/ChangeWindowButton.scss';
 import Homepage from '../components/main/Homepage';
 
 const Main = ({ profile, handleLogout }) => {
@@ -99,13 +97,6 @@ const Main = ({ profile, handleLogout }) => {
   return (
     <>
       <Nav nickname={nickname} playerSize={playerSize} />
-      {/* <button
-        id="change-window-button"
-        type="button"
-        onClick={changePlayerSize}
-      >
-        창전환
-      </button> */}
       <MusicPlayer
         currentItems={currentItems}
         currentItem={currentItem}
@@ -117,6 +108,8 @@ const Main = ({ profile, handleLogout }) => {
         changePlayerSize={changePlayerSize}
         videoIdRatings={videoIdRatings}
         setVideoIdRatings={setVideoIdRatings}
+        customLists={customLists}
+        setCustomLists={setCustomLists}
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>
