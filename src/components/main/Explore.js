@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ExploreEntry from './ExploreEntry';
 import searchMusicsByQuerry from '../../lib/apis/searchMusicsByQuerry';
 import { Search } from '@material-ui/icons';
+import { TextField } from '@material-ui/core';
 import '../../styles/Explore.scss';
 
 const Explore = (props) => {
@@ -56,7 +57,7 @@ const Explore = (props) => {
         <button ref={searchButton}>
           <Search />
         </button>
-        <input
+        <TextField
           type="text"
           ref={input}
           onChange={(e) => {
@@ -68,7 +69,22 @@ const Explore = (props) => {
               searchButton.current.click();
             }
           }}
+          fullWidth
+          variant="outlined"
         />
+        {/* <input
+          type="text"
+          ref={input}
+          onChange={(e) => {
+            setQuerry(e.target.value);
+          }}
+          onKeyUp={(e) => {
+            if (e.keyCode === 13) {
+              e.preventDefault();
+              searchButton.current.click();
+            }
+          }}
+        /> */}
       </form>
       <ul>
         {searchItems &&

@@ -31,8 +31,14 @@
     .list-title {
       display: grid;
       align-content: center;
+      height: 45px; // 박스 범위
       p {
         cursor: pointer;
+        // 글자 숨기는 속성
+        overflow: hidden;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     .list-button {
@@ -62,7 +68,7 @@
     left: 0;
     padding: 10px;
     z-index: 1;
-    background-color: #545453;
+    background-color: #2a2a2e;
     width: 100vw;
     height: 100vh;
     overflow: auto;
@@ -72,20 +78,28 @@
       grid-auto-flow: row;
       grid-template-columns: 30px 1fr 30px;
       gap: 10px;
+      margin: 0 8px 8px 8px;
+      padding-left: 4px;
       margin-bottom: 10px;
       @include normal-button;
+      @include ellipsis-button;
       div {
         display: grid;
       }
       .user-playlist-title {
         grid-column: span 3;
-        font-size: 2rem;
+        font-size: 1.5rem;
       }
     }
     ul {
       @include list-ul;
       font-size: 1.2rem;
       margin-bottom: 120px;
+      li {
+        .list-button {
+          @include ellipsis-button;
+        }
+      }
     }
   }
   #add-playlist {

@@ -30,16 +30,23 @@ const Main = ({ profile, handleLogout }) => {
     const token = localStorage.getItem('x-access-token');
     if (!token) return console.log('토큰이 없습니다.');
     getRatingMusiclist().then((items) => {
-      const newItems = [...items];
-      newItems.reverse();
-      setRatedMusics(newItems);
-      console.log('사용자가 평가한 데이터 : ', newItems);
-      // 사용자가 평가한 videoid를 객체에 담아둔다. { videoid: rating }
-      const ratings = {};
-      newItems.forEach((video) => {
-        ratings[video.videoid] = video.rating;
-      });
-      setVideoIdRatings(ratings);
+      try {
+        const newItems = [...items];
+        newItems.reverse();
+        setRatedMusics(newItems);
+        console.log('사용자가 평가한 데이터 : ', newItems);
+        // 사용자가 평가한 videoid를 객체에 담아둔다. { videoid: rating }
+        const ratings = {};
+        newItems.forEach((video) => {
+          ratings[video.videoid] = video.rating;
+        });
+        setVideoIdRatings(ratings);
+      } catch (error) {
+        console.error(
+          '사용자가 평가한 음악 리스트를 불러오고 객체로 처리하는 과정에서 오류가 발생했습니다.',
+          error,
+        );
+      }
     });
   }, []);
 

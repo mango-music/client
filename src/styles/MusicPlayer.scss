@@ -1,3 +1,5 @@
+@import './common/normal-button.scss';
+
 #player {
   position: absolute;
   top: 0;
@@ -48,7 +50,7 @@
     overflow-y: auto; // 스크롤 바
     height: 100vh;
     z-index: 100;
-    background-color: #2a2a2e;
+    background-color: black;
     @media (min-width: 700px) {
       .player-window {
         width: 50vw !important;
@@ -60,7 +62,7 @@
       display: grid;
       grid-auto-flow: row;
       grid-template-rows: auto auto auto auto 1fr;
-      gap: 10px;
+      // gap: 8px;
       margin-bottom: 8vh;
       .rating-form {
         font-size: 2rem;
@@ -69,24 +71,27 @@
       .music-title {
         font-size: 1.4rem;
         text-align: center;
-        margin-left: 10px;
-        margin-right: 10px;
+        margin-left: 16px;
+        margin-right: 16px;
         cursor: pointer;
+        // 글자 숨기는 기능
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
       .music-progress-bar {
         display: grid;
         grid-auto-flow: row;
         grid-template-columns: 1fr;
-        gap: 10px;
-        margin-left: 10px;
-        margin-right: 10px;
+        gap: 8px;
+        margin: 8px 16px 8px 16px;
         .progress-bar {
           background-color: #5a5a5a;
           height: 5px;
           .progress-node {
             width: 0;
             height: 100%;
-            background-color: #fdc10b;
+            background-color: #ffb347;
             margin-left: 0%; // 초기 노드 위치
           }
         }
@@ -98,8 +103,8 @@
         }
       }
       .music-queue {
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 16px;
+        padding-right: 16px;
         font-size: 1.15rem;
         margin: 0;
         li {
@@ -107,38 +112,58 @@
           display: grid;
           gap: 10px;
           grid-auto-flow: column;
-          grid-template-columns: 70px 1fr;
+          grid-template-columns: 70px 1fr 30px;
+          height: 70px;
 
           margin-bottom: 10px;
           list-style: none;
           cursor: pointer;
           .queue-image {
-            width: 70px;
-            height: 70px;
+            height: 100%;
             background-size: cover;
             background-position: center center;
           }
           .queue-title {
             display: grid;
-            align-content: center;
             p {
+              align-self: center;
               margin: 0;
+              // 글자 숨기는 속성
+              overflow: hidden;
+              white-space: normal;
+              line-height: 1.2;
+              text-align: left;
+              word-wrap: break-word;
+              display: -webkit-box;
+              -webkit-line-clamp: 3; // 2번째 줄 끝을 ...으로 만든다.
+              -webkit-box-orient: vertical;
             }
           }
-          transition-property: transform;
-          transition-duration: 300ms;
-        }
-        li:hover {
-          transform: translateX(2%);
+          .queue-title {
+            transition-property: transform;
+            transition-duration: 300ms;
+          }
+          .queue-title:hover {
+            transform: translateX(2%);
+          }
+          .queue-ellipsis {
+            display: grid;
+            @include normal-button;
+            @include ellipsis-button;
+          }
         }
       }
       header {
+        background-color: black;
         padding: 0 16px 0 16px;
         display: flex;
         justify-content: space-between;
-        svg {
+        margin-top: 8px;
+        div {
           cursor: pointer;
-          font-size: 1.8rem;
+          svg {
+            font-size: 1.8rem;
+          }
         }
       }
       @media (min-width: 700px) {

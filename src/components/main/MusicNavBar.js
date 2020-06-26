@@ -11,6 +11,18 @@ import {
 } from '@material-ui/icons';
 import '../../styles/MusicNavBar.scss';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    width: '100%',
+    position: 'fixed',
+    left: 0,
+    bottom: 0,
+    zIndex: 10,
+    borderTop: '1px solid rgba(28, 31, 12, 0.7)',
+    backgroundColor: '#1C1C1F',
+  },
+}));
+
 const MusicNavBar = (props) => {
   const {
     currentItems,
@@ -31,17 +43,7 @@ const MusicNavBar = (props) => {
   } = props;
 
   const [value, setValue] = useState(0);
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      width: '100%',
-      position: 'fixed',
-      left: 0,
-      bottom: 0,
-      zIndex: 10,
-      borderTop: '1px solid rgba(28, 31, 12, 0.7)',
-      backgroundColor: '#1C1C1F',
-    },
-  }));
+
   const classes = useStyles();
 
   function shuffleArrayES6(array) {
@@ -153,58 +155,56 @@ const MusicNavBar = (props) => {
   // big일 때
   if (props.player && playerSize === 'big') {
     return (
-      <BottomNavigation
-        value={value}
-        onChange={(event, newValue) => {
-          setValue(newValue);
-        }}
-        classes={classes}
-        className="music-nav-bar-big"
-      >
-        <BottomNavigationAction
-          label="Repeat"
-          icon={<Repeat />}
-          onClick={handleRepeat}
-        />
-        <BottomNavigationAction
-          label="SkipPrevious"
-          icon={<SkipPrevious />}
-          onClick={handlePrevious}
-        />
-        <BottomNavigationAction
-          label="PlayArrow"
-          icon={isPlayButtonOn ? <PlayArrow /> : <Pause />}
-          onClick={handlePlay}
-        />
-        <BottomNavigationAction
-          label="SkipNext"
-          icon={<SkipNext />}
-          onClick={handleNext}
-        />
-        <BottomNavigationAction
-          label="Shuffle"
-          icon={<Shuffle />}
-          onClick={handleShuffle}
-        />
-      </BottomNavigation>
+      <div className="music-nav-bar-big">
+        <div>
+          <button onClick={handleRepeat}>
+            {isRepeatOn ? <Repeat style={{ color: '#ffb347' }} /> : <Repeat />}
+          </button>
+        </div>
+
+        <div>
+          <button onClick={handlePrevious}>
+            <SkipPrevious />
+          </button>
+        </div>
+
+        <div>
+          <button onClick={handlePlay}>
+            {isPlayButtonOn ? <PlayArrow /> : <Pause />}
+          </button>
+        </div>
+
+        <div>
+          <button onClick={handleNext}>
+            <SkipNext />
+          </button>
+        </div>
+
+        <div>
+          <button onClick={handleShuffle}>
+            {isShuffleOn ? (
+              <Shuffle style={{ color: '#ffb347' }} />
+            ) : (
+              <Shuffle />
+            )}
+          </button>
+        </div>
+      </div>
     );
   }
+
   // small일 때
   if (props.player && playerSize === 'small') {
-    let firstButton;
-    if (isPlayButtonOn) {
-      firstButton = <PlayArrow />;
-    } else {
-      firstButton = <Pause />;
-    }
     return (
-      <div id="music-nav-bar" className={`music-nav-bar-${playerSize}`}>
+      <div id="music-nav-bar" className="music-nav-bar-small">
         <div />
         <div className="music-nav-bar-title" onClick={changePlayerSize}>
           {currentItems[itemIndex].title}
         </div>
         <div>
-          <button onClick={handlePlay}>{firstButton}</button>
+          <button onClick={handlePlay}>
+            {isPlayButtonOn ? <PlayArrow /> : <Pause />}
+          </button>
         </div>
         <div>
           <button onClick={handleNext}>

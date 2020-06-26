@@ -28,7 +28,6 @@ const RatingForm = (props) => {
   const getStars = () => {
     let stars = null;
     if (video.rating) {
-      console.log(video.title, '의 video.rating이 얼마?', video.rating);
       stars = video.rating;
     }
     return stars;

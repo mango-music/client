@@ -5,7 +5,7 @@ import MusicTitle from './MusicTitle';
 import MusicProgressBar from './MusicProgressBar';
 import MusicNavBar from './MusicNavBar';
 import MusicQueue from './MusicQueue';
-import { Close, OpenInNew } from '@material-ui/icons';
+import { Close, Remove } from '@material-ui/icons';
 import '../../styles/MusicPlayer.scss';
 
 let timer;
@@ -114,10 +114,15 @@ const MusicPlayer = (props) => {
     handleSetCurrentTime(); // 이벤트가 발생할 때마다 재생 노드 조정
   };
 
-  const stopPlayer = () => {
+  const stopPlayer = async () => {
+    setIsShuffleOn(false);
+    setIsRepeatOn(false);
+    setShuffledQueue([]); // [1, 3, 2, 4, 5, 0] 셔플 큐
+    setShuffledIndex(undefined); // 셔플 큐의 인덱스를 가리키는 숫자
+    changePlayerSize();
     setCurrentItem(null);
     setCurrentItems([]);
-    changePlayerSize();
+    setItemIndex(0);
   };
 
   if (currentItems.length > 0 && currentItem) {
@@ -126,11 +131,11 @@ const MusicPlayer = (props) => {
         <div id="player-selector" className={'player-' + playerSize}>
           <div className="player-window">
             <header>
-              <div>
-                <Close onClick={stopPlayer} />
+              <div onClick={stopPlayer}>
+                <Close />
               </div>
-              <div>
-                <OpenInNew onClick={changePlayerSize} />
+              <div onClick={changePlayerSize}>
+                <Remove />
               </div>
             </header>
             <section>

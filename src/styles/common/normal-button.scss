@@ -5,19 +5,27 @@
     border: 0px;
     svg {
       font-size: 1.8rem;
-      color: whitesmoke;
+      color: #bebebf;
       transition-property: color;
       transition-duration: 200ms;
     }
   }
   button:hover {
     svg {
-      color: black;
+      color: whitesmoke;
     }
   }
   button:active {
     svg {
-      color: whitesmoke;
+      color: #bebebf;
+    }
+  }
+}
+
+@mixin ellipsis-button {
+  button {
+    svg {
+      font-size: 1.2rem;
     }
   }
 }

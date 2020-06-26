@@ -14,6 +14,7 @@ const UserPlaylistItems = (props) => {
     setCurrentItem,
     setItemIndex,
     videoIdRatings,
+    playerSize,
   } = props;
   const [isEllipsisOn, setIsEllipsisOn] = useState(false);
   let items;
@@ -28,7 +29,7 @@ const UserPlaylistItems = (props) => {
   newItems.reverse();
 
   return (
-    <div id="user-playlist-items">
+    <div id="user-playlist-items" className={`player-brother-${playerSize}`}>
       <header>
         <div>
           <button onClick={() => setSelectedList(null)}>
