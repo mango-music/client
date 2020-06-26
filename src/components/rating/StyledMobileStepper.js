@@ -6,6 +6,8 @@ const StyledMobileStepper = withStyles((theme) => ({
     maxWidth: '100%',
     flexGrow: 1,
     padding: '16px',
+    fontSize: '0.75rem',
+    backgroundColor: 'inherit',
   },
   progress: {
     width: '80%',

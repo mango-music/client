@@ -41,7 +41,7 @@ const Nav = ({ nickname, playerSize }) => {
     >
       <BottomNavigationAction
         label="Home"
-        icon={<Home />}
+        icon={<Home fontSize="small" />}
         component={RouterLink}
         // exact
         to={`/@${nickname}`}
@@ -49,21 +49,21 @@ const Nav = ({ nickname, playerSize }) => {
       />
       <BottomNavigationAction
         label="Explore"
-        icon={<Explore />}
+        icon={<Explore fontSize="small" />}
         component={RouterLink}
         to={`/@${nickname}/explore`}
         onClick={handleLinkClick}
       />
       <BottomNavigationAction
         label="Library"
-        icon={<LibraryMusic />}
+        icon={<LibraryMusic fontSize="small" />}
         component={RouterLink}
         to={`/@${nickname}/library`}
         onClick={handleLinkClick}
       />
       <BottomNavigationAction
         label="Rating"
-        icon={<Grade />}
+        icon={<Grade fontSize="small" />}
         component={RouterLink}
         to={`/@${nickname}/rating`}
         onClick={handleLinkClick}

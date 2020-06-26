@@ -11,6 +11,10 @@ const useStyles = makeStyles((theme) => ({
     left: 0,
     top: 0,
     zIndex: 100,
+    width: '100%',
+    maxWidth: '480px',
+    height: '100vh',
+    backgroundColor: '#000',
   },
 }));
 
@@ -51,51 +55,63 @@ const RatingEntry = ({
   }, [value, evaluationCount]);
   // className="rating rating_entry"
   return (
-    <Box className={`${classes.root} card`}>
-      <Box component="header">
-        <YouTube videoId={video.videoid} className="card_media" opts={opts} />
-      </Box>
-      <Box component="section" className="card_content">
-        <Typography variant="subtitle1">{video.title}</Typography>
-        <Typography variant="subtitle2">평가하기</Typography>
-        {/* <h2>How would you rate this song?</h2> */}
-        <Box className="card_content_inputs">
-          <MuiRating
-            name="rating"
-            size="large"
-            precision={0.5}
-            value={value}
-            onChange={(e, targetValue) => {
-              setValue(targetValue); // e.target.value와 동일 (MaterialUI onChange API)
-            }}
+    <Box className={classes.root}>
+      <Box className="card">
+        <Box component="header" className="card_media">
+          <YouTube
+            videoId={video.videoid}
+            className="card_media_iframe flexbox-centering"
+            opts={opts}
           />
         </Box>
-        <Box className="card_content_buttons">
-          <Button
-            variant="text"
-            color="secondary"
-            size="large"
-            onClick={handleSkipButtonClick}
-          >
-            건너뛰기
-          </Button>
-          <Button
-            variant={!isNextDisabled ? 'contained' : 'text'}
-            color="primary"
-            size="large"
-            onClick={handleRatingButtonClick}
-            disabled={isNextDisabled}
-          >
-            다음으로
-          </Button>
+        <Box component="section" className="card_content">
+          <Box className="card_content_title">
+            <Typography variant="h3">{video.title}</Typography>
+          </Box>
+          {/* <h2>How would you rate this song?</h2> */}
+          <Box className="card_content_inputs">
+            <Box className="card_content_inputs_label">
+              <Typography variant="h4">평가하기</Typography>
+            </Box>
+            <Box className="card_content_inputs_inputs">
+              <MuiRating
+                name="rating"
+                size="large"
+                precision={0.5}
+                value={value}
+                onChange={(e, targetValue) => {
+                  setValue(targetValue); // e.target.value와 동일 (MaterialUI onChange API)
+                }}
+              />
+            </Box>
+          </Box>
+          <Box className="card_content_buttons">
+            <Button
+              variant="text"
+              color="secondary"
+              size="large"
+              onClick={handleSkipButtonClick}
+            >
+              건너뛰기
+            </Button>
+            <Button
+              variant={!isNextDisabled ? 'contained' : 'text'}
+              color="primary"
+              size="large"
+              onClick={handleRatingButtonClick}
+              disabled={isNextDisabled}
+            >
+              다음으로
+            </Button>
+          </Box>
         </Box>
-      </Box>
-      <Box component="footer">
-        <ProgressMobileStepper
-          evaluationCount={evaluationCount}
-          handleRatingButtonClick={handleRatingButtonClick}
-          handleSkipButtonClick={handleSkipButtonClick}
-        />
+        <Box component="footer">
+          <ProgressMobileStepper
+            evaluationCount={evaluationCount}
+            handleRatingButtonClick={handleRatingButtonClick}
+            handleSkipButtonClick={handleSkipButtonClick}
+          />
+        </Box>
       </Box>
     </Box>
   );

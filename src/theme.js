@@ -17,9 +17,14 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily: 'inherit',
-    h1: {
-      fontSize: '2rem',
+    h2: {
+      fontSize: '1.75rem',
       fontWeight: 700,
+    },
+    body1: {
+      fontSize: '1.125rem',
+      lineHeight: '1.5',
+      wordBreak: 'keep-all',
     },
   },
   overrides: {

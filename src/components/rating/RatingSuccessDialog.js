@@ -27,7 +27,7 @@ const RatingSuccessDialog = ({ isOpen, nickname, handleRatingSuccess }) => {
             height="auto"
             frameBorder="0"
             title="success-gif"
-            // allowFullScreen
+            allowFullScreen
           />
         </div>
 

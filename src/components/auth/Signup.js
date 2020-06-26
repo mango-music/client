@@ -12,6 +12,10 @@ import { Visibility, VisibilityOff } from '@material-ui/icons';
 import validate from '../../lib/utils/validate';
 import postAccountData from '../../lib/apis/postAccountData';
 
+// const token =
+//   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZjBhZDhhNTU0MWRiN2NkNWI5MGZlNyIsImVtYWlsIjoibGlzYXN1QG5hdGUuY29tIiwiaWF0IjoxNTkzMDgzMjE4LCJleHAiOjE1OTMwODUwMTh9.H0kgqH3N5YUkSWIGb67eZhClFT1H0TMxCKJ1Lad6LFE';
+// const userinfo = { email: 'lisasu@nate.com', nickname: 'kirin' };
+
 const useStyles = makeStyles((theme) => ({
   root: {},
   textField: {
@@ -56,10 +60,13 @@ const Signup = ({ handleSignupSuccess, history }) => {
     // 409
     if (status === 409) {
       // eslint-disable-next-line no-alert
-      window.alert('이미 가입된 이메일 입니다.'); // (임시)
+      window.alert(status.data); // (임시)
       setValues(initialValues);
       return;
     }
+    // fakeAuth
+    // localStorage.setItem('x-access-token', token);
+    // localStorage.setItem('x-user-info', JSON.stringify(userinfo));
     // 201
     handleSignupSuccess();
     setTimeout(() => {
@@ -152,6 +159,7 @@ const Signup = ({ handleSignupSuccess, history }) => {
             id="nickname"
             label="사용자명"
             type="text"
+            value={values.nickname}
             onChange={handleValueUpdate('nickname')}
             onBlur={handleValidation}
             error={!!(errors && errors.nickname)}
