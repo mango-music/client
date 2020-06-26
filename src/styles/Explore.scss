@@ -16,6 +16,7 @@
       font-size: 1.2rem;
       padding: 10px 10px 10px 10px;
       border: 0px;
+      color: black;
     }
     @include normal-button;
     button {
@@ -50,10 +51,21 @@
         }
       }
       .search-title {
-        display: grid;
-        align-content: center;
+        // display: grid;
+        // align-content: center;
+        // overflow: hidden;
         p {
           margin: 0;
+          // 글자 숨기는 속성
+          overflow: hidden;
+          height: 45px; // 박스 범위
+          white-space: normal;
+          line-height: 1.2;
+          text-align: left;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; // 2번째 줄 끝을 ...으로 만든다.
+          -webkit-box-orient: vertical;
         }
       }
       @include normal-button;
