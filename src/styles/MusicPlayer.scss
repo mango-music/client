@@ -1,3 +1,5 @@
+@import './common/normal-button.scss';
+
 #player {
   position: absolute;
   top: 0;
@@ -110,7 +112,7 @@
           display: grid;
           gap: 10px;
           grid-auto-flow: column;
-          grid-template-columns: 70px 1fr;
+          grid-template-columns: 70px 1fr 30px;
           height: 70px;
 
           margin-bottom: 10px;
@@ -118,20 +120,37 @@
           cursor: pointer;
           .queue-image {
             height: 100%;
+            background-size: cover;
             background-position: center center;
           }
           .queue-title {
             display: grid;
-            align-content: center;
             p {
+              align-self: center;
               margin: 0;
+              // 글자 숨기는 속성
+              overflow: hidden;
+              white-space: normal;
+              line-height: 1.2;
+              text-align: left;
+              word-wrap: break-word;
+              display: -webkit-box;
+              -webkit-line-clamp: 3; // 2번째 줄 끝을 ...으로 만든다.
+              -webkit-box-orient: vertical;
             }
           }
-          transition-property: transform;
-          transition-duration: 300ms;
-        }
-        li:hover {
-          transform: translateX(2%);
+          .queue-title {
+            transition-property: transform;
+            transition-duration: 300ms;
+          }
+          .queue-title:hover {
+            transform: translateX(2%);
+          }
+          .queue-ellipsis {
+            display: grid;
+            @include normal-button;
+            @include ellipsis-button;
+          }
         }
       }
       header {
