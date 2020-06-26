@@ -3,20 +3,28 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 97px;
-    max-height: 97px;
-    padding: 1rem;
-    > h1 {
-      padding: 0 0.5rem;
+    height: 80px;
+    // max-height: 97px;
+    padding: 1rem 4px;
+    > h2 {
+      padding: 0 1rem;
     }
   }
   &_main {
-    padding: 1rem;
+    padding: 1rem 1rem 0;
     position: relative;
+    height: calc(100% - 80px - 56px);
     div.account {
       padding: 0 0.5rem;
     }
   }
+}
+
+.flexbox-centering {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @import './account.scss';

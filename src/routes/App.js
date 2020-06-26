@@ -92,7 +92,7 @@ const App = ({ history, location }) => {
     >
       {pathname !== '/rating' ? (
         <Box component="header" className="app_header">
-          <Typography variant="h1">{title}</Typography>
+          <Typography variant="h2">{title}</Typography>
           {pathname === callbackPath.current ? (
             <IconButton
               aria-label="profile-image"
@@ -102,7 +102,6 @@ const App = ({ history, location }) => {
             >
               <AccountCircle
                 style={{
-                  fontSize: '30px',
                   color: 'rgba(255,255,255,0.7)',
                 }}
               />
