@@ -19,8 +19,7 @@
 /* 발라드 */
 export const BALLAD = [
   {
-    title:
-      '[슬기로운 의사생활 OST] 전미도- 사랑하게 될 줄 알았어 (I Knew I Love) MV',
+    title: '전미도- 사랑하게 될 줄 알았어 [슬기로운 의사생활 OST]  MV',
     thumbnail: 'https://i.ytimg.com/vi/rOCymN-Rwiw/hqdefault.jpg',
     videoid: 'rOCymN-Rwiw',
   },
@@ -194,7 +193,7 @@ export const INDIE = [
     videoid: 'CRNVl5uJpX8',
   },
   {
-    title: '[Official M/V]겨울을 걷는다 -윤딴딴',
+    title: '윤딴딴 - 겨울을 걷는다',
     thumbnail: 'https://i.ytimg.com/vi/RBZHUz6rZfg/hqdefault.jpg',
     videoid: 'RBZHUz6rZfg',
   },
@@ -205,7 +204,7 @@ export const INDIE = [
   },
   {
     title: '옥상달빛 - 수고했어, 오늘도',
-    thumbnail: '',
+    thumbnail: 'https://i.ytimg.com/vi/uwjeZBzs-Dk/hqdefault.jpg',
     videoid: 'uwjeZBzs-Dk',
   },
   {
@@ -215,7 +214,7 @@ export const INDIE = [
   },
   {
     title: '브로콜리 너마저 - 사랑한다는 말로도 위로가 되지 않는',
-    thumbnail: '',
+    thumbnail: 'https://i.ytimg.com/vi/eHG3LQCpVok/hqdefault.jpg',
     videoid: 'eHG3LQCpVok',
   },
   {
@@ -243,7 +242,7 @@ export const ROCK_METAL = [
     videoid: 'tXV7dfvSefo',
   },
   {
-    title: '사랑했나봐 (I Guess I Loved You)',
+    title: '윤도현 - 사랑했나봐 (I Guess I Loved You)',
     thumbnail: 'https://i.ytimg.com/vi/KeMbLY7ztDw/hqdefault.jpg',
     videoid: 'KeMbLY7ztDw',
   },
