@@ -2,13 +2,11 @@
 import React, { PureComponent } from 'react';
 import { withRouter } from 'react-router-dom';
 // import '../../styles/rating.scss';
-import Button from '@material-ui/core/Button';
 import RatingEntry from './RatingEntry';
 import Loading from '../auth/Loading';
 import RatingSuccessDialog from './RatingSuccessDialog';
 import { samples } from '../../lib/fixtures/sample';
 import postRatingMusiclist from '../../lib/apis/postRatingMusiclist';
-import axios from 'axios';
 
 const initialValues = {
   title: '',
