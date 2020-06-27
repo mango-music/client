@@ -17,7 +17,7 @@ const ExploreEntry = (props) => {
 
   const videoid = item.id.videoId;
   const title = item.snippet.title;
-  const thumbnail = item.snippet.thumbnails.medium.url;
+  const thumbnail = item.snippet.thumbnails.high.url;
 
   const playVideo = async () => {
     // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
