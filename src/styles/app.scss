@@ -3,7 +3,7 @@
 .app {
   &_header {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     height: 80px;
     // max-height: 97px;

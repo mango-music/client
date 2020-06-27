@@ -34,6 +34,7 @@ const AdditionalRatingEntry = (props) => {
           frameBorder="0"
         />
       </div>
+      <p>{music.title}</p>
       <div className="stars">
         <MuiRating
           name={music.videoid}
@@ -59,11 +60,12 @@ const AdditionalRatingEntry = (props) => {
           }}
         />
       </div>
-      <p>{music.title}</p>
-      <p>{averageMusicRating}</p>
-      {/* 평균 평점 */}
-      <p>{ratingCount}</p>
-      {/* 평가한 사람 수 */}
+      {ratingCount && (
+        <div className="rating-average">
+          <p>평균 {averageMusicRating}</p>
+          <p>({ratingCount}명)</p>
+        </div>
+      )}
     </li>
   );
 };

@@ -58,20 +58,11 @@ const Profile = ({ profile, handleLogout }) => {
           borderRadius: '64px',
           backgroundColor: '#424242',
         }}
-      ></div>
-      {/* <span>
-        <input
-          type="file"
-          name="file"
-          placeholder="Uploading an image"
-          onChange={uploadImage}
-        />
-        {loading ? (
-          <h3>Loading...</h3>
-        ) : (
-          <img src={image} style={{ width: '300px' }} />
-        )}
-      </span> */}
+        className="profile-alphabet"
+      >
+        <p>{profile.nickname[0].toUpperCase()}</p>
+      </div>
+      <div>{profile.nickname}</div>
       <div>
         <form onSubmit={handleNicknameUpdate} autoComplete="off">
           <input
@@ -85,8 +76,7 @@ const Profile = ({ profile, handleLogout }) => {
           </button>
         </form>
       </div>
-      <div>{profile.nickname}</div>
-      <div>{profile.email}</div>
+      <div className="profile-email">{profile.email}</div>
       <div>
         <Signout handleLogout={handleLogout} />
       </div>
