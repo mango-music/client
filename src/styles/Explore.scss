@@ -28,7 +28,7 @@
   }
 
   ul {
-    font-size: 1.15rem;
+    font-size: 1rem;
     margin-bottom: 120px;
     overflow: visible;
     display: grid;
@@ -51,14 +51,14 @@
         }
       }
       .search-title {
-        // display: grid;
-        // align-content: center;
+        display: grid;
+        align-content: center;
         // overflow: hidden;
         p {
           margin: 0;
           // 글자 숨기는 속성
           overflow: hidden;
-          height: 45px; // 박스 범위
+          height: 40px; // 박스 범위
           white-space: normal;
           line-height: 1.2;
           text-align: left;
