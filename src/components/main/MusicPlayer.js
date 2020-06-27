@@ -41,6 +41,11 @@ const MusicPlayer = (props) => {
     clearInterval(timer);
   }, [currentItem]);
 
+  useEffect(() => {
+    console.log('currentItem이 바뀔 때에는 셔플 버튼을 초기화합니다.');
+    setIsShuffleOn(false);
+  }, [currentItem]);
+
   const opts = {
     playerVars: {
       autoplay: 1,
