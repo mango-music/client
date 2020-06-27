@@ -11,7 +11,7 @@ const getRecommendedPlaylist = async (videoCount) => {
   );
 };
 
-module.exports = getRecommendedPlaylist;
+export default getRecommendedPlaylist;
 
 /*
 사용 예제

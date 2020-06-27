@@ -85,11 +85,9 @@ const Homepage = (props) => {
   // const rankMusic = musics.map((music, index) => (
   // <Ranks music={music} ranking={index} />
   // ));
+
   return (
-    <Box
-      className={`player-brother-${playerSize} home`}
-      style={{ paddingRight: '0 !important' }}
-    >
+    <Box className={`player-brother-${playerSize} home`}>
       <Box component="section">
         <Box component="header" className={classes.header}>
           <Typography variant="h3">실시간 인기 음악</Typography>
