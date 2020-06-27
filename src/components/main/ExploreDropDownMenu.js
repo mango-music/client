@@ -8,7 +8,7 @@ const ExploreDropDownMenu = (props) => {
     // console.log('item : ', item);
     var obj = {
       listname: list.listname,
-      thumbnail: item.snippet.thumbnails.medium.url,
+      thumbnail: item.snippet.thumbnails.high.url,
       videoid: item.id.videoId,
       title: item.snippet.title,
     };

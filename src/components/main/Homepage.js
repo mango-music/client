@@ -33,12 +33,12 @@ const Homepage = (props) => {
     const { id, snippet } = video;
     const { title, resourceId, thumbnails } = snippet;
     const videoid = resourceId.videoId;
-    kpopMusics.push({ id, title, videoid, thumbnail: thumbnails.default.url });
+    kpopMusics.push({ id, title, videoid, thumbnail: thumbnails.high.url });
 
     return (
       <KpopMusicEntry
         key={videoid}
-        video={{ id, title, videoid, thumbnail: thumbnails.default.url }}
+        video={{ id, title, videoid, thumbnail: thumbnails.high.url }}
         currentItems={currentItems}
         currentItem={currentItem}
         setCurrentItems={setCurrentItems}
