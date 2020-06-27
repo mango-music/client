@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import YouTube from 'react-youtube';
 import RatingForm from './RatingForm';
 import MusicTitle from './MusicTitle';
@@ -213,4 +213,4 @@ const MusicPlayer = (props) => {
   return null;
 };
 
-export default MusicPlayer;
+export default memo(MusicPlayer);
