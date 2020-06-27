@@ -35,7 +35,7 @@ const Profile = ({ profile, handleLogout }) => {
     data.append('upload_preset', 'darwin');
     setLoading(true);
     const res = await fetch(
-      'http://13.209.19.101:3000/image/upload',
+      'http://localhost:3000/upload',
       {
         method: 'POST',
         body: data,
@@ -43,7 +43,8 @@ const Profile = ({ profile, handleLogout }) => {
       //https://api.cloudinary.com/v1_1/dihifeicm (API BASE URL)
     );
     const file = await res.json();
-    setimage(file.secure_url);
+    console.log(file);
+    setimage(file.url);
     setLoading(false);
   };
 
