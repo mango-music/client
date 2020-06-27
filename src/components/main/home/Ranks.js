@@ -11,8 +11,13 @@ const Ranks = (props) => {
     video,
     videoIdRatings,
     ranking,
+    musicAverage,
+    ratingPeople,
   } = props;
   // const { title, thumbnail } = video;
+  const averageMusicRating = musicAverage[video.videoid] // 에러방지 삼항 연산자
+    ? musicAverage[video.videoid].toFixed(1)
+    : null;
   const handleVideoPlay = async (video) => {
     // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
     let rating = null;
@@ -54,6 +59,8 @@ const Ranks = (props) => {
       </div>
       <div className="home_list-rank_item_title">
         <span>{video.title}</span>
+        <span>{averageMusicRating}</span>
+        <span>{ratingPeople[video.videoid]}</span>
       </div>
     </Box>
   );
