@@ -13,7 +13,9 @@
     }
   }
   &_main {
-    padding: 1rem 1rem 0;
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     position: relative;
     height: calc(100% - 80px - 56px);
     div.account {
