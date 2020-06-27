@@ -79,9 +79,9 @@ const MusicPlayer = (props) => {
     // 재생중 => timer 시작
     if (event.data === 1) {
       // 임시로 제거
-      // timer = setInterval(() => {
-      //   handleSetCurrentTime();
-      // }, 1000);
+      timer = setInterval(() => {
+        handleSetCurrentTime();
+      }, 1000);
       setIsPlayButtonOn(false);
       // 일시중지됨, 종료됨 => timer 제거
     } else if (event.data === 2 || event.data === 0) {
