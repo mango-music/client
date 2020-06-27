@@ -43,6 +43,8 @@ const Recommends = (props) => {
     nickname,
     setPlayerSize,
     videoIdRatings,
+    musicAverage,
+    ratingPeople,
   } = props;
   const [recommends, setRecommends] = useState([]);
   const classes = useStyles();
@@ -71,8 +73,11 @@ const Recommends = (props) => {
       customLists={customLists}
       setCustomLists={setCustomLists}
       videoIdRatings={videoIdRatings}
+      musicAverage={musicAverage}
+      ratingPeople={ratingPeople}
     />
   ));
+  console.log(recommnendRanks);
 
   const recommendMusics = recommends.map((video) => (
     <RecommendsEntry

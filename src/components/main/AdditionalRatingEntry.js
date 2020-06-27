@@ -4,9 +4,18 @@ import postRatingMusic from '../../lib/apis/postRatingMusic';
 import postDelRating from '../../lib/apis/postDelRating';
 
 const AdditionalRatingEntry = (props) => {
-  const { music, videoIdRatings, setVideoIdRatings } = props;
+  const {
+    music,
+    videoIdRatings,
+    setVideoIdRatings,
+    musicAverage,
+    ratingPeople,
+  } = props;
   const src = `https://www.youtube.com/embed/${music.videoid}?autoplay=0`;
-
+  const averageMusicRating = musicAverage[music.videoid] // 에러방지 삼항 연산자
+    ? musicAverage[music.videoid].toFixed(1)
+    : null;
+  const ratingCount = ratingPeople[music.videoid];
   const getStars = () => {
     let rating = null;
     if (videoIdRatings[music.videoid]) {
@@ -51,6 +60,10 @@ const AdditionalRatingEntry = (props) => {
         />
       </div>
       <p>{music.title}</p>
+      <p>{averageMusicRating}</p>
+      {/* 평균 평점 */}
+      <p>{ratingCount}</p>
+      {/* 평가한 사람 수 */}
     </li>
   );
 };

@@ -12,6 +12,7 @@ import NoMatch from '../components/auth/NoMatch';
 import getUserMusicLists from '../lib/apis/getUserMusicLists';
 import getRatingMusiclist from '../lib/apis/getRatingMusiclist';
 import Homepage from '../components/main/Homepage';
+import axios from 'axios';
 
 const Main = ({ profile, handleLogout }) => {
   const [recommendedList, setRecommendedList] = useState([]); // [{music}]
@@ -22,7 +23,8 @@ const Main = ({ profile, handleLogout }) => {
   const [currentItem, setCurrentItem] = useState(null);
   const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
   const [playerSize, setPlayerSize] = useState('small');
-
+  const [musicAverage, setMusicAverage] = useState({}); // 음악의 평균 평점 객체
+  const [ratingPeople, setRatingPeople] = useState({}); // 음악을 평가한 사람수 객체
   useEffect(() => {
     console.log('사용자가 평가한 음악 리스트를 불러옵니다.');
     const token = localStorage.getItem('x-access-token');
@@ -65,17 +67,17 @@ const Main = ({ profile, handleLogout }) => {
       .catch((err) => console.log(err));
   }, []);
 
-  // useEffect(() => {
-  //   console.log('이전에 재생한 큐를 불러옵니다.');
-  //   let playedItems = localStorage.getItem('playedItems');
-  //   if (playedItems) {
-  //     playedItems = JSON.parse(playedItems);
-  //     if (Array.isArray(playedItems)) {
-  //       setCurrentItem(playedItems[0]);
-  //       setCurrentItems(playedItems);
-  //     }
-  //   }
-  // }, []);
+  useEffect(() => {
+    axios
+      .get('http://13.209.19.101:3000/musicAverage')
+      .then((res) => {
+        console.log(res);
+        const { musicRating, peopleNumber } = res.data;
+        setMusicAverage(musicRating);
+        setRatingPeople(peopleNumber);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   useEffect(() => {
     console.log('현재 재생 큐를 저장합니다.');
@@ -93,7 +95,6 @@ const Main = ({ profile, handleLogout }) => {
   };
 
   const { nickname } = profile;
-
   return (
     <>
       <Nav nickname={nickname} playerSize={playerSize} />
@@ -110,6 +111,8 @@ const Main = ({ profile, handleLogout }) => {
         setVideoIdRatings={setVideoIdRatings}
         customLists={customLists}
         setCustomLists={setCustomLists}
+        musicAverage={musicAverage}
+        ratingPeople={ratingPeople}
       />
       <Switch>
         <Route exact path={`/@${nickname}`}>
@@ -126,6 +129,8 @@ const Main = ({ profile, handleLogout }) => {
             videoIdRatings={videoIdRatings}
             setPlayerSize={setPlayerSize}
             playerSize={playerSize}
+            musicAverage={musicAverage}
+            ratingPeople={ratingPeople}
           />
         </Route>
         <Route path={`/@${nickname}/explore`}>
@@ -161,6 +166,8 @@ const Main = ({ profile, handleLogout }) => {
             videoIdRatings={videoIdRatings}
             setVideoIdRatings={setVideoIdRatings}
             playerSize={playerSize}
+            musicAverage={musicAverage}
+            ratingPeople={ratingPeople}
           />
         </Route>
         <Route path={`/@${nickname}/profile`}>
