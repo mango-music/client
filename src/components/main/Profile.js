@@ -59,7 +59,7 @@ const Profile = ({ profile, handleLogout }) => {
           backgroundColor: '#424242',
         }}
       ></div>
-      <span>
+      {/* <span>
         <input
           type="file"
           name="file"
@@ -71,11 +71,18 @@ const Profile = ({ profile, handleLogout }) => {
         ) : (
           <img src={image} style={{ width: '300px' }} />
         )}
-      </span>
+      </span> */}
       <div>
         <form onSubmit={handleNicknameUpdate} autoComplete="off">
-          <input type="text" value={value} onChange={handleChange} />
-          <button type="submit">변경</button>
+          <input
+            type="text"
+            value={value}
+            onChange={handleChange}
+            className="profile-input"
+          />
+          <button type="submit" className="profile-button">
+            변경
+          </button>
         </form>
       </div>
       <div>{profile.nickname}</div>
