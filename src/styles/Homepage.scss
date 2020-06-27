@@ -1,4 +1,5 @@
 // @import './common/normal-button.scss';
+@import './mixins';
 @import './common/player-brother-big.scss';
 // @include player-brother-big;
 @mixin home-ul {
@@ -41,82 +42,176 @@
   }
 }
 
-#home {
-  padding: 8px;
-  height: 100vh;
+#list-popular,
+#list-recommended {
+  overflow-x: scroll !important;
+  overflow-y: hidden;
 }
 
-#kpop {
-  display: grid;
-  grid-auto-flow: row;
-  // grid-template-rows: auto 1fr;
-  gap: 16px;
-  margin-bottom: 32px;
+.home {
+  position: relative;
+  overflow-x: hidden;
+  height: 100%;
   header {
-    display: flex;
-    justify-content: space-between;
-    p {
-      font-size: 1.25rem;
-    }
+    position: absolute;
+    width: 100%;
+    height: auto;
+    padding-right: 1rem;
   }
-  @include home-ul;
-}
-
-#recommends {
-  display: grid;
-  grid-template-columns: 300px 1fr;
-  gap: 16px;
-  margin-bottom: 120px;
-  header {
-    grid-column: span 2;
-    display: flex;
-    justify-content: space-between;
-    p {
-      font-size: 1.25rem;
-    }
+  section {
+    padding: 1rem 0;
   }
-  .rank {
-    display: grid;
-    gap: 16px;
-    ul {
-      height: 25vh;
-      display: grid;
-      grid-auto-flow: row;
-      grid-template-columns: 1fr;
-      gap: 4px;
-      overflow: overlay;
-      li {
-        display: grid;
-        grid-auto-flow: column;
-        grid-template-columns: 22px 50px 1fr;
-        gap: 8px;
-        .rank-image {
-          width: 50px;
-          height: 50px;
-          background-size: cover;
-          background-position: center center;
-          cursor: pointer;
+  &_list-popular,
+  &_list-recommended {
+    padding-top: 3rem;
+    display: flex;
+    flex-flow: row nowrap;
+    width: auto;
+    height: auto;
+    &_item {
+      display: flex;
+      flex-flow: column wrap;
+      width: 9rem;
+      height: auto;
+      margin: 0 0.5rem;
+      border-radius: 4px;
+      &_thumbnail {
+        // 16:9 ratio
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 9rem;
+        height: auto;
+        background-color: #000;
+        border-radius: 4px 4px 0 0;
+        cursor: pointer;
+        > img {
+          width: 100%;
+          height: auto;
         }
-        .rank-number,
-        .rank-title {
-          display: grid;
-          align-items: center;
-        }
-        .rank-number {
-          justify-self: center;
+      }
+      &_title {
+        margin-top: 4px;
+        padding: 4px;
+        > span {
+          font-size: 0.75rem;
+          @include text-ellipsis(1);
         }
       }
     }
-    .rank-arrow {
-      text-align: center;
-    }
   }
-  .recommend-musics {
-    overflow: visible;
-    @include home-ul;
+  &_list-rank {
+    margin-top: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    flex-flow: column nowrap;
+    width: auto;
+    height: auto;
+    &_item {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-basis: 1;
+      width: 100%;
+      padding: 0.5rem;
+      height: 3rem;
+      margin: 0.25rem 0rem;
+      border-radius: 4px;
+      background-color: inherit;
+      cursor: pointer;
+      &_rank {
+        width: 20px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        > span {
+          font-size: 0.75rem;
+          font-weight: bold;
+        }
+      }
+      &_thumbnail {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3rem;
+        height: 100%;
+        margin: 0 0.5rem;
+        background-color: #000;
+        border-radius: 4px;
+
+        > img {
+          width: 100%;
+          height: auto;
+        }
+      }
+      &_title {
+        margin-left: 4px;
+        width: 60%;
+        > span {
+          font-size: 0.75rem;
+          @include text-ellipsis(1);
+        }
+      }
+    }
   }
 }
 
-.pointer {
-  cursor: pointer;
-}
+// #recommends {
+//   display: grid;
+//   grid-template-columns: 300px 1fr;
+//   gap: 16px;
+//   margin-bottom: 120px;
+//   header {
+//     grid-column: span 2;
+//     display: flex;
+//     justify-content: space-between;
+//     p {
+//       font-size: 1.25rem;
+//     }
+//   }
+//   .rank {
+//     display: grid;
+//     gap: 16px;
+//     ul {
+//       height: 25vh;
+//       display: grid;
+//       grid-auto-flow: row;
+//       grid-template-columns: 1fr;
+//       gap: 4px;
+//       overflow: overlay;
+//       li {
+//         display: grid;
+//         grid-auto-flow: column;
+//         grid-template-columns: 22px 50px 1fr;
+//         gap: 8px;
+//         .rank-image {
+//           width: 50px;
+//           height: 50px;
+//           background-size: cover;
+//           background-position: center center;
+//           cursor: pointer;
+//         }
+//         .rank-number,
+//         .rank-title {
+//           display: grid;
+//           align-items: center;
+//         }
+//         .rank-number {
+//           justify-self: center;
+//         }
+//       }
+//     }
+//     .rank-arrow {
+//       text-align: center;
+//     }
+//   }
+//   .recommend-musics {
+//     overflow: visible;
+//     @include home-ul;
+//   }
+// }
+
+// .pointer {
+//   cursor: pointer;
+// }

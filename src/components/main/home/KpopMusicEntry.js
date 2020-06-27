@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Box, Paper } from '@material-ui/core';
 
 const Musiclist = (props) => {
   const {
@@ -10,9 +11,9 @@ const Musiclist = (props) => {
     customLists,
     setCustomLists,
   } = props;
-  const videoid = video.videoid;
+  const { videoid } = video;
 
-  const playVideo = async (video) => {
+  const handleVideoPlay = async (video) => {
     const newCurrentItems = [...currentItems];
     // currentItems에 중복된 비디오가 있다면 삭제
     for (let i = 0; i < newCurrentItems.length; i++) {
@@ -30,21 +31,22 @@ const Musiclist = (props) => {
   };
 
   return (
-    <li
-      onClick={() => {
-        console.log('ssssss : ', video.videoid);
-        console.log(`${video.title}을 재생합니다.`);
-        playVideo(video);
-      }}
-    >
-      <div
-        className="kpop-music-image"
-        style={{
-          backgroundImage:
-            'url(' + `http://img.youtube.com/vi/${videoid}/mqdefault.jpg` + ')',
+    <li className="home_list-popular_item">
+      <Paper
+        elevation={3}
+        onClick={(e) => {
+          handleVideoPlay(video);
         }}
-      ></div>
-      <p className="kpop-music-title">{video.title}</p>
+        className="home_list-popular_item_thumbnail"
+      >
+        <img
+          src={`http://img.youtube.com/vi/${videoid}/mqdefault.jpg`}
+          alt={`${videoid}`}
+        />
+      </Paper>
+      <Box className="home_list-popular_item_title">
+        <span>{video.title}</span>
+      </Box>
     </li>
   );
 };

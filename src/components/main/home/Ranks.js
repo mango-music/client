@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
+import { Paper, Box } from '@material-ui/core';
+import noImage from '../../../images/no-image.png';
 
 const Ranks = (props) => {
   const {
@@ -10,8 +12,8 @@ const Ranks = (props) => {
     videoIdRatings,
     ranking,
   } = props;
-  const { title, thumbnail } = video;
-  const playVideo = async (video) => {
+  // const { title, thumbnail } = video;
+  const handleVideoPlay = async (video) => {
     // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
     let rating = null;
     if (videoIdRatings[video.videoid]) {
@@ -34,28 +36,26 @@ const Ranks = (props) => {
     setItemIndex(0); // TODO: 셔플 버튼이 켜져 있을 때에도 통제할 수 있게 수정해야 한다.
   };
   return (
-    <li>
-      <div className="rank-number">
-        <p className="recommends-ranking">{ranking}</p>
+    <Box
+      component="li"
+      onClick={(e) => {
+        handleVideoPlay(video);
+      }}
+      className="home_list-rank_item"
+    >
+      <div className="home_list-rank_item_rank">
+        <span>{ranking}</span>
       </div>
-      <div
-        style={{
-          backgroundImage: 'url(' + thumbnail + ')',
-        }}
-        className="rank-image"
-      ></div>
-      {/* <img className="recommends-rank-img" src={thumbnail} /> */}
-      <div className="rank-title">
-        <p
-          className="recommends-rank-title pointer"
-          onClick={() => {
-            playVideo(video);
-          }}
-        >
-          {title}
-        </p>
+      <div className="home_list-rank_item_thumbnail">
+        <img
+          src={video.thumbnail ? video.thumbnail : noImage}
+          alt="no-thumbnail"
+        />
       </div>
-    </li>
+      <div className="home_list-rank_item_title">
+        <span>{video.title}</span>
+      </div>
+    </Box>
   );
 };
 

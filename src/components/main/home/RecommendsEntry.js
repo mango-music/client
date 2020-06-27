@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Paper, Box } from '@material-ui/core';
 import RecommendsDropDownMenu from './RecommendsDropDownMenu';
 import '../../../styles/Recommends.scss';
 
@@ -14,7 +15,7 @@ const RecommendsEntry = (props) => {
     videoIdRatings,
   } = props;
 
-  const playVideo = async (video) => {
+  const handleVideoPlay = async (video) => {
     // videoIdRatings에서 평가했던 음악이 있다면 rating을 넣어준다.
     let rating = null;
     if (videoIdRatings[video.videoid]) {
@@ -38,25 +39,43 @@ const RecommendsEntry = (props) => {
   };
 
   return (
-    <li
-      onClick={() => {
-        console.log('ssssss : ', video.videoid);
-        console.log(`${video.title}을 재생합니다.`);
-        playVideo(video);
-      }}
-    >
-      <div
-        className="recommends-music-image"
-        style={{
-          backgroundImage:
-            'url(' +
-            `http://img.youtube.com/vi/${video.videoid}/mqdefault.jpg` +
-            ')',
+    <li className="home_list-recommended_item">
+      <Paper
+        elevation={3}
+        onClick={(e) => {
+          handleVideoPlay(video);
         }}
-      ></div>
-      <p className="recommends-music-title">{video.title}</p>
+        className="home_list-recommended_item_thumbnail"
+      >
+        <img
+          src={`http://img.youtube.com/vi/${video.videoid}/mqdefault.jpg`}
+          alt={`${video.videoid}`}
+        />
+      </Paper>
+      <Box className="home_list-recommended_item_title">
+        <span>{video.title}</span>
+      </Box>
     </li>
   );
 };
 
 export default RecommendsEntry;
+
+// <li
+//   onClick={() => {
+//     console.log('ssssss : ', video.videoid);
+//     console.log(`${video.title}을 재생합니다.`);
+//     playVideo(video);
+//   }}
+// >
+//   <div
+//     className="recommends-music-image"
+//     style={{
+//       backgroundImage:
+//         'url(' +
+//         `http://img.youtube.com/vi/${video.videoid}/mqdefault.jpg` +
+//         ')',
+//     }}
+//   ></div>
+//   <p className="recommends-music-title">{video.title}</p>
+// </li>

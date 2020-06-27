@@ -1,9 +1,35 @@
 import React, { useState, useEffect } from 'react';
-// import { MoreVert } from '@material-ui/icons';
+import { Box, Typography, Button, IconButton } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import { QueueMusic } from '@material-ui/icons';
 import RecommendsEntry from './RecommendsEntry';
 import getRecommendedMusic from '../../../lib/apis/getRecommendedMusic';
-import '../../../styles/Recommends.scss';
 import Ranks from './Ranks';
+
+const useStyles = makeStyles((theme) => ({
+  header: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    flexGrow: 1,
+    '& h3': {
+      fontSize: '1rem',
+      marginLeft: '0.25rem',
+      '& span': {
+        fontSize: '1.125rem',
+        fontWeight: 'bold',
+        color: theme.palette.primary.main,
+      },
+    },
+    '& button': {
+      fontSize: '0.75rem',
+      '& span': {
+        display: 'inline-flex',
+        alignItems: 'center',
+      },
+    },
+  },
+}));
 
 const Recommends = (props) => {
   const {
@@ -19,6 +45,7 @@ const Recommends = (props) => {
     videoIdRatings,
   } = props;
   const [recommends, setRecommends] = useState([]);
+  const classes = useStyles();
 
   useEffect(() => {
     console.log('추천 음악을 요청합니다.');
@@ -61,38 +88,42 @@ const Recommends = (props) => {
       videoIdRatings={videoIdRatings}
     />
   ));
-  return (
-    <div id="recommends">
-      <header className="recommends-title">
-        <p>
-          <span style={{ color: '#fdc10b' }}>{nickname}</span>님이 좋아하실만한
-          음악이에요
-        </p>
 
-        <p
-          onClick={async () => {
-            await setCurrentItem(null);
-            await setCurrentItems([]);
-            setCurrentItems(recommends);
-            setCurrentItem(recommends[0]);
-            setPlayerSize('big');
-          }}
-          className="pointer"
+  const handlePlayAllButtonClick = async (e) => {
+    await setCurrentItem(null);
+    await setCurrentItems([]);
+    setCurrentItems(recommends);
+    setCurrentItem(recommends[0]);
+    setPlayerSize('big');
+  };
+
+  return (
+    <>
+      <Box component="header" className={classes.header}>
+        <Typography variant="h3">
+          <span>{nickname}</span>님을 위한 추천 음악
+        </Typography>
+        <Button
+          startIcon={<QueueMusic />}
+          variant="contained"
+          color="secondary"
+          size="small"
+          onClick={handlePlayAllButtonClick}
         >
-          모두 듣기
-        </p>
-      </header>
-      <div className="rank">
-        {/* <span className="ranks-title">
-          취향이 비슷한 유저가 추천해준 노래 Top 100
-        </span> */}
-        <ul className="ranks-list">{recommnendRanks}</ul>
-        <div className="rank-arrow"></div>
-      </div>
-      <div className="recommend-musics">
-        <ul className="recommend-list">{recommendMusics}</ul>
-      </div>
-    </div>
+          모두 재생
+        </Button>
+      </Box>
+      <Box
+        component="ul"
+        id="list-recommended"
+        className="home_list-recommended"
+      >
+        {recommendMusics}
+      </Box>
+      <Box component="ul" id="list-rank" className="home_list-rank">
+        {recommnendRanks}
+      </Box>
+    </>
   );
 };
 
