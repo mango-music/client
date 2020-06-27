@@ -1,6 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-/* eslint-disable*/
-
 /*
   [README]
   * import { <장르> } from '... /fixtures/sample'
@@ -46,81 +44,6 @@ export const BALLAD = [
     thumbnail: 'https://i.ytimg.com/vi/b1kQvZhQ6_M/hqdefault.jpg',
     videoid: 'b1kQvZhQ6_M',
   },
-  {
-    title: ' 정키 - 홀로 (feat. 김나영)',
-    thumbnail: 'https://i.ytimg.com/vi/fScNE02saeM/hqdefault.jpg',
-    videoid: 'fScNE02saeM',
-  },
-  {
-    title: '규현 - 광화문에서',
-    thumbnail: 'https://i.ytimg.com/vi/GAdFpZHTh1I/hqdefault.jpg',
-    videoid: 'GAdFpZHTh1I',
-  },
-  {
-    title: '김범수 - 끝사랑',
-    thumbnail: 'https://i.ytimg.com/vi/N6ndPiblDPg/hqdefault.jpg',
-    videoid: 'N6ndPiblDPg',
-  },
-  {
-    title: '윤종신 - 오르막길 (Feat.정인)',
-    thumbnail: 'https://i.ytimg.com/vi/1do7vqfp9l4/hqdefault.jpg',
-    videoid: '1do7vqfp9l4',
-  },
-  {
-    title: '윤하 - 기다리다',
-    thumbnail: 'https://i.ytimg.com/vi/LnSafu-mZqs/hqdefault.jpg',
-    videoid: 'LnSafu-mZqs',
-  },
-  {
-    title: '이선희 - 그 중에 그대를 만나',
-    thumbnail: 'https://i.ytimg.com/vi/IAyMtl9FRHI/hqdefault.jpg',
-    videoid: 'IAyMtl9FRHI',
-  },
-  {
-    title: '윤종신 - 1월부터 6월까지',
-    thumbnail: 'https://i.ytimg.com/vi/2V1oEnrp0iM/hqdefault.jpg',
-    videoid: '2V1oEnrp0iM',
-  },
-  {
-    title: '김연우 - 이별택시',
-    thumbnail: 'https://i.ytimg.com/vi/u1yltZrxtBI/hqdefault.jpg',
-    videoid: 'u1yltZrxtBI',
-  },
-  {
-    title: '성시경 - 내게 오는 길',
-    thumbnail: 'https://i.ytimg.com/vi/DUxOxkyZfwc/hqdefault.jpg',
-    videoid: 'DUxOxkyZfwc',
-  },
-  {
-    title: '노을 - 그리워 그리워',
-    thumbnail: 'https://i.ytimg.com/vi/rr7arlNxLro/hqdefault.jpg',
-    videoid: 'rr7arlNxLro',
-  },
-  {
-    title: '이선희 - 인연',
-    thumbnail: 'https://i.ytimg.com/vi/8_kdU44I2gA/hqdefault.jpg',
-    videoid: '8_kdU44I2gA',
-  },
-  {
-    title: '신용재 - 가수가 된 이유',
-    thumbnail: 'https://i.ytimg.com/vi/aLpAm59Qzfk/hqdefault.jpg',
-    videoid: 'aLpAm59Qzfk',
-  },
-  {
-    title: '임창정 - 내가 저지른 사랑',
-    thumbnail: 'https://i.ytimg.com/vi/L-2M_-QLs8k/hqdefault.jpg',
-    videoid: 'L-2M_-QLs8k',
-  },
-  {
-    title: '에일리 - 노래가 늘었어',
-    thumbnail: 'https://i.ytimg.com/vi/09r59NFPpLg/hqdefault.jpg',
-    videoid: '09r59NFPpLg',
-  },
-  {
-    title: 'BMK - 꽃피는 봄이 오면',
-    thumbnail: 'https://i.ytimg.com/vi/PkumiPDR6V4/hqdefault.jpg',
-    videoid: 'PkumiPDR6V4',
-  },
 ];
 
 /* 댄스 */
@@ -155,76 +78,6 @@ export const DANCE = [
     title: 'Red Velvet 레드벨벳 - Psycho M/V',
     thumbnail: 'https://i.ytimg.com/vi/uR8Mrt1IpXg/hqdefault.jpg',
     videoid: 'uR8Mrt1IpXg',
-  },
-  {
-    title: 'Red Velvet - Ice Cream Cake',
-    thumbnail: 'https://i.ytimg.com/vi/glXgSSOKlls/hqdefault.jpg',
-    videoid: 'glXgSSOKlls',
-  },
-  {
-    title: '씨스타 - Touch My Body',
-    thumbnail: 'https://i.ytimg.com/vi/9txzvu6eQuw/hqdefault.jpg',
-    videoid: '9txzvu6eQuw',
-  },
-  {
-    title: 'EXID - 위아래',
-    thumbnail: 'https://i.ytimg.com/vi/0RIZuaCDcAo/hqdefault.jpg',
-    videoid: '0RIZuaCDcAo',
-  },
-  {
-    title: '거북이 - 비행기',
-    thumbnail: 'https://i.ytimg.com/vi/ZEd3bSJvNiE/hqdefault.jpg',
-    videoid: 'ZEd3bSJvNiE',
-  },
-  {
-    title: '2NE1 - I Don Care',
-    thumbnail: 'https://i.ytimg.com/vi/4MgAxMO1KD0/hqdefault.jpg',
-    videoid: '4MgAxMO1KD0',
-  },
-  {
-    title: '빅뱅 - 마지막 인사',
-    thumbnail: 'https://i.ytimg.com/vi/ScorpVvqLwo/hqdefault.jpg',
-    videoid: 'ScorpVvqLwo',
-  },
-  {
-    title: '에일리 - 보여줄게',
-    thumbnail: 'https://i.ytimg.com/vi/MCEcWcIww5k/hqdefault.jpg',
-    videoid: 'MCEcWcIww5k',
-  },
-  {
-    title: '여자친구 - 유리구슬',
-    thumbnail: 'https://i.ytimg.com/vi/GU7icQFVzHo/hqdefault.jpg',
-    videoid: 'GU7icQFVzHo',
-  },
-  {
-    title: '울랄라세션, 아이유 - 애타는 마음',
-    thumbnail: 'https://i.ytimg.com/vi/etG_5f1p6k4/hqdefault.jpg',
-    videoid: 'etG_5f1p6k4',
-  },
-  {
-    title: '빅뱅 - 붉은 노을',
-    thumbnail: 'https://i.ytimg.com/vi/oJIWY9W5WAM/hqdefault.jpg',
-    videoid: 'oJIWY9W5WAM',
-  },
-  {
-    title: '싸이 - 연예인',
-    thumbnail: 'https://i.ytimg.com/vi/OM4pzA1FDUo/hqdefault.jpg',
-    videoid: 'OM4pzA1FDUo',
-  },
-  {
-    title: '선미 - 보름달(Feat. Lena)',
-    thumbnail: 'https://i.ytimg.com/vi/8BBF3vRY85M/hqdefault.jpg',
-    videoid: '8BBF3vRY85M',
-  },
-  {
-    title: '현아 - Bubble Pop!',
-    thumbnail: 'https://i.ytimg.com/vi/kndITElrSwA/hqdefault.jpg',
-    videoid: 'kndITElrSwA',
-  },
-  {
-    title: '원더걸스 - Tell Me',
-    thumbnail: 'https://i.ytimg.com/vi/3vVHy0XoIN4/hqdefault.jpg',
-    videoid: '3vVHy0XoIN4',
   },
 ];
 
@@ -280,56 +133,6 @@ export const HIPHOP = [
     thumbnail: 'https://i.ytimg.com/vi/qp8gfkhG2SU/hqdefault.jpg',
     videoid: 'qp8gfkhG2SU',
   },
-  {
-    title: '로꼬 - 시간이 들겠지',
-    thumbnail: 'https://i.ytimg.com/vi/YfQzz00Oc_M/hqdefault.jpg',
-    videoid: 'YfQzz00Oc_M',
-  },
-  {
-    title: 'San E, 레이나 - 한여름밤의 꿀',
-    thumbnail: 'https://i.ytimg.com/vi/nkfMN-jaycA/hqdefault.jpg',
-    videoid: 'nkfMN-jaycA',
-  },
-  {
-    title: '프라이머리 - 씨스루(Feat. Zion.T, 개코)',
-    thumbnail: 'https://i.ytimg.com/vi/e6ZelDkI6JY/hqdefault.jpg',
-    videoid: 'e6ZelDkI6JY',
-  },
-  {
-    title: 'Beenzino - Dali, Van, Picasso',
-    thumbnail: 'https://i.ytimg.com/vi/w0Tj8Q9WH4Y/hqdefault.jpg',
-    videoid: 'w0Tj8Q9WH4Y',
-  },
-  {
-    title: '기리보이 - 교통정리(Feat. 헤이즈)',
-    thumbnail: 'https://i.ytimg.com/vi/EIzXAMjaJ98/hqdefault.jpg',
-    videoid: 'EIzXAMjaJ98',
-  },
-  {
-    title: '기리보이 - 빈집(Feat. THAMA)',
-    thumbnail: 'https://i.ytimg.com/vi/GToAIpJKUkA/hqdefault.jpg',
-    videoid: 'GToAIpJKUkA',
-  },
-  {
-    title: 'ASH ISLAND - Paranoid',
-    thumbnail: 'https://i.ytimg.com/vi/ujWsKOGpSYQ/hqdefault.jpg',
-    videoid: 'ujWsKOGpSYQ',
-  },
-  {
-    title: 'PH-1,Kid Milli,루피 - Good Day(Feat. 팔로알토)',
-    thumbnail: 'https://i.ytimg.com/vi/GlxCLA2DE2g/hqdefault.jpg',
-    videoid: 'GlxCLA2DE2g',
-  },
-  {
-    title: '나플라(nafla) - Wu',
-    thumbnail: 'https://i.ytimg.com/vi/TZquZFXS9Zk/hqdefault.jpg',
-    videoid: 'TZquZFXS9Zk',
-  },
-  {
-    title: 'Owen Ovadoz - City',
-    thumbnail: 'https://i.ytimg.com/vi/nEjkcP949Dg/hqdefault.jpg',
-    videoid: 'nEjkcP949Dg',
-  },
 ];
 
 /* R&B, Soul */
@@ -355,7 +158,8 @@ export const RB_SOUL = [
     videoid: 'UwuAPyOImoI',
   },
   {
-    title: '헤이즈 (Heize) - 비도 오고 그래서 (Feat. 신용재) MV',
+    title:
+      '헤이즈 (Heize) - 비도 오고 그래서 (You, Clouds, Rain) (Feat. 신용재 (Shin Yong Jae)) MV',
     thumbnail: 'https://i.ytimg.com/vi/afxLaQiLu-o/hqdefault.jpg',
     videoid: 'afxLaQiLu-o',
   },
@@ -374,66 +178,6 @@ export const RB_SOUL = [
     thumbnail: 'https://i.ytimg.com/vi/Y-FhDScM_2w/hqdefault.jpg',
     videoid: 'Y-FhDScM_2w',
   },
-  {
-    title: '브라운 아이즈 - 벌써 일년',
-    thumbnail: 'https://i.ytimg.com/vi/zrjPdRNUVAs/hqdefault.jpg',
-    videoid: 'zrjPdRNUVAs',
-  },
-  {
-    title: '40 - 듣는 편지',
-    thumbnail: 'https://i.ytimg.com/vi/a5oeNwoCi-s/hqdefault.jpg',
-    videoid: 'a5oeNwoCi-s',
-  },
-  {
-    title: '양다일,정키 - 우린 알아',
-    thumbnail: 'https://i.ytimg.com/vi/mtZVhT4o37Q/hqdefault.jpg',
-    videoid: 'mtZVhT4o37Q',
-  },
-  {
-    title: '어반 자카파 - 그날에 우리',
-    thumbnail: 'https://i.ytimg.com/vi/ZGReh7eNTUU/hqdefault.jpg',
-    videoid: 'ZGReh7eNTUU',
-  },
-  {
-    title: '바이브 - 사진을 보다가',
-    thumbnail: 'https://i.ytimg.com/vi/1nd5fNK2VfM/hqdefault.jpg',
-    videoid: '1nd5fNK2VfM',
-  },
-  {
-    title: '알리 - 365일',
-    thumbnail: 'https://i.ytimg.com/vi/w5hwdmwDBto/hqdefault.jpg',
-    videoid: 'w5hwdmwDBto',
-  },
-  {
-    title: '더레이 - 청소',
-    thumbnail: 'https://i.ytimg.com/vi/OF78QsPM7MI/hqdefault.jpg',
-    videoid: 'OF78QsPM7MI',
-  },
-  {
-    title: '어반 자카파 - 커피를 마시고',
-    thumbnail: 'https://i.ytimg.com/vi/IHOlkBMqWvQ/hqdefault.jpg',
-    videoid: 'IHOlkBMqWvQ',
-  },
-  {
-    title: '라디(Ra. D) - 엄마',
-    thumbnail: 'https://i.ytimg.com/vi/98FuedyOQco/hqdefault.jpg',
-    videoid: '98FuedyOQco',
-  },
-  {
-    title: '라디(Ra. D) - I m in Love',
-    thumbnail: 'https://i.ytimg.com/vi/46CgSGAQqQ4/hqdefault.jpg',
-    videoid: '46CgSGAQqQ4',
-  },
-  {
-    title: '린 - ...사랑했잖아...',
-    thumbnail: 'https://i.ytimg.com/vi/Z9mDJoQxOrg/hqdefault.jpg',
-    videoid: 'Z9mDJoQxOrg',
-  },
-  {
-    title: '정인 - 미워요',
-    thumbnail: 'https://i.ytimg.com/vi/6hoFUXCbBoY/hqdefault.jpg',
-    videoid: '6hoFUXCbBoY',
-  },
 ];
 
 /* 인디 */
@@ -444,7 +188,7 @@ export const INDIE = [
     videoid: 'tA9EJJtwSqc',
   },
   {
-    title: '십센치 (10cm) - 스토커 (Stalker)',
+    title: '십센치 (10cm) - 스토커 (Stalker) (Lyrics and English Translation)',
     thumbnail: 'https://i.ytimg.com/vi/Iu-NVopNDKU/hqdefault.jpg',
     videoid: 'CRNVl5uJpX8',
   },
@@ -483,56 +227,6 @@ export const INDIE = [
     thumbnail: 'https://i.ytimg.com/vi/w9f62ClbEQ4/hqdefault.jpg',
     videoid: 'aeBud69nWb8',
   },
-  {
-    title: '혁오 - 위잉위잉',
-    thumbnail: 'https://i.ytimg.com/vi/hr4GaRPX6cM/hqdefault.jpg',
-    videoid: 'hr4GaRPX6cM',
-  },
-  {
-    title: '크라잉넛 - 밤이 깊었네',
-    thumbnail: 'https://i.ytimg.com/vi/ptm4reDRet4/hqdefault.jpg',
-    videoid: 'ptm4reDRet4',
-  },
-  {
-    title: '제이레빗 - 요즘 너 말야',
-    thumbnail: 'https://i.ytimg.com/vi/Z2nky-LeOoI/hqdefault.jpg',
-    videoid: 'Z2nky-LeOoI',
-  },
-  {
-    title: '장미여관 - 봉숙이',
-    thumbnail: 'https://i.ytimg.com/vi/pc2Jy9HiT24/hqdefault.jpg',
-    videoid: 'pc2Jy9HiT24',
-  },
-  {
-    title: '10CM - 아메리카노',
-    thumbnail: 'https://i.ytimg.com/vi/OmJYbdRfDNQ/hqdefault.jpg',
-    videoid: 'OmJYbdRfDNQ',
-  },
-  {
-    title: '10CM - 애상',
-    thumbnail: 'https://i.ytimg.com/vi/0i_87fox_Ug/hqdefault.jpg',
-    videoid: '0i_87fox_Ug',
-  },
-  {
-    title: '스탠딩 에그 - 오래된 노래',
-    thumbnail: 'https://i.ytimg.com/vi/YtiJK-33oUE/hqdefault.jpg',
-    videoid: 'YtiJK-33oUE',
-  },
-  {
-    title: '스탠딩 에그 - Little Star',
-    thumbnail: 'https://i.ytimg.com/vi/dI8NZsjRyGk/hqdefault.jpg',
-    videoid: 'dI8NZsjRyGk',
-  },
-  {
-    title: '원 모어 찬스 - 널 생각해',
-    thumbnail: 'https://i.ytimg.com/vi/WHxGmlvsUFg/hqdefault.jpg',
-    videoid: 'WHxGmlvsUFg',
-  },
-  {
-    title: '슈퍼키드 - 그리 쉽게 이별을 말하지 말아요',
-    thumbnail: 'https://i.ytimg.com/vi/mql2ikMOzJA/hqdefault.jpg',
-    videoid: 'mql2ikMOzJA',
-  },
 ];
 
 /* 락 & 메탈 */
@@ -548,7 +242,7 @@ export const ROCK_METAL = [
     videoid: 'tXV7dfvSefo',
   },
   {
-    title: '윤도현 - 사랑했나봐 ',
+    title: '윤도현 - 사랑했나봐 (I Guess I Loved You)',
     thumbnail: 'https://i.ytimg.com/vi/KeMbLY7ztDw/hqdefault.jpg',
     videoid: 'KeMbLY7ztDw',
   },
@@ -568,7 +262,7 @@ export const ROCK_METAL = [
     videoid: 'Quw8b8sVs6I',
   },
   {
-    title: '김경호 - 금지된 사랑',
+    title: '김경호 - 금지된 사랑 forbidden love with lyrics',
     thumbnail: 'https://i.ytimg.com/vi/9xn5bfdT7Ec/hqdefault.jpg',
     videoid: '9xn5bfdT7Ec',
   },
@@ -576,61 +270,6 @@ export const ROCK_METAL = [
     title: 'The Cross - Dont Cry',
     thumbnail: 'https://i.ytimg.com/vi/QfiJEggNNnk/hqdefault.jpg',
     videoid: 'QqMt41xA1oE',
-  },
-  {
-    title: '김경호 - 비정',
-    thumbnail: 'https://i.ytimg.com/vi/Kvqe8nBrngU/hqdefault.jpg',
-    videoid: 'Kvqe8nBrngU',
-  },
-  {
-    title: '럼블피쉬 - 비와 당신',
-    thumbnail: 'https://i.ytimg.com/vi/RiziS5qadd4/hqdefault.jpg',
-    videoid: 'RiziS5qadd4',
-  },
-  {
-    title: '야다 - 이미 슬픈 사랑',
-    thumbnail: 'https://i.ytimg.com/vi/DBdUOwnDyV4/hqdefault.jpg',
-    videoid: 'DBdUOwnDyV4',
-  },
-  {
-    title: 'FTISLAND - 사랑앓이',
-    thumbnail: 'https://i.ytimg.com/vi/aSyXgv_v3no/hqdefault.jpg',
-    videoid: 'aSyXgv_v3no',
-  },
-  {
-    title: '자우림 - 스물다섯, 스물하나',
-    thumbnail: 'https://i.ytimg.com/vi/LrB-fJn-3w4/hqdefault.jpg',
-    videoid: 'LrB-fJn-3w4',
-  },
-  {
-    title: '이적 - 그땐 미처 알지 못했지(Feat. 하림)',
-    thumbnail: 'https://i.ytimg.com/vi/WRwCQvpD_B4/hqdefault.jpg',
-    videoid: 'WRwCQvpD_B4',
-  },
-  {
-    title: '버스커 버스커 - 동경소녀',
-    thumbnail: 'https://i.ytimg.com/vi/Ugmif2uglCo/hqdefault.jpg',
-    videoid: 'Ugmif2uglCo',
-  },
-  {
-    title: 'YB - 나는 나비',
-    thumbnail: 'https://i.ytimg.com/vi/USOFJiEWsLY/hqdefault.jpg',
-    videoid: 'USOFJiEWsLY',
-  },
-  {
-    title: '박상민 - 해바라기',
-    thumbnail: 'https://i.ytimg.com/vi/twr2hdQxsKI/hqdefault.jpg',
-    videoid: 'twr2hdQxsKI',
-  },
-  {
-    title: '브리즈 - 뭐라할까',
-    thumbnail: 'rK5jUEAS-Q4',
-    videoid: 'rK5jUEAS-Q4',
-  },
-  {
-    title: '체리 필터 - 낭만고양이',
-    thumbnail: 'https://i.ytimg.com/vi/oSlqhkPa3no/hqdefault.jpg',
-    videoid: 'oSlqhkPa3no',
   },
 ];
 
@@ -642,7 +281,7 @@ export const FOLK_BLUES = [
     videoid: 'fC9WtJskvgE',
   },
   {
-    title: '김광석 - 사랑했지만 ',
+    title: '김광석 - 사랑했지만 (Love Has Gone)',
     thumbnail: 'https://i.ytimg.com/vi/QQLpyd7n6yA/hqdefault.jpg',
     videoid: 'QQLpyd7n6yA',
   },
@@ -651,66 +290,21 @@ export const FOLK_BLUES = [
     thumbnail: 'https://i.ytimg.com/vi/OTxw3W6RF2M/mqdefault.jpg',
     videoid: 'SZkkZLSCv44',
   },
-  {
-    title: '신현희와김루트 - 오빠야',
-    thumbnail: 'https://i.ytimg.com/vi/OmjN_b07syo/hqdefault.jpg',
-    videoid: 'OmjN_b07syo',
-  },
-  {
-    title: '아이유 - 마음',
-    thumbnail: 'https://i.ytimg.com/vi/he2C4lx63M0/hqdefault.jpg',
-    videoid: 'he2C4lx63M0',
-  },
-  {
-    title: '악동뮤지션 - 200%',
-    thumbnail: 'https://i.ytimg.com/vi/0Oi8jDMvd_w/hqdefault.jpg',
-    videoid: '0Oi8jDMvd_w',
-  },
-  {
-    title: '에디킴 - 너 사용법',
-    thumbnail: 'https://i.ytimg.com/vi/Y4mH2KvzUQ0/hqdefault.jpg',
-    videoid: 'Y4mH2KvzUQ0',
-  },
-  {
-    title: '10CM - 사랑은 은하수 다방에서',
-    thumbnail: 'https://i.ytimg.com/vi/f06dSoQPX2U/hqdefault.jpg',
-    videoid: 'f06dSoQPX2U',
-  },
-  {
-    title: '어쿠스틱 콜라보 - 그대와 나, 설레임',
-    thumbnail: 'https://i.ytimg.com/vi/2MvjjJXSX-g/hqdefault.jpg',
-    videoid: '2MvjjJXSX-g',
-  },
-  {
-    title: '김광석 - 어느 60대 노부부 이야기',
-    thumbnail: 'https://i.ytimg.com/vi/DomGkWQff_s/hqdefault.jpg',
-    videoid: 'DomGkWQff_s',
-  },
-  {
-    title: '곽진언, 김필 - 걱정말아요 그대',
-    thumbnail: 'https://i.ytimg.com/vi/WykChneiTt8/hqdefault.jpg',
-    videoid: 'WykChneiTt8',
-  },
-  {
-    title: '예민 - 산골 소년의 사랑이야기',
-    thumbnail: 'https://i.ytimg.com/vi/dvzQ5hIGATE/hqdefault.jpg',
-    videoid: 'dvzQ5hIGATE',
-  },
 ];
 /* 해외 */
 export const POP = [
   {
-    title: 'Adam levine - lost stars ',
+    title: 'Adam levine - lost stars (Lyrics)',
     thumbnail: 'https://i.ytimg.com/vi/cL4uhaQ58Rk/hqdefault.jpg',
     videoid: 'iKBP3eE0ZHM',
   },
   {
-    title: 'Maroon 5 - She Will Be Loved ',
+    title: 'Maroon 5 - She Will Be Loved (Official Music Video)',
     thumbnail: 'https://i.ytimg.com/vi/nIjVuRTm-dc/hqdefault.jpg',
     videoid: 'nIjVuRTm-dc',
   },
   {
-    title: 'Pharrell Williams - Happy ',
+    title: 'Pharrell Williams - Happy (Official Music Video)',
     thumbnail: 'https://i.ytimg.com/vi/ZbZSe6N_BXs/hqdefault.jpg',
     videoid: 'ZbZSe6N_BXs',
   },
@@ -745,7 +339,7 @@ export const POP = [
     videoid: 'YQHsXMglC9A',
   },
   {
-    title: 'Adele - Someone Like You ',
+    title: 'Adele - Someone Like You (Official Music Video)',
     thumbnail: 'https://i.ytimg.com/vi/hLQl3WQQoQ0/hqdefault.jpg',
     videoid: 'hLQl3WQQoQ0',
   },
@@ -755,49 +349,44 @@ export const POP = [
     videoid: 'kJQP7kiw5Fk',
   },
   {
-    title: 'Jason Mraz - I m Yours ',
+    title: 'Jason Mraz - I m Yours (Official Video)',
     thumbnail: 'https://i.ytimg.com/vi/EkHTsc9PU2A/hqdefault.jpg',
     videoid: 'EkHTsc9PU2A',
   },
   {
-    title: 'Jason Mraz - Geek In The Pink ',
+    title: 'Jason Mraz - Geek In The Pink (Official Video)',
     thumbnail: 'https://i.ytimg.com/vi/SdryssUmlpE/hqdefault.jpg',
     videoid: 'SdryssUmlpE',
   },
   {
-    title: 'Justin Bieber - Love Yourself ',
+    title: 'Justin Bieber - Love Yourself (Official Music Video)',
     thumbnail: 'https://i.ytimg.com/vi/oyEuk8j8imI/hqdefault.jpg',
     videoid: 'oyEuk8j8imI',
   },
   {
-    title: 'Linkin Park - Faint ',
+    title: 'Linkin Park - Faint (Official Video)',
     thumbnail: 'https://i.ytimg.com/vi/LYU-8IFcDPw/hqdefault.jpg',
     videoid: 'LYU-8IFcDPw',
   },
   {
-    title: 'Linkin Park - Numb  ',
+    title: 'Linkin Park - Numb (Official Video) ',
     thumbnail: 'https://i.ytimg.com/vi/kXYiU_JCYtU/hqdefault.jpg',
     videoid: 'kXYiU_JCYtU',
   },
   {
-    title: 'Bon Jovi - It s My Life ',
+    title: 'Bon Jovi - It s My Life (Official Music Video)',
     thumbnail: 'https://i.ytimg.com/vi/vx2u5uUu3DE/hqdefault.jpg',
     videoid: 'vx2u5uUu3DE',
   },
   {
-    title: 'Eminem - Love The Way You Lie (feat. Rihanna)',
+    title: 'Eminem - Love The Way You Lie ft. Rihanna',
     thumbnail: 'https://i.ytimg.com/vi/uelHwf8o7_U/hqdefault.jpg',
     videoid: 'uelHwf8o7_U',
   },
   {
-    title: 'Eminem - Not Afraid ',
+    title: 'Eminem - Not Afraid (Official Video)',
     thumbnail: 'https://i.ytimg.com/vi/j5-yKhDd64s/hqdefault.jpg',
     videoid: 'j5-yKhDd64s',
-  },
-  {
-    title: 'Lady GaGa - Poker Face',
-    thumbnail: 'https://i.ytimg.com/vi/bESGLojNYSo/hqdefault.jpg',
-    videoid: 'bESGLojNYSo',
   },
 ];
 
