@@ -1,11 +1,12 @@
 @import './common/normal-button.scss';
 
 #player {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   display: grid; // 지우면 재생바가 사라짐
   grid-auto-flow: row;
+  z-index: 100;
   // justify-content: center; // 늘어나도 가운데 머무르게 함
 
   .player-small {
