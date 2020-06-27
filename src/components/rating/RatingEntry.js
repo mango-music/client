@@ -21,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 const opts = {
   playerVars: {
     autoplay: 1,
+    rel: 0,
+    playsinline: 1,
   },
 };
 
