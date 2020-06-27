@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import YouTube from 'react-youtube';
 import RatingForm from './RatingForm';
 import MusicTitle from './MusicTitle';
@@ -39,6 +39,11 @@ const MusicPlayer = (props) => {
   useEffect(() => {
     // 이중 timer 방지
     clearInterval(timer);
+  }, [currentItem]);
+
+  useEffect(() => {
+    console.log('currentItem이 바뀔 때에는 셔플 버튼을 초기화합니다.');
+    setIsShuffleOn(false);
   }, [currentItem]);
 
   const opts = {
@@ -208,4 +213,4 @@ const MusicPlayer = (props) => {
   return null;
 };
 
-export default MusicPlayer;
+export default memo(MusicPlayer);
