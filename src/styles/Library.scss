@@ -54,7 +54,7 @@
   grid-template-columns: 1fr;
   justify-content: center;
   // gap: 10px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   overflow: auto;
   height: 100vh;
 
@@ -101,12 +101,12 @@
       }
       .user-playlist-title {
         grid-column: span 3;
-        font-size: 1.5rem;
+        font-size: 1.25rem;
       }
     }
     ul {
       @include list-ul;
-      font-size: 1.2rem;
+      font-size: 1rem;
       margin-bottom: 120px;
       li {
         .list-button {
