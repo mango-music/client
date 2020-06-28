@@ -43,9 +43,20 @@
         padding-top: 2px;
         justify-self: center;
       }
+      .rating-average {
+        margin-top: -8px;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: center;
+        gap: 8px;
+        color: whitesmoke;
+        p {
+          font-size: 1rem;
+        }
+      }
       p {
         text-align: center;
-        font-size: 1rem;
+        font-size: 1.25rem;
         // 글자 숨기는 기능
         white-space: nowrap;
         overflow: hidden;

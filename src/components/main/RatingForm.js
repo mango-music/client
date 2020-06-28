@@ -41,56 +41,62 @@ const RatingForm = (props) => {
     return stars;
   };
   return (
-    <div className="rating-form">
-      <MuiRating
-        name="playerRating"
-        size="large"
-        precision={0.5}
-        value={getStars()} // 초기값
-        onChange={async (e, starsCount) => {
-          console.log(`${video.title}에 ${starsCount}점을 매깁니다.`);
+    <>
+      {ratingCount && (
+        <div className="rating-average">
+          <p>평균 {averageMusicRating}</p>
+          <p>({ratingCount}명)</p>
+        </div>
+      )}
+      <div className="rating-form">
+        <MuiRating
+          name="playerRating"
+          size="large"
+          precision={0.5}
+          value={getStars()} // 초기값
+          onChange={async (e, starsCount) => {
+            console.log(`${video.title}에 ${starsCount}점을 매깁니다.`);
 
-          if (starsCount === null) {
-            // 별점을 삭제할 때
-            const status = await postDelRating(
-              video,
-              videoIdRatings,
-              setVideoIdRatings,
-            );
-            if (status === 200) {
-              const newCurrentItems = [...currentItems];
-              for (let i = 0; i < newCurrentItems.length; i++) {
-                if (newCurrentItems[i].videoid === video.videoid) {
-                  newCurrentItems[i].rating = null;
-                  break;
+            if (starsCount === null) {
+              // 별점을 삭제할 때
+              const status = await postDelRating(
+                video,
+                videoIdRatings,
+                setVideoIdRatings,
+              );
+              if (status === 200) {
+                const newCurrentItems = [...currentItems];
+                for (let i = 0; i < newCurrentItems.length; i++) {
+                  if (newCurrentItems[i].videoid === video.videoid) {
+                    newCurrentItems[i].rating = null;
+                    break;
+                  }
                 }
+                setCurrentItems(newCurrentItems);
               }
-              setCurrentItems(newCurrentItems);
-            }
-          } else {
-            // 별점을 매길 때
-            const status = await postRatingMusic(
-              video,
-              starsCount,
-              videoIdRatings,
-              setVideoIdRatings,
-            );
-            if (status === 200) {
-              const newCurrentItems = [...currentItems];
-              for (let i = 0; i < newCurrentItems.length; i++) {
-                if (newCurrentItems[i].videoid === video.videoid) {
-                  newCurrentItems[i].rating = starsCount;
-                  break;
+            } else {
+              // 별점을 매길 때
+              const status = await postRatingMusic(
+                video,
+                starsCount,
+                videoIdRatings,
+                setVideoIdRatings,
+              );
+              if (status === 200) {
+                const newCurrentItems = [...currentItems];
+                for (let i = 0; i < newCurrentItems.length; i++) {
+                  if (newCurrentItems[i].videoid === video.videoid) {
+                    newCurrentItems[i].rating = starsCount;
+                    break;
+                  }
                 }
+                setCurrentItems(newCurrentItems);
               }
-              setCurrentItems(newCurrentItems);
             }
-          }
-        }}
-      />
-      <p>{averageMusicRating}</p>
-      <p>{ratingCount}</p>
-    </div>
+          }}
+        />
+      </div>
+    </>
   );
 };
 
