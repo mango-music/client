@@ -1,6 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 /* eslint-disable*/
 
+import { FilterTiltShift } from '@material-ui/icons';
+
 /*
   [README]
   * import { <장르> } from '... /fixtures/sample'
@@ -50,6 +52,12 @@ export const BALLAD = [
     title: ' 정키 - 홀로 (feat. 김나영)',
     thumbnail: 'https://i.ytimg.com/vi/fScNE02saeM/hqdefault.jpg',
     videoid: 'fScNE02saeM',
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/ftQF5AbDMLM/hqdefault.jpg',
+    title:
+      '[슬기로운 의사생활 OST Part 4] 규현 (KYUHYUN) - 화려하지 않은 고백 (Confession Is Not Flashy) MV',
+    videoid: 'ftQF5AbDMLM',
   },
   {
     title: '규현 - 광화문에서',
@@ -131,9 +139,9 @@ export const DANCE = [
     videoid: 'mH0_XpSHkZo',
   },
   {
-    title: 'iKON - ‘사랑을 했다(LOVE SCENARIO)’ M/V',
-    thumbnail: 'https://i.ytimg.com/vi/vecSVX1QYbQ/hqdefault.jpg',
-    videoid: 'vecSVX1QYbQ',
+    thumbnail: 'https://i.ytimg.com/vi/nnVjsos40qk/hqdefault.jpg',
+    title: 'IZ*ONE (아이즈원) - 환상동화 (Secret Story of the Swan) MV',
+    videoid: 'nnVjsos40qk',
   },
   {
     title: 'TWICE - CHEER UP M/V',
@@ -162,9 +170,10 @@ export const DANCE = [
     videoid: 'glXgSSOKlls',
   },
   {
-    title: '씨스타 - Touch My Body',
-    thumbnail: 'https://i.ytimg.com/vi/9txzvu6eQuw/hqdefault.jpg',
-    videoid: '9txzvu6eQuw',
+    thumbnail: 'https://i.ytimg.com/vi/XsX3ATc3FbA/hqdefault.jpg',
+    title:
+      'BTS (방탄소년단) &#39;작은 것들을 위한 시 (Boy With Luv) (feat. Halsey)&#39; Official MV',
+    videoid: 'XsX3ATc3FbA',
   },
   {
     title: 'EXID - 위아래',
@@ -182,9 +191,9 @@ export const DANCE = [
     videoid: '4MgAxMO1KD0',
   },
   {
-    title: '빅뱅 - 마지막 인사',
-    thumbnail: 'https://i.ytimg.com/vi/ScorpVvqLwo/hqdefault.jpg',
-    videoid: 'ScorpVvqLwo',
+    title: '씨스타 - Touch My Body',
+    thumbnail: 'https://i.ytimg.com/vi/9txzvu6eQuw/hqdefault.jpg',
+    videoid: '9txzvu6eQuw',
   },
   {
     title: '에일리 - 보여줄게',
@@ -340,6 +349,11 @@ export const RB_SOUL = [
     videoid: 'BzYnNdJhZQw',
   },
   {
+    thumbnail: 'https://i.ytimg.com/vi/gmgcRWxhmqY/hqdefault.jpg',
+    title: 'BAEKHYUN 백현 &#39;Candy&#39; MV',
+    videoid: 'gmgcRWxhmqY',
+  },
+  {
     title: '[MV] Crush(크러쉬) _ Sometimes(가끔)',
     thumbnail: 'https://i.ytimg.com/vi/VN4EusA9zmE/hqdefault.jpg',
     videoid: 'VN4EusA9zmE',
@@ -439,9 +453,14 @@ export const RB_SOUL = [
 /* 인디 */
 export const INDIE = [
   {
-    title: '정준일 - 안아줘 (Hug Me)',
-    thumbnail: 'https://i.ytimg.com/vi/tA9EJJtwSqc/hqdefault.jpg',
-    videoid: 'tA9EJJtwSqc',
+    thumbnail: 'https://i.ytimg.com/vi/PraMMgMQWac/hqdefault.jpg',
+    title: 'Leo(나비와 고양이) - BOL4 ft. Baekhyun',
+    videoid: 'PraMMgMQWac',
+  },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/ySpqBEvTn8s/hqdefault.jpg',
+    title: '물감 Paint',
+    videoid: 'ySpqBEvTn8s',
   },
   {
     title: '십센치 (10cm) - 스토커 (Stalker)',
@@ -532,6 +551,11 @@ export const INDIE = [
     title: '슈퍼키드 - 그리 쉽게 이별을 말하지 말아요',
     thumbnail: 'https://i.ytimg.com/vi/mql2ikMOzJA/hqdefault.jpg',
     videoid: 'mql2ikMOzJA',
+  },
+  {
+    title: '정준일 - 안아줘 (Hug Me)',
+    thumbnail: 'https://i.ytimg.com/vi/tA9EJJtwSqc/hqdefault.jpg',
+    videoid: 'tA9EJJtwSqc',
   },
 ];
 
@@ -799,37 +823,78 @@ export const POP = [
     thumbnail: 'https://i.ytimg.com/vi/bESGLojNYSo/hqdefault.jpg',
     videoid: 'bESGLojNYSo',
   },
+  {
+    thumbnail: 'https://i.ytimg.com/vi/B0BqBbf4VTE/hqdefault.jpg',
+    title: '[DJ티비씨] 헨리(Henry) - Youth ♬ #비긴어게인2 #DJ티비씨',
+    videoid: 'B0BqBbf4VTE',
+  },
 ];
+Array.prototype.shuffle = function () {
+  let length = this.length;
+
+  while (length) {
+    let index = Math.floor(length-- * Math.random());
+    let temp = this[length];
+
+    this[length] = this[index];
+
+    this[index] = temp;
+  }
+
+  return this;
+};
+
+const Random = INDIE.slice(1)
+  .concat(
+    RB_SOUL.slice(1),
+    DANCE.slice(1),
+    BALLAD.slice(1),
+    HIPHOP.slice(1),
+    ROCK_METAL.slice(1),
+    POP.slice(1),
+    FOLK_BLUES.slice(1),
+  )
+  .shuffle();
 
 export const samples = [
-  RB_SOUL[0],
-  DANCE[3],
-  BALLAD[1],
-  POP[7],
-  RB_SOUL[4],
-  HIPHOP[0],
-  DANCE[5],
-  ROCK_METAL[3],
-  POP[1],
-  INDIE[3],
-  DANCE[4],
-  BALLAD[2],
-  HIPHOP[6],
-  INDIE[5],
-  POP[8],
-  RB_SOUL[3],
-  FOLK_BLUES[2],
-  DANCE[0],
-  BALLAD[3],
-  POP[2],
-  RB_SOUL[2],
-  HIPHOP[2],
-  ROCK_METAL[5],
-  INDIE[4],
-  POP[0],
-  DANCE[1],
-  HIPHOP[4],
-  BALLAD[4],
+  Random[0],
+  Random[1],
+  BALLAD[0],
+  Random[2],
+  Random[3],
+  ROCK_METAL[0],
+  Random[4],
+  Random[5],
   INDIE[0],
-  POP[6],
+  Random[6],
+  Random[7],
+  RB_SOUL[0],
+  Random[8],
+  Random[9],
+  DANCE[0],
+  Random[10],
+  Random[11],
+  POP[0],
+  Random[12],
+  Random[13],
+  HIPHOP[0],
+  Random[14],
+  FOLK_BLUES[0],
+  Random[15],
+  Random[16],
+  Random[17],
+  Random[18],
+  Random[19],
+  Random[20],
+  Random[21],
+  Random[22],
+  Random[23],
+  Random[24],
+  Random[25],
+  Random[26],
+  Random[27],
+  Random[28],
+  Random[29],
+  Random[30],
+  Random[31],
 ];
