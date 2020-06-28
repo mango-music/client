@@ -59,8 +59,9 @@ const Ranks = (props) => {
       </div>
       <div className="home_list-rank_item_title">
         <span>{video.title}</span>
-        <span>{averageMusicRating}</span>
-        <span>{ratingPeople[video.videoid]}</span>
+        <span>
+          {`평점 ${averageMusicRating} (${ratingPeople[video.videoid]}명)`}
+        </span>
       </div>
     </Box>
   );
