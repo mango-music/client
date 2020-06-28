@@ -18,7 +18,7 @@ const UserPlaylistItemsDropDownMenu = (props) => {
           setSelectedList(null);
         }}
       >
-        리스트 삭제하기
+        목록 삭제
       </div>
     </div>
   );

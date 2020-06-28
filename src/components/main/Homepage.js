@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, IconButton, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { QueueMusic } from '@material-ui/icons';
+import { QueueMusic, Update } from '@material-ui/icons';
 import getRecommendedPlaylist from '../../lib/apis/getRecommendedPlaylist';
 import KpopMusicEntry from './home/KpopMusicEntry';
 import Recommends from './home/Recommends';
 import '../../styles/Homepage.scss';
+import getUpdatedAt from '../../lib/utils/getUpdatedAt';
 
 const useStyles = makeStyles((theme) => ({
   header: {
@@ -86,12 +87,13 @@ const Homepage = (props) => {
       />
     );
   });
-  // const rankMusic = musics.map((music, index) => (
-  // <Ranks music={music} ranking={index} />
-  // ));
 
   return (
     <Box className={`player-brother-${playerSize} home`}>
+      <Box className="home_updatedAt">
+        <Update fontSize="small" />
+        <span>{getUpdatedAt()} 업데이트 되었습니다.</span>
+      </Box>
       <Box component="section">
         <Box component="header" className={classes.header}>
           <Typography variant="h3">실시간 인기 음악</Typography>

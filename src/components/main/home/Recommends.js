@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Typography, Button, IconButton } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { QueueMusic } from '@material-ui/icons';
+import { QueueMusic, AccountBox } from '@material-ui/icons';
 import RecommendsEntry from './RecommendsEntry';
 import getRecommendedMusic from '../../../lib/apis/getRecommendedMusic';
 import Ranks from './Ranks';

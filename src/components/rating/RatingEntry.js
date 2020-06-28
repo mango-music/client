@@ -62,7 +62,7 @@ const RatingEntry = ({
         <Box component="header" className="card_media">
           <YouTube
             videoId={video.videoid}
-            className="card_media_iframe flexbox-centering"
+            className="card_media_iframe"
             opts={opts}
           />
         </Box>

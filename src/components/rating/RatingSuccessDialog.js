@@ -1,6 +1,7 @@
 import React from 'react';
 import {
   Button,
+  Box,
   Dialog,
   DialogActions,
   DialogTitle,
@@ -20,7 +21,7 @@ const RatingSuccessDialog = ({ isOpen, nickname, handleRatingSuccess }) => {
         aria-labelledby="alert-dialog-title"
         aria-describedby="alert-dialog-description"
       >
-        <div style={{ textAlign: 'center', fontSize: '4rem' }}>
+        <Box style={{ width: '100%', height: 'auto' }}>
           <iframe
             src="https://giphy.com/embed/2yqYbPakQKDFhNZbW9"
             width="100%"
@@ -29,7 +30,7 @@ const RatingSuccessDialog = ({ isOpen, nickname, handleRatingSuccess }) => {
             title="success-gif"
             allowFullScreen
           />
-        </div>
+        </Box>
 
         <DialogTitle id="alert-dialog-title">이 정도면 충분해요!</DialogTitle>
         <DialogContent>
@@ -39,7 +40,7 @@ const RatingSuccessDialog = ({ isOpen, nickname, handleRatingSuccess }) => {
         </DialogContent>
         <DialogActions>
           <Button
-            variant="outlined"
+            variant="text"
             color="primary"
             size="large"
             onClick={handleDialogClose}
