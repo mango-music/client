@@ -23,6 +23,8 @@ const MusicPlayer = (props) => {
     setVideoIdRatings,
     customLists,
     setCustomLists,
+    musicAverage,
+    ratingPeople,
   } = props; // fakeData 로딩
   const [player, setPlayer] = useState(null); // video를 처리하기 위한 player 변수
   // const [itemIndex, setItemIndex] = useState(0); // 배열의 몇 번째 음악을 재생하는지 알려주는 숫자
@@ -171,6 +173,8 @@ const MusicPlayer = (props) => {
               shuffledQueue={shuffledQueue}
               videoIdRatings={videoIdRatings}
               setVideoIdRatings={setVideoIdRatings}
+              musicAverage={musicAverage}
+              ratingPeople={ratingPeople}
             />
             <MusicProgressBar
               currentTime={currentTime}

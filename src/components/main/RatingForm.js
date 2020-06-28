@@ -14,16 +14,24 @@ const RatingForm = (props) => {
     itemIndex,
     videoIdRatings,
     setVideoIdRatings,
+    musicAverage,
+    ratingPeople,
   } = props;
   console.log('RatingForm rendering');
   let video;
   // 셔플일 때
+
   if (isShuffleOn && shuffledIndex !== undefined) {
     const index = shuffledQueue[shuffledIndex];
     video = currentItems[index];
   } else {
     video = currentItems[itemIndex];
   }
+
+  const averageMusicRating = musicAverage[video.videoid] // 에러방지 삼항 연산자
+    ? musicAverage[video.videoid].toFixed(1)
+    : null;
+  const ratingCount = ratingPeople[video.videoid];
 
   const getStars = () => {
     let stars = null;
@@ -80,6 +88,8 @@ const RatingForm = (props) => {
           }
         }}
       />
+      <p>{averageMusicRating}</p>
+      <p>{ratingCount}</p>
     </div>
   );
 };

@@ -13,7 +13,14 @@ import {
 import '../../styles/AdditionalRating.scss';
 
 const AdditionalRating = (props) => {
-  const { nickname, videoIdRatings, setVideoIdRatings, playerSize } = props;
+  const {
+    nickname,
+    videoIdRatings,
+    setVideoIdRatings,
+    playerSize,
+    musicAverage,
+    ratingPeople,
+  } = props;
   const [genre, setGenre] = useState(BALLAD);
 
   const genreArr = [
@@ -50,6 +57,8 @@ const AdditionalRating = (props) => {
             music={music}
             videoIdRatings={videoIdRatings}
             setVideoIdRatings={setVideoIdRatings}
+            musicAverage={musicAverage}
+            ratingPeople={ratingPeople}
           />
         ))}
       </ul>

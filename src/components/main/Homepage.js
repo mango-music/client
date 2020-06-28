@@ -44,6 +44,8 @@ const Homepage = (props) => {
     setPlayerSize,
     videoIdRatings,
     playerSize,
+    musicAverage,
+    ratingPeople,
   } = props;
 
   useEffect(() => {
@@ -80,6 +82,8 @@ const Homepage = (props) => {
         setItemIndex={setItemIndex}
         customLists={customLists}
         setCustomLists={setCustomLists}
+        musicAverage={musicAverage}
+        ratingPeople={ratingPeople}
       />
     );
   });
@@ -119,6 +123,8 @@ const Homepage = (props) => {
           nickname={nickname}
           setPlayerSize={setPlayerSize}
           videoIdRatings={videoIdRatings}
+          musicAverage={musicAverage}
+          ratingPeople={ratingPeople}
         />
       </Box>
     </Box>
