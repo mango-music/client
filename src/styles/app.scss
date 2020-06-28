@@ -3,7 +3,7 @@
 .app {
   &_header {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     align-items: center;
     height: 80px;
     // max-height: 97px;
@@ -21,6 +21,10 @@
       padding: 0 0.5rem;
     }
   }
+}
+
+.embed {
+  height: auto !important;
 }
 
 #giphy-embed {
