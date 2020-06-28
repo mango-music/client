@@ -86,16 +86,35 @@ const App = ({ history, location }) => {
       disableGutters
       className="app"
     >
-      {pathname !== '/rating' ? (
+      {pathname !== '/rating' && pathname !== '/rating_consent' ? (
         <Box component="header" className="app_header">
-          {title === '프로필' ? <BackButton nickname={nickname} /> : null}
-          <Typography variant="h2">{title}</Typography>
-          {pathname === callbackPath.current ? (
-            <ProfileButton nickname={nickname} />
+          {title === '내 계정' ? (
+            <>
+              <Box
+                display="flex"
+                style={{ alignItems: 'center', marginLeft: '12px' }}
+              >
+                <BackButton nickname={nickname} />
+                <Typography variant="h2">{title}</Typography>
+              </Box>
+            </>
+          ) : null}
+          {pathname.includes(callbackPath.current) && title !== '내 계정' ? (
+            <>
+              <Typography variant="h2">{title}</Typography>
+              <ProfileButton nickname={nickname} />
+            </>
+          ) : null}
+          {title === '로그인' || title === '가입하기' ? (
+            <Typography variant="h2">{title}</Typography>
           ) : null}
         </Box>
       ) : null}
-      <Box component="main" className="app_main">
+      <Box
+        component="main"
+        className="app_main"
+        style={pathname === callbackPath.current ? { paddingRight: 0 } : null}
+      >
         <Switch>
           <Route
             exact

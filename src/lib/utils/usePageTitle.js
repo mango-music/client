@@ -13,7 +13,7 @@ const usePageTitle = (pathname, nickname) => {
       case '/rating':
         return '평가하기';
       case '/profile':
-        return '프로필';
+        return '내 계정';
       default:
         return null;
     }

@@ -1,14 +1,16 @@
 import React, { useState, memo } from 'react';
-import UserPlaylist from './UserPlaylist';
-import UserPlaylistItems from './UserPlaylistItems';
-import UserPlaylistRated from './UserPlaylistRated';
-import postMusiclist from '../../lib/apis/postMusiclist';
+import { Button } from '@material-ui/core';
 import {
   AddCircleOutline,
+  PlaylistAdd,
   CheckCircleOutline,
   HighlightOff,
   NavigateNext,
 } from '@material-ui/icons';
+import UserPlaylist from './UserPlaylist';
+import UserPlaylistItems from './UserPlaylistItems';
+import UserPlaylistRated from './UserPlaylistRated';
+import postMusiclist from '../../lib/apis/postMusiclist';
 import '../../styles/Library.scss';
 
 const Library = (props) => {
@@ -83,16 +85,28 @@ const Library = (props) => {
   } else {
     addPlaylist = (
       <>
-        <div
+        <Button
+          startIcon={<PlaylistAdd />}
+          variant="outlined"
+          color="secondary"
+          size="large"
+          fullWidth
           onClick={(e) => {
             setAddButtonOn(true);
           }}
         >
-          <AddCircleOutline />
+          재생 목록 만들기
+        </Button>
+        {/* <div
+          onClick={(e) => {
+            setAddButtonOn(true);
+          }}
+        >
+          <PlaylistAdd fontSize="large" />
         </div>
         <div>
-          <p>재생 목록 추가하기</p>
-        </div>
+          <p>재생 목록 추가</p>
+        </div> */}
       </>
     );
   }

@@ -17,7 +17,7 @@ const UserPlaylistItemDropDownMenu = (props) => {
           setIsEllipsisOn(false);
         }}
       >
-        음악 삭제하기
+        목록에서 제거
       </div>
     </div>
   );

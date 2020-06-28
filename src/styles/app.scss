@@ -13,7 +13,6 @@
     }
   }
   &_main {
-    padding-top: 1rem;
     padding-left: 1rem;
     padding-right: 1rem;
     position: relative;
@@ -24,5 +23,10 @@
   }
 }
 
+#giphy-embed {
+  height: auto !important;
+}
+
+@import './unauthorized.scss';
 @import './account.scss';
 @import './rating.scss';

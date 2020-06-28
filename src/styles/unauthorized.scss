@@ -1,0 +1,35 @@
+.unauthorized {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  text-align: center;
+  &_header {
+    height: auto;
+    > img {
+      width: 100%;
+      height: auto;
+    }
+  }
+  &_body {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    margin-top: 2rem;
+    &_title {
+      > h2 {
+        margin-bottom: 0.5rem;
+      }
+      > p {
+        font-size: 1rem;
+      }
+    }
+    > a {
+      margin: 2rem 0;
+    }
+  }
+}

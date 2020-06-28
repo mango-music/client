@@ -4,11 +4,11 @@ import Button from '@material-ui/core/Button';
 import postSignout from '../../lib/apis/postSignout';
 
 const Signout = ({ handleLogout, history }) => {
-  const handleClick = async () => {
+  const handleLogoutButtonClick = async () => {
     const access_token = localStorage.getItem('x-access-token');
     const refresh_token = localStorage.getItem('x-refresh-token');
     const res = await postSignout({ access_token, refresh_token });
-    console.log(res);
+    // console.log('로그아웃 서버 응답', res);
     if (res === 'ok') {
       handleLogout();
       localStorage.clear();
@@ -19,11 +19,10 @@ const Signout = ({ handleLogout, history }) => {
   };
   return (
     <Button
-      variant="outlined"
-      color="primary"
+      variant="contained"
+      color="default"
       size="large"
-      fullWidth
-      onClick={handleClick}
+      onClick={handleLogoutButtonClick}
     >
       로그아웃
     </Button>

@@ -18,7 +18,7 @@ const theme = createMuiTheme({
   typography: {
     fontFamily: 'inherit',
     h2: {
-      fontSize: '1.75rem',
+      fontSize: '1.5rem',
       fontWeight: 700,
     },
     body1: {
