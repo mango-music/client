@@ -624,7 +624,7 @@ export const ROCK_METAL = [
   },
   {
     title: '브리즈 - 뭐라할까',
-    thumbnail: 'rK5jUEAS-Q4',
+    thumbnail: 'https://i.ytimg.com/vi/rK5jUEAS-Q4/hqdefault.jpg',
     videoid: 'rK5jUEAS-Q4',
   },
   {
