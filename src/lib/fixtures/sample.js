@@ -23,6 +23,11 @@ import { FilterTiltShift } from '@material-ui/icons';
 /* 발라드 */
 export const BALLAD = [
   {
+    thumbnail: 'https://i.ytimg.com/vi/7qki5-JzF18/hqdefault.jpg',
+    title: 'Trust in me (이제 나만 믿어요)',
+    videoid: '7qki5-JzF18',
+  },
+  {
     title: '전미도- 사랑하게 될 줄 알았어 [슬기로운 의사생활 OST]  MV',
     thumbnail: 'https://i.ytimg.com/vi/rOCymN-Rwiw/hqdefault.jpg',
     videoid: 'rOCymN-Rwiw',
@@ -100,11 +105,6 @@ export const BALLAD = [
     videoid: 'DUxOxkyZfwc',
   },
   {
-    title: '노을 - 그리워 그리워',
-    thumbnail: 'https://i.ytimg.com/vi/rr7arlNxLro/hqdefault.jpg',
-    videoid: 'rr7arlNxLro',
-  },
-  {
     title: '이선희 - 인연',
     thumbnail: 'https://i.ytimg.com/vi/8_kdU44I2gA/hqdefault.jpg',
     videoid: '8_kdU44I2gA',
@@ -118,11 +118,6 @@ export const BALLAD = [
     title: '임창정 - 내가 저지른 사랑',
     thumbnail: 'https://i.ytimg.com/vi/L-2M_-QLs8k/hqdefault.jpg',
     videoid: 'L-2M_-QLs8k',
-  },
-  {
-    title: '에일리 - 노래가 늘었어',
-    thumbnail: 'https://i.ytimg.com/vi/09r59NFPpLg/hqdefault.jpg',
-    videoid: '09r59NFPpLg',
   },
   {
     title: 'BMK - 꽃피는 봄이 오면',
@@ -239,6 +234,11 @@ export const DANCE = [
 
 /* 힙합 */
 export const HIPHOP = [
+  {
+    thumbnail: 'https://i.ytimg.com/vi/P07XG1P0ums/hqdefault.jpg',
+    title: 'BLOO - Downtown Baby [Official Music Video]',
+    videoid: 'P07XG1P0ums',
+  },
   {
     title: '창모 (CHANGMO) - METEOR MV',
     thumbnail: 'https://i.ytimg.com/vi/abuTb3qMOsY/hqdefault.jpg',
@@ -562,6 +562,11 @@ export const INDIE = [
 /* 락 & 메탈 */
 export const ROCK_METAL = [
   {
+    title: '럼블피쉬 - 비와 당신',
+    thumbnail: 'https://i.ytimg.com/vi/RiziS5qadd4/hqdefault.jpg',
+    videoid: 'RiziS5qadd4',
+  },
+  {
     title: '패닉 -  달팽이',
     thumbnail: 'https://i.ytimg.com/vi/zraW-fU00zI/hqdefault.jpg',
     videoid: 'zraW-fU00zI',
@@ -605,11 +610,6 @@ export const ROCK_METAL = [
     title: '김경호 - 비정',
     thumbnail: 'https://i.ytimg.com/vi/Kvqe8nBrngU/hqdefault.jpg',
     videoid: 'Kvqe8nBrngU',
-  },
-  {
-    title: '럼블피쉬 - 비와 당신',
-    thumbnail: 'https://i.ytimg.com/vi/RiziS5qadd4/hqdefault.jpg',
-    videoid: 'RiziS5qadd4',
   },
   {
     title: '야다 - 이미 슬픈 사랑',
@@ -723,6 +723,11 @@ export const FOLK_BLUES = [
 ];
 /* 해외 */
 export const POP = [
+  {
+    thumbnail: 'https://i.ytimg.com/vi/f7Nzw9I6tzE/hqdefault.jpg',
+    title: '아이유(IU) - Into the I-LAND / 가사',
+    videoid: 'f7Nzw9I6tzE',
+  },
   {
     title: 'Adam levine - lost stars ',
     thumbnail: 'https://i.ytimg.com/vi/cL4uhaQ58Rk/hqdefault.jpg',
