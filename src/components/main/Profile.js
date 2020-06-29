@@ -6,7 +6,7 @@ import '../../styles/Profile.scss';
 import postNickname from '../../lib/apis/changeName';
 import CreateIcon from '@material-ui/icons/Create';
 
-const Profile = ({ profile, handleLogout }) => {
+const Profile = ({ profile, handleLogout, playerSize }) => {
   const [value, setValue] = useState(profile.nickname);
   const [image, setimage] = useState('');
   const [loading, setLoading] = useState(false);
@@ -49,7 +49,7 @@ const Profile = ({ profile, handleLogout }) => {
   };
 
   return (
-    <div id="profile">
+    <div id="profile" className={`player-brother-${playerSize}`}>
       <div
         style={{
           width: '128px',

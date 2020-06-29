@@ -171,7 +171,11 @@ const Main = ({ profile, handleLogout }) => {
           />
         </Route>
         <Route path={`/@${nickname}/profile`}>
-          <Profile profile={profile} handleLogout={handleLogout} />
+          <Profile
+            profile={profile}
+            handleLogout={handleLogout}
+            playerSize={playerSize}
+          />
         </Route>
         <Route path={`/@${nickname}/player`}>
           <MusicPlayer />
