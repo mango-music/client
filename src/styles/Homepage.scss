@@ -52,7 +52,7 @@
   position: relative;
   overflow-x: hidden;
   height: 100%;
-  margin-bottom: 120px;
+  // margin-bottom: 120px;
   header {
     position: sticky;
     top: 0;
@@ -123,6 +123,7 @@
     flex-flow: column nowrap;
     width: auto;
     height: auto;
+    margin-bottom: 70px;
     &_item {
       display: grid;
       grid-template-columns: 20px 90px 1fr;
