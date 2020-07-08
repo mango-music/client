@@ -1,0 +1,10 @@
+@mixin player-brother-big {
+  @media (min-width: 700px) {
+    .player-brother-big {
+      width: 50vw !important;
+      position: absolute !important;
+      top: 0;
+      right: 0;
+    }
+  }
+}

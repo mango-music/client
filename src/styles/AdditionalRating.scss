@@ -1,0 +1,79 @@
+@import './common/normal-button.scss';
+@import './common/player-brother-big.scss';
+
+// @include player-brother-big;
+#additional-rating {
+  grid-auto-flow: row;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1.5rem;
+  overflow: auto;
+  height: 100vh;
+
+  nav {
+    margin: 0 10px 0 10px;
+    display: block;
+    overflow: auto;
+    white-space: nowrap;
+    p {
+      display: inline;
+      text-align: center;
+      cursor: pointer;
+      font-size: 1.2rem;
+      margin-right: 20px;
+    }
+    p:last-child {
+      margin-right: 0;
+    }
+  }
+
+  ul {
+    padding: 10px 10px 120px 10px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    li {
+      display: grid;
+      grid-auto-flow: row;
+      grid-template-columns: 1fr;
+      gap: 4px;
+      .stars {
+        padding-top: 2px;
+        justify-self: center;
+      }
+      .rating-average {
+        margin-top: -8px;
+        display: grid;
+        grid-auto-flow: column;
+        justify-content: center;
+        gap: 8px;
+        color: whitesmoke;
+        p {
+          font-size: 1rem;
+        }
+      }
+      p {
+        text-align: center;
+        font-size: 1.25rem;
+        // 글자 숨기는 기능
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+  }
+
+  .iframe-wrapper {
+    position: relative; /* absolute는 부모가 relative일 때 부모를 따라간다. */
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 비율 */
+    background-color: black;
+    iframe {
+      position: absolute;
+      width: 100%; /* 부모에 맞게 꽉 채운다. */
+      height: 100%;
+    }
+  }
+}

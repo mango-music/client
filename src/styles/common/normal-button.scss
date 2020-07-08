@@ -1,0 +1,31 @@
+@mixin normal-button {
+  button {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+    border: 0px;
+    svg {
+      font-size: 1.8rem;
+      color: #bebebf;
+      transition-property: color;
+      transition-duration: 200ms;
+    }
+  }
+  button:hover {
+    svg {
+      color: whitesmoke;
+    }
+  }
+  button:active {
+    svg {
+      color: #bebebf;
+    }
+  }
+}
+
+@mixin ellipsis-button {
+  button {
+    svg {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+@import './common/normal-button.scss';
+@import './common/player-brother-big.scss';
+
+@include player-brother-big;
+#search {
+  overflow: auto;
+  height: 100vh;
+  form {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr 45px;
+    // height: 60px;
+    padding: 10px;
+    input {
+      background-color: whitesmoke;
+      font-size: 1rem;
+      padding: 10px 10px 10px 10px;
+      border: 0px;
+      color: black;
+    }
+    @include normal-button;
+    button {
+      background-color: rgba(245, 245, 245, 0);
+      svg {
+        font-size: 1.8rem;
+      }
+    }
+  }
+
+  ul {
+    font-size: 1rem;
+    margin-bottom: 120px;
+    overflow: visible;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    // gap: 8px;
+    li {
+      overflow: visible;
+      position: relative;
+      display: grid;
+      gap: 10px;
+      grid-auto-flow: column;
+      grid-template-columns: auto 1fr 30px;
+      margin: 8px;
+      list-style: none;
+      cursor: pointer;
+      .search-image {
+        img {
+          display: block;
+          width: 5rem;
+        }
+      }
+      .search-title {
+        display: grid;
+        align-content: center;
+        // overflow: hidden;
+        p {
+          margin: 0;
+          // 글자 숨기는 속성
+          overflow: hidden;
+          height: 40px; // 박스 범위
+          white-space: normal;
+          line-height: 1.2;
+          text-align: left;
+          word-wrap: break-word;
+          display: -webkit-box;
+          -webkit-line-clamp: 2; // 2번째 줄 끝을 ...으로 만든다.
+          -webkit-box-orient: vertical;
+        }
+      }
+      @include normal-button;
+      @include ellipsis-button;
+      button {
+        svg {
+          font-size: 1.2rem;
+        }
+      }
+      .search-drop-down-menu {
+        z-index: 4;
+        display: block;
+        background-color: #696969;
+        padding: 10px;
+        border-radius: 10px;
+        position: absolute;
+        right: 30px;
+        top: 0;
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08), 0 3px 6px rgba(0, 0, 0, 0.12);
+      }
+    }
+  }
+}

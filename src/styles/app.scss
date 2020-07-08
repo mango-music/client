@@ -1,0 +1,36 @@
+@import './mixins';
+
+.app {
+  &_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    // max-height: 97px;
+    padding: 1rem 4px;
+    > h2 {
+      padding: 0 1rem;
+    }
+  }
+  &_main {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    position: relative;
+    height: calc(100% - 80px - 56px);
+    div.account {
+      padding: 0 0.5rem;
+    }
+  }
+}
+
+.embed {
+  height: auto !important;
+}
+
+#giphy-embed {
+  height: auto !important;
+}
+
+@import './unauthorized.scss';
+@import './account.scss';
+@import './rating.scss';
